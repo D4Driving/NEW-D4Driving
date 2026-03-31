@@ -3,291 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D4Driving | Peterborough School of Motoring | Pass with Robert</title>
-    
-    <meta name="description" content="Pass your driving test with D4Driving, Peterborough’s professional DVSA Approved School. Specializing in local test routes and intensive courses.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cal.com">
-
+    <title>D4Driving | Expert Driving Tuition Peterborough</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #fbfdff; /* Airy background */
-            color: #2C3E50; /* Logo Slate for body text */
-            overflow-x: hidden;
-        }
-
-        .airy-card {
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fbfdff; color: #2C3E50; }
+        
+        .glass-card {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(226, 232, 240, 0.8);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
         }
 
-        /* Review Slider Animation */
+        /* Continuous Review Loop */
         @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-324px * 4)); }
+            100% { transform: translateX(-50%); }
         }
-
         .reviews-track {
             display: flex;
-            width: max-content;
-            animation: scroll 30s linear infinite;
+            width: calc(350px * 10); /* Wide enough for clones */
+            animation: scroll 40s linear infinite;
         }
+        .reviews-container:hover .reviews-track { animation-play-state: paused; }
 
-        .reviews-track:hover { animation-play-state: paused; }
-
-        .reviews-container {
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-        }
-
-        /* Airy floating buttons */
-        .wa-float {
-            position: fixed;
-            bottom: 100px;
-            right: 25px;
-            background-color: #25d366;
+        .price-badge {
+            background-color: #BD2026;
             color: white;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-        
-        .wa-float:hover { transform: translateY(-5px); scale: 1.1; }
-
-        .mobile-book-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            z-index: 99;
-            display: none;
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-weight: 800;
         }
 
-        @media (max-width: 1024px) {
-            .mobile-book-btn { display: block; }
+        .wa-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+            z-index: 100; transition: transform 0.3s;
         }
+        .wa-float:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-50 bg-[#2C3E50]/95 backdrop-blur-md border-b border-white/5 py-4 px-6 shadow-xl shadow-[#2C3E50]/10">
+    <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 py-4 px-6">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <img src="400dpiLogoCropped.png" alt="D4Driving Logo" class="h-10 brightness-110">
-            <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-widest text-slate-200">
-                <a href="#about" class="hover:text-red-400 transition">The Cars</a>
-                <a href="#prices" class="hover:text-red-400 transition">Pricing</a>
-                <a href="#book" class="hover:text-red-400 transition">Booking</a>
-                <a href="#contact" class="hover:text-red-400 transition">Got Questions?</a>
+            <img src="400dpiLogoCropped.png" alt="D4Driving" class="h-10">
+            <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-widest text-slate-500">
+                <a href="#about" class="hover:text-[#BD2026]">About Me</a>
+                <a href="#prices" class="hover:text-[#BD2026]">Lesson Prices</a>
+                <a href="#test-centers" class="hover:text-[#BD2026]">Test Centres</a>
+                <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" class="hover:text-[#BD2026]">YouTube Tips</a>
             </div>
-            <a href="#book" class="bg-[#BD2026] px-6 py-2.5 rounded-xl font-bold text-xs text-white hover:bg-[#9a1a1f] transition shadow-lg shadow-[#BD2026]/20 active:scale-95">BOOK ONLINE</a>
+            <a href="#book" class="bg-[#2C3E50] text-white px-6 py-2 rounded-lg font-bold text-xs hover:bg-[#BD2026] transition">Book Now</a>
         </div>
     </nav>
 
-    <section class="relative pt-40 pb-20 px-6 overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-b from-[#eef3f7] to-transparent -z-10"></div>
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <section class="pt-40 pb-20 px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
             <div>
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-[#2C3E50]/10 rounded-full border border-[#2C3E50]/20 mb-6">
-                    <span class="relative flex h-3 w-3">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                    </span>
-                    <span class="text-[10px] font-black uppercase tracking-widest text-[#2C3E50]">Status: <span class="text-green-700">Accepting Students</span></span>
-                </div>
-                <h1 class="text-5xl lg:text-7xl font-black text-[#2C3E50] mb-6 leading-[1.05]">
-                    Drive with <br><span class="text-[#BD2026]">Freedom.</span>
-                </li>
-                <p class="text-slate-600 text-lg mb-10 leading-relaxed">
-                    Personalized coaching with Robert. Fully qualified ADI specializing in nervous learners, master Peterborough's roundabouts, and pass your test with total confidence.
+                <h1 class="text-4xl lg:text-6xl font-extrabold text-[#2C3E50] mb-6 leading-tight">
+                    Expert Guidance on <br><span class="text-[#BD2026]">Your Road to Success</span>
+                </h1>
+                <p class="text-slate-600 text-lg mb-8 leading-relaxed">
+                    Robert's professional maneuvers, 9,000+ YouTube subscribers, and high pass rates make D4Driving the premier choice for learners in Peterborough.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#prices" class="px-8 py-4 bg-[#2C3E50] text-white font-bold rounded-2xl hover:bg-slate-900 transition shadow-xl active:scale-95">VIEW PRICING</a>
-                    <a href="#book" class="px-8 py-4 bg-white text-[#2C3E50] border border-slate-200 font-bold rounded-2xl hover:bg-slate-50 transition active:scale-95">CHECK AVAILABILITY</a>
+                <div class="flex gap-4">
+                    <span class="bg-[#BD2026] text-white px-4 py-2 rounded-md font-bold text-sm uppercase">Driving Instructor</span>
                 </div>
             </div>
-            <div class="relative flex justify-center lg:justify-end">
-                <div class="airy-card rounded-[2rem] p-4 shadow-2xl relative z-10 hover:shadow-[#BD2026]/10 transition duration-500 hover:-translate-y-2 cursor-default">
-                    <img src="Robert neutral bg.png" alt="Robert Szatkowski ADI Instructor" class="w-full max-w-sm drop-shadow-lg rounded-2xl grayscale hover:grayscale-0 transition duration-500">
-                </div>
-                <div class="absolute -inset-10 bg-[#BD2026]/10 blur-[120px] rounded-full scale-75 opacity-70"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-24 px-6 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-center text-slate-400 font-bold mb-16 uppercase tracking-[0.4em] text-[10px]">Your Learning Environment</h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="airy-card p-10 rounded-[2.5rem] group hover:border-[#BD2026]/20 hover:shadow-2xl hover:shadow-[#BD2026]/5 transition duration-500 cursor-default">
-                    <img src="Yaris Cross White.jpg" alt="Toyota Yaris Cross D4Driving" class="w-full h-80 object-cover rounded-2xl mb-8 group-hover:scale-[1.03] transition duration-700">
-                    <h3 class="text-2xl font-black text-[#2C3E50] mb-3">Toyota Yaris Cross</h3>
-                    <p class="text-slate-600 leading-relaxed text-sm">Elevated driving position for superior visibility, perfect for safe lane discipline on multi-lane Peterborough roads.</p>
-                </div>
-                <div class="airy-card p-10 rounded-[2.5rem] group hover:border-[#BD2026]/20 hover:shadow-2xl hover:shadow-[#BD2026]/5 transition duration-500 cursor-default">
-                    <img src="AYGO X Blue.jpg" alt="Toyota Aygo X D4Driving" class="w-full h-80 object-cover rounded-2xl mb-8 group-hover:scale-[1.03] transition duration-700">
-                    <h3 class="text-2xl font-black text-[#2C3E50] mb-3">Toyota Aygo X</h3>
-                    <p class="text-slate-600 leading-relaxed text-sm">Compact, modern, and incredibly responsive. Excellent for building confidence with clutch control and precision parking.</p>
+            <div class="relative">
+                <div class="glass-card p-4 rounded-[2rem] overflow-hidden">
+                    <img src="Robert neutral bg.png" alt="Robert" class="w-full h-auto rounded-xl">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="prices" class="py-24 px-6 bg-slate-50 relative overflow-hidden">
-        <div class="absolute -inset-1/2 -z-10 opacity-30 bg-[radial-gradient(circle_at_center,_#BD2026_0%,_#fbfdff_60%)]"></div>
-        
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-black text-[#2C3E50] mb-4 uppercase tracking-tighter">Lesson & Packages</h2>
-                <p class="text-[#BD2026] font-black uppercase tracking-widest text-[10px] leading-none">Peterborough • Grantham • Kettering</p>
-            </div>
-
-            <div class="max-w-md mx-auto mb-20 relative">
-                <div class="bg-slate-50 p-10 rounded-[2.5rem] border border-red-100 shadow-2xl hover:scale-[1.02] transition-transform duration-500 relative text-center">
-                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#BD2026] text-white text-[10px] px-5 py-1.5 rounded-full font-black uppercase tracking-widest leading-none">Recommended Entry Point</span>
-                    <h3 class="text-xl font-black mb-1 text-[#2C3E50] uppercase tracking-tight">Initial Assessment</h3>
-                    <p class="text-5xl font-black mb-2 text-[#BD2026]">£55</p>
-                    <p class="text-slate-500 text-xs font-bold mb-8 uppercase tracking-widest leading-none">90-Minute Strategic Session</p>
-                    <ul class="space-y-4 mb-10 text-left border-t border-slate-200 pt-8 max-w-sm mx-auto">
-                        <li class="flex items-center gap-3 text-[#2C3E50] text-sm font-medium">
-                            <span class="bg-red-100 text-[#BD2026] p-1.5 rounded-full text-[10px]">✓</span>
-                            Full Skills Audit & Driving Level Check
-                        </li>
-                        <li class="flex items-center gap-3 text-[#2C3E50] text-sm font-medium">
-                            <span class="bg-red-100 text-[#BD2026] p-1.5 rounded-full text-[10px]">✓</span>
-                            Personalized Path-to-Pass Plan
-                        </li>
-                    </ul>
-                    <a href="#book" class="block w-full py-5 bg-[#BD2026] hover:bg-[#9a1a1f] text-white rounded-2xl font-black transition-all shadow-xl shadow-[#BD2026]/20 active:scale-95">BOOK ASSESSMENT</a>
+    <section id="prices" class="py-20 bg-slate-50 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl font-black mb-4">Transparent Pricing & Flexible Packages</h2>
+            <p class="text-slate-500 mb-12">Robert's clear structure for beginners and advanced learners.</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase mb-2">Initial Assessment</h3>
+                    <p class="text-[10px] mb-4 text-slate-500">(90 Min Strategic Session)</p>
+                    <div class="price-badge inline-block text-xl">£55</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase mb-2">Single Session</h3>
+                    <p class="text-[10px] mb-4 text-slate-500">(1 Hour)</p>
+                    <div class="price-badge inline-block text-xl">£40</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase mb-2">Standard Session</h3>
+                    <p class="text-[10px] mb-4 text-slate-500">(1.5 Hours)</p>
+                    <div class="price-badge inline-block text-xl">£55</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase mb-2">Extended Session</h3>
+                    <p class="text-[10px] mb-4 text-slate-500">(2 Hours)</p>
+                    <div class="price-badge inline-block text-xl">£75</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase mb-2">10 Hour Block</h3>
+                    <p class="text-[10px] mb-4 text-slate-500">(Includes Discount)</p>
+                    <div class="price-badge inline-block text-xl">£380</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-[#BD2026]/30 shadow-md relative">
+                    <span class="absolute -top-2 right-4 bg-[#BD2026] text-[8px] text-white px-2 py-0.5 rounded-full font-bold">POPULAR</span>
+                    <h3 class="text-xs font-bold text-slate-400 uppercase mb-2">15 Hour Block</h3>
+                    <p class="text-[10px] mb-4 text-slate-500">(Most Popular)</p>
+                    <div class="price-badge inline-block text-xl">£540</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase mb-2">20 Hour Block</h3>
+                    <p class="text-[10px] mb-4 text-slate-500">(Best Value)</p>
+                    <div class="price-badge inline-block text-xl">£720</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                    <h3 class="text-xs font-bold text-slate-400 uppercase mb-2">Test Preparation</h3>
+                    <p class="text-[10px] mb-4 text-slate-500">(4 Hour Session)</p>
+                    <div class="price-badge inline-block text-xl">£150</div>
                 </div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-                <div class="airy-card p-8 rounded-3xl text-center hover:-translate-y-2 transition-transform shadow-lg shadow-slate-200">
-                    <h3 class="font-bold text-slate-400 uppercase text-xs tracking-widest mb-2">10 Hours</h3>
-                    <p class="text-3xl font-black text-[#2C3E50] mb-6">£380</p>
-                    <a href="https://buy.stripe.com/..." class="block w-full py-3 bg-slate-50 rounded-xl font-bold text-xs text-[#2C3E50] hover:bg-[#2C3E50] hover:text-white transition">Buy Vouchers</a>
-                </div>
-                <div class="airy-card p-8 rounded-3xl border-2 border-[#BD2026] text-center shadow-2xl hover:-translate-y-2 transition-transform scale-105 relative z-10">
-                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#BD2026] text-white text-[8px] px-3 py-1 rounded-full font-bold uppercase tracking-widest">Most Popular</span>
-                    <h3 class="font-bold text-[#BD2026] uppercase text-xs tracking-widest mb-2">15 Hours</h3>
-                    <p class="text-3xl font-black text-[#2C3E50] mb-6">£540</p>
-                    <a href="https://buy.stripe.com/..." class="block w-full py-3 bg-[#BD2026] rounded-xl font-bold text-xs text-white hover:bg-[#9a1a1f] transition active:scale-95 shadow-lg shadow-[#BD2026]/10">Buy Vouchers</a>
-                </div>
-                <div class="airy-card p-8 rounded-3xl text-center hover:-translate-y-2 transition-transform shadow-lg shadow-slate-200">
-                    <h3 class="font-bold text-slate-400 uppercase text-xs tracking-widest mb-2">20 Hours</h3>
-                    <p class="text-3xl font-black text-[#2C3E50] mb-6">£720</p>
-                    <a href="https://buy.stripe.com/..." class="block w-full py-3 bg-slate-50 rounded-xl font-bold text-xs text-[#2C3E50] hover:bg-[#2C3E50] hover:text-white transition">Buy Vouchers</a>
-                </div>
-                <div class="airy-card p-8 rounded-3xl text-center hover:-translate-y-2 transition-transform shadow-lg shadow-slate-200">
-                    <h3 class="font-bold text-slate-400 uppercase text-xs tracking-widest mb-2">Semi-Intensive</h3>
-                    <p class="text-3xl font-black text-[#2C3E50] mb-1">£800</p>
-                    <p class="text-slate-400 text-[8px] uppercase tracking-widest mb-4 leading-none">21.5 Hrs + Prep</p>
-                    <a href="https://buy.stripe.com/..." class="block w-full py-3 bg-slate-50 rounded-xl font-bold text-xs text-[#2C3E50] hover:bg-[#2C3E50] hover:text-white transition">Buy Vouchers</a>
-                </div>
-            </div>
+            
+            <a href="#book" class="inline-block bg-[#2C3E50] text-white px-10 py-4 rounded-xl font-bold hover:bg-[#BD2026] transition shadow-lg">Book Your First Lesson Now | cal.com</a>
         </div>
     </section>
 
-    <section id="book" class="max-w-5xl mx-auto px-4 py-24 bg-white rounded-[3rem] my-20 shadow-2xl shadow-slate-100 border border-slate-100">
-        <h2 class="text-3xl font-black text-center text-[#2C3E50] mb-12 tracking-tight">Select Your Date</h2>
-        <div class="bg-white rounded-3xl border border-slate-200 shadow-inner overflow-hidden" style="height: 1100px;">
-            <iframe src="https://cal.com/d4driving/assessment" style="width: 100%; height: 100%; border: none;"></iframe>
-        </div>
-    </section>
-
-    <section class="py-24 bg-[#2C3E50] text-white my-20 rounded-[3rem] relative overflow-hidden">
-        <div class="absolute -inset-1/2 opacity-20 -z-10 bg-[radial-gradient(circle_at_center,_#BD2026_0%,_transparent_60%)]"></div>
-        <h2 class="text-center text-red-400 font-bold mb-16 uppercase tracking-widest text-xs leading-none">Your Success is my Focus</h2>
-        <div class="reviews-container max-w-7xl mx-auto">
+    <section class="py-16 overflow-hidden bg-white border-y border-slate-100">
+        <div class="reviews-container">
             <div class="reviews-track">
-                <div class="airy-card bg-white/5 border border-white/10 p-10 rounded-3xl w-[320px] mx-4 shrink-0 hover:border-[#BD2026]/40 transition duration-500 cursor-grab">
-                    <div class="text-yellow-400 mb-4 flex gap-1">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-6">"Passed first time! Robert is incredibly patient. The YouTube tutorials helped so much with my nerves before my test."</p>
-                    <p class="font-bold text-[10px] text-white uppercase tracking-wider">— Sarah Jenkins, Peterborough</p>
+                <div class="flex items-center gap-4 bg-slate-50 p-6 rounded-2xl mx-4 w-[350px] shrink-0 border border-slate-100">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 overflow-hidden">
+                        <img src="https://ui-avatars.com/api/?name=Sarah+J&background=random" alt="User">
+                    </div>
+                    <div>
+                        <div class="flex text-yellow-400 text-xs mb-1">★★★★★</div>
+                        <p class="text-[11px] text-slate-600 font-medium">"YouTube videos made such a difference! Passed first time."</p>
+                    </div>
                 </div>
-                <div class="airy-card bg-white/5 border border-white/10 p-10 rounded-3xl w-[320px] mx-4 shrink-0 hover:border-[#BD2026]/40 transition duration-500 cursor-grab">
-                    <div class="text-yellow-400 mb-4 flex gap-1">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-6">"Passed first time! Robert is incredibly patient. The YouTube tutorials helped so much with my nerves."</p>
-                    <p class="font-bold text-[10px] text-white uppercase tracking-wider">— Sarah Jenkins, Peterborough</p>
+                <div class="flex items-center gap-4 bg-slate-50 p-6 rounded-2xl mx-4 w-[350px] shrink-0 border border-slate-100">
+                    <div class="w-12 h-12 rounded-full bg-green-100 overflow-hidden">
+                        <img src="https://ui-avatars.com/api/?name=Mike+T&background=random" alt="User">
+                    </div>
+                    <div>
+                        <div class="flex text-yellow-400 text-xs mb-1">★★★★★</div>
+                        <p class="text-[11px] text-slate-600 font-medium">"Mastered the Eye Roundabout thanks to Robert!"</p>
+                    </div>
                 </div>
-                 <div class="airy-card bg-white/5 border border-white/10 p-10 rounded-3xl w-[320px] mx-4 shrink-0 hover:border-[#BD2026]/40 transition duration-500 cursor-grab">
-                    <div class="text-yellow-400 mb-4 flex gap-1">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-6">"Passed first time! Robert is incredibly patient. The YouTube tutorials helped so much."</p>
-                    <p class="font-bold text-[10px] text-white uppercase tracking-wider">— Sarah Jenkins, Peterborough</p>
+                <div class="flex items-center gap-4 bg-slate-50 p-6 rounded-2xl mx-4 w-[350px] shrink-0 border border-slate-100">
+                    <div class="w-12 h-12 rounded-full bg-blue-100 overflow-hidden">
+                        <img src="https://ui-avatars.com/api/?name=Sarah+J&background=random" alt="User">
+                    </div>
+                    <div>
+                        <div class="flex text-yellow-400 text-xs mb-1">★★★★★</div>
+                        <p class="text-[11px] text-slate-600 font-medium">"YouTube videos made such a difference! Passed first time."</p>
+                    </div>
                 </div>
-                 <div class="airy-card bg-white/5 border border-white/10 p-10 rounded-3xl w-[320px] mx-4 shrink-0 hover:border-[#BD2026]/40 transition duration-500 cursor-grab">
-                    <div class="text-yellow-400 mb-4 flex gap-1">★★★★★</div>
-                    <p class="text-slate-300 text-sm italic mb-6">"Passed first time! Robert is incredibly patient."</p>
-                    <p class="font-bold text-[10px] text-white uppercase tracking-wider">— Sarah Jenkins, Peterborough</p>
+                <div class="flex items-center gap-4 bg-slate-50 p-6 rounded-2xl mx-4 w-[350px] shrink-0 border border-slate-100">
+                    <div class="w-12 h-12 rounded-full bg-green-100 overflow-hidden">
+                        <img src="https://ui-avatars.com/api/?name=Mike+T&background=random" alt="User">
+                    </div>
+                    <div>
+                        <div class="flex text-yellow-400 text-xs mb-1">★★★★★</div>
+                        <p class="text-[11px] text-slate-600 font-medium">"Mastered the Eye Roundabout thanks to Robert!"</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="max-w-3xl mx-auto px-6 py-20 bg-white rounded-[3rem] my-20 shadow-xl border border-slate-100 relative overflow-hidden">
-        <div class="glass-card p-10 rounded-[2.5rem] relative z-10">
-            <div class="text-center mb-10">
-                <h3 class="text-3xl font-black text-[#2C3E50] mb-2 leading-none">Got Questions?</h3>
-                <p class="text-slate-500 font-bold uppercase tracking-widest text-[10px] leading-none">Response within 24 hours</p>
-            </div>
-            <form action="https://api.web3forms.com/submit" method="POST" id="contact-form">
-                <input type="hidden" name="access_key" value="d89354e9-4ef6-40cf-aad2-9512312f0999">
-                <input type="hidden" name="redirect" value="https://d4driving.co.uk/thank-you.html">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <input type="text" name="name" required class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 text-[#2C3E50] focus:border-[#BD2026] outline-none transition" placeholder="Your Full Name">
-                    </div>
-                    <div>
-                        <input type="email" name="email" required class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 text-[#2C3E50] focus:border-[#BD2026] outline-none transition" placeholder="Email Address">
-                    </div>
-                    <div class="md:col-span-2">
-                        <textarea name="message" required rows="4" class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-6 py-4 text-[#2C3E50] focus:border-[#BD2026] outline-none transition" placeholder="I'm interested in the 15-Hour Block booking..."></textarea>
-                    </div>
-                    <div class="md:col-span-2">
-                        <button type="submit" class="w-full bg-[#BD2026] hover:bg-[#9a1a1f] text-white font-black py-5 rounded-2xl shadow-xl transition active:scale-95 shadow-[#BD2026]/10">SEND MESSAGE</button>
-                    </div>
-                </div>
-            </form>
+    <footer class="py-12 px-6 text-center border-t border-slate-100 bg-white">
+        <img src="400dpiLogoCropped.png" alt="D4Driving" class="h-10 mx-auto mb-6">
+        <div class="flex justify-center gap-4 mb-8">
+            <a href="#" class="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#BD2026] text-xs">YT</a>
+            <a href="#" class="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#BD2026] text-xs">FB</a>
+            <a href="#" class="w-8 h-8 flex items-center justify-center bg-red-100 rounded-full text-[#BD2026] text-xs">IG</a>
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-50 to-transparent -z-10"></div>
-    </section>
-
-    <footer class="py-20 bg-slate-50 border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <img src="400dpiLogoCropped.png" alt="D4Driving Footer" class="h-12 mx-auto mb-8">
-            <p class="text-slate-500 text-sm max-w-sm mx-auto mb-10 leading-relaxed">Qualified ADI tuition across Peterborough and surrounding regions. Master mult-lane roundabouts and pass with confidence.</p>
-            <div class="flex justify-center flex-wrap gap-x-8 gap-y-4 mb-12">
-                <a href="https://wa.me/447872347686" class="text-slate-400 hover:text-green-500 font-black uppercase text-xs tracking-widest leading-none">WhatsApp</a>
-                <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" class="text-slate-400 hover:text-[#BD2026] font-black uppercase text-xs tracking-widest leading-none">YouTube Channel</a>
-                <a href="#contact" class="text-slate-400 hover:text-[#2C3E50] font-black uppercase text-xs tracking-widest leading-none">Contact</a>
-            </div>
-            <p class="text-slate-400 text-[10px] uppercase tracking-[0.4em] leading-none">&copy; 2026 D4DRIVING SCHOOL OF MOTORING</p>
-        </div>
+        <p class="text-[10px] text-slate-400 uppercase tracking-widest">Robert Szatkowski - D4Driving School of Motoring © 2026</p>
     </footer>
 
-    <a href="https://wa.me/447872347686" class="wa-float" target="_blank">
-        <svg class="w-7 h-7 fill-white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.143c1.589.943 3.129 1.417 4.77 1.418 5.4 0 9.791-4.39 9.793-9.792 0-2.618-1.02-5.08-2.871-6.932-1.85-1.85-4.311-2.871-6.93-2.871-5.4 0-9.791 4.391-9.793 9.792-.001 1.777.48 3.504 1.391 5.013l-1.01 3.687 3.778-.991l-.023-.015-.33.2z"/></svg>
+    <a href="https://wa.me/447872347686" class="wa-float">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.484 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.309 1.656zm6.29-4.143c1.589.943 3.129 1.417 4.77 1.418 5.4 0 9.791-4.39 9.793-9.792 0-2.618-1.02-5.08-2.871-6.932-1.85-1.85-4.311-2.871-6.93-2.871-5.4 0-9.791 4.391-9.793 9.792-.001 1.777.48 3.504 1.391 5.013l-1.01 3.687 3.778-.991l-.023-.015-.33.2z"/></svg>
     </a>
-
-    <div class="mobile-book-btn">
-        <a href="#book" class="block w-full text-center bg-[#BD2026] hover:bg-[#9a1a1f] text-white font-black py-4 rounded-2xl shadow-2xl transition active:scale-95 shadow-[#BD2026]/10">
-            BOOK ONLINE NOW
-        </a>
-    </div>
 
 </body>
 </html>
