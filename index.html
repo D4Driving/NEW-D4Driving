@@ -6,6 +6,7 @@
     <title>D4Driving | Expert Driving Tuition Peterborough</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script defer async src='https://cdn.trustindex.io/loader.js?98f38956882a5993a93676d716f'></script>
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fbfdff; color: #2C3E50; }
         .glass-card {
@@ -14,9 +15,6 @@
             border: 1px solid rgba(226, 232, 240, 0.8);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
         }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .reviews-track { display: flex; width: max-content; animation: scroll 40s linear infinite; }
-        .reviews-container:hover .reviews-track { animation-play-state: paused; }
         .price-badge { background-color: #BD2026; color: white; padding: 4px 14px; border-radius: 99px; font-weight: 800; }
         .wa-float {
             position: fixed; bottom: 30px; right: 30px;
@@ -36,10 +34,11 @@
             <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-widest text-slate-500">
                 <a href="#prices" class="hover:text-[#BD2026] transition">Prices</a>
                 <a href="#fleet" class="hover:text-[#BD2026] transition">The Fleet</a>
+                <a href="#contact" class="hover:text-[#BD2026] transition">Contact</a>
                 <a href="#book" class="hover:text-[#BD2026] transition">Booking</a>
                 <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" class="hover:text-[#BD2026] transition">YouTube Tips</a>
             </div>
-            <a href="#book" class="bg-[#2C3E50] text-white px-6 py-2.5 rounded-xl font-bold text-xs hover:bg-[#BD2026] transition">Book Online</a>
+            <a href="#book" class="bg-[#2C3E50] text-white px-6 py-2.5 rounded-xl font-bold text-xs hover:bg-[#BD2026] transition shadow-md">Book Online</a>
         </div>
     </nav>
 
@@ -53,7 +52,7 @@
                 <p class="text-slate-600 text-lg mb-8 leading-relaxed max-w-lg">
                     Robert's professional coaching, viral YouTube tutorials, and high pass rates make D4Driving the premier choice for learners in Peterborough.
                 </p>
-                <a href="#assessment" class="bg-[#BD2026] text-white px-8 py-4 rounded-2xl font-bold text-sm hover:bg-[#a11b20] transition shadow-xl">START HERE: £55</a>
+                <a href="#assessment" class="bg-[#BD2026] text-white px-8 py-4 rounded-2xl font-bold text-sm hover:bg-[#a11b20] transition shadow-xl uppercase tracking-wider">Start Here: £55</a>
             </div>
             <div class="relative flex justify-center">
                 <div class="glass-card p-4 rounded-[2.5rem] shadow-2xl relative z-10 transition-transform duration-500 hover:-translate-y-2">
@@ -137,38 +136,26 @@
         </div>
     </section>
 
-    <section class="py-20 overflow-hidden bg-slate-50">
-        <div class="reviews-container">
-            <div class="reviews-track">
-                <div class="flex items-center gap-5 bg-white p-6 rounded-[2rem] mx-4 w-[400px] shrink-0 border border-slate-100 shadow-sm">
-                    <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden shrink-0"><img src="https://ui-avatars.com/api/?name=S+J&background=random"></div>
-                    <div>
-                        <div class="flex text-yellow-400 text-xs mb-1">★★★★★</div>
-                        <p class="text-[11px] text-slate-600 font-bold leading-tight">"Passed first time! YouTube videos made such a difference."</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-5 bg-white p-6 rounded-[2rem] mx-4 w-[400px] shrink-0 border border-slate-100 shadow-sm">
-                    <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden shrink-0"><img src="https://ui-avatars.com/api/?name=M+L&background=random"></div>
-                    <div>
-                        <div class="flex text-yellow-400 text-xs mb-1">★★★★★</div>
-                        <p class="text-[11px] text-slate-600 font-bold leading-tight">"Mastered the big roundabouts with Robert. Very professional."</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-5 bg-white p-6 rounded-[2rem] mx-4 w-[400px] shrink-0 border border-slate-100 shadow-sm">
-                    <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden shrink-0"><img src="https://ui-avatars.com/api/?name=S+J&background=random"></div>
-                    <div>
-                        <div class="flex text-yellow-400 text-xs mb-1">★★★★★</div>
-                        <p class="text-[11px] text-slate-600 font-bold leading-tight">"Passed first time! YouTube videos made such a difference."</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-5 bg-white p-6 rounded-[2rem] mx-4 w-[400px] shrink-0 border border-slate-100 shadow-sm">
-                    <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden shrink-0"><img src="https://ui-avatars.com/api/?name=M+L&background=random"></div>
-                    <div>
-                        <div class="flex text-yellow-400 text-xs mb-1">★★★★★</div>
-                        <p class="text-[11px] text-slate-600 font-bold leading-tight">"Mastered the big roundabouts with Robert. Very professional."</p>
-                    </div>
-                </div>
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div id="trustindex-widget"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-white px-6">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-black text-[#2C3E50]">Get in Touch</h2>
+                <p class="text-slate-500">Questions? Use the form below and Robert will get back to you.</p>
             </div>
+            <form action="https://formspree.io/f/YOUR_ID" method="POST" class="grid gap-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" name="name" placeholder="Full Name" required class="w-full p-4 rounded-2xl bg-slate-50 border border-slate-100 focus:border-[#BD2026] outline-none transition">
+                    <input type="email" name="email" placeholder="Email Address" required class="w-full p-4 rounded-2xl bg-slate-50 border border-slate-100 focus:border-[#BD2026] outline-none transition">
+                </div>
+                <textarea name="message" placeholder="Your Message" rows="5" required class="w-full p-4 rounded-2xl bg-slate-50 border border-slate-100 focus:border-[#BD2026] outline-none transition"></textarea>
+                <button type="submit" class="bg-[#2C3E50] text-white py-4 rounded-2xl font-bold hover:bg-[#BD2026] transition shadow-xl">SEND MESSAGE</button>
+            </form>
         </div>
     </section>
 
@@ -180,10 +167,10 @@
 
     <footer class="py-20 bg-white text-center border-t border-slate-100">
         <img src="400dpiLogoCropped.png" alt="D4Driving" class="h-8 mx-auto mb-10">
-        <div class="flex justify-center gap-10 mb-12">
-            <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" class="text-slate-400 hover:text-[#BD2026] font-black uppercase text-[10px] tracking-widest">YouTube</a>
-            <a href="https://www.facebook.com/d4drivingSOM" target="_blank" class="text-slate-400 hover:text-blue-600 font-black uppercase text-[10px] tracking-widest">Facebook</a>
-            <a href="https://www.instagram.com/d4driving" target="_blank" class="text-slate-400 hover:text-pink-600 font-black uppercase text-[10px] tracking-widest">Instagram</a>
+        <div class="flex justify-center gap-10 mb-12 text-slate-400 font-black uppercase text-[10px] tracking-widest">
+            <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" class="hover:text-[#BD2026] transition">YouTube</a>
+            <a href="https://www.facebook.com/d4drivingSOM" target="_blank" class="hover:text-blue-600 transition">Facebook</a>
+            <a href="https://www.instagram.com/d4driving" target="_blank" class="hover:text-pink-600 transition">Instagram</a>
         </div>
         <p class="text-slate-400 text-[10px] uppercase tracking-[0.4em]">Robert Szatkowski • D4DRIVING © 2026</p>
     </footer>
