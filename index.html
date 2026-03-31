@@ -199,36 +199,45 @@
 <section id="book" class="max-w-5xl mx-auto px-4 py-24">
     <div class="text-center mb-12">
         <h2 class="text-3xl font-black text-[#2C3E50]">Reserve Your Slot</h2>
-        <p class="text-slate-500">Real-time availability for Peterborough & surrounding areas</p>
+        <p class="text-slate-500 mb-4">Real-time availability for Peterborough & surrounding areas</p>
+        <a href="https://cal.com/d4driving" target="_blank" class="text-[#BD2026] text-xs font-bold underline uppercase tracking-widest">Open Booking in New Tab</a>
     </div>
     
-    <div id="my-cal-inline" class="bg-white rounded-[3rem] border border-slate-200 shadow-2xl overflow-hidden" style="width:100%; height:800px; overflow-y:scroll;"></div>
+    <div class="bg-white rounded-[3rem] border border-slate-200 shadow-2xl overflow-hidden" style="min-height: 800px;">
+        <div id="my-cal-inline" style="width:100%; height:100%; min-height: 800px;"></div>
+    </div>
 
     <script type="text/javascript">
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.q = []; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const activeLens = ar[1]; api.q = api.q || []; d.head.appendChild(d.createElement("script")).src = A; api.then = function (cb) { p(api, ["then", cb]); }; d.head.appendChild(d.createElement("style")).innerHTML = "div#cal-com-1{display:none;}"; return api; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      (function (C, A, L) { 
+        let p = function (a, ar) { a.q.push(ar); }; 
+        let d = C.document; 
+        C.Cal = C.Cal || function () { 
+          let cal = C.Cal; 
+          let ar = arguments; 
+          if (!cal.loaded) { cal.q = []; cal.loaded = true; } 
+          if (ar[0] === L) { 
+            const api = function () { p(api, arguments); }; 
+            const activeLens = ar[1]; 
+            api.q = api.q || []; 
+            return api; 
+          } 
+          p(cal, ar); 
+        }; 
+      })(window, "https://app.cal.com/embed/embed.js", "init");
       
       Cal("init", {origin:"https://app.cal.com"});
 
-      Cal("inline", {
-        elementOrSelector: "#my-cal-inline",
-        calLink: "d4driving", // Ensure this matches your Cal.com username
-        layout: "month_view",
-        config: {
-          theme: "light",
-          brandColor: "#BD2026", // This sets buttons to your Logo Red
-          uiDebug: false
-        }
-      });
-
-      Cal("ui", {
-        theme: "light", // Forces the light "Airy" look
-        styles: {
-          branding: {
-            brandColor: "#BD2026",
+      // This ensures the embed triggers as soon as the page is ready
+      window.addEventListener('DOMContentLoaded', function() {
+        Cal("inline", {
+          elementOrSelector: "#my-cal-inline",
+          calLink: "d4driving", // CHANGE THIS to your exact Cal.com handle if it is different
+          layout: "month_view",
+          config: {
+            theme: "light",
+            brandColor: "#BD2026"
           }
-        },
-        hideEventTypeDetails: false,
-        layout: "month_view"
+        });
       });
     </script>
 </section>
