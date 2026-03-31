@@ -24,17 +24,11 @@
         .reviews-track {
             display: flex;
             width: max-content;
-            animation: scroll 45s linear infinite;
+            animation: scroll 40s linear infinite;
         }
         .reviews-container:hover .reviews-track { animation-play-state: paused; }
 
-        .price-badge {
-            background-color: #BD2026;
-            color: white;
-            padding: 4px 14px;
-            border-radius: 99px;
-            font-weight: 800;
-        }
+        .price-badge { background-color: #BD2026; color: white; padding: 4px 14px; border-radius: 99px; font-weight: 800; }
 
         .wa-float {
             position: fixed; bottom: 30px; right: 30px;
@@ -50,15 +44,14 @@
 <body>
 
     <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 py-4 px-6">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="max-w-77xl mx-auto flex justify-between items-center">
             <img src="400dpiLogoCropped.png" alt="D4Driving" class="h-10">
             <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-widest text-slate-500">
-                <a href="#about" class="hover:text-[#BD2026] transition">About Me</a>
                 <a href="#prices" class="hover:text-[#BD2026] transition">Prices</a>
                 <a href="#book" class="hover:text-[#BD2026] transition">Booking</a>
                 <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" class="hover:text-[#BD2026] transition">YouTube Tips</a>
             </div>
-            <a href="#book" class="bg-[#2C3E50] text-white px-6 py-2.5 rounded-xl font-bold text-xs hover:bg-[#BD2026] transition">Book Online</a>
+            <a href="#book" class="bg-[#2C3E50] text-white px-6 py-2.5 rounded-xl font-bold text-xs hover:bg-[#BD2026] transition shadow-md shadow-slate-200">Book Online</a>
         </div>
     </nav>
 
@@ -67,18 +60,17 @@
             <div>
                 <div class="inline-block px-3 py-1 bg-red-50 text-[#BD2026] text-[10px] font-black uppercase tracking-widest rounded-md mb-6">DVSA Approved Instructor</div>
                 <h1 class="text-4xl lg:text-6xl font-extrabold text-[#2C3E50] mb-6 leading-tight">
-                    Start Your Journey <br><span class="text-[#BD2026]">The Right Way.</span>
+                    Expert Guidance on <br><span class="text-[#BD2026]">Your Road to Success</span>
                 </h1>
                 <p class="text-slate-600 text-lg mb-8 leading-relaxed max-w-lg">
-                    Professional, patient, and modern driving tuition. Join thousands of successful students who mastered the road with Robert.
+                    Robert's professional coaching, viral YouTube tutorials, and high pass rates make D4Driving the premier choice for learners in Peterborough.
                 </p>
                 <div class="flex gap-4">
                     <a href="#assessment" class="bg-[#BD2026] text-white px-8 py-4 rounded-2xl font-bold text-sm hover:bg-[#a11b20] transition shadow-xl">START HERE: £55</a>
-                    <a href="#prices" class="bg-white border border-slate-200 text-[#2C3E50] px-8 py-4 rounded-2xl font-bold text-sm hover:bg-slate-50 transition">VIEW ALL PRICES</a>
                 </div>
             </div>
             <div class="relative flex justify-center">
-                <div class="glass-card p-4 rounded-[2.5rem] shadow-2xl relative z-10">
+                <div class="glass-card p-4 rounded-[2.5rem] shadow-2xl relative z-10 transition-transform duration-500 hover:-translate-y-2">
                     <img src="Robert neutral bg.png" alt="Robert Szatkowski" class="w-full max-w-sm rounded-2xl">
                 </div>
                 <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-red-100 rounded-full blur-[100px] opacity-40 -z-10"></div>
@@ -89,10 +81,7 @@
     <section id="assessment" class="py-12 px-6">
         <div class="max-w-4xl mx-auto">
             <div class="bg-[#2C3E50] rounded-[3rem] p-8 md:p-12 text-center relative overflow-hidden shadow-2xl">
-                <div class="absolute top-0 right-0 p-8 opacity-10">
-                    <svg class="w-32 h-32 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/></svg>
-                </div>
-                <span class="inline-block bg-[#BD2026] text-white text-[10px] font-black px-4 py-1.5 rounded-full mb-6 tracking-[0.2em]">STEP 1: RECOMMENDED FOR ALL NEW STUDENTS</span>
+                <span class="inline-block bg-[#BD2026] text-white text-[10px] font-black px-4 py-1.5 rounded-full mb-6 tracking-[0.2em]">STEP 1: RECOMMENDED START</span>
                 <h2 class="text-3xl md:text-5xl font-black text-white mb-4">Initial Strategic Assessment</h2>
                 <p class="text-slate-300 mb-8 text-lg">90 Minutes. Full skills audit. A clear path to your driving test.</p>
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6">
@@ -104,53 +93,40 @@
     </section>
 
     <section id="prices" class="py-24 bg-slate-50 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl lg:text-4xl font-black text-[#2C3E50] mb-4">Flexible Lesson Packages</h2>
-                <p class="text-slate-500 font-medium tracking-wide">Choose the pace that suits your lifestyle.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl lg:text-4xl font-black text-[#2C3E50] mb-12">Flexible Lesson Packages</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm text-center">
                     <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Single Session</h3>
-                    <p class="text-[10px] mb-6 text-slate-500 font-bold">1 HOUR TUITION</p>
                     <div class="price-badge text-2xl mb-2">£40</div>
                 </div>
                 <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm text-center">
                     <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Standard Session</h3>
-                    <p class="text-[10px] mb-6 text-slate-500 font-bold">1.5 HOURS TUITION</p>
                     <div class="price-badge text-2xl mb-2">£55</div>
                 </div>
                 <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm text-center">
-                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Extended Session</h3>
-                    <p class="text-[10px] mb-6 text-slate-500 font-bold">2 HOURS TUITION</p>
+                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">2 Hour Session</h3>
                     <div class="price-badge text-2xl mb-2">£75</div>
                 </div>
                 <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm text-center">
                     <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Test Preparation</h3>
-                    <p class="text-[10px] mb-6 text-slate-500 font-bold">4 HOUR INTENSIVE</p>
                     <div class="price-badge text-2xl mb-2">£150</div>
                 </div>
-
                 <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm text-center">
                     <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">10 Hour Block</h3>
-                    <p class="text-[10px] mb-6 text-slate-500 font-bold">BLOCK BOOKING RATE</p>
                     <div class="price-badge text-2xl mb-2">£380</div>
                 </div>
                 <div class="bg-white p-8 rounded-3xl border-2 border-[#BD2026] shadow-xl text-center relative scale-105 z-10">
                     <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#BD2026] text-[8px] text-white px-3 py-1 rounded-full font-black tracking-widest">POPULAR</span>
                     <h3 class="text-xs font-black text-[#BD2026] uppercase tracking-widest mb-2">15 Hour Block</h3>
-                    <p class="text-[10px] mb-6 text-slate-500 font-bold">RECOMMENDED FOR SPEED</p>
                     <div class="price-badge text-2xl mb-2">£540</div>
                 </div>
                 <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm text-center">
                     <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">20 Hour Block</h3>
-                    <p class="text-[10px] mb-6 text-slate-500 font-bold">MAXIMUM SAVING</p>
                     <div class="price-badge text-2xl mb-2">£720</div>
                 </div>
                 <div class="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm text-center">
                     <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-2">Semi-Intensive</h3>
-                    <p class="text-[10px] mb-6 text-slate-500 font-bold">21.5 HOURS TOTAL</p>
                     <div class="price-badge text-2xl mb-2">£800</div>
                 </div>
             </div>
@@ -160,91 +136,47 @@
     <section class="py-20 overflow-hidden bg-white">
         <div class="reviews-container">
             <div class="reviews-track">
-                <div class="flex items-center gap-5 bg-slate-50 p-8 rounded-[2rem] mx-4 w-[400px] shrink-0 border border-slate-100">
-                    <div class="w-14 h-14 rounded-full bg-slate-200 overflow-hidden shrink-0"><img src="https://ui-avatars.com/api/?name=Sarah+J&background=random"></div>
+                <div class="flex items-center gap-5 bg-slate-50 p-6 rounded-[2rem] mx-4 w-[400px] shrink-0 border border-slate-100">
+                    <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden shrink-0"><img src="https://ui-avatars.com/api/?name=S+J&background=random"></div>
                     <div>
-                        <div class="flex text-yellow-400 text-xs mb-2">★★★★★</div>
-                        <p class="text-xs text-slate-600 font-bold italic">"Passed first time! The YouTube tutorials were a massive help."</p>
-                        <p class="text-[9px] text-slate-400 uppercase mt-2 font-black">— Sarah J.</p>
+                        <div class="flex text-yellow-400 text-xs mb-1">★★★★★</div>
+                        <p class="text-[11px] text-slate-600 font-bold leading-tight">"Passed first time! YouTube videos made such a difference."</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-5 bg-slate-50 p-8 rounded-[2rem] mx-4 w-[400px] shrink-0 border border-slate-100">
-                    <div class="w-14 h-14 rounded-full bg-slate-200 overflow-hidden shrink-0"><img src="https://ui-avatars.com/api/?name=Mike+L&background=random"></div>
+                <div class="flex items-center gap-5 bg-slate-50 p-6 rounded-[2rem] mx-4 w-[400px] shrink-0 border border-slate-100">
+                    <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden shrink-0"><img src="https://ui-avatars.com/api/?name=M+L&background=random"></div>
                     <div>
-                        <div class="flex text-yellow-400 text-xs mb-2">★★★★★</div>
-                        <p class="text-xs text-slate-600 font-bold italic">"Highly recommend. Robert is patient and very knowledgeable."</p>
-                        <p class="text-[9px] text-slate-400 uppercase mt-2 font-black">— Mike L.</p>
+                        <div class="flex text-yellow-400 text-xs mb-1">★★★★★</div>
+                        <p class="text-[11px] text-slate-600 font-bold leading-tight">"Mastered the big roundabouts with Robert. Very professional."</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-5 bg-slate-50 p-8 rounded-[2rem] mx-4 w-[400px] shrink-0 border border-slate-100">
-                    <div class="w-14 h-14 rounded-full bg-slate-200 overflow-hidden shrink-0"><img src="https://ui-avatars.com/api/?name=Sarah+J&background=random"></div>
+                <div class="flex items-center gap-5 bg-slate-50 p-6 rounded-[2rem] mx-4 w-[400px] shrink-0 border border-slate-100">
+                    <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden shrink-0"><img src="https://ui-avatars.com/api/?name=S+J&background=random"></div>
                     <div>
-                        <div class="flex text-yellow-400 text-xs mb-2">★★★★★</div>
-                        <p class="text-xs text-slate-600 font-bold italic">"Passed first time! The YouTube tutorials were a massive help."</p>
-                        <p class="text-[9px] text-slate-400 uppercase mt-2 font-black">— Sarah J.</p>
+                        <div class="flex text-yellow-400 text-xs mb-1">★★★★★</div>
+                        <p class="text-[11px] text-slate-600 font-bold leading-tight">"Passed first time! YouTube videos made such a difference."</p>
                     </div>
                 </div>
-                <div class="flex items-center gap-5 bg-slate-50 p-8 rounded-[2rem] mx-4 w-[400px] shrink-0 border border-slate-100">
-                    <div class="w-14 h-14 rounded-full bg-slate-200 overflow-hidden shrink-0"><img src="https://ui-avatars.com/api/?name=Mike+L&background=random"></div>
+                <div class="flex items-center gap-5 bg-slate-50 p-6 rounded-[2rem] mx-4 w-[400px] shrink-0 border border-slate-100">
+                    <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden shrink-0"><img src="https://ui-avatars.com/api/?name=M+L&background=random"></div>
                     <div>
-                        <div class="flex text-yellow-400 text-xs mb-2">★★★★★</div>
-                        <p class="text-xs text-slate-600 font-bold italic">"Highly recommend. Robert is patient and very knowledgeable."</p>
-                        <p class="text-[9px] text-slate-400 uppercase mt-2 font-black">— Mike L.</p>
+                        <div class="flex text-yellow-400 text-xs mb-1">★★★★★</div>
+                        <p class="text-[11px] text-slate-600 font-bold leading-tight">"Mastered the big roundabouts with Robert. Very professional."</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-<section id="book" class="max-w-5xl mx-auto px-4 py-24">
-    <div class="text-center mb-12">
-        <h2 class="text-3xl font-black text-[#2C3E50]">Reserve Your Slot</h2>
-        <p class="text-slate-500 mb-4">Real-time availability for Peterborough & surrounding areas</p>
-        <a href="https://cal.com/d4driving" target="_blank" class="text-[#BD2026] text-xs font-bold underline uppercase tracking-widest">Open Booking in New Tab</a>
-    </div>
-    
-    <div class="bg-white rounded-[3rem] border border-slate-200 shadow-2xl overflow-hidden" style="min-height: 800px;">
-        <div id="my-cal-inline" style="width:100%; height:100%; min-height: 800px;"></div>
-    </div>
+    <section id="book" class="max-w-5xl mx-auto px-4 py-24">
+        <div class="bg-white rounded-[3.5rem] border border-slate-200 shadow-2xl overflow-hidden" style="height: 1000px;">
+            <iframe src="https://cal.com/d4driving?embed=true&theme=light" style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>
+    </section>
 
-    <script type="text/javascript">
-      (function (C, A, L) { 
-        let p = function (a, ar) { a.q.push(ar); }; 
-        let d = C.document; 
-        C.Cal = C.Cal || function () { 
-          let cal = C.Cal; 
-          let ar = arguments; 
-          if (!cal.loaded) { cal.q = []; cal.loaded = true; } 
-          if (ar[0] === L) { 
-            const api = function () { p(api, arguments); }; 
-            const activeLens = ar[1]; 
-            api.q = api.q || []; 
-            return api; 
-          } 
-          p(cal, ar); 
-        }; 
-      })(window, "https://app.cal.com/embed/embed.js", "init");
-      
-      Cal("init", {origin:"https://app.cal.com"});
-
-      // This ensures the embed triggers as soon as the page is ready
-      window.addEventListener('DOMContentLoaded', function() {
-        Cal("inline", {
-          elementOrSelector: "#my-cal-inline",
-          calLink: "d4driving", // CHANGE THIS to your exact Cal.com handle if it is different
-          layout: "month_view",
-          config: {
-            theme: "light",
-            brandColor: "#BD2026"
-          }
-        });
-      });
-    </script>
-</section>
-
-    <footer class="py-16 border-t border-slate-100 bg-white text-center">
+    <footer class="py-16 bg-white text-center">
         <img src="400dpiLogoCropped.png" alt="D4Driving" class="h-8 mx-auto mb-8">
-        <p class="text-slate-400 text-[10px] uppercase tracking-[0.4em]">Robert Szatkowski • D4DRIVING SCHOOL OF MOTORING © 2026</p>
+        <p class="text-slate-400 text-[10px] uppercase tracking-[0.4em]">Robert Szatkowski • D4DRIVING © 2026</p>
     </footer>
 
     <a href="https://wa.me/447872347686" class="wa-float" target="_blank">
