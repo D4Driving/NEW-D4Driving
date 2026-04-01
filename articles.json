@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Mastering Peterborough's Toughest Roundabouts",
+    "excerpt": "Expert tips to help you tackle the Eye Roundabout, A1139 Fletton Parkway merges, and the junctions most likely to come up on your driving test.",
+    "url": "blog/mastering-peterborough-roundabouts.html",
+    "date": "2026-03-20",
+    "image": "https://d4driving.co.uk/blog1.webp",
+    "category": "Test Prep",
+    "read_time": 5,
+    "tags": ["roundabouts", "peterborough", "test prep", "driving tips"]
+  },
+  {
+    "title": "How to Pass Your Theory Test First Time",
+    "excerpt": "Everything you need to know about hazard perception, multiple choice questions, and the most common reasons learners fail their theory test.",
+    "url": "blog/pass-theory-test-first-time.html",
+    "date": "2026-03-10",
+    "image": "",
+    "category": "Theory Test",
+    "read_time": 6,
+    "tags": ["theory test", "hazard perception", "multiple choice"]
+  },
+  {
+    "title": "How to Stay Calm on Your Driving Test Day",
+    "excerpt": "Practical strategies to manage test nerves, from the night before right up to the moment the examiner says 'drive on.'",
+    "url": "blog/stay-calm-driving-test-day.html",
+    "date": "2026-02-28",
+    "image": "",
+    "category": "Nerves & Confidence",
+    "read_time": 4,
+    "tags": ["nerves", "driving test", "confidence", "tips"]
+  }
+]
