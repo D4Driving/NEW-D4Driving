@@ -2,7 +2,8 @@
   "name": "D4Driving School of Motoring",
   "short_name": "D4Driving",
   "description": "DVSA Approved driving lessons in Peterborough. Manual & automatic tuition. Book online instantly.",
-  "start_url": "/",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#2C3E50",
@@ -47,14 +48,6 @@
       "description": "Call D4Driving on 07872 347686",
       "url": "tel:07872347686",
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "yaris-cross.webp",
-      "sizes": "800x600",
-      "type": "image/webp",
-      "label": "D4Driving Toyota Yaris Cross"
     }
   ]
 }
