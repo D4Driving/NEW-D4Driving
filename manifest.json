@@ -1,0 +1,60 @@
+{
+  "name": "D4Driving School of Motoring",
+  "short_name": "D4Driving",
+  "description": "DVSA Approved driving lessons in Peterborough. Manual & automatic tuition. Book online instantly.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#2C3E50",
+  "theme_color": "#BD2026",
+  "lang": "en-GB",
+  "categories": ["education", "lifestyle"],
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book a Lesson",
+      "short_name": "Book",
+      "description": "Book your driving lesson online",
+      "url": "https://cal.com/d4driving",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Call Us",
+      "short_name": "Call",
+      "description": "Call D4Driving on 07872 347686",
+      "url": "tel:07872347686",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "yaris-cross.webp",
+      "sizes": "800x600",
+      "type": "image/webp",
+      "label": "D4Driving Toyota Yaris Cross"
+    }
+  ]
+}
