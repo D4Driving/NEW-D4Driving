@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D4Driving Peterborough | #1 Rated Driving Lessons</title>
+<!-- Mark JS as available immediately — enables CSS reveal animation -->
+<script>document.documentElement.classList.add('js-ready')</script>
+<meta name="description" content="D4Driving School of Motoring — DVSA Approved driving lessons in Peterborough. Brand-new Toyota fleet. Covering Peterborough, Grantham & Kettering. Book online instantly.">
+
+<!-- ═══ PWA ═══ -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#BD2026">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="D4Driving">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+
+<!--
+  SETUP:
+  Upload these files alongside index.html:
+    robert.webp, aygo-x.webp, yaris-cross.webp
+  articles.json is auto-written by Soro webhook.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+
+/* ─── TOKENS ─────────────────────────────── */
+:root {
+  /* Core palette */
+  --red:        #BD2026;
+  --red-hi:     #d4252c;
+  --red-lo:     rgba(189,32,38,0.08);
+  --red-border: rgba(189,32,38,0.2);
+
+  --slate:      #2C3E50;
+  --slate-hi:   #374f65;
+  --slate-lo:   rgba(44,62,80,0.06);
+  --slate-mid:  rgba(44,62,80,0.12);
+
+  --sage:       #8fa3a0;
+  --sage-lo:    rgba(143,163,160,0.15);
+
+  /* Backgrounds */
+  --bg:         #fbfdff;
+  --bg2:        #f3f7fb;
+  --bg3:        #eaf1f8;
+
+  /* Glass card */
+  --glass-bg:   rgba(255,255,255,0.9);
+  --glass-border: rgba(226,232,240,0.8);
+  --glass-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.03);
+
+  /* Text */
+  --ink:        #2C3E50;
+  --ink-mid:    #536878;
+  --ink-low:    #94a3b4;
+  --border:     rgba(226,232,240,0.8);
+
+  /* WhatsApp */
+  --wa:         #25d366;
+
+  --font: 'Plus Jakarta Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background-color: var(--bg); color: var(--ink); overflow-x: hidden; line-height: 1.6; }
+img  { display: block; max-width: 100%; }
+a    { color: inherit; text-decoration: none; }
+ul   { list-style: none; }
+
+/* ─── LAYOUT ─────────────────────────────── */
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+.sec  { padding: 100px 0; }
+
+/* ─── GLASS CARD ─────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+}
+
+/* ─── TYPE ───────────────────────────────── */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+}
+.eyebrow::before {
+  content: ''; display: block; width: 20px; height: 2px;
+  background: var(--red); flex-shrink: 0; border-radius: 2px;
+}
+
+h1 { font-size: clamp(44px,7vw,88px); font-weight: 800; line-height: 1.0; letter-spacing: -2px; color: #fff; }
+h2 { font-size: clamp(30px,4vw,52px); font-weight: 800; line-height: 1.05; letter-spacing: -1.5px; color: var(--slate); }
+h3 { font-size: clamp(18px,2vw,24px); font-weight: 700; color: var(--slate); }
+p  { line-height: 1.75; }
+
+.price-badge {
+  background-color: var(--red); color: #fff;
+  padding: 4px 14px; border-radius: 99px;
+  font-weight: 800; font-size: 13px; display: inline-block;
+}
+
+/* ─── BUTTONS ────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font); font-size: 14px; font-weight: 700;
+  padding: 14px 28px; border: none; cursor: pointer; border-radius: 12px;
+  transition: all .22s; position: relative; overflow: hidden;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+
+.btn-red {
+  background: var(--red); color: #fff;
+  box-shadow: 0 4px 14px rgba(189,32,38,0.25);
+}
+.btn-red:hover { box-shadow: 0 8px 24px rgba(189,32,38,0.38); background: var(--red-hi); }
+
+.btn-slate {
+  background: var(--slate); color: #fff;
+  box-shadow: 0 4px 14px rgba(44,62,80,0.2);
+}
+.btn-slate:hover { box-shadow: 0 8px 24px rgba(44,62,80,0.32); background: var(--slate-hi); }
+
+.btn-ghost {
+  background: rgba(255,255,255,0.12); color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(6px);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
+
+.btn-outline {
+  background: transparent; color: var(--slate);
+  border: 1.5px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--red); color: var(--red); background: var(--red-lo); }
+
+/* ─── NAV ────────────────────────────────── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  padding: 12px 0; transition: all .3s;
+}
+#nav.stuck {
+  background: rgba(251,253,255,0.95);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(44,62,80,0.06);
+  padding: 0;
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo img { height: 42px; width: auto; }
+.nav-links { display: flex; gap: 6px; }
+.nav-links a {
+  font-size: 13px; font-weight: 600; color: var(--ink-mid);
+  padding: 8px 14px; border-radius: 8px; transition: all .2s;
+}
+.nav-links a:hover { color: var(--slate); background: var(--slate-lo); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-phone {
+  font-size: 14px; font-weight: 700; color: var(--sage);
+  display: flex; align-items: center; gap: 6px; transition: color .2s;
+}
+.nav-phone:hover { color: var(--slate); }
+
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
+.burger span { display: block; width: 22px; height: 2px; background: var(--slate); border-radius: 2px; transition: all .3s; }
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-nav {
+  display: none; position: fixed; inset: 68px 0 0;
+  background: rgba(251,253,255,0.99); z-index: 899;
+  padding: 24px 28px; flex-direction: column;
+  border-top: 1px solid var(--border); overflow-y: auto;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  font-size: 22px; font-weight: 700; color: var(--slate);
+  padding: 16px 0; border-bottom: 1px solid var(--border);
+  transition: color .2s, padding-left .2s;
+}
+.mobile-nav a:hover { color: var(--red); padding-left: 8px; }
+
+/* ─── HERO ───────────────────────────────── */
+#hero {
+  min-height: 100vh; position: relative;
+  display: flex; align-items: center; overflow: hidden;
+  background: var(--slate);
+}
+.hero-photo {
+  position: absolute; inset: 0;
+  background: url('yaris-cross.webp') center 45% / cover no-repeat;
+  filter: brightness(0.15) saturate(0.4);
+}
+.hero-grade {
+  position: absolute; inset: 0;
+  background: linear-gradient(110deg,
+    rgba(44,62,80,0.97) 0%,
+    rgba(44,62,80,0.72) 55%,
+    rgba(44,62,80,0.25) 100%);
+}
+.hero-stripe { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); border-radius: 0 2px 2px 0; }
+
+.hero-content { position: relative; z-index: 2; max-width: 680px; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--sage); margin-bottom: 20px;
+}
+.hero-eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--sage); border-radius: 2px; }
+
+.hero-title { margin-bottom: 20px; }
+.hero-title .accent { color: var(--red); display: block; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.65); margin-bottom: 36px; max-width: 520px; }
+.hero-sub strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* Floating hero card */
+.hero-card {
+  position: absolute; right: 40px; bottom: 60px;
+  z-index: 2; padding: 20px 24px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  display: flex; gap: 32px;
+}
+.hero-stat .n { font-size: 36px; font-weight: 800; color: #fff; line-height: 1; }
+.hero-stat .n span { color: var(--red); }
+.hero-stat .l { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; }
+
+/* ─── STATUS ─────────────────────────────── */
+.status-bar { background: var(--red); padding: 11px 0; }
+.status-inner { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.pulse { width: 7px; height: 7px; border-radius: 50%; background: #fff; box-shadow: 0 0 8px rgba(255,255,255,0.7); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.status-bar span { font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 0.5px; }
+.status-bar strong { color: #fff; }
+.status-bar a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ─── FLEET ──────────────────────────────── */
+#fleet { background: var(--bg2); }
+.fleet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+.fleet-card {
+  overflow: hidden; transition: transform .3s, box-shadow .3s;
+}
+.fleet-card:hover { transform: translateY(-6px); box-shadow: 0 30px 40px -10px rgba(44,62,80,0.15) !important; }
+.fleet-img { height: 320px; overflow: hidden; border-radius: 16px 16px 0 0; }
+.fleet-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+.fleet-card:hover .fleet-img img { transform: scale(1.04); }
+.fleet-body { padding: 24px; }
+.fleet-badge {
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 99px; display: inline-block; margin-bottom: 12px;
+}
+.badge-manual { background: var(--red-lo); color: var(--red); border: 1px solid var(--red-border); }
+.badge-auto   { background: var(--slate-lo); color: var(--slate); border: 1px solid var(--slate-mid); }
+.fleet-body h3 { font-size: 22px; margin-bottom: 8px; }
+.fleet-body p  { font-size: 14px; color: var(--ink-mid); margin-bottom: 16px; }
+.fleet-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.fleet-pill {
+  font-size: 12px; color: var(--ink-low);
+  background: var(--bg); border: 1px solid var(--border);
+  padding: 4px 12px; border-radius: 99px;
+}
+
+/* ─── ABOUT ──────────────────────────────── */
+#about { background: var(--bg); }
+.about-grid { display: grid; grid-template-columns: 400px 1fr; gap: 72px; align-items: center; }
+.about-img-wrap { position: relative; }
+.about-photo {
+  width: 100%; border-radius: 20px;
+  box-shadow: 0 30px 60px rgba(44,62,80,0.18);
+  object-fit: cover; aspect-ratio: 4/5;
+}
+.about-badge {
+  position: absolute; bottom: -16px; right: -16px;
+  padding: 16px 20px; border-radius: 16px; text-align: center;
+  background: var(--red); color: #fff;
+}
+.about-badge .num { font-size: 28px; font-weight: 800; line-height: 1; display: block; }
+.about-badge .lbl { font-size: 11px; font-weight: 600; opacity: 0.85; text-transform: uppercase; letter-spacing: 1px; }
+
+.about-body p { color: var(--ink-mid); font-size: 15.5px; margin-bottom: 16px; }
+.about-body p strong { color: var(--slate); font-weight: 700; }
+.checks { margin: 24px 0 32px; display: flex; flex-direction: column; gap: 10px; }
+.chk  { display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: var(--ink-mid); }
+.chk-dot {
+  width: 22px; height: 22px; border-radius: 99px; flex-shrink: 0;
+  background: var(--red-lo); border: 1.5px solid var(--red-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--red); font-weight: 800;
+}
+
+/* ─── COVERAGE ───────────────────────────── */
+#coverage { background: var(--bg2); }
+.cov-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 48px; }
+.cov-card {
+  padding: 28px 20px; text-align: center;
+  border-top: 3px solid transparent;
+  transition: border-color .3s, transform .3s;
+}
+.cov-card:hover { border-top-color: var(--red); transform: translateY(-4px); }
+.cov-n     { font-size: 48px; font-weight: 800; color: var(--red); line-height: 1; letter-spacing: -2px; }
+.cov-place { font-size: 15px; font-weight: 700; color: var(--slate); margin: 8px 0 4px; }
+.cov-sub   { font-size: 12px; color: var(--ink-low); }
+
+.centres-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 16px; }
+.centre-card { padding: 28px 24px; background: var(--slate); border-radius: 16px; transition: background .3s; }
+.centre-card:hover { background: var(--slate-hi); }
+.centre-icon { font-size: 24px; margin-bottom: 12px; }
+.centre-card h4 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.centre-card p  { font-size: 13.5px; color: var(--sage); line-height: 1.65; }
+
+/* ─── PRICES ─────────────────────────────── */
+#prices { background: var(--bg); }
+.lesson-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 48px; }
+.lesson-card { padding: 28px 22px; position: relative; overflow: hidden; transition: transform .3s; }
+.lesson-card:hover { transform: translateY(-6px); }
+.lesson-card.featured { background: var(--slate) !important; border-color: transparent !important; box-shadow: 0 20px 40px rgba(44,62,80,0.2) !important; }
+.feat-tag {
+  position: absolute; top: 16px; right: 16px;
+  background: var(--red); color: #fff;
+  font-size: 10px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; padding: 4px 10px; border-radius: 99px;
+}
+.l-price     { font-size: 52px; font-weight: 800; color: var(--slate); line-height: 1; letter-spacing: -2px; }
+.lesson-card.featured .l-price { color: #fff; }
+.l-price sup { font-size: 22px; vertical-align: super; letter-spacing: 0; font-weight: 700; }
+.l-dur  { font-size: 12px; font-weight: 600; color: var(--sage); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 6px; }
+.lesson-card.featured .l-dur { color: rgba(143,163,160,0.8); }
+.l-name { font-size: 18px; font-weight: 700; color: var(--slate); margin: 18px 0 8px; }
+.lesson-card.featured .l-name { color: #fff; }
+.l-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.6; margin-bottom: 20px; }
+.lesson-card.featured .l-desc { color: rgba(255,255,255,0.55); }
+
+.block-section-label {
+  font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--ink-low); margin: 48px 0 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.block-section-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--sage); border-radius: 2px; }
+
+.block-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.block-card {
+  padding: 24px; border-left: 3px solid transparent; transition: all .3s;
+  display: flex; flex-direction: column;
+}
+.block-card:hover       { border-left-color: var(--sage); transform: translateY(-3px); }
+.block-card.pop         { border-left-color: var(--red); }
+.pop-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 8px; display: block; min-height: 18px; }
+/* Fixed-height hrs zone so prices always align */
+.block-hrs-wrap { min-height: 72px; display: flex; align-items: flex-end; }
+.block-hrs { font-size: 40px; font-weight: 800; color: var(--slate); line-height: 1; letter-spacing: -1px; }
+.block-hrs small { font-size: 16px; color: var(--ink-low); font-weight: 500; }
+.block-price { font-size: 22px; font-weight: 700; color: var(--sage); margin-top: 6px; }
+.block-sub { font-size: 12px; color: var(--ink-low); margin-top: 3px; font-weight: 500; min-height: 18px; }
+
+/* Assessment card stand-out */
+.assessment-card {
+  background: linear-gradient(145deg, #f0f5ff 0%, #e8f0fa 100%) !important;
+  border: 2px solid var(--slate-mid) !important;
+  border-top: 3px solid var(--slate) !important;
+  position: relative;
+}
+.assessment-card .l-price { color: var(--slate); }
+.assessment-card .l-name  { color: var(--slate); }
+.assessment-card .l-desc  { color: var(--ink-mid); }
+
+/* Pass student name */
+.pass-name {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(44,62,80,0.85) 0%, transparent 100%);
+  color: #fff; font-size: 15px; font-weight: 700;
+  padding: 28px 16px 14px; border-radius: 0 0 16px 16px;
+  letter-spacing: 0.3px;
+}
+#booking { background: var(--bg2); }
+.booking-wrap { max-width: 900px; margin: 0 auto; }
+.booking-card { padding: 0; overflow: hidden; }
+#cal-embed {
+  min-height: 620px;
+  border-radius: 0 0 16px 16px;
+}
+.cal-loading {
+  min-height: 620px; display: flex; align-items: center;
+  justify-content: center; flex-direction: column; gap: 16px; color: var(--ink-low);
+}
+.spinner {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 3px solid var(--border); border-top-color: var(--red);
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.booking-header {
+  padding: 28px 32px 24px; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+.booking-header h3 { font-size: 20px; }
+.booking-header p  { font-size: 14px; color: var(--ink-mid); margin-top: 4px; }
+
+/* ─── REVIEWS ────────────────────────────── */
+#reviews { background: var(--bg); }
+.reviews-hd { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+.stars { color: var(--red); font-size: 16px; letter-spacing: 3px; margin-bottom: 8px; }
+.review-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+.review-card { padding: 30px; transition: transform .3s; }
+.review-card:hover { transform: translateY(-4px); }
+.r-quote  { font-size: 36px; color: var(--red); line-height: 1; margin-bottom: 10px; font-family: Georgia, serif; font-weight: 900; }
+.r-text   { font-size: 15px; color: var(--ink-mid); line-height: 1.75; margin-bottom: 20px; font-style: italic; }
+.r-author { display: flex; align-items: center; gap: 12px; }
+.r-avatar {
+  width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+  background: var(--slate-lo); border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; color: var(--slate);
+}
+.r-name { font-size: 14px; font-weight: 700; color: var(--slate); }
+.r-area { font-size: 12px; color: var(--ink-low); }
+
+/* ─── PASSES ─────────────────────────────── */
+#passes { background: var(--bg2); }
+.passes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 48px; }
+.pass-card { position: relative; border-radius: 16px; overflow: hidden; box-shadow: var(--glass-shadow); }
+.pass-card img { width: 100%; height: 320px; object-fit: cover; object-position: top; transition: transform .4s; filter: brightness(0.95); }
+.pass-card:hover img { transform: scale(1.04); filter: brightness(0.85); }
+.pass-label {
+  position: absolute; top: 16px; left: 16px;
+  background: var(--red); color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 99px;
+}
+
+/* ─── YOUTUBE ────────────────────────────── */
+#youtube { background: var(--bg); }
+.yt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.yt-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 16px; box-shadow: 0 20px 50px rgba(44,62,80,0.18); }
+.yt-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.yt-preview {
+  position: relative; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 20px 50px rgba(44,62,80,0.18);
+  aspect-ratio: 16/9; display: block; background: var(--slate);
+  text-decoration: none;
+}
+.yt-preview-bg {
+  position: absolute; inset: 0; background-size: cover; background-position: center 40%;
+  filter: brightness(0.5) saturate(0.7); transition: filter .4s;
+}
+.yt-preview:hover .yt-preview-bg { filter: brightness(0.35) saturate(0.7); }
+.yt-preview-play {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 16px;
+}
+.yt-play-btn {
+  width: 72px; height: 72px; border-radius: 50%; background: #FF0000;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 24px rgba(255,0,0,0.5); transition: transform .25s, box-shadow .25s;
+}
+.yt-preview:hover .yt-play-btn { transform: scale(1.12); box-shadow: 0 12px 32px rgba(255,0,0,0.65); }
+.yt-play-btn svg { width: 28px; height: 28px; fill: #fff; margin-left: 5px; }
+.yt-preview-label { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.92); letter-spacing: 0.3px; }
+.yt-count {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--red-lo); border: 1px solid var(--red-border);
+  padding: 10px 18px; border-radius: 12px; margin-bottom: 20px;
+}
+.yt-count .num { font-size: 26px; font-weight: 800; color: var(--red); letter-spacing: -1px; }
+.yt-count small { font-size: 11px; color: var(--ink-mid); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+.yt-body p { color: var(--ink-mid); margin: 14px 0 28px; font-size: 15.5px; }
+
+/* ─── BLOG / SORO ────────────────────────── */
+#blog { background: var(--bg2); }
+.blog-hd { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
+.blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.blog-card { overflow: hidden; transition: transform .3s; display: flex; flex-direction: column; text-decoration: none; }
+.blog-card:hover { transform: translateY(-6px); }
+.blog-img { height: 200px; overflow: hidden; border-radius: 16px 16px 0 0; background: var(--bg3); }
+.blog-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.blog-card:hover .blog-img img { transform: scale(1.05); }
+.blog-img-placeholder { height: 100%; display: flex; align-items: center; justify-content: center; font-size: 48px; }
+.blog-body { padding: 22px; flex: 1; display: flex; flex-direction: column; border-radius: 0 0 16px 16px; }
+.blog-cat { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+.blog-title { font-size: 17px; font-weight: 700; color: var(--slate); line-height: 1.3; margin-bottom: 10px; }
+.blog-excerpt { font-size: 13.5px; color: var(--ink-mid); line-height: 1.65; flex: 1; }
+.blog-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); }
+.blog-date { font-size: 12px; color: var(--ink-low); font-weight: 500; }
+.blog-arrow { font-size: 13px; font-weight: 700; color: var(--red); transition: transform .2s; }
+.blog-card:hover .blog-arrow { transform: translateX(4px); }
+.blog-loading,.blog-empty { grid-column: 1/-1; text-align: center; padding: 60px; color: var(--ink-low); display: flex; align-items: center; justify-content: center; gap: 12px; }
+
+/* ─── CONTACT ────────────────────────────── */
+#contact { background: var(--bg); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.ci-list { margin-top: 28px; display: flex; flex-direction: column; gap: 18px; }
+.ci { display: flex; gap: 14px; align-items: center; }
+.ci-icon {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  background: var(--slate); display: flex; align-items: center; justify-content: center; font-size: 18px;
+}
+.ci-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-low); margin-bottom: 2px; }
+.ci-val   { font-size: 17px; font-weight: 700; color: var(--slate); }
+.ci-val a:hover { color: var(--red); }
+
+.f-field { margin-bottom: 14px; }
+.f-field label { display: block; font-size: 12px; font-weight: 600; color: var(--ink-mid); margin-bottom: 6px; }
+.f-field input,
+.f-field select,
+.f-field textarea {
+  width: 100%; background: var(--bg2); border: 1.5px solid var(--border);
+  color: var(--ink); font-family: var(--font); font-size: 14px;
+  padding: 12px 16px; outline: none; transition: border-color .2s;
+  border-radius: 12px; appearance: none;
+}
+.f-field input:focus,
+.f-field select:focus,
+.f-field textarea:focus { border-color: var(--slate); background: #fff; }
+.f-field textarea { height: 110px; resize: vertical; }
+#form-ok {
+  display: none; margin-top: 12px; padding: 14px 16px;
+  background: rgba(39,174,96,0.08); border: 1.5px solid rgba(39,174,96,0.3);
+  font-size: 14px; font-weight: 600; color: #27ae60; border-radius: 12px;
+}
+
+/* ─── FOOTER ─────────────────────────────── */
+footer { background: var(--slate); padding: 64px 0 32px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 52px; }
+footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
+.footer-tag  { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.75; max-width: 280px; }
+.footer-h    { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--sage); margin-bottom: 18px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.5); transition: color .2s; }
+.footer-links a:hover { color: #fff; }
+.footer-bottom {
+  margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-bottom a { color: var(--sage); transition: color .2s; }
+.footer-bottom a:hover { color: #fff; }
+
+/* ─── WHATSAPP FLOAT ─────────────────────── */
+.wa-float {
+  position: fixed; bottom: 30px; right: 30px;
+  background-color: var(--wa); color: white;
+  width: 60px; height: 60px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 20px rgba(37,211,102,0.3);
+  z-index: 800; transition: transform .3s;
+  text-decoration: none;
+}
+.wa-float:hover { transform: scale(1.12); }
+.wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ─── BACK TO TOP ────────────────────────── */
+#btt {
+  position: fixed; bottom: 100px; right: 30px; z-index: 800;
+  width: 44px; height: 44px; background: var(--slate); color: #fff;
+  border: none; cursor: pointer; font-size: 18px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s, transform .2s;
+  box-shadow: 0 4px 12px rgba(44,62,80,0.2);
+}
+#btt.show { opacity: 1; pointer-events: all; }
+#btt:hover { transform: translateY(-3px); background: var(--red); }
+
+/* ─── REVEAL ─────────────────────────────── */
+/* ── Reveal — visible by default, animated when JS runs ── */
+.reveal { transition: opacity .65s ease, transform .65s ease; }
+.js-ready .reveal { opacity: 0; transform: translateY(24px); }
+.js-ready .reveal.vis { opacity: 1; transform: none; }
+
+/* ─── RESPONSIVE ─────────────────────────── */
+@media(max-width:960px){
+  .nav-links,.nav-phone{ display:none; }
+  .burger{ display:flex; }
+  .about-grid { grid-template-columns:1fr; gap:40px; }
+  .about-img-wrap::after { display:none; }
+  .fleet-grid,.yt-grid,.contact-grid { grid-template-columns:1fr; gap:36px; }
+  .cov-grid { grid-template-columns:1fr 1fr; }
+  .centres-grid { grid-template-columns:1fr; }
+  .lesson-grid { grid-template-columns:1fr 1fr; }
+  .block-grid { grid-template-columns:1fr 1fr; }
+  .review-grid { grid-template-columns:1fr; }
+  .passes-grid { grid-template-columns:1fr 1fr; }
+  .blog-grid { grid-template-columns:1fr 1fr; }
+  .footer-grid { grid-template-columns:1fr; gap:32px; }
+  .hero-card { display:none; }
+}
+@media(max-width:540px){
+  .cov-grid { grid-template-columns:1fr 1fr; }
+  .lesson-grid,.block-grid,.passes-grid,.blog-grid { grid-template-columns:1fr; }
+  .fleet-img { height:240px; }
+  .hero-btns { flex-direction:column; }
+  .btn { justify-content:center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav id="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving School of Motoring">
+      </a>
+      <ul class="nav-links">
+        <li><a href="#fleet">Our Cars</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#prices">Prices</a></li>
+        <li><a href="#booking">Book</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#blog">Tips</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="tel:07872347686" class="nav-phone">📞 07872 347686</a>
+        <a href="#booking" class="btn btn-red">Book Online</a>
+        <button class="burger" id="burg" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mnav">
+    <a href="#fleet"    onclick="cm()">Our Cars</a>
+    <a href="#about"    onclick="cm()">About</a>
+    <a href="#prices"   onclick="cm()">Prices</a>
+    <a href="#booking"  onclick="cm()">Book Online</a>
+    <a href="#reviews"  onclick="cm()">Reviews</a>
+    <a href="#blog"     onclick="cm()">Driving Tips</a>
+    <a href="#contact"  onclick="cm()">Contact</a>
+    <a href="tel:07872347686" style="color:var(--sage);border-bottom:none;margin-top:8px;">📞 07872 347686</a>
+  </div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section id="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-grade"></div>
+  <div class="hero-stripe"></div>
+  <div class="wrap">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Peterborough's Most Trusted Driving School</div>
+      <h1 class="hero-title">
+        Learn to Drive<br>
+        <span class="accent">With Confidence</span>
+      </h1>
+      <p class="hero-sub">
+        DVSA Approved instruction in <strong>Peterborough,</strong> test prep in <strong>Grantham &amp; Kettering</strong>.
+        Brand-new Toyota dual-control cars. Flexible times. Real results.
+      </p>
+      <div class="hero-btns">
+        <a href="#booking" class="btn btn-red">Book Online Instantly</a>
+        <a href="#prices"  class="btn btn-ghost">See Prices</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-stat"><div class="n">10<span>k+</span></div><div class="l">YouTube Subs</div></div>
+    <div class="hero-stat"><div class="n">7<span>+</span></div><div class="l">Years Teaching</div></div>
+    <div class="hero-stat"><div class="n">420<span>+</span></div><div class="l">Local Passes</div></div>
+  </div>
+</section>
+
+<!-- ════ STATUS ════ -->
+<div class="status-bar">
+  <div class="status-inner">
+    <div class="pulse"></div>
+    <span><strong>Now Accepting New Students</strong> — Limited spaces. &nbsp;
+      <a href="#booking">Book your assessment online →</a>
+    </span>
+  </div>
+</div>
+
+<!-- ════ FLEET ════ -->
+<section id="fleet" class="sec">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Our Tuition Vehicles</div>
+      <h2>Two Modern Toyotas.<br>Your Choice.</h2>
+      <p style="color:var(--ink-mid);margin-top:14px;max-width:480px;">Both feature dual controls and are maintained to the highest standard. Just pick the type that suits you.</p>
+    </div>
+    <div class="fleet-grid reveal">
+      <div class="fleet-card glass-card">
+        <div class="fleet-img"><img src="aygo-x.webp" alt="Toyota Aygo X — Manual, D4Driving Peterborough"></div>
+        <div class="fleet-body">
+          <span class="fleet-badge badge-manual">Manual</span>
+          <h3>Toyota Aygo X</h3>
+          <p>Compact, nimble and brilliant for building confidence through busy city traffic.</p>
+          <div class="fleet-pills">
+            <span class="fleet-pill">Dual Controls</span>
+            <span class="fleet-pill">Manual Gearbox</span>
+            <span class="fleet-pill">Air Conditioning</span>
+          </div>
+        </div>
+      </div>
+      <div class="fleet-card glass-card">
+        <div class="fleet-img"><img src="yaris-cross.webp" alt="Toyota Yaris Cross — Automatic, D4Driving Peterborough"></div>
+        <div class="fleet-body">
+          <span class="fleet-badge badge-auto">Automatic</span>
+          <h3>Toyota Yaris Cross</h3>
+          <p>Modern 2025 plate — spacious, smooth and ideal for automatic learners.</p>
+          <div class="fleet-pills">
+            <span class="fleet-pill">Dual Controls</span>
+            <span class="fleet-pill">Automatic</span>
+            <span class="fleet-pill">2025 Plate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ ABOUT ════ -->
+<section id="about" class="sec" style="background:var(--bg2);">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img src="robert.webp" alt="Robert — DVSA Approved Driving Instructor, D4Driving Peterborough" class="about-photo">
+        <div class="about-badge">
+          <span class="num">7+</span>
+          <span class="lbl">Years<br>Teaching</span>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="eyebrow">Your Instructor</div>
+        <h2 style="margin-bottom:22px;">Hi, I'm Robert.</h2>
+        <p>I'm an <strong>independent DVSA Approved Driving Instructor</strong> based in Peterborough, and I've been helping learners pass their tests since 2017.</p>
+        <p>My approach is calm, structured, and tailored entirely to you — whether you're a total beginner, a nervous learner, or just need a confidence boost before your test.</p>
+        <p>I also share <strong>free driving tips to 10,000+ YouTube subscribers</strong> because I believe every learner deserves the knowledge to drive safely and with confidence.</p>
+        <div class="checks">
+          <div class="chk"><div class="chk-dot">✓</div>DVSA Approved Driving Instructor (ADI)</div>
+          <div class="chk"><div class="chk-dot">✓</div>Teaching in Peterborough since 2017</div>
+          <div class="chk"><div class="chk-dot">✓</div>Manual &amp; automatic tuition available</div>
+          <div class="chk"><div class="chk-dot">✓</div>Flexible morning, evening &amp; weekend slots</div>
+          <div class="chk"><div class="chk-dot">✓</div>Mock tests &amp; local test route specialist</div>
+        </div>
+        <a href="#booking" class="btn btn-slate">Book a Lesson</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ COVERAGE ════ -->
+<section id="coverage" class="sec" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Where My Students Pass</div>
+      <h2>Peterborough &amp; Beyond.</h2>
+      <p style="color:var(--ink-mid);margin-top:14px;max-width:480px;">Expert knowledge of every route, junction, and roundabout — so you walk into your test knowing exactly what to expect.</p>
+    </div>
+    <div class="cov-grid reveal">
+      <div class="cov-card glass-card"><div class="cov-n">142+</div><div class="cov-place">Hampton</div><div class="cov-sub">passes &amp; counting</div></div>
+      <div class="cov-card glass-card"><div class="cov-n">131+</div><div class="cov-place">Werrington</div><div class="cov-sub">passes &amp; counting</div></div>
+      <div class="cov-card glass-card"><div class="cov-n">78+</div><div class="cov-place">The Ortons</div><div class="cov-sub">passes &amp; counting</div></div>
+      <div class="cov-card glass-card"><div class="cov-n">69+</div><div class="cov-place">Stanground</div><div class="cov-sub">passes &amp; counting</div></div>
+    </div>
+    <div class="centres-grid reveal">
+      <div class="centre-card"><div class="centre-icon">🏁</div><h4>Peterborough</h4><p>Full route prep for Peterborough DTC — the Eye Roundabout, A15/A47 merges and beyond.</p></div>
+      <div class="centre-card"><div class="centre-icon">🛣️</div><h4>Grantham</h4><p>Rural route expert. Tailored prep for Grantham's country roads and dual-carriageway (A1) sections.</p></div>
+      <div class="centre-card"><div class="centre-icon">⚡</div><h4>Kettering</h4><p>High-capacity test centre with shorter wait times — fast-track your test date.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PRICES ════ -->
+<section id="prices" class="sec" style="background:var(--bg2);">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Lesson Prices</div>
+      <h2>Straightforward Pricing.</h2>
+      <p style="color:var(--ink-mid);margin-top:14px;max-width:480px;">No hidden fees. Pay by cash, bank transfer, or PayPal. Save money with block bookings.</p>
+    </div>
+    <div class="lesson-grid reveal">
+      <div class="lesson-card glass-card">
+        <div class="l-price"><sup>£</sup>40</div>
+        <div class="l-dur">1 Hour</div>
+        <div class="l-name">Single</div>
+        <div class="l-desc">A top-up or refresher between longer sessions.</div>
+        <a href="#booking" class="btn btn-outline" style="width:100%;">Book</a>
+      </div>
+      <div class="lesson-card featured glass-card">
+        <div class="feat-tag">Most Popular</div>
+        <div class="l-price"><sup>£</sup>55</div>
+        <div class="l-dur">1.5 Hours</div>
+        <div class="l-name">Standard</div>
+        <div class="l-desc">The ideal balance of time and value for regular progress.</div>
+        <a href="#booking" class="btn btn-red" style="width:100%;">Book</a>
+      </div>
+      <div class="lesson-card glass-card">
+        <div class="l-price"><sup>£</sup>75</div>
+        <div class="l-dur">2 Hours</div>
+        <div class="l-name">Extended</div>
+        <div class="l-desc">More road time — great for building fluency and confidence.</div>
+        <a href="#booking" class="btn btn-outline" style="width:100%;">Book</a>
+      </div>
+      <div class="lesson-card glass-card assessment-card">
+        <div class="feat-tag" style="background:var(--slate);">New Students</div>
+        <div class="l-price"><sup>£</sup>55</div>
+        <div class="l-dur">90 Min</div>
+        <div class="l-name">Assessment</div>
+        <div class="l-desc">New students start here — skills audit &amp; personalised pass plan.</div>
+        <a href="#booking" class="btn btn-slate" style="width:100%;">Start Here</a>
+      </div>
+    </div>
+
+    <div class="block-section-label reveal">Discounted Block Bookings</div>
+    <div class="block-grid reveal">
+      <div class="block-card glass-card">
+        <span class="pop-tag"></span>
+        <div class="block-hrs-wrap"><div class="block-hrs">10 <small>hrs</small></div></div>
+        <div class="block-price">£380</div>
+        <div class="block-sub"></div>
+        <a href="https://buy.stripe.com/9B6dRa5Hsenz1Ae70zbII00" target="_blank" class="btn btn-outline" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+      </div>
+      <div class="block-card pop glass-card">
+        <span class="pop-tag">★ Most Popular</span>
+        <div class="block-hrs-wrap"><div class="block-hrs">15 <small>hrs</small></div></div>
+        <div class="block-price">£540</div>
+        <div class="block-sub"></div>
+        <a href="https://buy.stripe.com/eVq7sM1rc2ERgv8doXbII01" target="_blank" class="btn btn-red" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+      </div>
+      <div class="block-card glass-card">
+        <span class="pop-tag"></span>
+        <div class="block-hrs-wrap"><div class="block-hrs">20 <small>hrs</small></div></div>
+        <div class="block-price">£720</div>
+        <div class="block-sub"></div>
+        <a href="https://buy.stripe.com/eVqeVe2vg6V73Im84DbII02" target="_blank" class="btn btn-outline" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+      </div>
+      <div class="block-card glass-card" style="border-left-color:var(--slate);">
+        <span class="pop-tag"></span>
+        <div class="block-hrs-wrap"><div class="block-hrs" style="font-size:28px;letter-spacing:-0.5px;">Semi<br>Intensive</div></div>
+        <div class="block-price">£800</div>
+        <div class="block-sub"><strong>21.5 hrs + full test prep</strong></div>
+        <a href="https://buy.stripe.com/cNi5kE9XI3IVfr484DbII03" target="_blank" class="btn btn-slate" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ BOOKING ════ -->
+<section id="booking" class="sec" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 44px;">
+      <div class="eyebrow" style="justify-content:center;">Book Online</div>
+      <h2>Reserve Your Slot.</h2>
+      <p style="color:var(--ink-mid);margin-top:12px;">Pick a date and time that works for you — it only takes a minute. Or call <a href="tel:07872347686" style="color:var(--red);font-weight:700;">07872 347686</a> to chat first.</p>
+    </div>
+    <div class="booking-wrap reveal">
+      <div class="booking-card glass-card">
+        <div class="booking-header">
+          <div>
+            <h3>D4Driving — Book a Lesson</h3>
+            <p>Peterborough · Grantham · Kettering</p>
+          </div>
+          <span class="price-badge">From £40/hr</span>
+        </div>
+        <div id="cal-loading" class="cal-loading">
+          <div class="spinner"></div>
+          <span style="font-size:14px;font-weight:500;">Loading calendar…</span>
+        </div>
+        <div id="cal-embed"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ REVIEWS ════ -->
+<section id="reviews" class="sec" style="background:var(--bg2);">
+  <div class="wrap">
+    <div class="reviews-hd reveal">
+      <div>
+        <div class="eyebrow">Student Reviews</div>
+        <h2>Don't Just Take<br>Our Word For It.</h2>
+      </div>
+      <a href="https://g.page/r/Ca0Y46BYPxNMEAE/review" target="_blank" rel="noopener" class="btn btn-outline">Leave a Review ↗</a>
+    </div>
+    <div class="review-grid reveal">
+      <div class="review-card glass-card">
+        <div class="stars">★★★★★</div>
+        <div class="r-quote">"</div>
+        <p class="r-text">Passed first time with Robert! His YouTube videos helped so much with my nerves. I couldn't recommend him highly enough.</p>
+        <div class="r-author"><div class="r-avatar">S</div><div><div class="r-name">Sarah J.</div><div class="r-area">Peterborough</div></div></div>
+      </div>
+      <div class="review-card glass-card">
+        <div class="stars">★★★★★</div>
+        <div class="r-quote">"</div>
+        <p class="r-text">Mastered the Eye Roundabout thanks to the intensive course. Best instructor in the area — worth every penny.</p>
+        <div class="r-author"><div class="r-avatar">M</div><div><div class="r-name">Michael T.</div><div class="r-area">Hampton</div></div></div>
+      </div>
+      <div class="review-card glass-card">
+        <div class="stars">★★★★★</div>
+        <div class="r-quote">"</div>
+        <p class="r-text">Robert knows the Grantham routes inside out. Calm, patient and thorough — I felt completely ready on test day.</p>
+        <div class="r-author"><div class="r-avatar">D</div><div><div class="r-name">David L.</div><div class="r-area">Werrington</div></div></div>
+      </div>
+      <div class="review-card glass-card">
+        <div class="stars">★★★★★</div>
+        <div class="r-quote">"</div>
+        <p class="r-text">Knowledgeable, helpful and I passed with full confidence. Robert made me feel at ease from the very first lesson.</p>
+        <div class="r-author"><div class="r-avatar">C</div><div><div class="r-name">Chris G.</div><div class="r-area">Peterborough</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PASSES ════ -->
+<section id="passes" class="sec" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Hall of Fame</div>
+      <h2>Recent Passes.</h2>
+    </div>
+    <div class="passes-grid reveal">
+      <div class="pass-card">
+        <img src="Sonia.webp" alt="Sonia — passed her driving test with D4Driving">
+        <div class="pass-label">Passed ✓</div>
+        <div class="pass-name">Sonia</div>
+      </div>
+      <div class="pass-card">
+        <img src="Buddhika.webp" alt="Buddhika — passed his driving test with D4Driving">
+        <div class="pass-label">Passed ✓</div>
+        <div class="pass-name">Regan</div>
+      </div>
+      <div class="pass-card">
+        <img src="Sienna.webp" alt="Sienna — passed her driving test with D4Driving">
+        <div class="pass-label">Passed ✓</div>
+        <div class="pass-name">Sienna</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ YOUTUBE ════ -->
+<section id="youtube" class="sec" style="background:var(--bg2);">
+  <div class="wrap">
+    <div class="yt-grid">
+      <!--
+        TO EMBED A SPECIFIC VIDEO INSTEAD:
+        1. Go to any video on your YouTube channel
+        2. Copy the video ID from the URL (the part after ?v=)
+        3. Replace this <a> block with:
+           <div class="yt-embed reveal">
+             <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+               title="D4Driving" allowfullscreen loading="lazy"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+             </iframe>
+           </div>
+      -->
+      <a href="https://www.youtube.com/@d4drivingSOM"
+         target="_blank" rel="noopener"
+         class="yt-preview reveal"
+         aria-label="Visit D4Driving on YouTube">
+        <div class="yt-preview-bg" style="background-image:url('yaris-cross.webp');"></div>
+        <div class="yt-preview-play">
+          <div class="yt-play-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <span class="yt-preview-label">Watch on YouTube →</span>
+        </div>
+      </a>
+      <div class="reveal">
+        <div class="eyebrow">Free on YouTube</div>
+        <h2>Learn Before<br>You Even Book.</h2>
+        <div class="yt-count">
+          <span class="num">10,000+</span>
+          <small>Subscribers &amp; growing</small>
+        </div>
+        <p class="yt-body">Mock tests, Peterborough test route guides, tips for nervous learners — all completely free. Used by thousands of learners across the UK.</p>
+        <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" rel="noopener" class="btn btn-red">▶ Visit the Channel</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ BLOG / SORO ════ -->
+<section id="blog" class="sec" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="blog-hd reveal">
+      <div>
+        <div class="eyebrow">Driving Tips &amp; Guides</div>
+        <h2>Expert Advice<br>For Peterborough Learners.</h2>
+      </div>
+      <a href="blog.html" class="btn btn-outline">All Articles →</a>
+    </div>
+    <div class="blog-grid" id="blog-grid">
+      <div class="blog-loading"><div class="spinner"></div> <span>Loading articles…</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CONTACT ════ -->
+<section id="contact" class="sec" style="background:var(--bg2);">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="eyebrow">Get In Touch</div>
+        <h2 style="margin-bottom:10px;">Any Questions?</h2>
+        <p style="color:var(--ink-mid);font-size:15px;">I'll get back to you within 24 hours. Or skip the form and <a href="tel:07872347686" style="color:var(--red);font-weight:700;">give me a call</a>.</p>
+        <div class="ci-list">
+          <div class="ci"><div class="ci-icon">📞</div><div><div class="ci-label">Phone / Text</div><div class="ci-val"><a href="tel:07872347686">07872 347686</a></div></div></div>
+          <div class="ci"><div class="ci-icon">🌐</div><div><div class="ci-label">Website</div><div class="ci-val"><a href="https://www.d4driving.co.uk">www.d4driving.co.uk</a></div></div></div>
+          <div class="ci"><div class="ci-icon">📍</div><div><div class="ci-label">Area</div><div class="ci-val">Peterborough &amp; surrounding areas</div></div></div>
+          <div class="ci"><div class="ci-icon" style="background:#FF0000;color:#fff;">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+  </svg>
+</div><div><div class="ci-label">YouTube</div><div class="ci-val"><a href="https://www.youtube.com/@d4drivingSOM" target="_blank">@d4drivingSOM</a></div></div></div>
+          <div class="ci">
+            <div class="ci-icon" style="background:#1877F2;color:#fff;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </div>
+            <div><div class="ci-label">Facebook</div><div class="ci-val"><a href="https://www.facebook.com/d4drivingsom" target="_blank">d4drivingsom</a></div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon" style="background:#010101;color:#fff;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+              </svg>
+            </div>
+            <div><div class="ci-label">TikTok</div><div class="ci-val"><a href="https://www.tiktok.com/@d4drivingsom" target="_blank">@d4drivingsom</a></div></div>
+          </div>
+        </div>
+      </div>
+      <form class="reveal glass-card" style="padding:32px;" onsubmit="handleForm(event)">
+        <div class="f-field"><label>Your Name</label><input type="text" placeholder="e.g. Jane Smith" required></div>
+        <div class="f-field"><label>Email Address</label><input type="email" placeholder="your@email.com" required></div>
+        <div class="f-field"><label>Lesson Type</label>
+          <select>
+            <option value="">Select…</option>
+            <option>Manual — Toyota Aygo X</option>
+            <option>Automatic — Toyota Yaris Cross</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="f-field"><label>Message</label><textarea placeholder="Tell me a bit about where you're at with your driving…"></textarea></div>
+        <button type="submit" class="btn btn-slate" style="width:100%;">Send Message →</button>
+        <div id="form-ok">✓ Message sent! I'll be in touch within 24 hours.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving" class="logo">
+        <p class="footer-tag">Expert driving tuition with D4Driving School of Motoring. Helping learners pass with confidence across Peterborough and surrounding areas since 2017.</p>
+      </div>
+      <div>
+        <div class="footer-h">Quick Links</div>
+        <div class="footer-links">
+          <a href="#fleet">Our Cars</a>
+          <a href="#about">About Robert</a>
+          <a href="#prices">Lesson Prices</a>
+          <a href="#coverage">Areas Covered</a>
+          <a href="#booking">Book Online</a>
+          <a href="blog.html">Driving Tips</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-h">Contact</div>
+        <div class="footer-links">
+          <a href="tel:07872347686">📞 07872 347686</a>
+          <a href="https://www.youtube.com/@d4drivingSOM" target="_blank">▶ YouTube</a>
+          <a href="https://www.facebook.com/d4drivingsom" target="_blank">📘 Facebook</a>
+          <a href="https://www.tiktok.com/@d4drivingsom" target="_blank">🎵 TikTok</a>
+          <a href="https://g.page/r/Ca0Y46BYPxNMEAE/review" target="_blank">⭐ Leave a Review</a>
+          <a href="https://cal.com/d4driving" target="_blank">📅 Book Online</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 D4Driving School of Motoring. All rights reserved.</p>
+      <p><a href="#hero">Back to top ↑</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/447872347686" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<!-- Cal.com embed -->
+<script>
+(function (C, A, L) {
+  let p = function (a, ar) { a.q.push(ar); };
+  let d = C.document;
+  C.Cal = C.Cal || function () {
+    let cal = C.Cal; let ar = arguments;
+    if (!cal.loaded) {
+      cal.ns = {}; cal.q = cal.q || [];
+      d.head.appendChild(d.createElement("script")).src = A;
+      cal.loaded = true;
+    }
+    if (ar[0] === L) {
+      const api = function () { p(api, arguments); };
+      const namespace = ar[1]; api.q = api.q || [];
+      typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar);
+      return;
+    }
+    p(cal, ar);
+  };
+})(window, "https://app.cal.com/embed/embed.js", "init");
+
+Cal("init", { origin: "https://cal.com" });
+Cal("inline", {
+  elementOrSelector: "#cal-embed",
+  calLink: "d4driving",
+  layout: "month_view"
+});
+Cal("ui", {
+  theme: "light",
+  styles: { branding: { brandColor: "#BD2026" } },
+  hideEventTypeDetails: false
+});
+
+// Hide loader once Cal renders
+setTimeout(function () {
+  const loader = document.getElementById('cal-loading');
+  if (loader) loader.style.display = 'none';
+}, 2000);
+</script>
+
+<script>
+/* ── Soro articles — live RSS feed ── */
+const SORO_RSS = 'https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032';
+
+function parseRSS(xml) {
+  const doc = new DOMParser().parseFromString(xml, 'text/xml');
+  return Array.from(doc.querySelectorAll('item')).slice(0, 3).map(item => {
+    const get = tag => item.querySelector(tag)?.textContent?.trim() || '';
+    const img = item.querySelector('enclosure')?.getAttribute('url')
+             || item.querySelector('thumbnail')?.getAttribute('url')
+             || item.querySelector('image url')?.textContent?.trim()
+             || '';
+    return {
+      title:   get('title'),
+      link:    get('link'),
+      excerpt: get('description').replace(/<[^>]+>/g,'').slice(0,160),
+      date:    get('pubDate'),
+      image:   img,
+      cat:     get('category') || 'Driving Tips'
+    };
+  });
+}
+
+function renderArticles(items) {
+  const grid = document.getElementById('blog-grid');
+  if (!items.length) { showFallback(); return; }
+  grid.innerHTML = items.map(a => {
+    const date = a.date
+      ? new Date(a.date).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})
+      : '';
+    return `
+      <a href="${a.link || 'blog.html'}" class="blog-card glass-card" target="_blank" rel="noopener">
+        <div class="blog-img">
+          ${a.image
+            ? `<img src="${a.image}" alt="${a.title}" loading="lazy">`
+            : `<div class="blog-img-placeholder">🚗</div>`}
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">${a.cat}</div>
+          <div class="blog-title">${a.title}</div>
+          <div class="blog-excerpt">${a.excerpt}${a.excerpt.length===160?'…':''}</div>
+          <div class="blog-footer">
+            <span class="blog-date">${date}</span>
+            <span class="blog-arrow">→</span>
+          </div>
+        </div>
+      </a>`;
+  }).join('');
+}
+
+function showFallback() {
+  document.getElementById('blog-grid').innerHTML = `
+    <div class="blog-loading" style="grid-column:1/-1;text-align:center;padding:40px;color:var(--ink-low);">
+      <p style="font-size:15px;margin-bottom:12px;">Articles loading…</p>
+      <a href="${SORO_RSS}" target="_blank" style="color:var(--red);font-weight:600;font-size:13px;">View feed directly →</a>
+    </div>`;
+}
+
+async function loadArticles() {
+  try {
+    /* Attempt 1 — fetch RSS directly (works if Soro sends CORS headers) */
+    const r1 = await fetch(SORO_RSS, { cache: 'no-store' });
+    if (r1.ok) {
+      const xml = await r1.text();
+      const items = parseRSS(xml);
+      if (items.length) { renderArticles(items); return; }
+    }
+  } catch(e) {}
+
+  try {
+    /* Attempt 2 — allorigins.win CORS proxy */
+    const proxy = `https://api.allorigins.win/get?url=${encodeURIComponent(SORO_RSS)}`;
+    const r2 = await fetch(proxy, { cache: 'no-store' });
+    if (r2.ok) {
+      const json = await r2.json();
+      const items = parseRSS(json.contents || '');
+      if (items.length) { renderArticles(items); return; }
+    }
+  } catch(e) {}
+
+  try {
+    /* Attempt 3 — rss2json.com */
+    const r3 = await fetch(
+      `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(SORO_RSS)}&count=3`,
+      { cache: 'no-store' }
+    );
+    if (r3.ok) {
+      const data = await r3.json();
+      if (data.status === 'ok' && data.items?.length) {
+        renderArticles(data.items.map(i => ({
+          title:   i.title,
+          link:    i.link,
+          excerpt: (i.description||'').replace(/<[^>]+>/g,'').slice(0,160),
+          date:    i.pubDate,
+          image:   i.thumbnail || '',
+          cat:     i.categories?.[0] || 'Driving Tips'
+        })));
+        return;
+      }
+    }
+  } catch(e) {}
+
+  showFallback();
+}
+loadArticles();
+
+/* ── Nav / scroll ── */
+const nav = document.getElementById('nav');
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('stuck', window.scrollY > 60);
+  btt.classList.toggle('show', window.scrollY > 500);
+});
+
+/* ── Burger ── */
+const burg = document.getElementById('burg');
+const mnav = document.getElementById('mnav');
+burg.addEventListener('click', () => {
+  burg.classList.toggle('open');
+  mnav.classList.toggle('open');
+  document.body.style.overflow = mnav.classList.contains('open') ? 'hidden' : '';
+});
+function cm() {
+  burg.classList.remove('open'); mnav.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ── Reveal — progressive enhancement ── */
+try {
+  const obs = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
+    { threshold: 0.06, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+} catch(e) {
+  /* If IntersectionObserver fails for any reason, make everything visible */
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('vis'));
+}
+
+/* ── Form ── */
+function handleForm(e) {
+  e.preventDefault();
+  document.getElementById('form-ok').style.display = 'block';
+  e.target.reset();
+}
+
+/* ── Service Worker (PWA) — only on live domain ── */
+if ('serviceWorker' in navigator && location.hostname === 'www.d4driving.co.uk') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('D4Driving SW registered:', reg.scope))
+      .catch(err => console.log('SW registration failed:', err));
+  });
+}
+</script>
+</body>
+</html>
