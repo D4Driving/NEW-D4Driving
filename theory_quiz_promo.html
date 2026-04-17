@@ -1,0 +1,251 @@
+<!-- ═══════════════════════════════════════════════════════════
+     THEORY TEST PRACTICE — Homepage promo section
+     Drop this wherever you want it on index.html.
+     Assumes your existing CSS variables / Plus Jakarta Sans
+     are already loaded on the page.
+     ═══════════════════════════════════════════════════════════ -->
+
+<section class="theory-promo" aria-label="Free theory test practice">
+  <div class="theory-promo__card">
+
+    <!-- Left: copy -->
+    <div class="theory-promo__body">
+      <span class="theory-promo__eyebrow">Free Practice Tool</span>
+      <h2 class="theory-promo__heading">Pass Your Theory Test</h2>
+      <p class="theory-promo__desc">
+        Test yourself with 20 DVSA-style questions — road signs, highway code,
+        hazard awareness and more. New questions every attempt, from a bank of 150.
+      </p>
+      <ul class="theory-promo__pills" aria-label="Quiz features">
+        <li>📋 20 Questions</li>
+        <li>⏱️ 23-Minute Timer</li>
+        <li>🪧 Road Signs</li>
+        <li>✅ Instant Results</li>
+      </ul>
+      <a href="./theory-quiz.html" class="theory-promo__btn">
+        Start Free Practice Test →
+      </a>
+    </div>
+
+    <!-- Right: decorative score mockup -->
+    <div class="theory-promo__visual" aria-hidden="true">
+      <div class="theory-promo__mockup">
+        <div class="tpm__bar">
+          <span class="tpm__dot tpm__dot--red"></span>
+          <span class="tpm__dot tpm__dot--amber"></span>
+          <span class="tpm__dot tpm__dot--green"></span>
+          <span class="tpm__title">Theory Test Practice</span>
+        </div>
+        <div class="tpm__body">
+          <div class="tpm__q-label">Road Signs · Q7 of 20</div>
+          <div class="tpm__q-text">
+            A red triangle containing a traffic light symbol warns you of what?
+          </div>
+          <div class="tpm__options">
+            <div class="tpm__opt">A. Speed camera ahead</div>
+            <div class="tpm__opt tpm__opt--selected">B. Traffic signals ahead</div>
+            <div class="tpm__opt">C. Crossroads ahead</div>
+            <div class="tpm__opt">D. Level crossing ahead</div>
+          </div>
+          <div class="tpm__progress-wrap">
+            <div class="tpm__progress-bar">
+              <div class="tpm__progress-fill" style="width:35%"></div>
+            </div>
+            <span class="tpm__progress-label">35% complete</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+/* ── Section wrapper ── */
+.theory-promo {
+  padding: 64px 24px;
+  background: var(--bg, #fbfdff);         /* falls back if var not set */
+}
+
+/* ── Card ── */
+.theory-promo__card {
+  max-width: 1060px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 20px;
+  box-shadow: 0 4px 40px rgba(44,62,80,0.11);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  overflow: hidden;
+}
+
+/* ── Left: copy ── */
+.theory-promo__body {
+  padding: 48px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.theory-promo__eyebrow {
+  display: inline-block;
+  background: rgba(189,32,38,0.09);
+  color: #BD2026;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  padding: 5px 12px;
+  margin-bottom: 14px;
+  width: fit-content;
+}
+
+.theory-promo__heading {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 800;
+  color: #2C3E50;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+
+.theory-promo__desc {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+
+/* ── Feature pills ── */
+.theory-promo__pills {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.theory-promo__pills li {
+  background: rgba(143,163,160,0.14);
+  color: #2C3E50;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 6px 14px;
+}
+
+/* ── CTA button ── */
+.theory-promo__btn {
+  display: inline-block;
+  background: #BD2026;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: inherit;
+  text-decoration: none;
+  border-radius: 10px;
+  padding: 14px 28px;
+  transition: opacity 0.2s, transform 0.15s;
+  width: fit-content;
+}
+.theory-promo__btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ── Right: visual ── */
+.theory-promo__visual {
+  background: linear-gradient(135deg, #2C3E50 0%, #1a2a38 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 32px;
+}
+
+/* ── Mockup card ── */
+.theory-promo__mockup {
+  background: rgba(251,253,255,0.96);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 340px;
+  overflow: hidden;
+  font-size: 13px;
+}
+
+.tpm__bar {
+  background: rgba(44,62,80,0.06);
+  border-bottom: 1px solid rgba(44,62,80,0.08);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.tpm__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.tpm__dot--red   { background: #BD2026; }
+.tpm__dot--amber { background: #e8a838; }
+.tpm__dot--green { background: #3da85a; }
+.tpm__title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8fa3a0;
+  margin-left: 6px;
+  letter-spacing: 0.3px;
+}
+
+.tpm__body { padding: 16px; }
+
+.tpm__q-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #8fa3a0;
+  letter-spacing: 0.4px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.tpm__q-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #2C3E50;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+.tpm__options { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.tpm__opt {
+  border: 1.5px solid rgba(44,62,80,0.14);
+  border-radius: 7px;
+  padding: 7px 10px;
+  font-size: 11px;
+  color: #2C3E50;
+  background: rgba(255,255,255,0.7);
+}
+.tpm__opt--selected {
+  background: rgba(189,32,38,0.07);
+  border-color: #BD2026;
+  font-weight: 700;
+}
+
+.tpm__progress-wrap { display: flex; align-items: center; gap: 8px; }
+.tpm__progress-bar  { flex: 1; background: rgba(143,163,160,0.2); border-radius: 3px; height: 5px; }
+.tpm__progress-fill { background: #BD2026; height: 100%; border-radius: 3px; }
+.tpm__progress-label { font-size: 10px; color: #8fa3a0; font-weight: 600; white-space: nowrap; }
+
+/* ── Responsive ── */
+@media (max-width: 800px) {
+  .theory-promo__card { grid-template-columns: 1fr; }
+  .theory-promo__visual { display: none; } /* hide mockup on small screens */
+  .theory-promo__body { padding: 36px 28px; }
+}
+@media (max-width: 480px) {
+  .theory-promo { padding: 40px 16px; }
+  .theory-promo__body { padding: 28px 20px; }
+}
+</style>
