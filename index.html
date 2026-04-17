@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<!-- saved from url=(0045)file:///C:/Users/rszat/Downloads/index_4.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>D4Driving Peterborough | #1 Rated Driving Lessons</title>
-<meta name="description" content="D4Driving School of Motoring — DVSA Approved driving lessons in Peterborough. Brand-new Toyota fleet. Covering Peterborough, Grantham &amp; Kettering. Book online instantly.">
+<!-- Mark JS as available immediately — enables CSS reveal animation -->
+<script>document.documentElement.classList.add('js-ready')</script>
+<meta name="description" content="D4Driving School of Motoring — DVSA Approved driving lessons in Peterborough. Brand-new Toyota fleet. Covering Peterborough, Grantham & Kettering. Book online instantly.">
+
+<!-- ═══ PWA ═══ -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#BD2026">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="D4Driving">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 
 <!--
   SETUP:
@@ -13,8 +26,8 @@
   articles.json is auto-written by Soro webhook.
 -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link href="./index_files/css2" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <style>
 
 /* ─── TOKENS ─────────────────────────────── */
@@ -434,6 +447,29 @@ p  { line-height: 1.75; }
 .yt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
 .yt-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 16px; box-shadow: 0 20px 50px rgba(44,62,80,0.18); }
 .yt-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.yt-preview {
+  position: relative; border-radius: 16px; overflow: hidden;
+  box-shadow: 0 20px 50px rgba(44,62,80,0.18);
+  aspect-ratio: 16/9; display: block; background: var(--slate);
+  text-decoration: none;
+}
+.yt-preview-bg {
+  position: absolute; inset: 0; background-size: cover; background-position: center 40%;
+  filter: brightness(0.5) saturate(0.7); transition: filter .4s;
+}
+.yt-preview:hover .yt-preview-bg { filter: brightness(0.35) saturate(0.7); }
+.yt-preview-play {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 16px;
+}
+.yt-play-btn {
+  width: 72px; height: 72px; border-radius: 50%; background: #FF0000;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 24px rgba(255,0,0,0.5); transition: transform .25s, box-shadow .25s;
+}
+.yt-preview:hover .yt-play-btn { transform: scale(1.12); box-shadow: 0 12px 32px rgba(255,0,0,0.65); }
+.yt-play-btn svg { width: 28px; height: 28px; fill: #fff; margin-left: 5px; }
+.yt-preview-label { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.92); letter-spacing: 0.3px; }
 .yt-count {
   display: inline-flex; align-items: center; gap: 12px;
   background: var(--red-lo); border: 1px solid var(--red-border);
@@ -528,7 +564,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 
 /* ─── BACK TO TOP ────────────────────────── */
 #btt {
-  position: fixed; bottom: 170px; right: 30px; z-index: 800;
+  position: fixed; bottom: 100px; right: 30px; z-index: 800;
   width: 44px; height: 44px; background: var(--slate); color: #fff;
   border: none; cursor: pointer; font-size: 18px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
@@ -540,8 +576,10 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 #btt:hover { transform: translateY(-3px); background: var(--red); }
 
 /* ─── REVEAL ─────────────────────────────── */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
-.reveal.vis { opacity: 1; transform: none; }
+/* ── Reveal — visible by default, animated when JS runs ── */
+.reveal { transition: opacity .65s ease, transform .65s ease; }
+.js-ready .reveal { opacity: 0; transform: translateY(24px); }
+.js-ready .reveal.vis { opacity: 1; transform: none; }
 
 /* ─── RESPONSIVE ─────────────────────────── */
 @media(max-width:960px){
@@ -568,28 +606,28 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   .btn { justify-content:center; }
 }
 </style>
-<script src="./index_files/embed.js.download"></script><style>.cal-embed{border:0px;min-height:300px;margin:0 auto;width:100%;display:block!important;color-scheme:unset!important}</style></head>
+</head>
 <body>
 
 <!-- ════ NAV ════ -->
 <nav id="nav">
   <div class="wrap">
     <div class="nav-inner">
-      <a href="file:///C:/Users/rszat/Downloads/index_4.html#hero" class="nav-logo">
-        <img src="./index_files/400dpiLogoCropped.png" alt="D4Driving School of Motoring">
+      <a href="#hero" class="nav-logo">
+        <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving School of Motoring">
       </a>
       <ul class="nav-links">
-        <li><a href="file:///C:/Users/rszat/Downloads/index_4.html#fleet">Our Cars</a></li>
-        <li><a href="file:///C:/Users/rszat/Downloads/index_4.html#about">About</a></li>
-        <li><a href="file:///C:/Users/rszat/Downloads/index_4.html#prices">Prices</a></li>
-        <li><a href="file:///C:/Users/rszat/Downloads/index_4.html#booking">Book</a></li>
-        <li><a href="file:///C:/Users/rszat/Downloads/index_4.html#reviews">Reviews</a></li>
-        <li><a href="file:///C:/Users/rszat/Downloads/index_4.html#blog">Tips</a></li>
-        <li><a href="file:///C:/Users/rszat/Downloads/index_4.html#contact">Contact</a></li>
+        <li><a href="#fleet">Our Cars</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#prices">Prices</a></li>
+        <li><a href="#booking">Book</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#blog">Tips</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-right">
         <a href="tel:07872347686" class="nav-phone">📞 07872 347686</a>
-        <a href="file:///C:/Users/rszat/Downloads/index_4.html#booking" class="btn btn-red">Book Online</a>
+        <a href="#booking" class="btn btn-red">Book Online</a>
         <button class="burger" id="burg" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -597,13 +635,13 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     </div>
   </div>
   <div class="mobile-nav" id="mnav">
-    <a href="file:///C:/Users/rszat/Downloads/index_4.html#fleet" onclick="cm()">Our Cars</a>
-    <a href="file:///C:/Users/rszat/Downloads/index_4.html#about" onclick="cm()">About</a>
-    <a href="file:///C:/Users/rszat/Downloads/index_4.html#prices" onclick="cm()">Prices</a>
-    <a href="file:///C:/Users/rszat/Downloads/index_4.html#booking" onclick="cm()">Book Online</a>
-    <a href="file:///C:/Users/rszat/Downloads/index_4.html#reviews" onclick="cm()">Reviews</a>
-    <a href="file:///C:/Users/rszat/Downloads/index_4.html#blog" onclick="cm()">Driving Tips</a>
-    <a href="file:///C:/Users/rszat/Downloads/index_4.html#contact" onclick="cm()">Contact</a>
+    <a href="#fleet"    onclick="cm()">Our Cars</a>
+    <a href="#about"    onclick="cm()">About</a>
+    <a href="#prices"   onclick="cm()">Prices</a>
+    <a href="#booking"  onclick="cm()">Book Online</a>
+    <a href="#reviews"  onclick="cm()">Reviews</a>
+    <a href="#blog"     onclick="cm()">Driving Tips</a>
+    <a href="#contact"  onclick="cm()">Contact</a>
     <a href="tel:07872347686" style="color:var(--sage);border-bottom:none;margin-top:8px;">📞 07872 347686</a>
   </div>
 </nav>
@@ -625,8 +663,8 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         Brand-new Toyota dual-control cars. Flexible times. Real results.
       </p>
       <div class="hero-btns">
-        <a href="file:///C:/Users/rszat/Downloads/index_4.html#booking" class="btn btn-red">Book Online Instantly</a>
-        <a href="file:///C:/Users/rszat/Downloads/index_4.html#prices" class="btn btn-ghost">See Prices</a>
+        <a href="#booking" class="btn btn-red">Book Online Instantly</a>
+        <a href="#prices"  class="btn btn-ghost">See Prices</a>
       </div>
     </div>
   </div>
@@ -642,7 +680,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <div class="status-inner">
     <div class="pulse"></div>
     <span><strong>Now Accepting New Students</strong> — Limited spaces. &nbsp;
-      <a href="file:///C:/Users/rszat/Downloads/index_4.html#booking">Book your assessment online →</a>
+      <a href="#booking">Book your assessment online →</a>
     </span>
   </div>
 </div>
@@ -657,7 +695,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     </div>
     <div class="fleet-grid reveal">
       <div class="fleet-card glass-card">
-        <div class="fleet-img"><img src="file:///C:/Users/rszat/Downloads/aygo-x.webp" alt="Toyota Aygo X — Manual, D4Driving Peterborough"></div>
+        <div class="fleet-img"><img src="aygo-x.webp" alt="Toyota Aygo X — Manual, D4Driving Peterborough"></div>
         <div class="fleet-body">
           <span class="fleet-badge badge-manual">Manual</span>
           <h3>Toyota Aygo X</h3>
@@ -670,7 +708,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         </div>
       </div>
       <div class="fleet-card glass-card">
-        <div class="fleet-img"><img src="./index_files/yaris-cross.webp" alt="Toyota Yaris Cross — Automatic, D4Driving Peterborough"></div>
+        <div class="fleet-img"><img src="yaris-cross.webp" alt="Toyota Yaris Cross — Automatic, D4Driving Peterborough"></div>
         <div class="fleet-body">
           <span class="fleet-badge badge-auto">Automatic</span>
           <h3>Toyota Yaris Cross</h3>
@@ -691,7 +729,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <div class="wrap">
     <div class="about-grid">
       <div class="about-img-wrap reveal">
-        <img src="./index_files/robert.webp" alt="Robert — DVSA Approved Driving Instructor, D4Driving Peterborough" class="about-photo">
+        <img src="robert.webp" alt="Robert — DVSA Approved Driving Instructor, D4Driving Peterborough" class="about-photo">
         <div class="about-badge">
           <span class="num">7+</span>
           <span class="lbl">Years<br>Teaching</span>
@@ -710,7 +748,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
           <div class="chk"><div class="chk-dot">✓</div>Flexible morning, evening &amp; weekend slots</div>
           <div class="chk"><div class="chk-dot">✓</div>Mock tests &amp; local test route specialist</div>
         </div>
-        <a href="file:///C:/Users/rszat/Downloads/index_4.html#booking" class="btn btn-slate">Book a Lesson</a>
+        <a href="#booking" class="btn btn-slate">Book a Lesson</a>
       </div>
     </div>
   </div>
@@ -752,7 +790,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <div class="l-dur">1 Hour</div>
         <div class="l-name">Single</div>
         <div class="l-desc">A top-up or refresher between longer sessions.</div>
-        <a href="file:///C:/Users/rszat/Downloads/index_4.html#booking" class="btn btn-outline" style="width:100%;">Book</a>
+        <a href="#booking" class="btn btn-outline" style="width:100%;">Book</a>
       </div>
       <div class="lesson-card featured glass-card">
         <div class="feat-tag">Most Popular</div>
@@ -760,14 +798,14 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <div class="l-dur">1.5 Hours</div>
         <div class="l-name">Standard</div>
         <div class="l-desc">The ideal balance of time and value for regular progress.</div>
-        <a href="file:///C:/Users/rszat/Downloads/index_4.html#booking" class="btn btn-red" style="width:100%;">Book</a>
+        <a href="#booking" class="btn btn-red" style="width:100%;">Book</a>
       </div>
       <div class="lesson-card glass-card">
         <div class="l-price"><sup>£</sup>75</div>
         <div class="l-dur">2 Hours</div>
         <div class="l-name">Extended</div>
         <div class="l-desc">More road time — great for building fluency and confidence.</div>
-        <a href="file:///C:/Users/rszat/Downloads/index_4.html#booking" class="btn btn-outline" style="width:100%;">Book</a>
+        <a href="#booking" class="btn btn-outline" style="width:100%;">Book</a>
       </div>
       <div class="lesson-card glass-card assessment-card">
         <div class="feat-tag" style="background:var(--slate);">New Students</div>
@@ -775,7 +813,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <div class="l-dur">90 Min</div>
         <div class="l-name">Assessment</div>
         <div class="l-desc">New students start here — skills audit &amp; personalised pass plan.</div>
-        <a href="file:///C:/Users/rszat/Downloads/index_4.html#booking" class="btn btn-slate" style="width:100%;">Start Here</a>
+        <a href="#booking" class="btn btn-slate" style="width:100%;">Start Here</a>
       </div>
     </div>
 
@@ -830,291 +868,11 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
           </div>
           <span class="price-badge">From £40/hr</span>
         </div>
-        <div id="cal-loading" class="cal-loading" style="display: none;">
+        <div id="cal-loading" class="cal-loading">
           <div class="spinner"></div>
           <span style="font-size:14px;font-weight:500;">Loading calendar…</span>
         </div>
-        <div id="cal-embed" class="cal-inline-container"><cal-inline style="max-height:inherit;height:inherit;min-height:inherit;display:flex;position:relative;flex-wrap:wrap;width:100%" class="cal-element-embed-dark" loading="done"><template shadowrootmode="open"><style>/*! tailwindcss v4.1.16 | MIT License | https://tailwindcss.com */@layer properties;@layer theme,base,components,utilities;@layer theme{:root,:host{--font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;--color-red-50: oklch(97.1% .013 17.38);--color-red-400: oklch(70.4% .191 22.216);--color-red-500: oklch(63.7% .237 25.331);--color-red-700: oklch(50.5% .213 27.518);--color-orange-600: oklch(64.6% .222 41.116);--color-amber-400: oklch(82.8% .189 84.429);--color-amber-500: oklch(76.9% .188 70.08);--color-amber-700: oklch(55.5% .163 48.998);--color-emerald-400: oklch(76.5% .177 163.223);--color-emerald-500: oklch(69.6% .17 162.48);--color-emerald-700: oklch(50.8% .118 165.612);--color-teal-600: oklch(60% .118 184.704);--color-cyan-900: oklch(39.8% .07 227.392);--color-blue-400: oklch(70.7% .165 254.624);--color-blue-500: oklch(62.3% .214 259.815);--color-blue-700: oklch(48.8% .243 264.376);--color-purple-500: oklch(62.7% .265 303.9);--color-rose-500: oklch(64.5% .246 16.439);--color-gray-600: oklch(44.6% .03 256.802);--color-neutral-50: oklch(98.5% 0 0);--color-neutral-100: oklch(97% 0 0);--color-neutral-400: oklch(70.8% 0 0);--color-neutral-500: oklch(55.6% 0 0);--color-neutral-800: oklch(26.9% 0 0);--color-neutral-950: oklch(14.5% 0 0);--color-black: #111111;--color-white: #fff;--spacing: .25rem;--text-xs: .75rem;--text-xs--line-height: calc(1 / .75);--text-sm: .875rem;--text-sm--line-height: calc(1.25 / .875);--text-base: 1rem;--text-base--line-height: 1.5 ;--text-xl: 1.25rem;--text-xl--line-height: calc(1.75 / 1.25);--font-weight-medium: 500;--font-weight-semibold: 600;--tracking-widest: .1em;--radius-sm: var(--radius-sm);--radius-md: var(--radius-md);--radius-lg: var(--radius-lg);--radius-xl: var(--radius-xl);--radius-2xl: var(--radius-2xl);--radius-3xl: var(--radius-3xl);--drop-shadow-md: 0 3px 3px rgb(0 0 0 / .12);--animate-pulse: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;--default-transition-duration: .15s;--default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);--default-font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;--default-mono-font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;--radius: var(--radius);--font-heading: var(--font-heading);--shadow-dropdown: var(--shadow-dropdown);--shadow-switch-thumb: var(--shadow-switch-thumb);--shadow-solid-gray-rested: var(--shadow-solid-gray-rested);--shadow-solid-gray-hover: var(--shadow-solid-gray-hover);--shadow-solid-gray-active: var(--shadow-solid-gray-active);--shadow-outline-gray-rested: var(--shadow-outline-gray-rested);--shadow-outline-gray-hover: var(--shadow-outline-gray-hover);--shadow-outline-gray-active: var(--shadow-outline-gray-active);--shadow-outline-gray-focused: var(--shadow-outline-gray-focused);--shadow-outline-red-rested: var(--shadow-outline-red-rested);--shadow-outline-red-hover: var(--shadow-outline-red-hover);--shadow-outline-red-active: var(--shadow-outline-red-active);--shadow-elevation-low: var(--shadow-elevation-low);--shadow-button-solid-brand-default: var(--shadow-button-solid-brand-default);--shadow-button-solid-brand-hover: var(--shadow-button-solid-brand-hover);--shadow-button-solid-brand-active: var(--shadow-button-solid-brand-active);--shadow-button-solid-brand-focused: var(--shadow-button-solid-brand-focused);--shadow-button-outline-red-focused: var(--shadow-button-outline-red-focused);--fill-emphasis: var(--fill-emphasis);--fill-default: var(--fill-default);--fill-subtle: var(--fill-subtle);--fill-muted: var(--fill-muted);--fill-inverted: var(--fill-inverted);--fill-info: var(--fill-info);--fill-success: var(--fill-success);--fill-attention: var(--fill-attention);--fill-error: var(--fill-error);--fill-brand: var(--fill-brand)}}@layer base{*,:after,:before,::backdrop,::file-selector-button{box-sizing:border-box;margin:0;padding:0;border:0 solid}html,:host{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");font-feature-settings:var(--default-font-feature-settings, normal);font-variation-settings:var(--default-font-variation-settings, normal);-webkit-tap-highlight-color:transparent}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,samp,pre{font-family:var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);font-feature-settings:var(--default-mono-font-feature-settings, normal);font-variation-settings:var(--default-mono-font-variation-settings, normal);font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}:-moz-focusring{outline:auto}progress{vertical-align:baseline}summary{display:list-item}ol,ul,menu{list-style:none}img,svg,video,canvas,audio,iframe,embed,object{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}button,input,select,optgroup,textarea,::file-selector-button{font:inherit;font-feature-settings:inherit;font-variation-settings:inherit;letter-spacing:inherit;color:inherit;border-radius:0;background-color:transparent;opacity:1}:where(select:is([multiple],[size])) optgroup{font-weight:bolder}:where(select:is([multiple],[size])) optgroup option{padding-inline-start:20px}::file-selector-button{margin-inline-end:4px}::placeholder{opacity:1}@supports (not (-webkit-appearance: -apple-pay-button)) or (contain-intrinsic-size: 1px){::placeholder{color:currentcolor}@supports (color: color-mix(in lab,red,red)){::placeholder{color:color-mix(in oklab,currentcolor 50%,transparent)}}}textarea{resize:vertical}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-date-and-time-value{min-height:1lh;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-datetime-edit,::-webkit-datetime-edit-year-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-meridiem-field{padding-block:0}::-webkit-calendar-picker-indicator{line-height:1}:-moz-ui-invalid{box-shadow:none}button,input:where([type=button],[type=reset],[type=submit]),::file-selector-button{-webkit-appearance:button;-moz-appearance:button;appearance:button}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[hidden]:where(:not([hidden=until-found])){display:none!important}}@layer utilities{.invisible{visibility:hidden}.visible{visibility:visible}.absolute{position:absolute}.fixed{position:fixed}.relative{position:relative}.static{position:static}.top-0{top:calc(var(--spacing) * 0)}.right-0{right:calc(var(--spacing) * 0)}.right-4{right:calc(var(--spacing) * 4)}.bottom-0{bottom:calc(var(--spacing) * 0)}.bottom-4{bottom:calc(var(--spacing) * 4)}.left-0{left:calc(var(--spacing) * 0)}.left-4{left:calc(var(--spacing) * 4)}.z-10{z-index:10}.z-999999999999{z-index:999999999999}.container{width:100%}@media(min-width:1600px){.container{max-width:1600px}}@media(min-width:2000px){.container{max-width:2000px}}@media(min-width:40rem){.container{max-width:40rem}}@media(min-width:48rem){.container{max-width:48rem}}@media(min-width:64rem){.container{max-width:64rem}}@media(min-width:80rem){.container{max-width:80rem}}@media(min-width:96rem){.container{max-width:96rem}}.mx-auto{margin-inline:auto}.my-2{margin-block:calc(var(--spacing) * 2)}.my-4{margin-block:calc(var(--spacing) * 4)}.mt-2{margin-top:calc(var(--spacing) * 2)}.mt-auto{margin-top:auto}.stack-y-3>:not([hidden])~:not([hidden]){margin-top:calc(var(--spacing) * 3)}.-mr-1{margin-right:calc(var(--spacing) * -1)}.mr-1{margin-right:calc(var(--spacing) * 1)}.mr-2{margin-right:calc(var(--spacing) * 2)}.mb-1{margin-bottom:calc(var(--spacing) * 1)}.mb-2{margin-bottom:calc(var(--spacing) * 2)}.mb-4{margin-bottom:calc(var(--spacing) * 4)}.-ml-px{margin-left:-1px}.ml-3{margin-left:calc(var(--spacing) * 3)}.scrollbar{scrollbar-width:auto;scrollbar-color:var(--scrollbar-thumb, initial) var(--scrollbar-track, initial)}.scrollbar::-webkit-scrollbar-track{background-color:var(--scrollbar-track);border-radius:var(--scrollbar-track-radius)}.scrollbar::-webkit-scrollbar-thumb{background-color:var(--scrollbar-thumb);border-radius:var(--scrollbar-thumb-radius)}.scrollbar::-webkit-scrollbar-corner{background-color:var(--scrollbar-corner);border-radius:var(--scrollbar-corner-radius)}.scrollbar::-webkit-scrollbar{display:block;width:var(--scrollbar-width, 16px);height:var(--scrollbar-height, 16px)}.block{display:block}.contents{display:contents}.flex{display:flex}.grid{display:grid}.hidden{display:none}.inline{display:inline}.inline-block{display:inline-block}.inline-flex{display:inline-flex}.aspect-square{aspect-ratio:1 / 1}.h-4{height:calc(var(--spacing) * 4)}.h-6{height:calc(var(--spacing) * 6)}.h-7{height:calc(var(--spacing) * 7)}.h-9{height:calc(var(--spacing) * 9)}.h-16{height:calc(var(--spacing) * 16)}.h-full{height:100%}.min-h-6{min-height:calc(var(--spacing) * 6)}.min-h-\[36px\]{min-height:36px}.w-1\/2{width:50%}.w-4{width:calc(var(--spacing) * 4)}.w-6{width:calc(var(--spacing) * 6)}.w-7{width:calc(var(--spacing) * 7)}.w-8{width:calc(var(--spacing) * 8)}.w-9{width:calc(var(--spacing) * 9)}.w-10{width:calc(var(--spacing) * 10)}.w-20{width:calc(var(--spacing) * 20)}.w-24{width:calc(var(--spacing) * 24)}.w-full{width:100%}.max-w-full{max-width:100%}.max-w-screen{max-width:100vw}.min-w-6{min-width:calc(var(--spacing) * 6)}.min-w-\[36px\]{min-width:36px}.shrink{flex-shrink:1}.origin-center{transform-origin:center}.transform{transform:var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,)}.animate-pulse{animation:var(--animate-pulse)}.cursor-pointer{cursor:pointer}.resize{resize:both}.grid-cols-7{grid-template-columns:repeat(7,minmax(0,1fr))}.grid-rows-6{grid-template-rows:repeat(6,minmax(0,1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.items-start{align-items:flex-start}.justify-between{justify-content:space-between}.justify-center{justify-content:center}.justify-start{justify-content:flex-start}.gap-1{gap:calc(var(--spacing) * 1)}.gap-4{gap:calc(var(--spacing) * 4)}.overflow-hidden{overflow:hidden}.rounded-\[10px\]{border-radius:10px}.rounded-full{border-radius:calc(infinity * 1px)}.rounded-md{border-radius:var(--radius-md)}.rounded-sm{border-radius:var(--radius-sm)}.border{border-style:var(--tw-border-style);border-width:1px}.border-t{border-top-style:var(--tw-border-style);border-top-width:1px}.border-b{border-bottom-style:var(--tw-border-style);border-bottom-width:1px}.border-booker{border-color:var(--cal-border-booker)}.border-brand-default{border-color:var(--cal-brand)}.border-muted{border-color:var(--cal-border-muted)}.border-subtle{border-color:var(--cal-border-subtle)}.border-transparent{border-color:transparent}.bg-brand{background-color:var(--cal-brand)}.bg-cal-muted{background-color:var(--cal-bg-muted)}.bg-default{background-color:var(--cal-bg)}.bg-emphasis{background-color:var(--cal-bg-emphasis)}.bg-red-50{background-color:var(--color-red-50)}.fill-transparent{fill:transparent}.p-1{padding:calc(var(--spacing) * 1)}.p-2\!{padding:calc(var(--spacing) * 2)!important}.p-6{padding:calc(var(--spacing) * 6)}.p-24{padding:calc(var(--spacing) * 24)}.px-5{padding-inline:calc(var(--spacing) * 5)}.px-6{padding-inline:calc(var(--spacing) * 6)}.py-3{padding-block:calc(var(--spacing) * 3)}.py-4{padding-block:calc(var(--spacing) * 4)}.pt-\[100\%\]{padding-top:100%}.text-center{text-align:center}.align-top{vertical-align:top}.text-base{font-size:var(--text-base);line-height:var(--tw-leading, var(--text-base--line-height))}.text-sm{font-size:var(--text-sm);line-height:var(--tw-leading, var(--text-sm--line-height))}.text-xl{font-size:var(--text-xl);line-height:var(--tw-leading, var(--text-xl--line-height))}.text-xs{font-size:var(--text-xs);line-height:var(--tw-leading, var(--text-xs--line-height))}.leading-5{--tw-leading: calc(var(--spacing) * 5);line-height:calc(var(--spacing) * 5)}.leading-none{--tw-leading: 1;line-height:1}.font-medium{--tw-font-weight: var(--font-weight-medium);font-weight:var(--font-weight-medium)}.font-semibold{--tw-font-weight: var(--font-weight-semibold);font-weight:var(--font-weight-semibold)}.tracking-widest{--tw-tracking: var(--tracking-widest);letter-spacing:var(--tracking-widest)}.whitespace-nowrap{white-space:nowrap}.text-default{color:var(--cal-text)}.text-emphasis{color:var(--cal-text-emphasis)}.text-muted{color:var(--cal-text-muted)}.text-subtle{color:var(--cal-text-subtle)}.uppercase{text-transform:uppercase}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-70{opacity:70%}.opacity-90{opacity:90%}.shadow{--tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / .1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / .1));box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.drop-shadow-md{--tw-drop-shadow-size: drop-shadow(0 3px 3px var(--tw-drop-shadow-color, rgb(0 0 0 / .12)));--tw-drop-shadow: drop-shadow(var(--drop-shadow-md));filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.filter{filter:var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,)}.transition{transition-property:color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,-webkit-backdrop-filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function:var(--tw-ease, var(--default-transition-timing-function));transition-duration:var(--tw-duration, var(--default-transition-duration))}.duration-200{--tw-duration: .2s;transition-duration:.2s}.outline-none{--tw-outline-style: none;outline-style:none}.\[--booker-main-width\:480px\]{--booker-main-width: 480px}.\[--booker-meta-width\:240px\]{--booker-meta-width: 240px}.\[--booker-meta-width\:340px\]{--booker-meta-width: 340px}.\[--booker-timeslots-width\:240px\]{--booker-timeslots-width: 240px}.\[grid-area\:main\]{grid-area:main}.\[grid-area\:meta\]{grid-area:meta}.running{animation-play-state:running}.group-active\:translate-y-\[0\.5px\]:is(:where(.group):active *){--tw-translate-y: .5px;translate:var(--tw-translate-x) var(--tw-translate-y)}.empty\:before\:inline-block:empty:before{content:var(--tw-content);display:inline-block}.empty\:before\:content-\[\'\'\]:empty:before{--tw-content: "";content:var(--tw-content)}@media(hover:hover){.hover\:border:hover{border-style:var(--tw-border-style);border-width:1px}}@media(hover:hover){.hover\:border-default:hover{border-color:var(--cal-border)}}@media(hover:hover){.hover\:opacity-100:hover{opacity:100%}}.focus\:ring-gray-600:focus{--tw-ring-color: var(--color-gray-600)}.focus\:outline-none:focus{--tw-outline-style: none;outline-style:none}.focus-visible\:border-subtle:focus-visible{border-color:var(--cal-border-subtle)}.focus-visible\:bg-subtle:focus-visible{background-color:var(--cal-bg-subtle)}.focus-visible\:ring-0:focus-visible{--tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(0px + var(--tw-ring-offset-width)) var(--tw-ring-color, rgb(59 130 246 / .5));box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.focus-visible\:outline-none:focus-visible{--tw-outline-style: none;outline-style:none}.active\:scale-95:active{--tw-scale-x: 95%;--tw-scale-y: 95%;--tw-scale-z: 95%;scale:var(--tw-scale-x) var(--tw-scale-y)}@media(hover:hover){.enabled\:hover\:border-subtle:enabled:hover{border-color:var(--cal-border-subtle)}}@media(hover:hover){.enabled\:hover\:bg-subtle:enabled:hover{background-color:var(--cal-bg-subtle)}}@media(hover:hover){.enabled\:hover\:text-emphasis:enabled:hover{color:var(--cal-text-emphasis)}}.enabled\:active\:shadow-outline-gray-active:enabled:active{--tw-shadow: var(--shadow-outline-gray-active);box-shadow:var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow)}.disabled\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\:opacity-30:disabled{opacity:30%}@media(min-width:40rem){.sm\:transition-\[width\]{transition-property:width;transition-timing-function:var(--tw-ease, var(--default-transition-timing-function));transition-duration:var(--tw-duration, var(--default-transition-duration))}}@media(min-width:40rem){.sm\:duration-300{--tw-duration: .3s;transition-duration:.3s}}@media(min-width:40rem){@media(prefers-reduced-motion:reduce){.sm\:motion-reduce\:transition-none{transition-property:none}}}@media(min-width:48rem){.md\:right-10{right:calc(var(--spacing) * 10)}}@media(min-width:48rem){.md\:bottom-6{bottom:calc(var(--spacing) * 6)}}@media(min-width:48rem){.md\:left-10{left:calc(var(--spacing) * 10)}}@media(min-width:48rem){.md\:mb-0{margin-bottom:calc(var(--spacing) * 0)}}@media(min-width:48rem){.md\:w-\(--booker-meta-width\){width:var(--booker-meta-width)}}@media(min-width:48rem){.md\:flex-row{flex-direction:row}}@media(min-width:48rem){.md\:border-0{border-style:var(--tw-border-style);border-width:0px}}@media(min-width:48rem){.md\:border-l{border-left-style:var(--tw-border-style);border-left-width:1px}}@media(min-width:48rem){.md\:border-subtle{border-color:var(--cal-border-subtle)}}@media(min-width:64rem){.lg\:w-\(--booker-main-width\){width:var(--booker-main-width)}}@media(min-width:64rem){.lg\:\[--booker-meta-width\:280px\]{--booker-meta-width: 280px}}@media(min-width:64rem){.lg\:\[--booker-meta-width\:424px\]{--booker-meta-width: 424px}}@media(min-width:64rem){.lg\:\[--booker-timeslots-width\:280px\]{--booker-timeslots-width: 280px}}.rtl\:rotate-180:where(:dir(rtl),[dir=rtl],[dir=rtl] *){rotate:180deg}.dark\:bg-cal-muted:is(.dark *){background-color:var(--cal-bg-muted)}.dark\:scheme-dark:is(.dark *){color-scheme:dark}}:root{--radius: .625rem;--background: var(--color-white);--foreground: var(--color-neutral-800);--card: var(--color-white);--card-foreground: var(--color-neutral-800);--popover: var(--color-white);--popover-foreground: var(--color-neutral-800);--primary: var(--color-neutral-800);--primary-foreground: var(--color-neutral-50);--secondary: color-mix(in srgb, #111111 4%, transparent);--secondary-foreground: var(--color-neutral-800);--muted: color-mix(in srgb, #111111 4%, transparent);--muted-foreground: color-mix( in srgb, oklch(55.6% 0 0) 90%, #111111 );--accent: color-mix(in srgb, #111111 4%, transparent);--accent-foreground: var(--color-neutral-800);--destructive: var(--color-red-500);--destructive-foreground: var(--color-red-700);--info: var(--color-blue-500);--info-foreground: var(--color-blue-700);--success: var(--color-emerald-500);--success-foreground: var(--color-emerald-700);--warning: var(--color-amber-500);--warning-foreground: var(--color-amber-700);--border: color-mix(in srgb, #111111 8%, transparent);--input: color-mix(in srgb, #111111 10%, transparent);--ring: var(--color-neutral-400);--chart-1: var(--color-orange-600);--chart-2: var(--color-teal-600);--chart-3: var(--color-cyan-900);--chart-4: var(--color-amber-400);--chart-5: var(--color-amber-500);--sidebar: var(--color-neutral-50);--sidebar-foreground: oklch(26.9% 0 0);--sidebar-primary: var(--color-neutral-800);--sidebar-primary-foreground: var(--color-neutral-50);--sidebar-accent: color-mix(in srgb, #111111 4%, transparent);--sidebar-accent-foreground: var(--color-neutral-800);--sidebar-border: color-mix(in srgb, #111111 6%, transparent);--sidebar-ring: var(--color-neutral-400);--code: var(--color-white);--code-foreground: var(--foreground);--code-highlight: color-mix(in srgb, #111111 4%, transparent)}@supports (color: color-mix(in lab,red,red)){:root{--secondary: color-mix(in oklab, var(--color-black) 4%, transparent)}}@supports (color: color-mix(in lab,red,red)){:root{--muted: color-mix(in oklab, var(--color-black) 4%, transparent)}}@supports (color: color-mix(in lab,red,red)){:root{--muted-foreground: color-mix( in srgb, var(--color-neutral-500) 90%, var(--color-black) )}}@supports (color: color-mix(in lab,red,red)){:root{--accent: color-mix(in oklab, var(--color-black) 4%, transparent)}}@supports (color: color-mix(in lab,red,red)){:root{--border: color-mix(in oklab, var(--color-black) 8%, transparent)}}@supports (color: color-mix(in lab,red,red)){:root{--input: color-mix(in oklab, var(--color-black) 10%, transparent)}}@supports (color: color-mix(in lab,red,red)){:root{--sidebar-foreground: color-mix( in srgb, var(--color-neutral-800) 64%, var(--sidebar) )}}@supports (color: color-mix(in lab,red,red)){:root{--sidebar-accent: color-mix(in oklab, var(--color-black) 4%, transparent)}}@supports (color: color-mix(in lab,red,red)){:root{--sidebar-border: color-mix(in oklab, var(--color-black) 6%, transparent)}}@supports (color: color-mix(in lab,red,red)){:root{--code-highlight: color-mix(in oklab, var(--color-black) 4%, transparent)}}.dark{--background: color-mix( in srgb, oklch(14.5% 0 0) 96%, #fff );--foreground: var(--color-neutral-100);--card: var(--background);--card-foreground: var(--color-neutral-100);--popover: var(--background);--popover-foreground: var(--color-neutral-100);--primary: var(--color-neutral-100);--primary-foreground: var(--color-neutral-800);--secondary: color-mix(in srgb, #fff 4%, transparent);--secondary-foreground: var(--color-neutral-100);--muted: color-mix(in srgb, #fff 4%, transparent);--muted-foreground: color-mix( in srgb, oklch(55.6% 0 0) 90%, #fff );--accent: color-mix(in srgb, #fff 4%, transparent);--accent-foreground: var(--color-neutral-100);--destructive: color-mix( in srgb, oklch(63.7% .237 25.331) 90%, #fff );--destructive-foreground: var(--color-red-400);--info: var(--color-blue-500);--info-foreground: var(--color-blue-400);--success: var(--color-emerald-500);--success-foreground: var(--color-emerald-400);--warning: var(--color-amber-500);--warning-foreground: var(--color-amber-400);--border: color-mix(in srgb, #fff 6%, transparent);--input: color-mix(in srgb, #fff 8%, transparent);--ring: var(--color-neutral-500);--chart-1: var(--color-blue-700);--chart-2: var(--color-emerald-500);--chart-3: var(--color-amber-500);--chart-4: var(--color-purple-500);--chart-5: var(--color-rose-500);--sidebar: color-mix( in srgb, oklch(14.5% 0 0) 97%, #fff );--sidebar-foreground: oklch(97% 0 0);--sidebar-primary: var(--color-neutral-100);--sidebar-primary-foreground: var(--color-neutral-800);--sidebar-accent: color-mix(in srgb, #fff 4%, transparent);--sidebar-accent-foreground: var(--color-neutral-100);--sidebar-border: color-mix(in srgb, #fff 5%, transparent);--sidebar-ring: var(--color-neutral-400);--code: var(--background);--code-foreground: var(--foreground);--code-highlight: color-mix(in srgb, #fff 4%, transparent)}@supports (color: color-mix(in lab,red,red)){.dark{--background: color-mix( in srgb, var(--color-neutral-950) 96%, var(--color-white) )}}@supports (color: color-mix(in lab,red,red)){.dark{--card: color-mix(in srgb, var(--background) 98%, var(--color-white))}}@supports (color: color-mix(in lab,red,red)){.dark{--popover: color-mix(in srgb, var(--background) 96%, var(--color-white))}}@supports (color: color-mix(in lab,red,red)){.dark{--secondary: color-mix(in oklab, var(--color-white) 4%, transparent)}}@supports (color: color-mix(in lab,red,red)){.dark{--muted: color-mix(in oklab, var(--color-white) 4%, transparent)}}@supports (color: color-mix(in lab,red,red)){.dark{--muted-foreground: color-mix( in srgb, var(--color-neutral-500) 90%, var(--color-white) )}}@supports (color: color-mix(in lab,red,red)){.dark{--accent: color-mix(in oklab, var(--color-white) 4%, transparent)}}@supports (color: color-mix(in lab,red,red)){.dark{--destructive: color-mix( in srgb, var(--color-red-500) 90%, var(--color-white) )}}@supports (color: color-mix(in lab,red,red)){.dark{--border: color-mix(in oklab, var(--color-white) 6%, transparent)}}@supports (color: color-mix(in lab,red,red)){.dark{--input: color-mix(in oklab, var(--color-white) 8%, transparent)}}@supports (color: color-mix(in lab,red,red)){.dark{--sidebar: color-mix( in srgb, var(--color-neutral-950) 97%, var(--color-white) )}}@supports (color: color-mix(in lab,red,red)){.dark{--sidebar-foreground: color-mix( in srgb, var(--color-neutral-100) 64%, var(--sidebar) )}}@supports (color: color-mix(in lab,red,red)){.dark{--sidebar-accent: color-mix(in oklab, var(--color-white) 4%, transparent)}}@supports (color: color-mix(in lab,red,red)){.dark{--sidebar-border: color-mix(in oklab, var(--color-white) 5%, transparent)}}@supports (color: color-mix(in lab,red,red)){.dark{--code: color-mix(in srgb, var(--background) 98%, var(--color-white))}}@supports (color: color-mix(in lab,red,red)){.dark{--code-highlight: color-mix(in oklab, var(--color-white) 4%, transparent)}}@layer base{*{border-color:var(--border);outline-color:var(--ring)}@supports (color: color-mix(in lab,red,red)){*{outline-color:color-mix(in oklab,var(--ring) 50%,transparent)}}}.backdrop-blur-sm{background-color:color-mix(in oklab,#111111 70%,transparent);--tw-backdrop-blur: ;-webkit-backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter:var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,)}@property --tw-animation-delay{syntax: "*"; inherits: false; initial-value: 0s;}@property --tw-animation-direction{syntax: "*"; inherits: false; initial-value: normal;}@property --tw-animation-duration{syntax: "*"; inherits: false;}@property --tw-animation-fill-mode{syntax: "*"; inherits: false; initial-value: none;}@property --tw-animation-iteration-count{syntax: "*"; inherits: false; initial-value: 1;}@property --tw-enter-blur{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-enter-opacity{syntax: "*"; inherits: false; initial-value: 1;}@property --tw-enter-rotate{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-enter-scale{syntax: "*"; inherits: false; initial-value: 1;}@property --tw-enter-translate-x{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-enter-translate-y{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-exit-blur{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-exit-opacity{syntax: "*"; inherits: false; initial-value: 1;}@property --tw-exit-rotate{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-exit-scale{syntax: "*"; inherits: false; initial-value: 1;}@property --tw-exit-translate-x{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-exit-translate-y{syntax: "*"; inherits: false; initial-value: 0;}:root,:host{--radius: .25rem;--radius-sm: .125rem;--radius-md: .375rem;--radius-lg: .5rem;--radius-xl: .75rem;--radius-2xl: 1rem;--radius-3xl: 1.5rem;--radius-none: 0px;--cal-bg-emphasis: hsla(220, 13%, 91%, 1);--cal-bg: hsla(0, 0%, 100%, 1);--cal-bg-subtle: hsla(220, 14%, 94%, 1);--cal-bg-muted: hsla(210, 20%, 97%, 1);--cal-bg-inverted: hsla(210, 30%, 4%, 1);--cal-bg-primary: hsla(214, 30%, 16%, 1);--cal-bg-primary-emphasis: hsla(220, 6%, 25%, 1);--cal-bg-primary-muted: hsla(220, 14%, 94%, 1);--cal-bg-brand: hsla(214, 30%, 16%, 1);--cal-bg-brand-emphasis: hsla(220, 6%, 25%, 1);--cal-bg-brand-muted: hsla(220, 14%, 94%, 1);--cal-bg-semantic-info-subtle: hsla(212, 88%, 97%, 1);--cal-bg-semantic-info-emphasis: hsla(236, 80%, 25%, 1);--cal-bg-semantic-success-subtle: hsla(167, 54%, 93%, 1);--cal-bg-semantic-success-emphasis: hsla(158, 74%, 38%, 1);--cal-bg-semantic-attention-subtle: hsla(34, 100%, 92%, 1);--cal-bg-semantic-attention-emphasis: hsla(15, 79%, 34%, 1);--cal-bg-semantic-error-subtle: hsla(0, 93%, 94%, 1);--cal-bg-semantic-error-emphasis: hsla(0, 63%, 24%, 1);--cal-bg-visualization-1-subtle: hsla(326, 78%, 95%, 1);--cal-bg-visualization-1-emphasis: hsla(330, 81%, 60%, 1);--cal-bg-visualization-2-subtle: hsla(256, 86%, 91%, 1);--cal-bg-visualization-2-emphasis: hsla(256, 85%, 57%, 1);--cal-bg-visualization-3-subtle: hsla(217, 87%, 91%, 1);--cal-bg-visualization-3-emphasis: hsla(235, 100%, 63%, 1);--cal-bg-visualization-4-subtle: hsla(167, 54%, 93%, 1);--cal-bg-visualization-4-emphasis: hsla(158, 74%, 38%, 1);--cal-bg-visualization-5-subtle: hsla(55, 97%, 88%, 1);--cal-bg-visualization-5-emphasis: hsla(45, 93%, 47%, 1);--cal-bg-visualization-6-subtle: hsla(34, 100%, 92%, 1);--cal-bg-visualization-6-emphasis: hsla(25, 95%, 53%, 1);--cal-bg-visualization-7-subtle: hsla(0, 96%, 89%, 1);--cal-bg-visualization-7-emphasis: hsla(0, 84%, 60%, 1);--cal-bg-info: hsla(221, 91%, 93%, 1);--cal-bg-success: hsla(142, 76%, 94%, 1);--cal-bg-attention: hsla(33, 100%, 92%, 1);--cal-bg-error: hsla(3, 66%, 93%, 1);--cal-bg-dark-error: hsla(2, 55%, 30%, 1);--cal-bg-launch-dark: hsla(242, 53%, 10%, 1);--cal-border-emphasis: hsla(218, 11%, 65%, 1);--cal-border: hsla(216, 12%, 84%, 1);--cal-border-subtle: hsla(220, 13%, 91%, 1);--cal-border-muted: hsla(220, 14%, 94%, 1);--cal-border-error: hsla(0, 96%, 89%, 1);--cal-border-semantic-error: hsla(0, 96%, 89%, 1);--cal-border-semantic-attention-subtle: hsla(32, 98%, 83%, 1);--cal-border-semantic-error-subtle: hsla(0, 96%, 89%, 1);--cal-border-booker: var(--cal-border-subtle);--cal-text-emphasis: hsla(210, 30%, 4%, 1);--cal-text: hsla(220, 6%, 25%, 1);--cal-text-subtle: hsla(220, 9%, 46%, 1);--cal-text-muted: hsla(218, 11%, 65%, 1);--cal-text-inverted: hsla(0, 0%, 100%, 1);--cal-text-semantic-info: hsla(236, 80%, 25%, 1);--cal-text-semantic-success: hsla(150, 84%, 22%, 1);--cal-text-semantic-attention: hsla(15, 79%, 34%, 1);--cal-text-semantic-error: hsla(0, 63%, 24%, 1);--cal-text-visualization-1: hsla(332, 79%, 25%, 1);--cal-text-visualization-2: hsla(270, 91%, 25%, 1);--cal-text-visualization-3: hsla(217, 91%, 25%, 1);--cal-text-visualization-4: hsla(142, 71%, 25%, 1);--cal-text-visualization-5: hsla(45, 93%, 25%, 1);--cal-text-visualization-6: hsla(24, 95%, 25%, 1);--cal-text-visualization-7: hsla(0, 84%, 25%, 1);--cal-text-info: hsla(225, 57%, 33%, 1);--cal-text-success: hsla(144, 34%, 24%, 1);--cal-text-attention: hsla(16, 62%, 28%, 1);--cal-text-error: hsla(0, 63%, 31%, 1);--cal-brand: hsla(221, 39%, 11%, 1);--cal-brand-emphasis: hsla(0, 0%, 6%, 1);--cal-brand-text: hsla(0, 0%, 100%, 1);--shadow-dropdown: 0px 5px 20px 0px rgba(0, 0, 0, .1), 0px 10px 40px 0px rgba(0, 0, 0, .03);--shadow-switch-thumb: 0px .8px .8px 0px rgba(0, 0, 0, .1), 0px .8px 3.2px 0px rgba(0, 0, 0, .08);--shadow-solid-gray-rested: 0px 2px 3px 0px rgba(0, 0, 0, .06), 0px 1px 1px 0px rgba(0, 0, 0, .08), 1px 4px 8px 0px rgba(0, 0, 0, .12), 0px 2px .4px 0px rgba(255, 255, 255, .16) inset, 0px -1.5px 2px 0px rgba(0, 0, 0, .4) inset;--shadow-solid-gray-hover: 0px 2px 3px 0px rgba(0, 0, 0, .06), 0px 1px 1px 0px rgba(0, 0, 0, .08), 1px 4px 8px 0px rgba(0, 0, 0, .12), 0px 2px .4px 0px rgba(255, 255, 255, .16) inset, 0px -2px 2px 0px rgba(0, 0, 0, .4) inset;--shadow-solid-gray-active: 0px 2px 3px 0px rgba(0, 0, 0, .4) inset, 0px 0px 2px 1px rgba(0, 0, 0, .4) inset;--shadow-outline-gray-rested: 0px 2px 3px 0px rgba(0, 0, 0, .03), 0px 2px 2px -1px rgba(0, 0, 0, .03);--shadow-outline-gray-hover: 0px 2px 3px 0px rgba(0, 0, 0, .03), 0px 2px 2px -1px rgba(0, 0, 0, .03);--shadow-outline-gray-active: 0px 2px 1px 0px rgba(0, 0, 0, .05) inset;--shadow-outline-gray-focused: 0px 0px 0px 1px rgba(255, 255, 255, .2), 0px 0px 0px 2px rgba(0, 0, 0, .1);--shadow-outline-red-rested: 0px 2px 3px 0px rgba(0, 0, 0, .03), 0px 2px 2px -1px rgba(0, 0, 0, .03);--shadow-outline-red-hover: 0px 1px 1px 0px rgba(0, 0, 0, .06), 0px 2px 3px 0px rgba(0, 0, 0, .08);--shadow-outline-red-active: 0px 1px 1px 0px rgba(127, 29, 29, .06), 0px 0px 3px 0px rgba(127, 29, 29, .08), 0px 2px 2px 1px rgba(127, 29, 29, .06) inset;--shadow-elevation-low: 0px 1px 1px 0px rgba(0, 0, 0, .07), 0px 1px 2px 0px rgba(0, 0, 0, .08), 0px 2px 2px 0px rgba(0, 0, 0, .1), 0px 0px 8px 0px rgba(0, 0, 0, .05);--shadow-button-solid-brand-default: 0px 2px 3px 0px rgba(0, 0, 0, .06), 0px 1px 1px 0px rgba(0, 0, 0, .08), 1px 4px 8px 0px rgba(0, 0, 0, .12), 0px 2px .4px 0px rgba(255, 255, 255, .12) inset, 0px -3px 2px 0px rgba(0, 0, 0, .04) inset;--shadow-button-solid-brand-hover: 0px 1px 1px 0px rgba(0, 0, 0, .1), 0px 2px 3px 0px rgba(0, 0, 0, .08), 1px 4px 8px 0px rgba(0, 0, 0, .12), 0px -3px 2px 0px rgba(0, 0, 0, .1) inset, 0px 2px .4px 0px rgba(255, 255, 255, .24) inset;--shadow-button-solid-brand-active: 0px 3px 1px 0px rgba(0, 0, 0, .1) inset, 0px 0px 2px 0px rgba(0, 0, 0, .1) inset;--shadow-button-solid-brand-focused: 0px 0px 0px 1px rgba(255, 255, 255, .4), 0px 0px 0px 2px rgba(0, 0, 0, .2), 0px 1px 1px 0px rgba(0, 0, 0, .1), 0px 2px 3px 0px rgba(0, 0, 0, .08), 1px 4px 8px 0px rgba(0, 0, 0, .12), 0px -3px 2px 0px rgba(0, 0, 0, .1) inset, 0px 2px .4px 0px rgba(255, 255, 255, .24) inset;--shadow-button-outline-red-focused: 0px 0px 0px 1px rgba(255, 255, 255, .32), 0px 0px 0px 2px rgba(220, 38, 38, .15);--fill-emphasis: var(--cal-text-emphasis, #111827);--fill-default: var(--cal-text, #374151);--fill-subtle: var(--cal-text-subtle, #6B7280);--fill-muted: var(--cal-text-muted, #9CA3AF);--fill-inverted: var(--cal-text-inverted, white);--fill-info: var(--cal-text-info, #253985);--fill-success: var(--cal-text-success, #285231);--fill-attention: var(--cal-text-attention, #73321B);--fill-error: var(--cal-text-error, #752522);--fill-brand: var(--cal-brand-text)}.dark{--cal-bg-emphasis: hsla(0, 0%, 25%, 1);--cal-bg: hsla(0, 0%, 6%, 1);--cal-bg-subtle: hsla(0, 0%, 15%, 1);--cal-bg-muted: hsla(0, 0%, 9%, 1);--cal-bg-inverted: hsla(0, 0%, 98%, 1);--cal-bg-primary: hsla(0, 0%, 96%, 1);--cal-bg-primary-emphasis: hsla(0, 0%, 64%, 1);--cal-bg-primary-muted: hsla(0, 0%, 15%, 1);--cal-bg-brand: hsla(0, 0%, 98%, 1);--cal-bg-brand-emphasis: hsla(0, 0%, 96%, 1);--cal-bg-brand-muted: hsla(0, 0%, 96%, 1);--cal-bg-semantic-info-subtle: hsla(236, 80%, 8%, 1);--cal-bg-semantic-info-emphasis: hsla(229, 90%, 74%, 1);--cal-bg-semantic-success-subtle: hsla(148, 88%, 16%, 1);--cal-bg-semantic-success-emphasis: hsla(158, 74%, 38%, 1);--cal-bg-semantic-attention-subtle: hsla(21, 86%, 8%, 1);--cal-bg-semantic-attention-emphasis: hsla(27, 96%, 61%, 1);--cal-bg-semantic-error-subtle: hsla(0, 70%, 8%, 1);--cal-bg-semantic-error-emphasis: hsla(0, 91%, 71%, 1);--cal-bg-visualization-1-subtle: hsla(336, 74%, 35%, 1);--cal-bg-visualization-1-emphasis: hsla(330, 81%, 60%, 1);--cal-bg-visualization-2-subtle: hsla(252, 83%, 23%, 1);--cal-bg-visualization-2-emphasis: hsla(256, 85%, 57%, 1);--cal-bg-visualization-3-subtle: hsla(236, 74%, 35%, 1);--cal-bg-visualization-3-emphasis: hsla(235, 100%, 63%, 1);--cal-bg-visualization-4-subtle: hsla(150, 84%, 22%, 1);--cal-bg-visualization-4-emphasis: hsla(158, 74%, 38%, 1);--cal-bg-visualization-5-subtle: hsla(28, 73%, 26%, 1);--cal-bg-visualization-5-emphasis: hsla(45, 93%, 47%, 1);--cal-bg-visualization-6-subtle: hsla(15, 75%, 23%, 1);--cal-bg-visualization-6-emphasis: hsla(25, 95%, 53%, 1);--cal-bg-visualization-7-subtle: hsla(0, 70%, 35%, 1);--cal-bg-visualization-7-emphasis: hsla(0, 84%, 60%, 1);--cal-bg-info: hsla(228, 56%, 33%, 1);--cal-bg-success: hsla(133, 34%, 24%, 1);--cal-bg-attention: hsla(16, 62%, 28%, 1);--cal-bg-error: hsla(2, 55%, 30%, 1);--cal-bg-dark-error: hsla(2, 55%, 30%, 1);--cal-bg-launch-dark: hsla(242, 53%, 10%, 1);--cal-border: hsla(0, 0%, 30%, 1);--cal-border-muted: hsla(0, 0%, 9%, 1);--cal-border-subtle: hsla(0, 0%, 15%, 1);--cal-border-emphasis: hsla(0, 0%, 45%, 1);--cal-border-semantic-error: hsla(0, 63%, 24%, 1);--cal-border-semantic-attention-subtle: hsla(15, 75%, 23%, 1);--cal-border-semantic-error-subtle: hsla(0, 63%, 24%, 1);--cal-border-error: hsla(0, 63%, 24%, 1);--cal-border-booker: var(--cal-border-subtle);--cal-text-emphasis: hsla(0, 0%, 98%, 1);--cal-text: hsla(0, 0%, 83%, 1);--cal-text-subtle: hsla(0, 0%, 64%, 1);--cal-text-muted: hsla(0, 0%, 64%, 1);--cal-text-inverted: hsla(0, 0%, 0%, 1);--cal-text-semantic-info: hsla(229, 90%, 74%, 1);--cal-text-semantic-success: hsla(161, 49%, 54%, 1);--cal-text-semantic-attention: hsla(27, 96%, 61%, 1);--cal-text-semantic-error: hsla(0, 91%, 71%, 1);--cal-text-semantic-info-emphasis: hsla(217, 91%, 25%, 1);--cal-text-semantic-success-emphasis: hsla(142, 71%, 25%, 1);--cal-text-semantic-attention-emphasis: hsla(24, 95%, 25%, 1);--cal-text-semantic-error-emphasis: hsla(0, 84%, 25%, 1);--cal-text-info: hsla(218, 83%, 93%, 1);--cal-text-success: hsla(134, 76%, 94%, 1);--cal-text-attention: hsla(37, 86%, 92%, 1);--cal-text-error: hsla(3, 66%, 93%, 1);--cal-brand: hsla(0, 0%, 100%, 1);--cal-brand-emphasis: hsla(218, 11%, 65%, 1);--cal-brand-text: hsla(0, 0%, 0%, 1);--fill-emphasis: var(--cal-text-emphasis);--fill-default: var(--cal-text);--fill-subtle: var(--cal-text-subtle);--fill-muted: var(--cal-text-muted);--fill-inverted: var(--cal-text-inverted);--fill-info: var(--cal-text-info);--fill-success: var(--cal-text-success);--fill-attention: var(--cal-text-attention);--fill-error: var(--cal-text-error);--fill-brand: var(--cal-brand-text)}@font-face{font-family:Cal Sans;src:url(https://cal.com/cal.ttf)}h1,h2,h3,h4,h5,h6{font-family:Cal Sans;font-weight:400;letter-spacing:normal}html,body,:host{font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;--tw-border-style: solid}@layer base{*{scrollbar-color:initial;scrollbar-width:initial}}@property --tw-rotate-x{syntax: "*"; inherits: false;}@property --tw-rotate-y{syntax: "*"; inherits: false;}@property --tw-rotate-z{syntax: "*"; inherits: false;}@property --tw-skew-x{syntax: "*"; inherits: false;}@property --tw-skew-y{syntax: "*"; inherits: false;}@property --tw-border-style{syntax: "*"; inherits: false; initial-value: solid;}@property --tw-leading{syntax: "*"; inherits: false;}@property --tw-font-weight{syntax: "*"; inherits: false;}@property --tw-tracking{syntax: "*"; inherits: false;}@property --tw-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-shadow-color{syntax: "*"; inherits: false;}@property --tw-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-inset-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-inset-shadow-color{syntax: "*"; inherits: false;}@property --tw-inset-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-ring-color{syntax: "*"; inherits: false;}@property --tw-ring-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-inset-ring-color{syntax: "*"; inherits: false;}@property --tw-inset-ring-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-ring-inset{syntax: "*"; inherits: false;}@property --tw-ring-offset-width{syntax: "<length>"; inherits: false; initial-value: 0px;}@property --tw-ring-offset-color{syntax: "*"; inherits: false; initial-value: #fff;}@property --tw-ring-offset-shadow{syntax: "*"; inherits: false; initial-value: 0 0 #0000;}@property --tw-blur{syntax: "*"; inherits: false;}@property --tw-brightness{syntax: "*"; inherits: false;}@property --tw-contrast{syntax: "*"; inherits: false;}@property --tw-grayscale{syntax: "*"; inherits: false;}@property --tw-hue-rotate{syntax: "*"; inherits: false;}@property --tw-invert{syntax: "*"; inherits: false;}@property --tw-opacity{syntax: "*"; inherits: false;}@property --tw-saturate{syntax: "*"; inherits: false;}@property --tw-sepia{syntax: "*"; inherits: false;}@property --tw-drop-shadow{syntax: "*"; inherits: false;}@property --tw-drop-shadow-color{syntax: "*"; inherits: false;}@property --tw-drop-shadow-alpha{syntax: "<percentage>"; inherits: false; initial-value: 100%;}@property --tw-drop-shadow-size{syntax: "*"; inherits: false;}@property --tw-duration{syntax: "*"; inherits: false;}@property --tw-translate-x{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-translate-y{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-translate-z{syntax: "*"; inherits: false; initial-value: 0;}@property --tw-content{syntax: "*"; initial-value: ""; inherits: false;}@property --tw-scale-x{syntax: "*"; inherits: false; initial-value: 1;}@property --tw-scale-y{syntax: "*"; inherits: false; initial-value: 1;}@property --tw-scale-z{syntax: "*"; inherits: false; initial-value: 1;}@property --tw-backdrop-blur{syntax: "*"; inherits: false;}@property --tw-backdrop-brightness{syntax: "*"; inherits: false;}@property --tw-backdrop-contrast{syntax: "*"; inherits: false;}@property --tw-backdrop-grayscale{syntax: "*"; inherits: false;}@property --tw-backdrop-hue-rotate{syntax: "*"; inherits: false;}@property --tw-backdrop-invert{syntax: "*"; inherits: false;}@property --tw-backdrop-opacity{syntax: "*"; inherits: false;}@property --tw-backdrop-saturate{syntax: "*"; inherits: false;}@property --tw-backdrop-sepia{syntax: "*"; inherits: false;}@keyframes pulse{50%{opacity:.5}}@layer properties{@supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))){*,:before,:after,::backdrop{--tw-rotate-x: initial;--tw-rotate-y: initial;--tw-rotate-z: initial;--tw-skew-x: initial;--tw-skew-y: initial;--tw-border-style: solid;--tw-leading: initial;--tw-font-weight: initial;--tw-tracking: initial;--tw-shadow: 0 0 #0000;--tw-shadow-color: initial;--tw-shadow-alpha: 100%;--tw-inset-shadow: 0 0 #0000;--tw-inset-shadow-color: initial;--tw-inset-shadow-alpha: 100%;--tw-ring-color: initial;--tw-ring-shadow: 0 0 #0000;--tw-inset-ring-color: initial;--tw-inset-ring-shadow: 0 0 #0000;--tw-ring-inset: initial;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-offset-shadow: 0 0 #0000;--tw-blur: initial;--tw-brightness: initial;--tw-contrast: initial;--tw-grayscale: initial;--tw-hue-rotate: initial;--tw-invert: initial;--tw-opacity: initial;--tw-saturate: initial;--tw-sepia: initial;--tw-drop-shadow: initial;--tw-drop-shadow-color: initial;--tw-drop-shadow-alpha: 100%;--tw-drop-shadow-size: initial;--tw-duration: initial;--tw-translate-x: 0;--tw-translate-y: 0;--tw-translate-z: 0;--tw-content: "";--tw-scale-x: 1;--tw-scale-y: 1;--tw-scale-z: 1;--tw-backdrop-blur: initial;--tw-backdrop-brightness: initial;--tw-backdrop-contrast: initial;--tw-backdrop-grayscale: initial;--tw-backdrop-hue-rotate: initial;--tw-backdrop-invert: initial;--tw-backdrop-opacity: initial;--tw-backdrop-saturate: initial;--tw-backdrop-sepia: initial;--tw-animation-delay: 0s;--tw-animation-direction: normal;--tw-animation-duration: initial;--tw-animation-fill-mode: none;--tw-animation-iteration-count: 1;--tw-enter-blur: 0;--tw-enter-opacity: 1;--tw-enter-rotate: 0;--tw-enter-scale: 1;--tw-enter-translate-x: 0;--tw-enter-translate-y: 0;--tw-exit-blur: 0;--tw-exit-opacity: 1;--tw-exit-rotate: 0;--tw-exit-scale: 1;--tw-exit-translate-x: 0;--tw-exit-translate-y: 0}}}</style><style>@keyframes loader{0%{transform:rotate(0)}25%{transform:rotate(180deg)}50%{transform:rotate(180deg)}75%{transform:rotate(360deg)}to{transform:rotate(360deg)}}@keyframes loader-inner{0%{height:0%}25%{height:0%}50%{height:100%}75%{height:100%}to{height:0%}}.loader-inner{vertical-align:top;display:inline-block;width:100%;animation:loader-inner 2s infinite ease-in}.loader{display:block;width:30px;height:30px;position:relative;border-width:4px;border-style:solid;-webkit-animation:loader 2s infinite ease;animation:loader 2s infinite ease}.loader.modal-loader{margin:60px auto}</style>
-<div id="skeleton-container" style="width:100%;" class="dark">
-  <div id="skeleton" style="left: 50%; transform: translate(-50%, 0%); display: none;" class="absolute z-highest">
-    
-  <div data-testid="booker-container" class="[--booker-timeslots-width:240px] lg:[--booker-timeslots-width:280px] [--booker-meta-width:240px] [--booker-main-width:480px] lg:[--booker-meta-width:280px] bg-default grid max-w-full items-start dark:scheme-dark sm:motion-reduce:transition-none md:flex-row rounded-md sm:transition-[width] sm:duration-300 border-subtle border undefined" style="grid-template-areas: &quot;meta main main&quot; &quot;meta main main&quot;; width: calc(var(--booker-meta-width) + var(--booker-main-width)); grid-template-columns: var(--booker-meta-width) var(--booker-main-width); grid-template-rows: 1fr 0fr; min-height: 450px; height: auto;">
-     <div class="relative z-10 flex [grid-area:meta]" style="position: sticky; top: 0px;">
-        
-        <div class="relative z-10 p-6" data-testid="event-meta">
-          <div style="opacity: 1; transform: none;">
-            <ul class="flex items-center border-muted">
-              <li class="-mr-1 inline-block">
-                <span class="bg-emphasis relative inline-flex aspect-square items-center justify-center border align-top w-6 h-6 min-w-6 min-h-6 rounded-full overflow-hidden border-subtle">
-                  <div class="animate-pulse bg-emphasis w-full h-full"></div>
-                </span>
-              </li>
-            </ul>
-            <p class="text-subtle mt-2 text-sm font-semibold">
-              </p><div class="animate-pulse bg-emphasis h-4 w-24 rounded-sm"></div>
-            <p></p>
-            <h1 data-testid="event-title" class="text-text text-xl font-semibold my-2 mb-4">
-              <div class="animate-pulse bg-emphasis h-6 w-20 rounded-sm"></div>
-            </h1>
-            <div class="stack-y-3 font-medium">
-              
-    <div class="flex items-start justify-start text-sm text-text">
-      <div class="animate-pulse bg-emphasis h-4 w-4 mr-2 rounded-full"></div>
-      <div class="animate-pulse bg-emphasis h-4 w-10 rounded-sm"></div>
-    </div>
-    <div class="flex items-start justify-start text-sm text-text">
-      <div class="animate-pulse bg-emphasis h-4 w-4 mr-2 rounded-full"></div>
-      <div class="animate-pulse bg-emphasis h-4 w-20 rounded-sm mr-1"></div>
-      <div class="animate-pulse bg-emphasis h-4 w-4 rounded-sm"></div>
-    </div>
-  
-            </div>
-          </div>
-        </div>
-  
-      </div>
-      <div class="[grid-area:main] md:border-subtle -ml-px h-full shrink px-5 py-3 md:border-l lg:w-(--booker-main-width)" style="opacity: 1; transform: none;">
-         
-          <div>
-            <div class="mb-1 flex items-center justify-between text-xl">
-              <span class="text-default w-1/2 text-base">
-                <time datetime="2026-04" data-testid="selected-month-label">
-                  <span class="text-emphasis font-semibold">
-                    <div class="animate-pulse bg-emphasis h-4 w-20 rounded-sm"></div>
-                  </span> 
-                </time>
-              </span>
-              <div class="text-emphasis">
-                <div class="flex">
-                  <button class="group whitespace-nowrap items-center font-medium relative rounded-[10px] disabled:cursor-not-allowed gap-1 flex justify-center text-subtle border border-transparent enabled:hover:bg-subtle enabled:hover:text-emphasis enabled:hover:border-subtle hover:border disabled:opacity-30 focus-visible:bg-subtle focus-visible:outline-none focus-visible:ring-0 focus-visible:border-subtle focus-visible:shadow-button-outline-gray-focused enabled:active:shadow-outline-gray-active duration-200 text-sm leading-none min-h-[36px] min-w-[36px] p-2! hover:border-default group p-1 opacity-70 transition hover:opacity-100 rtl:rotate-180" data-testid="decrementMonth" aria-label="View previous month" type="button" disabled="">
-                    <svg height="16" width="16" class="fill-transparent visible button-icon group-active:translate-y-[0.5px] h-4 w-4" data-name="start-icon" aria-hidden="true">
-                      <use href="#chevron-left"></use>
-                    </svg>
-                    <div class="contents visible group-active:translate-y-[0.5px]"></div>
-                  </button>
-                  <button class="group whitespace-nowrap items-center font-medium relative rounded-[10px] disabled:cursor-not-allowed gap-1 flex justify-center text-subtle border border-transparent enabled:hover:bg-subtle enabled:hover:text-emphasis enabled:hover:border-subtle hover:border disabled:opacity-30 focus-visible:bg-subtle focus-visible:outline-none focus-visible:ring-0 focus-visible:border-subtle focus-visible:shadow-button-outline-gray-focused enabled:active:shadow-outline-gray-active duration-200 text-sm leading-none min-h-[36px] min-w-[36px] p-2! hover:border-default group p-1 opacity-70 transition hover:opacity-100 rtl:rotate-180 undefined" data-testid="incrementMonth" aria-label="View next month" type="button">
-                    <svg height="16" width="16" class="fill-transparent visible button-icon group-active:translate-y-[0.5px] h-4 w-4" data-name="start-icon" aria-hidden="true">
-                      <use href="#chevron-right"></use>
-                    </svg>
-                    <div class="contents visible group-active:translate-y-[0.5px]"></div>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="border-subtle mb-2 grid grid-cols-7 gap-4 border-b border-t text-center md:mb-0 md:border-0">
-              
-      <div class="text-emphasis my-4 text-xs font-medium uppercase tracking-widest">
-        <div class="animate-pulse bg-emphasis h-4 w-8 rounded-sm"></div>
-      </div> 
-    
-      <div class="text-emphasis my-4 text-xs font-medium uppercase tracking-widest">
-        <div class="animate-pulse bg-emphasis h-4 w-8 rounded-sm"></div>
-      </div> 
-    
-      <div class="text-emphasis my-4 text-xs font-medium uppercase tracking-widest">
-        <div class="animate-pulse bg-emphasis h-4 w-8 rounded-sm"></div>
-      </div> 
-    
-      <div class="text-emphasis my-4 text-xs font-medium uppercase tracking-widest">
-        <div class="animate-pulse bg-emphasis h-4 w-8 rounded-sm"></div>
-      </div> 
-    
-      <div class="text-emphasis my-4 text-xs font-medium uppercase tracking-widest">
-        <div class="animate-pulse bg-emphasis h-4 w-8 rounded-sm"></div>
-      </div> 
-    
-      <div class="text-emphasis my-4 text-xs font-medium uppercase tracking-widest">
-        <div class="animate-pulse bg-emphasis h-4 w-8 rounded-sm"></div>
-      </div> 
-    
-      <div class="text-emphasis my-4 text-xs font-medium uppercase tracking-widest">
-        <div class="animate-pulse bg-emphasis h-4 w-8 rounded-sm"></div>
-      </div> 
-    
-            </div>
-            <div class="relative grid grid-cols-7 grid-rows-6 gap-1 text-center">
-             
-  <div class="relative w-full pt-[100%]"></div>
-  <div class="relative w-full pt-[100%]"></div>
-  <div class="relative w-full pt-[100%]"></div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]">
-    <button class="bg-cal-muted text-muted absolute bottom-0 left-0 right-0 top-0 mx-auto flex w-full items-center justify-center rounded-sm border-transparent text-center font-medium opacity-90 transition" disabled="">
-      <span class="font-size-0 bg-emphasis inline-block animate-pulse rounded-md empty:before:inline-block empty:before:content-[&#39;&#39;] h-9 w-9"></span>
-    </button>
-  </div>
-  <div class="relative w-full pt-[100%]"></div>
-  <div class="relative w-full pt-[100%]"></div>
-  <div class="relative w-full pt-[100%]"></div>
-  <div class="relative w-full pt-[100%]"></div>
-  <div class="relative w-full pt-[100%]"></div>
-  <div class="relative w-full pt-[100%]"></div>
-  <div class="relative w-full pt-[100%]"></div>
-  <div class="relative w-full pt-[100%]"></div>
-  <div class="relative w-full pt-[100%]"></div>
-            </div>
-          </div>
-      </div>
-  </div>
-
-  </div>
-  <div id="wrapper" style="top:50%; left:50%; transform:translate(-50%,-50%)" class="absolute z-highest">
-    <div class="loader border-brand-default dark:border-darkmodebrand" style="display: none;">
-      <span class="loader-inner bg-brand dark:bg-darkmodebrand"></span>
-    </div>
-    <div id="error" style="transform:translate(-50%,-50%)" class="hidden">
-      Something went wrong.
-    </div>
-  </div>
-</div>
-<slot></slot>
-</template>
-    <iframe class="cal-embed" name="cal-embed=" title="Book a call" allow="payment" data-effective-cal-link="d4driving" src="./index_files/embed.html" style="height: 1162px; width: 100%;"></iframe></cal-inline>
-    <style>.cal-inline-container::-webkit-scrollbar{display:none}.cal-inline-container{scrollbar-width:none}</style></div>
+        <div id="cal-embed"></div>
       </div>
     </div>
   </div>
@@ -1168,17 +926,17 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     </div>
     <div class="passes-grid reveal">
       <div class="pass-card">
-        <img src="./index_files/Sonia.webp" alt="Sonia — passed her driving test with D4Driving">
+        <img src="Sonia.webp" alt="Sonia — passed her driving test with D4Driving">
         <div class="pass-label">Passed ✓</div>
         <div class="pass-name">Sonia</div>
       </div>
       <div class="pass-card">
-        <img src="./index_files/Buddhika.webp" alt="Buddhika — passed his driving test with D4Driving">
+        <img src="Buddhika.webp" alt="Buddhika — passed his driving test with D4Driving">
         <div class="pass-label">Passed ✓</div>
         <div class="pass-name">Regan</div>
       </div>
       <div class="pass-card">
-        <img src="./index_files/Sienna.webp" alt="Sienna — passed her driving test with D4Driving">
+        <img src="Sienna.webp" alt="Sienna — passed her driving test with D4Driving">
         <div class="pass-label">Passed ✓</div>
         <div class="pass-name">Sienna</div>
       </div>
@@ -1190,10 +948,32 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 <section id="youtube" class="sec" style="background:var(--bg2);">
   <div class="wrap">
     <div class="yt-grid">
-      <div class="yt-embed reveal">
-        <iframe src="./index_files/wrGwDyOoGz4.html" title="D4Driving — Driving Lesson Video" allowfullscreen="" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-        </iframe>
-      </div>
+      <!--
+        TO EMBED A SPECIFIC VIDEO INSTEAD:
+        1. Go to any video on your YouTube channel
+        2. Copy the video ID from the URL (the part after ?v=)
+        3. Replace this <a> block with:
+           <div class="yt-embed reveal">
+             <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+               title="D4Driving" allowfullscreen loading="lazy"
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+             </iframe>
+           </div>
+      -->
+      <a href="https://www.youtube.com/@d4drivingSOM"
+         target="_blank" rel="noopener"
+         class="yt-preview reveal"
+         aria-label="Visit D4Driving on YouTube">
+        <div class="yt-preview-bg" style="background-image:url('yaris-cross.webp');"></div>
+        <div class="yt-preview-play">
+          <div class="yt-play-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <span class="yt-preview-label">Watch on YouTube →</span>
+        </div>
+      </a>
       <div class="reveal">
         <div class="eyebrow">Free on YouTube</div>
         <h2>Learn Before<br>You Even Book.</h2>
@@ -1208,143 +988,6 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   </div>
 </section>
 
-<!-- ════ QUIZ ════ -->
-<section id="quiz" class="sec" style="background:var(--bg2);">
-  <div class="wrap">
-    <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto 44px;">
-      <div class="eyebrow" style="justify-content:center;">Find Your Perfect Package</div>
-      <h2>Which lesson package<br>is right for you?</h2>
-      <p style="color:var(--ink-mid);margin-top:14px;">Answer 3 quick questions and we'll recommend the perfect starting point.</p>
-    </div>
-    <div class="quiz-wrap reveal">
-      <div class="quiz-progress"><div class="quiz-progress-bar" id="quiz-bar" style="width:33%"></div></div>
-      <div class="quiz-step glass-card" id="q-step-1">
-        <div class="quiz-step-num">Question 1 of 3</div>
-        <div class="quiz-q">Have you passed your theory test?</div>
-        <div class="quiz-options">
-          <button class="quiz-opt" onclick="quizAnswer(1,&#39;theory_yes&#39;)"><span class="quiz-opt-icon">✅</span><span class="quiz-opt-text">Yes — I'm ready for the road!</span></button>
-          <button class="quiz-opt" onclick="quizAnswer(1,&#39;theory_no&#39;)"><span class="quiz-opt-icon">📖</span><span class="quiz-opt-text">Not yet — I still need to book it</span></button>
-        </div>
-      </div>
-      <div class="quiz-step glass-card" id="q-step-2" style="display:none;">
-        <div class="quiz-step-num">Question 2 of 3</div>
-        <div class="quiz-q">How much driving experience do you have?</div>
-        <div class="quiz-options">
-          <button class="quiz-opt" onclick="quizAnswer(2,&#39;exp_none&#39;)"><span class="quiz-opt-icon">🌱</span><span class="quiz-opt-text">Total beginner — never driven before</span></button>
-          <button class="quiz-opt" onclick="quizAnswer(2,&#39;exp_some&#39;)"><span class="quiz-opt-icon">🚗</span><span class="quiz-opt-text">A little — around 5–10 hours</span></button>
-          <button class="quiz-opt" onclick="quizAnswer(2,&#39;exp_ready&#39;)"><span class="quiz-opt-icon">🏁</span><span class="quiz-opt-text">Near test ready — 20+ hours</span></button>
-        </div>
-      </div>
-      <div class="quiz-step glass-card" id="q-step-3" style="display:none;">
-        <div class="quiz-step-num">Question 3 of 3</div>
-        <div class="quiz-q">How soon do you want to pass?</div>
-        <div class="quiz-options">
-          <button class="quiz-opt" onclick="quizAnswer(3,&#39;speed_fast&#39;)"><span class="quiz-opt-icon">⚡</span><span class="quiz-opt-text">As fast as possible — intensive course</span></button>
-          <button class="quiz-opt" onclick="quizAnswer(3,&#39;speed_steady&#39;)"><span class="quiz-opt-icon">📅</span><span class="quiz-opt-text">Steady pace — weekly lessons</span></button>
-          <button class="quiz-opt" onclick="quizAnswer(3,&#39;speed_flexible&#39;)"><span class="quiz-opt-icon">🤔</span><span class="quiz-opt-text">No rush — when I feel ready</span></button>
-        </div>
-      </div>
-      <div class="quiz-result glass-card" id="q-result" style="display:none;">
-        <div class="quiz-result-top">
-          <div class="quiz-result-icon" id="q-icon">🎯</div>
-          <div><div class="quiz-result-label">Your Recommended Package</div><div class="quiz-result-title" id="q-title"></div></div>
-          <div class="quiz-result-price" id="q-price"></div>
-        </div>
-        <p class="quiz-result-desc" id="q-desc"></p>
-        <div class="quiz-result-btns">
-          <a href="file:///C:/Users/rszat/Downloads/index_4.html#booking" class="btn btn-red" id="q-cta">Book This Package →</a>
-          <button class="btn btn-outline" onclick="quizReset()">Start Again</button>
-        </div>
-        <div class="quiz-result-note" id="q-note"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-.quiz-wrap { max-width: 640px; margin: 0 auto; }
-.quiz-progress { height: 4px; background: var(--border); border-radius: 99px; margin-bottom: 28px; overflow: hidden; }
-.quiz-progress-bar { height: 100%; background: var(--red); border-radius: 99px; transition: width .5s cubic-bezier(.4,0,.2,1); }
-.quiz-step, .quiz-result { padding: 36px 32px; }
-.quiz-step-num { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-.quiz-step-num::before { content: ''; display: block; width: 16px; height: 2px; background: var(--red); border-radius: 1px; }
-.quiz-q { font-size: clamp(18px,2.5vw,24px); font-weight: 800; color: var(--slate); line-height: 1.2; margin-bottom: 28px; letter-spacing: -0.5px; }
-.quiz-options { display: flex; flex-direction: column; gap: 12px; }
-.quiz-opt { display: flex; align-items: center; gap: 16px; background: var(--bg2); border: 1.5px solid var(--border); border-radius: 12px; padding: 16px 20px; cursor: pointer; text-align: left; font-family: var(--font); transition: all .2s; width: 100%; }
-.quiz-opt:hover { border-color: var(--red); background: var(--red-lo); transform: translateX(4px); }
-.quiz-opt-icon { font-size: 22px; flex-shrink: 0; }
-.quiz-opt-text { font-size: 15px; font-weight: 600; color: var(--slate); }
-.quiz-result-top { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
-.quiz-result-icon { font-size: 44px; flex-shrink: 0; }
-.quiz-result-label { font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
-.quiz-result-title { font-size: clamp(20px,3vw,28px); font-weight: 800; color: var(--slate); letter-spacing: -0.5px; }
-.quiz-result-price { margin-left: auto; font-size: 36px; font-weight: 800; color: var(--red); letter-spacing: -1px; }
-.quiz-result-desc { font-size: 15px; color: var(--ink-mid); line-height: 1.75; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
-.quiz-result-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
-.quiz-result-note { font-size: 12px; color: var(--ink-low); padding: 10px 14px; background: var(--bg2); border-radius: 8px; border-left: 3px solid var(--sage); line-height: 1.6; }
-.quiz-step { animation: quizIn .35s ease both; }
-.quiz-result { animation: quizIn .4s ease both; }
-@keyframes quizIn { from { opacity:0; transform:translateX(20px); } to { opacity:1; transform:translateX(0); } }
-@media(max-width:540px){ .quiz-step, .quiz-result { padding: 24px 20px; } .quiz-result-price { margin-left:0; } }
-</style>
-
-<script>
-(function() {
-  const answers = {};
-  const results = {
-    theory_no: { icon:'📖', title:'Theory First Package', price:'From £55', desc:'Before booking practical lessons, you\'ll need to pass your theory test. Start with our 90-minute Assessment lesson so Robert can evaluate your skills and build a personalised plan.', cta:'Book an Assessment', href:'#booking', note:'🎁 As a D4Driving student you get 3 months FREE access to the DTS Anytime theory revision app. <a href="https://www.dtsanytime.co.uk/login.aspx?Reseller=934" target="_blank" style="color:#BD2026;font-weight:700;">Preview the app →</a>' },
-    exp_none_fast: { icon:'⚡', title:'Semi-Intensive Course', price:'£800', desc:'Our full semi-intensive package — 21.5 hours of structured tuition plus complete test preparation. Designed to take you from zero to test-ready as quickly as possible.', cta:'Book Semi-Intensive', href:'https://buy.stripe.com/cNi5kE9XI3IVfr484DbII03', note:'💡 Most complete beginners on this course are test-ready within 6–8 weeks.' },
-    exp_none_steady: { icon:'🌱', title:'20-Hour Block', price:'£720', desc:'The ideal starting point for a total beginner at a comfortable pace. 20 hours gives you plenty of time to build solid foundations without feeling rushed.', cta:'Buy 20-Hour Block', href:'https://buy.stripe.com/eVqeVe2vg6V73Im84DbII02', note:'💡 You save £80 vs. booking 20 individual standard lessons.' },
-    exp_none_flexible: { icon:'📅', title:'Assessment + Weekly Lessons', price:'From £55', desc:'Start with our 90-minute Assessment lesson so Robert can meet you and create a personalised pass plan. From there, book weekly lessons at your own pace.', cta:'Book Assessment', href:'#booking', note:'💡 No pressure — many of our best students take their time and pass first time.' },
-    exp_some_fast: { icon:'⚡', title:'15-Hour Block', price:'£540', desc:'With some experience already, 15 focused hours with Robert should cover all remaining ground and get you test-ready quickly.', cta:'Buy 15-Hour Block', href:'https://buy.stripe.com/eVq7sM1rc2ERgv8doXbII01', note:'💡 Our most popular package — and you save £75 vs. individual bookings.' },
-    exp_some_steady: { icon:'🚗', title:'10-Hour Block', price:'£380', desc:'A 10-hour block is a smart, cost-effective way to fill the gaps and build test-ready confidence at a steady weekly pace.', cta:'Buy 10-Hour Block', href:'https://buy.stripe.com/9B6dRa5Hsenz1Ae70zbII00', note:'💡 You save £20 vs. booking individually — and block bookings guarantee your slot.' },
-    exp_some_flexible: { icon:'📅', title:'Standard Lessons', price:'£55 / 1.5hr', desc:'No rush? Book standard 1.5-hour lessons as and when you want. Robert will keep track of your progress and let you know when you\'re test-ready.', cta:'Book a Lesson', href:'#booking', note:'💡 When ready to commit to more hours, switch to a block booking and save money.' },
-    exp_ready_fast: { icon:'🏁', title:'Test Centre Prep — 4 Hours', price:'From £55/hr', desc:'4 focused hours on your specific test centre routes plus a full mock test debrief. The polish you need to walk in with confidence.', cta:'Book Test Prep', href:'#booking', note:'💡 Robert knows every test route inside out. Tell him your test date and centre.' },
-    exp_ready_other: { icon:'🎯', title:'Mock Test + Top-Up', price:'From £40/hr', desc:'A mock test followed by a couple of top-up sessions on your weak areas is usually all it takes. Robert\'ll give you an honest debrief before test day.', cta:'Book a Mock Test', href:'#booking', note:'💡 Most students at this stage need 2–4 more hours.' }
-  };
-  function getResult(a) {
-    if (a[1]==='theory_no') return results.theory_no;
-    const exp=a[2], speed=a[3];
-    if (exp==='exp_none') { if(speed==='speed_fast') return results.exp_none_fast; if(speed==='speed_steady') return results.exp_none_steady; return results.exp_none_flexible; }
-    if (exp==='exp_some') { if(speed==='speed_fast') return results.exp_some_fast; if(speed==='speed_steady') return results.exp_some_steady; return results.exp_some_flexible; }
-    if (exp==='exp_ready') { if(speed==='speed_fast') return results.exp_ready_fast; return results.exp_ready_other; }
-    return results.exp_some_steady;
-  }
-  window.quizAnswer = function(step, value) {
-    answers[step] = value;
-    const stepEl = document.getElementById(`q-step-${step}`);
-    stepEl.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
-    event.currentTarget.classList.add('selected');
-    setTimeout(() => {
-      stepEl.style.display = 'none';
-      if (step===1 && value==='theory_no') { showResult(); document.getElementById('quiz-bar').style.width='100%'; return; }
-      if (step<3) { document.getElementById(`q-step-${step+1}`).style.display='block'; document.getElementById('quiz-bar').style.width=`${((step+1)/3)*100}%`; }
-      else { showResult(); document.getElementById('quiz-bar').style.width='100%'; }
-    }, 280);
-  };
-  function showResult() {
-    const r = getResult(answers);
-    document.getElementById('q-icon').textContent  = r.icon;
-    document.getElementById('q-title').textContent = r.title;
-    document.getElementById('q-price').textContent = r.price;
-    document.getElementById('q-desc').textContent  = r.desc;
-    document.getElementById('q-note').innerHTML    = r.note;
-    const cta = document.getElementById('q-cta');
-    cta.textContent = r.cta + ' →';
-    cta.href = r.href;
-    if (r.href.startsWith('http')) cta.target='_blank';
-    document.getElementById('q-result').style.display='block';
-  }
-  window.quizReset = function() {
-    Object.keys(answers).forEach(k => delete answers[k]);
-    document.getElementById('q-result').style.display='none';
-    for(let i=1;i<=3;i++){const s=document.getElementById(`q-step-${i}`);s.style.display=i===1?'block':'none';s.querySelectorAll('.quiz-opt').forEach(b=>b.classList.remove('selected'));}
-    document.getElementById('quiz-bar').style.width='33%';
-    document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});
-  };
-})();
-</script>
-
 <!-- ════ BLOG / SORO ════ -->
 <section id="blog" class="sec" style="background:var(--bg);">
   <div class="wrap">
@@ -1353,7 +996,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <div class="eyebrow">Driving Tips &amp; Guides</div>
         <h2>Expert Advice<br>For Peterborough Learners.</h2>
       </div>
-      <a href="file:///C:/Users/rszat/Downloads/blog.html" class="btn btn-outline">All Articles →</a>
+      <a href="blog.html" class="btn btn-outline">All Articles →</a>
     </div>
     <div class="blog-grid" id="blog-grid">
       <div class="blog-loading"><div class="spinner"></div> <span>Loading articles…</span></div>
@@ -1371,18 +1014,34 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <p style="color:var(--ink-mid);font-size:15px;">I'll get back to you within 24 hours. Or skip the form and <a href="tel:07872347686" style="color:var(--red);font-weight:700;">give me a call</a>.</p>
         <div class="ci-list">
           <div class="ci"><div class="ci-icon">📞</div><div><div class="ci-label">Phone / Text</div><div class="ci-val"><a href="tel:07872347686">07872 347686</a></div></div></div>
-          <div class="ci"><div class="ci-icon">🌐</div><div><div class="ci-label">Website</div><div class="ci-val"><a href="https://www.d4driving.co.uk/">www.d4driving.co.uk</a></div></div></div>
+          <div class="ci"><div class="ci-icon">🌐</div><div><div class="ci-label">Website</div><div class="ci-val"><a href="https://www.d4driving.co.uk">www.d4driving.co.uk</a></div></div></div>
           <div class="ci"><div class="ci-icon">📍</div><div><div class="ci-label">Area</div><div class="ci-val">Peterborough &amp; surrounding areas</div></div></div>
           <div class="ci"><div class="ci-icon" style="background:#FF0000;color:#fff;">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
   </svg>
 </div><div><div class="ci-label">YouTube</div><div class="ci-val"><a href="https://www.youtube.com/@d4drivingSOM" target="_blank">@d4drivingSOM</a></div></div></div>
+          <div class="ci">
+            <div class="ci-icon" style="background:#1877F2;color:#fff;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </div>
+            <div><div class="ci-label">Facebook</div><div class="ci-val"><a href="https://www.facebook.com/d4drivingsom" target="_blank">d4drivingsom</a></div></div>
+          </div>
+          <div class="ci">
+            <div class="ci-icon" style="background:#010101;color:#fff;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+              </svg>
+            </div>
+            <div><div class="ci-label">TikTok</div><div class="ci-val"><a href="https://www.tiktok.com/@d4drivingsom" target="_blank">@d4drivingsom</a></div></div>
+          </div>
         </div>
       </div>
       <form class="reveal glass-card" style="padding:32px;" onsubmit="handleForm(event)">
-        <div class="f-field"><label>Your Name</label><input type="text" placeholder="e.g. Jane Smith" required=""></div>
-        <div class="f-field"><label>Email Address</label><input type="email" placeholder="your@email.com" required=""></div>
+        <div class="f-field"><label>Your Name</label><input type="text" placeholder="e.g. Jane Smith" required></div>
+        <div class="f-field"><label>Email Address</label><input type="email" placeholder="your@email.com" required></div>
         <div class="f-field"><label>Lesson Type</label>
           <select>
             <option value="">Select…</option>
@@ -1391,7 +1050,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
             <option>Not sure yet</option>
           </select>
         </div>
-        <div class="f-field"><label>Message</label><textarea placeholder="Tell me a bit about where you&#39;re at with your driving…"></textarea></div>
+        <div class="f-field"><label>Message</label><textarea placeholder="Tell me a bit about where you're at with your driving…"></textarea></div>
         <button type="submit" class="btn btn-slate" style="width:100%;">Send Message →</button>
         <div id="form-ok">✓ Message sent! I'll be in touch within 24 hours.</div>
       </form>
@@ -1404,18 +1063,18 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <img src="./index_files/400dpiLogoCropped.png" alt="D4Driving" class="logo">
+        <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving" class="logo">
         <p class="footer-tag">Expert driving tuition with D4Driving School of Motoring. Helping learners pass with confidence across Peterborough and surrounding areas since 2017.</p>
       </div>
       <div>
         <div class="footer-h">Quick Links</div>
         <div class="footer-links">
-          <a href="file:///C:/Users/rszat/Downloads/index_4.html#fleet">Our Cars</a>
-          <a href="file:///C:/Users/rszat/Downloads/index_4.html#about">About Robert</a>
-          <a href="file:///C:/Users/rszat/Downloads/index_4.html#prices">Lesson Prices</a>
-          <a href="file:///C:/Users/rszat/Downloads/index_4.html#coverage">Areas Covered</a>
-          <a href="file:///C:/Users/rszat/Downloads/index_4.html#booking">Book Online</a>
-          <a href="file:///C:/Users/rszat/Downloads/blog.html">Driving Tips</a>
+          <a href="#fleet">Our Cars</a>
+          <a href="#about">About Robert</a>
+          <a href="#prices">Lesson Prices</a>
+          <a href="#coverage">Areas Covered</a>
+          <a href="#booking">Book Online</a>
+          <a href="blog.html">Driving Tips</a>
         </div>
       </div>
       <div>
@@ -1423,6 +1082,8 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <div class="footer-links">
           <a href="tel:07872347686">📞 07872 347686</a>
           <a href="https://www.youtube.com/@d4drivingSOM" target="_blank">▶ YouTube</a>
+          <a href="https://www.facebook.com/d4drivingsom" target="_blank">📘 Facebook</a>
+          <a href="https://www.tiktok.com/@d4drivingsom" target="_blank">🎵 TikTok</a>
           <a href="https://g.page/r/Ca0Y46BYPxNMEAE/review" target="_blank">⭐ Leave a Review</a>
           <a href="https://cal.com/d4driving" target="_blank">📅 Book Online</a>
         </div>
@@ -1430,7 +1091,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     </div>
     <div class="footer-bottom">
       <p>© 2026 D4Driving School of Motoring. All rights reserved.</p>
-      <p><a href="file:///C:/Users/rszat/Downloads/index_4.html#hero">Back to top ↑</a></p>
+      <p><a href="#hero">Back to top ↑</a></p>
     </div>
   </div>
 </footer>
@@ -1438,11 +1099,11 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 <!-- WhatsApp Float -->
 <a href="https://wa.me/447872347686" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path>
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>
 </a>
 
-<button id="btt" onclick="window.scrollTo({top:0,behavior:&#39;smooth&#39;})" aria-label="Back to top">↑</button>
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <!-- Cal.com embed -->
 <script>
@@ -1486,7 +1147,6 @@ setTimeout(function () {
 </script>
 
 <script>
-/* ── Soro articles fetch ── */
 /* ── Soro articles — live RSS feed ── */
 const SORO_RSS = 'https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032';
 
@@ -1496,7 +1156,8 @@ function parseRSS(xml) {
     const get = tag => item.querySelector(tag)?.textContent?.trim() || '';
     const img = item.querySelector('enclosure')?.getAttribute('url')
              || item.querySelector('thumbnail')?.getAttribute('url')
-             || item.querySelector('image url')?.textContent?.trim() || '';
+             || item.querySelector('image url')?.textContent?.trim()
+             || '';
     return {
       title:   get('title'),
       link:    get('link'),
@@ -1511,12 +1172,12 @@ function parseRSS(xml) {
 function renderArticles(items) {
   const grid = document.getElementById('blog-grid');
   if (!items.length) { showFallback(); return; }
-  grid.innerHTML = items.map((a, i) => {
+  grid.innerHTML = items.map(a => {
     const date = a.date
       ? new Date(a.date).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})
       : '';
     return `
-      <a href="article.html?i=${i}" class="blog-card glass-card">
+      <a href="${a.link || 'blog.html'}" class="blog-card glass-card" target="_blank" rel="noopener">
         <div class="blog-img">
           ${a.image
             ? `<img src="${a.image}" alt="${a.title}" loading="lazy">`
@@ -1539,45 +1200,57 @@ function showFallback() {
   document.getElementById('blog-grid').innerHTML = `
     <div class="blog-loading" style="grid-column:1/-1;text-align:center;padding:40px;color:var(--ink-low);">
       <p style="font-size:15px;margin-bottom:12px;">Articles loading…</p>
+      <a href="${SORO_RSS}" target="_blank" style="color:var(--red);font-weight:600;font-size:13px;">View feed directly →</a>
     </div>`;
 }
 
 async function loadArticles() {
   try {
+    /* Attempt 1 — fetch RSS directly (works if Soro sends CORS headers) */
     const r1 = await fetch(SORO_RSS, { cache: 'no-store' });
-    if (r1.ok) { const items = parseRSS(await r1.text()); if (items.length) { renderArticles(items); return; } }
+    if (r1.ok) {
+      const xml = await r1.text();
+      const items = parseRSS(xml);
+      if (items.length) { renderArticles(items); return; }
+    }
   } catch(e) {}
+
   try {
-    const r2 = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(SORO_RSS)}`, { cache: 'no-store' });
-    if (r2.ok) { const j = await r2.json(); const items = parseRSS(j.contents||''); if (items.length) { renderArticles(items); return; } }
+    /* Attempt 2 — allorigins.win CORS proxy */
+    const proxy = `https://api.allorigins.win/get?url=${encodeURIComponent(SORO_RSS)}`;
+    const r2 = await fetch(proxy, { cache: 'no-store' });
+    if (r2.ok) {
+      const json = await r2.json();
+      const items = parseRSS(json.contents || '');
+      if (items.length) { renderArticles(items); return; }
+    }
   } catch(e) {}
+
   try {
-    const r3 = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(SORO_RSS)}&count=3`, { cache: 'no-store' });
+    /* Attempt 3 — rss2json.com */
+    const r3 = await fetch(
+      `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(SORO_RSS)}&count=3`,
+      { cache: 'no-store' }
+    );
     if (r3.ok) {
-      const d = await r3.json();
-      if (d.status==='ok' && d.items?.length) {
-        renderArticles(d.items.map((i,idx) => ({
-          title: i.title, link: i.link,
+      const data = await r3.json();
+      if (data.status === 'ok' && data.items?.length) {
+        renderArticles(data.items.map(i => ({
+          title:   i.title,
+          link:    i.link,
           excerpt: (i.description||'').replace(/<[^>]+>/g,'').slice(0,160),
-          date: i.pubDate, image: i.thumbnail||'', cat: i.categories?.[0]||'Driving Tips'
+          date:    i.pubDate,
+          image:   i.thumbnail || '',
+          cat:     i.categories?.[0] || 'Driving Tips'
         })));
         return;
       }
     }
   } catch(e) {}
+
   showFallback();
 }
-
-/* Lazy-load when blog section is visible */
-(function() {
-  const blogSection = document.getElementById('blog');
-  if (!blogSection) { loadArticles(); return; }
-  if (!('IntersectionObserver' in window)) { loadArticles(); return; }
-  const blogObs = new IntersectionObserver(function(entries) {
-    if (entries[0].isIntersecting) { loadArticles(); blogObs.disconnect(); }
-  }, { rootMargin: '300px' });
-  blogObs.observe(blogSection);
-})();
+loadArticles();
 
 /* ── Nav / scroll ── */
 const nav = document.getElementById('nav');
@@ -1600,18 +1273,17 @@ function cm() {
   document.body.style.overflow = '';
 }
 
-/* ── Reveal ── */
-new IntersectionObserver(
-  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
-  { threshold: 0.1 }
-).observe = (function(orig) {
-  return function(el) { orig.call(this, el); };
-})(IntersectionObserver.prototype.observe);
-const obs = new IntersectionObserver(
-  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
-  { threshold: 0.08 }
-);
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+/* ── Reveal — progressive enhancement ── */
+try {
+  const obs = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
+    { threshold: 0.06, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+} catch(e) {
+  /* If IntersectionObserver fails for any reason, make everything visible */
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('vis'));
+}
 
 /* ── Form ── */
 function handleForm(e) {
@@ -1619,24 +1291,15 @@ function handleForm(e) {
   document.getElementById('form-ok').style.display = 'block';
   e.target.reset();
 }
+
+/* ── Service Worker (PWA) — only on live domain ── */
+if ('serviceWorker' in navigator && location.hostname === 'www.d4driving.co.uk') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => console.log('D4Driving SW registered:', reg.scope))
+      .catch(err => console.log('SW registration failed:', err));
+  });
+}
 </script>
-<!-- ElevenLabs Conversational AI -->
-<script src="./index_files/index.js.download" async=""></script>
-<elevenlabs-convai agent-id="agent_1901knwr6453et2ab174n22dv063"><template shadowrootmode="open"><style>._devHost_1968y_7, :host {
-  --el-bg-color: #ffffff;
-  --el-text-color: #000000;
-  --el-border-color: #e1e1e1;
-  --el-border-radius: 20px;
-  --el-btn-color: #000000;
-  --el-btn-text-color: #ffffff;
-  --el-btn-radius: 32px;
-  --el-focus-color: #000000;
-  --el-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}@import"https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap";*{box-sizing:border-box}._devHost_1968y_7,:host{pointer-events:none;position:fixed;right:32px;bottom:32px;z-index:1000;--btn-max-width: 320px}._wrapper_1968y_18{display:flex;flex-direction:column-reverse;align-items:flex-end;gap:16px;font-family:Inter,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif}._box_1968y_39{background-color:var(--el-bg-color);color:var(--el-text-color);border:1px solid var(--el-border-color);display:flex;align-items:center;gap:16px;padding:20px;border-radius:var(--el-border-radius);box-shadow:0 0 64px 64px #0000001a;pointer-events:none;opacity:0;transition:opacity .2s var(--el-timing-function);max-width:calc(100vw - 64px);max-height:calc(100vh - 64px)}._open_1968y_57 ._box_1968y_39{pointer-events:initial;opacity:1}._compact_1968y_62:not(._customContent_1968y_62) ._box_1968y_39{gap:8px;padding:12px;border-radius:32px}._avatar_1968y_68{position:relative;width:54px;height:54px;flex-shrink:0}._compact_1968y_62 ._avatar_1968y_68{width:36px;height:36px}._avatarBackground_1968y_80{border-radius:50%;position:absolute;top:-1px;left:-1px;right:-1px;bottom:-1px;background-color:var(--el-border-color)}._avatarImage_1968y_90{border-radius:50%;position:absolute;top:0;left:0;right:0;bottom:0;background-size:cover;background-color:var(--el-bg-color);overflow:hidden}._canvas_1968y_102{width:100%;height:100%}._actions_1968y_107{width:min-content;display:flex;gap:11px;flex-direction:column}._actionButtons_1968y_114{min-width:calc(156px + var(--additional-width, 0px));max-width:var(--btn-max-width);display:flex;gap:8px}._status_1968y_121{font-size:14px;text-wrap:nowrap;line-height:24px;margin:-7px 0;max-width:var(--btn-max-width);overflow:hidden;text-overflow:ellipsis;color:var(--el-text-color)}._btn_1968y_132{--el-ring-color: transparent;--el-ring-radius: 0;--el-focus-ring-radius: 0;--el-border-width: 0;background-color:var(--el-btn-color);color:var(--el-btn-text-color);border-radius:var(--el-btn-radius);box-shadow:0 1px 2px #1018280d,0 0 0 var(--el-ring-radius) var(--el-ring-color),0 0 0 var(--el-focus-ring-radius) var(--el-focus-color),inset 0 0 0 var(--el-border-width) var(--el-border-color);cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;border:none;padding:0 16px;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;font-size:14px;font-weight:500;transition:all .2s var(--el-timing-function);flex-grow:1;flex-shrink:1;min-height:36px;min-width:0;max-width:var(--btn-max-width)}._avatarButton_1968y_166{background-color:transparent;color:transparent;box-shadow:none;height:56px;padding:0}._avatarButton_1968y_166 ._avatar_1968y_68{margin:1px}._btn_1968y_132:hover{--el-ring-color: rgba(125, 135, 155, .2);--el-ring-radius: 3px}._btn_1968y_132:active{--el-ring-color: rgba(101, 115, 135, .3);--el-ring-radius: 3px}._btn_1968y_132._disabled_1968y_189{opacity:.5}._btn_1968y_132:disabled{opacity:.5;pointer-events:none}._btn_1968y_132:focus-visible{--el-focus-ring-radius: 1px;outline:none}._btn_1968y_132._secondary_1968y_203{--el-border-width: 1px;background-color:var(--el-bg-color);color:var(--el-text-color)}._btn_1968y_132._secondary_1968y_203:hover{--el-ring-color: rgba(135, 145, 165, .1)}._btn_1968y_132._secondary_1968y_203:active{--el-ring-color: rgba(125, 135, 155, .2)}._btn_1968y_132._iconBtn_1968y_217{flex-grow:0;flex-shrink:0;height:36px;width:36px}._btn_1968y_132._select_1968y_224{flex-grow:0;flex-shrink:0;padding:6px;gap:4px}._ellipsis_1968y_231{flex-shrink:1;overflow:hidden;text-overflow:ellipsis}._iconSlot_1968y_237{display:flex;font-size:16px}._btnIcon_1968y_242{margin-left:-6px;margin-right:4px;flex-shrink:0}._minimize_1968y_248{pointer-events:all}._poweredBy_1968y_252{pointer-events:all;font-size:10px;align-self:center;text-align:center;color:var(--el-text-color)}._poweredBy_1968y_252 a,._poweredBy_1968y_252 span{opacity:.5}._poweredBy_1968y_252 a{white-space:nowrap;color:inherit;outline-color:var(--el-focus-color)}._poweredBy_1968y_252 a:hover,._poweredBy_1968y_252 a:focus-visible{opacity:1}._compact_1968y_62 ._poweredBy_1968y_252,._full_1968y_277 ._poweredBy_1968y_252{margin:-8px 0 -20px}._terms_1968y_281{display:none;max-width:480px;font-size:14px;line-height:20px;accent-color:var(--el-btn-color)}._terms_1968y_281 form{display:flex;flex-direction:column;gap:16px}._terms_1968y_281 p,._terms_1968y_281 ul,._terms_1968y_281 ol,._terms_1968y_281 h1,._terms_1968y_281 h2,._terms_1968y_281 h3,._terms_1968y_281 h4,._terms_1968y_281 h5,._terms_1968y_281 h6{margin:0;font-weight:400}._terms_1968y_281 a{color:var(--el-text-color)}._terms_1968y_281 ._strong_1968y_312{font-weight:500}._terms_1968y_281 h1{font-size:35px}._terms_1968y_281 h2{font-size:28px}._terms_1968y_281 h3{font-size:24px}._terms_1968y_281 h4{font-size:20px}._terms_1968y_281 h5{font-size:18px}._terms_1968y_281 h6{font-size:16px}._terms_1968y_281._show_1968y_340{display:block}._termsFooter_1968y_344{display:flex;gap:8px;justify-content:end;margin-top:20px}._termsFooter_1968y_344 ._btn_1968y_132{flex-grow:0}._feedback_1968y_355{display:flex;align-items:center;gap:8px;z-index:1;opacity:0;translate:0 8px;transition:all .6s var(--el-timing-function);font-size:12px;text-wrap:nowrap;line-height:10px;margin:0;color:var(--el-text-color)}._feedback_1968y_355._show_1968y_340{opacity:.5;translate:0 0;pointer-events:auto}._feedback_1968y_355._show_1968y_340:hover{opacity:1}._inlineFeedback_1968y_381{display:flex;align-items:center;gap:5px;z-index:1;translate:0 8px;transition:all .6s var(--el-timing-function);font-size:14px;font-weight:500;text-wrap:nowrap;line-height:20px}._inlineFeedback_1968y_381._show_1968y_340{translate:0 0;pointer-events:auto}._inlineFeedback_1968y_381 ._feedbackText_1968y_400{margin:0 12px}._flag_1968y_404{width:24px;height:24px;border-radius:50%;object-fit:cover;border:1px solid var(--el-border-color)}._selectContent_1968y_412{z-index:1;overflow:hidden;background-color:var(--el-bg-color);color:var(--el-text-color);border:1px solid var(--el-border-color);border-radius:var(--el-border-radius);max-height:min(384px,var(--radix-select-content-available-height));min-width:var(--radix-select-trigger-width)}._selectViewport_1968y_423{padding:8px}._selectValue_1968y_427{display:none;margin-right:auto;margin-left:auto}._selectIcon_1968y_433{padding-right:4px}._selectItem_1968y_437{display:flex;-webkit-user-select:none;user-select:none;align-items:center;padding:6px 32px 6px 6px;gap:8px;cursor:pointer;border-radius:var(--el-border-radius);position:relative}._selectItem_1968y_437:focus-visible{outline:none}._selectItem_1968y_437[data-highlighted]{background-color:#8080801a}._selectItemIndicator_1968y_456{position:absolute;right:0;width:32px;display:inline-flex;align-items:center;justify-content:center}._selectScrollButton_1968y_465{display:flex;align-items:center;justify-content:center;height:24px;background-color:var(--el-bg-color);cursor:default}._error_1968y_474{max-width:320px;font-size:14px;line-height:20px}._error_1968y_474 h1{margin:0 0 16px;font-size:20px;font-weight:400}._error_1968y_474 p{margin:0}</style><div class="_wrapper_1968y_18 _full_1968y_277 _open_1968y_57" style="--additional-width: 68px;"><div class="_poweredBy_1968y_252"><span>Powered by ElevenLabs&nbsp;</span><a href="https://elevenlabs.io/agents" target="_blank">Agents</a></div><div class="_box_1968y_39"><div class="_terms_1968y_281"><form><h4>Terms and conditions</h4>
-<p>By clicking "Agree," and each time I interact with this AI agent, I consent to the recording, storage, and sharing of my communications with third-party service providers, and as described in the Privacy Policy.
-If you do not wish to have your conversations recorded, please refrain from using this service.</p>
-</form><div class="_termsFooter_1968y_344"><button type="button" class="_btn_1968y_132 _secondary_1968y_203"><div class="_ellipsis_1968y_231">Cancel</div></button><button type="button" class="_btn_1968y_132"><div class="_ellipsis_1968y_231">Agree</div></button></div></div><div class="_avatar_1968y_68"><div class="_avatarBackground_1968y_80"></div><div class="_avatarImage_1968y_90"><canvas class="_canvas_1968y_102" width="67" height="67"></canvas></div></div><div class="_actions_1968y_107"><p class="_status_1968y_121">Need help?</p><div class="_actionButtons_1968y_114"><button type="button" title="Start a call" class="_btn_1968y_132"><slot name="icon-phone" class="_iconSlot_1968y_237 _btnIcon_1968y_242"><svg viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" stroke="currentColor" fill="currentColor"><path d="M 82.6 88.6 l 104 -24 c 11.3 -2.6 22.9 3.3 27.5 13.9 l 48 112 c 4.2 9.8 1.4 21.3 -6.9 28 l -60.6 49.6 c 36 76.7 98.9 140.5 177.2 177.2 l 49.6 -60.6 c 6.8 -8.3 18.2 -11.1 28 -6.9 l 112 48 C 572.1 430.5 578 442.1 575.4 453.4 l -24 104 C 548.9 568.2 539.3 576 528 576 c -256.1 0 -464 -207.5 -464 -464 c 0 -11.2 7.7 -20.9 18.6 -23.4 z"></path></svg></slot><div class="_ellipsis_1968y_231">Start a call</div></button><button type="button" role="combobox" aria-controls="radix-P0-0" aria-expanded="false" aria-autocomplete="none" dir="ltr" data-state="closed" aria-label="Food" class="_btn_1968y_132 _secondary_1968y_203 _select_1968y_224"><img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/us.svg" alt="US flag" class="_flag_1968y_404"><span class="_selectValue_1968y_427">English</span><span aria-hidden="true" class="_selectIcon_1968y_433"><slot name="icon-chevron-down" class="_iconSlot_1968y_237"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></slot></span></button></div></div></div><div class="_feedback_1968y_355"><span class="_feedbackText_1968y_400">Is this response helpful?</span><button type="button" title="Yes" class="_btn_1968y_132 _secondary_1968y_203 _iconBtn_1968y_217"><slot name="icon-thumbs-up" class="_iconSlot_1968y_237"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-thumbs-up"><path d="M7 10v12"></path><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"></path></svg></slot></button><button type="button" title="No" class="_btn_1968y_132 _secondary_1968y_203 _iconBtn_1968y_217"><slot name="icon-thumbs-down" class="_iconSlot_1968y_237"><svg xmlns="http://www.w3.org/2000/svg" height="1em" width="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 14V2"></path><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"></path></svg></slot></button></div></div></template></elevenlabs-convai>
-
-
-
-</body></html>
+</body>
+</html>
