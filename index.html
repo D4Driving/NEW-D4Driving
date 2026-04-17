@@ -1,24 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>D4Driving Peterborough | #1 Rated Driving Lessons</title>
-<!-- Mark JS as available immediately — enables CSS reveal animation -->
-<script>document.documentElement.classList.add('js-ready')</script>
 <meta name="description" content="D4Driving School of Motoring — DVSA Approved driving lessons in Peterborough. Brand-new Toyota fleet. Covering Peterborough, Grantham & Kettering. Book online instantly.">
-
-<!-- ═══ PWA ═══ -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#BD2026">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="D4Driving">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 
 <!--
   SETUP:
@@ -448,29 +434,6 @@ p  { line-height: 1.75; }
 .yt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
 .yt-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 16px; box-shadow: 0 20px 50px rgba(44,62,80,0.18); }
 .yt-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-.yt-preview {
-  position: relative; border-radius: 16px; overflow: hidden;
-  box-shadow: 0 20px 50px rgba(44,62,80,0.18);
-  aspect-ratio: 16/9; display: block; background: var(--slate);
-  text-decoration: none;
-}
-.yt-preview-bg {
-  position: absolute; inset: 0; background-size: cover; background-position: center 40%;
-  filter: brightness(0.5) saturate(0.7); transition: filter .4s;
-}
-.yt-preview:hover .yt-preview-bg { filter: brightness(0.35) saturate(0.7); }
-.yt-preview-play {
-  position: absolute; inset: 0; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 16px;
-}
-.yt-play-btn {
-  width: 72px; height: 72px; border-radius: 50%; background: #FF0000;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 8px 24px rgba(255,0,0,0.5); transition: transform .25s, box-shadow .25s;
-}
-.yt-preview:hover .yt-play-btn { transform: scale(1.12); box-shadow: 0 12px 32px rgba(255,0,0,0.65); }
-.yt-play-btn svg { width: 28px; height: 28px; fill: #fff; margin-left: 5px; }
-.yt-preview-label { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.92); letter-spacing: 0.3px; }
 .yt-count {
   display: inline-flex; align-items: center; gap: 12px;
   background: var(--red-lo); border: 1px solid var(--red-border);
@@ -565,7 +528,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 
 /* ─── BACK TO TOP ────────────────────────── */
 #btt {
-  position: fixed; bottom: 100px; right: 30px; z-index: 800;
+  position: fixed; bottom: 170px; right: 30px; z-index: 800;
   width: 44px; height: 44px; background: var(--slate); color: #fff;
   border: none; cursor: pointer; font-size: 18px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
@@ -577,10 +540,8 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 #btt:hover { transform: translateY(-3px); background: var(--red); }
 
 /* ─── REVEAL ─────────────────────────────── */
-/* ── Reveal — visible by default, animated when JS runs ── */
-.reveal { transition: opacity .65s ease, transform .65s ease; }
-.js-ready .reveal { opacity: 0; transform: translateY(24px); }
-.js-ready .reveal.vis { opacity: 1; transform: none; }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.vis { opacity: 1; transform: none; }
 
 /* ─── RESPONSIVE ─────────────────────────── */
 @media(max-width:960px){
@@ -606,7 +567,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   .hero-btns { flex-direction:column; }
   .btn { justify-content:center; }
 }
-</style>  
+</style>
 </head>
 <body>
 
@@ -949,32 +910,12 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 <section id="youtube" class="sec" style="background:var(--bg2);">
   <div class="wrap">
     <div class="yt-grid">
-      <!--
-        TO EMBED A SPECIFIC VIDEO INSTEAD:
-        1. Go to any video on your YouTube channel
-        2. Copy the video ID from the URL (the part after ?v=)
-        3. Replace this <a> block with:
-           <div class="yt-embed reveal">
-             <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-               title="D4Driving" allowfullscreen loading="lazy"
-               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
-             </iframe>
-           </div>
-      -->
-      <a href="https://www.youtube.com/@d4drivingSOM"
-         target="_blank" rel="noopener"
-         class="yt-preview reveal"
-         aria-label="Visit D4Driving on YouTube">
-        <div class="yt-preview-bg" style="background-image:url('yaris-cross.webp');"></div>
-        <div class="yt-preview-play">
-          <div class="yt-play-btn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-          </div>
-          <span class="yt-preview-label">Watch on YouTube →</span>
-        </div>
-      </a>
+      <div class="yt-embed reveal">
+        <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=d4drivingSOM"
+          title="D4Driving YouTube Channel" allowfullscreen loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+        </iframe>
+      </div>
       <div class="reveal">
         <div class="eyebrow">Free on YouTube</div>
         <h2>Learn Before<br>You Even Book.</h2>
@@ -989,259 +930,6 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════
-     THEORY TEST PRACTICE — Homepage promo section
-     Drop this wherever you want it on index.html.
-     Assumes your existing CSS variables / Plus Jakarta Sans
-     are already loaded on the page.
-     ═══════════════════════════════════════════════════════════ -->
-
-<section class="theory-promo" aria-label="Free theory test practice">
-  <div class="theory-promo__card">
-
-    <!-- Left: copy -->
-    <div class="theory-promo__body">
-      <span class="theory-promo__eyebrow">Free Practice Tool</span>
-      <h2 class="theory-promo__heading">Pass Your Theory Test</h2>
-      <p class="theory-promo__desc">
-        Test yourself with 20 DVSA-style questions — road signs, highway code,
-        hazard awareness and more. New questions every attempt, from a bank of 150.
-      </p>
-      <ul class="theory-promo__pills" aria-label="Quiz features">
-        <li>📋 20 Questions</li>
-        <li>⏱️ 23-Minute Timer</li>
-        <li>🪧 Road Signs</li>
-        <li>✅ Instant Results</li>
-      </ul>
-      <a href="./theory-quiz.html" class="theory-promo__btn">
-        Start Free Practice Test →
-      </a>
-    </div>
-
-    <!-- Right: decorative score mockup -->
-    <div class="theory-promo__visual" aria-hidden="true">
-      <div class="theory-promo__mockup">
-        <div class="tpm__bar">
-          <span class="tpm__dot tpm__dot--red"></span>
-          <span class="tpm__dot tpm__dot--amber"></span>
-          <span class="tpm__dot tpm__dot--green"></span>
-          <span class="tpm__title">Theory Test Practice</span>
-        </div>
-        <div class="tpm__body">
-          <div class="tpm__q-label">Road Signs · Q7 of 20</div>
-          <div class="tpm__q-text">
-            A red triangle containing a traffic light symbol warns you of what?
-          </div>
-          <div class="tpm__options">
-            <div class="tpm__opt">A. Speed camera ahead</div>
-            <div class="tpm__opt tpm__opt--selected">B. Traffic signals ahead</div>
-            <div class="tpm__opt">C. Crossroads ahead</div>
-            <div class="tpm__opt">D. Level crossing ahead</div>
-          </div>
-          <div class="tpm__progress-wrap">
-            <div class="tpm__progress-bar">
-              <div class="tpm__progress-fill" style="width:35%"></div>
-            </div>
-            <span class="tpm__progress-label">35% complete</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<style>
-/* ── Section wrapper ── */
-.theory-promo {
-  padding: 64px 24px;
-  background: var(--bg, #fbfdff);         /* falls back if var not set */
-}
-
-/* ── Card ── */
-.theory-promo__card {
-  max-width: 1060px;
-  margin: 0 auto;
-  background: rgba(255,255,255,0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: 20px;
-  box-shadow: 0 4px 40px rgba(44,62,80,0.11);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  overflow: hidden;
-}
-
-/* ── Left: copy ── */
-.theory-promo__body {
-  padding: 48px 44px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0;
-}
-
-.theory-promo__eyebrow {
-  display: inline-block;
-  background: rgba(189,32,38,0.09);
-  color: #BD2026;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  border-radius: 6px;
-  padding: 5px 12px;
-  margin-bottom: 14px;
-  width: fit-content;
-}
-
-.theory-promo__heading {
-  font-size: clamp(22px, 3vw, 30px);
-  font-weight: 800;
-  color: #2C3E50;
-  line-height: 1.2;
-  margin-bottom: 14px;
-  letter-spacing: -0.5px;
-}
-
-.theory-promo__desc {
-  font-size: 15px;
-  color: #555;
-  line-height: 1.65;
-  margin-bottom: 22px;
-}
-
-/* ── Feature pills ── */
-.theory-promo__pills {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 28px;
-}
-.theory-promo__pills li {
-  background: rgba(143,163,160,0.14);
-  color: #2C3E50;
-  font-size: 13px;
-  font-weight: 600;
-  border-radius: 20px;
-  padding: 6px 14px;
-}
-
-/* ── CTA button ── */
-.theory-promo__btn {
-  display: inline-block;
-  background: #BD2026;
-  color: #fff;
-  font-size: 15px;
-  font-weight: 700;
-  font-family: inherit;
-  text-decoration: none;
-  border-radius: 10px;
-  padding: 14px 28px;
-  transition: opacity 0.2s, transform 0.15s;
-  width: fit-content;
-}
-.theory-promo__btn:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-/* ── Right: visual ── */
-.theory-promo__visual {
-  background: linear-gradient(135deg, #2C3E50 0%, #1a2a38 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 32px;
-}
-
-/* ── Mockup card ── */
-.theory-promo__mockup {
-  background: rgba(251,253,255,0.96);
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-  width: 100%;
-  max-width: 340px;
-  overflow: hidden;
-  font-size: 13px;
-}
-
-.tpm__bar {
-  background: rgba(44,62,80,0.06);
-  border-bottom: 1px solid rgba(44,62,80,0.08);
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.tpm__dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-}
-.tpm__dot--red   { background: #BD2026; }
-.tpm__dot--amber { background: #e8a838; }
-.tpm__dot--green { background: #3da85a; }
-.tpm__title {
-  font-size: 11px;
-  font-weight: 700;
-  color: #8fa3a0;
-  margin-left: 6px;
-  letter-spacing: 0.3px;
-}
-
-.tpm__body { padding: 16px; }
-
-.tpm__q-label {
-  font-size: 10px;
-  font-weight: 700;
-  color: #8fa3a0;
-  letter-spacing: 0.4px;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
-.tpm__q-text {
-  font-size: 12px;
-  font-weight: 700;
-  color: #2C3E50;
-  line-height: 1.45;
-  margin-bottom: 12px;
-}
-.tpm__options { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
-.tpm__opt {
-  border: 1.5px solid rgba(44,62,80,0.14);
-  border-radius: 7px;
-  padding: 7px 10px;
-  font-size: 11px;
-  color: #2C3E50;
-  background: rgba(255,255,255,0.7);
-}
-.tpm__opt--selected {
-  background: rgba(189,32,38,0.07);
-  border-color: #BD2026;
-  font-weight: 700;
-}
-
-.tpm__progress-wrap { display: flex; align-items: center; gap: 8px; }
-.tpm__progress-bar  { flex: 1; background: rgba(143,163,160,0.2); border-radius: 3px; height: 5px; }
-.tpm__progress-fill { background: #BD2026; height: 100%; border-radius: 3px; }
-.tpm__progress-label { font-size: 10px; color: #8fa3a0; font-weight: 600; white-space: nowrap; }
-
-/* ── Responsive ── */
-@media (max-width: 800px) {
-  .theory-promo__card { grid-template-columns: 1fr; }
-  .theory-promo__visual { display: none; } /* hide mockup on small screens */
-  .theory-promo__body { padding: 36px 28px; }
-}
-@media (max-width: 480px) {
-  .theory-promo { padding: 40px 16px; }
-  .theory-promo__body { padding: 28px 20px; }
-}
-</style>
-
- 
 <!-- ════ BLOG / SORO ════ -->
 <section id="blog" class="sec" style="background:var(--bg);">
   <div class="wrap">
@@ -1275,22 +963,6 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
   </svg>
 </div><div><div class="ci-label">YouTube</div><div class="ci-val"><a href="https://www.youtube.com/@d4drivingSOM" target="_blank">@d4drivingSOM</a></div></div></div>
-          <div class="ci">
-            <div class="ci-icon" style="background:#1877F2;color:#fff;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-            </div>
-            <div><div class="ci-label">Facebook</div><div class="ci-val"><a href="https://www.facebook.com/d4drivingsom" target="_blank">d4drivingsom</a></div></div>
-          </div>
-          <div class="ci">
-            <div class="ci-icon" style="background:#010101;color:#fff;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
-              </svg>
-            </div>
-            <div><div class="ci-label">TikTok</div><div class="ci-val"><a href="https://www.tiktok.com/@d4drivingsom" target="_blank">@d4drivingsom</a></div></div>
-          </div>
         </div>
       </div>
       <form class="reveal glass-card" style="padding:32px;" onsubmit="handleForm(event)">
@@ -1336,8 +1008,6 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <div class="footer-links">
           <a href="tel:07872347686">📞 07872 347686</a>
           <a href="https://www.youtube.com/@d4drivingSOM" target="_blank">▶ YouTube</a>
-          <a href="https://www.facebook.com/d4drivingsom" target="_blank">📘 Facebook</a>
-          <a href="https://www.tiktok.com/@d4drivingsom" target="_blank">🎵 TikTok</a>
           <a href="https://g.page/r/Ca0Y46BYPxNMEAE/review" target="_blank">⭐ Leave a Review</a>
           <a href="https://cal.com/d4driving" target="_blank">📅 Book Online</a>
         </div>
@@ -1401,108 +1071,59 @@ setTimeout(function () {
 </script>
 
 <script>
-/* ── Soro articles — live RSS feed ── */
-const SORO_RSS = 'https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032';
-
-function parseRSS(xml) {
-  const doc = new DOMParser().parseFromString(xml, 'text/xml');
-  return Array.from(doc.querySelectorAll('item')).slice(0, 3).map(item => {
-    const get = tag => item.querySelector(tag)?.textContent?.trim() || '';
-    const img = item.querySelector('enclosure')?.getAttribute('url')
-             || item.querySelector('thumbnail')?.getAttribute('url')
-             || item.querySelector('image url')?.textContent?.trim()
-             || '';
-    return {
-      title:   get('title'),
-      link:    get('link'),
-      excerpt: get('description').replace(/<[^>]+>/g,'').slice(0,160),
-      date:    get('pubDate'),
-      image:   img,
-      cat:     get('category') || 'Driving Tips'
-    };
-  });
-}
-
-function renderArticles(items) {
+/* ── Soro articles fetch ── */
+async function loadArticles() {
   const grid = document.getElementById('blog-grid');
-  if (!items.length) { showFallback(); return; }
-  grid.innerHTML = items.map(a => {
-    const date = a.date
-      ? new Date(a.date).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})
-      : '';
-    return `
-      <a href="${a.link || 'blog.html'}" class="blog-card glass-card" target="_blank" rel="noopener">
+  try {
+    const r = await fetch('articles.json', { cache: 'no-store' });
+    if (!r.ok) throw new Error();
+    const arts = await r.json();
+    if (!arts.length) throw new Error();
+    grid.innerHTML = arts.slice(0, 3).map(a => `
+      <a href="${a.url || 'blog.html'}" class="blog-card glass-card" ${a.url && a.url.startsWith('http') ? 'target="_blank"' : ''}>
         <div class="blog-img">
-          ${a.image
-            ? `<img src="${a.image}" alt="${a.title}" loading="lazy">`
-            : `<div class="blog-img-placeholder">🚗</div>`}
+          ${a.image ? `<img src="${a.image}" alt="${a.title}" loading="lazy">` : `<div class="blog-img-placeholder">🚗</div>`}
         </div>
         <div class="blog-body">
-          <div class="blog-cat">${a.cat}</div>
+          <div class="blog-cat">${a.category || 'Driving Tips'}</div>
           <div class="blog-title">${a.title}</div>
-          <div class="blog-excerpt">${a.excerpt}${a.excerpt.length===160?'…':''}</div>
+          <div class="blog-excerpt">${a.excerpt || ''}</div>
           <div class="blog-footer">
-            <span class="blog-date">${date}</span>
+            <span class="blog-date">${a.date ? new Date(a.date).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : ''}</span>
             <span class="blog-arrow">→</span>
           </div>
         </div>
+      </a>`).join('');
+  } catch {
+    grid.innerHTML = `
+      <a href="blog.html" class="blog-card glass-card">
+        <div class="blog-img"><img src="https://d4driving.co.uk/blog1.webp" alt="Roundabouts" loading="lazy"></div>
+        <div class="blog-body">
+          <div class="blog-cat">Test Prep</div>
+          <div class="blog-title">Mastering Peterborough's Toughest Roundabouts</div>
+          <div class="blog-excerpt">Expert tips on the Eye Roundabout, A1139 merges, and the junctions most likely to come up on your test.</div>
+          <div class="blog-footer"><span class="blog-date"></span><span class="blog-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="blog.html" class="blog-card glass-card">
+        <div class="blog-img"><div class="blog-img-placeholder">📋</div></div>
+        <div class="blog-body">
+          <div class="blog-cat">Theory Test</div>
+          <div class="blog-title">How to Pass Your Theory Test First Time</div>
+          <div class="blog-excerpt">Everything you need to know about the hazard perception, multiple choice, and the most common reasons people fail.</div>
+          <div class="blog-footer"><span class="blog-date"></span><span class="blog-arrow">→</span></div>
+        </div>
+      </a>
+      <a href="blog.html" class="blog-card glass-card">
+        <div class="blog-img"><div class="blog-img-placeholder">🧠</div></div>
+        <div class="blog-body">
+          <div class="blog-cat">Nerves &amp; Confidence</div>
+          <div class="blog-title">How to Stay Calm on Your Driving Test Day</div>
+          <div class="blog-excerpt">Practical strategies to manage test nerves, from the night before right up to the moment the examiner says "drive on."</div>
+          <div class="blog-footer"><span class="blog-date"></span><span class="blog-arrow">→</span></div>
+        </div>
       </a>`;
-  }).join('');
-}
-
-function showFallback() {
-  document.getElementById('blog-grid').innerHTML = `
-    <div class="blog-loading" style="grid-column:1/-1;text-align:center;padding:40px;color:var(--ink-low);">
-      <p style="font-size:15px;margin-bottom:12px;">Articles loading…</p>
-      <a href="${SORO_RSS}" target="_blank" style="color:var(--red);font-weight:600;font-size:13px;">View feed directly →</a>
-    </div>`;
-}
-
-async function loadArticles() {
-  try {
-    /* Attempt 1 — fetch RSS directly (works if Soro sends CORS headers) */
-    const r1 = await fetch(SORO_RSS, { cache: 'no-store' });
-    if (r1.ok) {
-      const xml = await r1.text();
-      const items = parseRSS(xml);
-      if (items.length) { renderArticles(items); return; }
-    }
-  } catch(e) {}
-
-  try {
-    /* Attempt 2 — allorigins.win CORS proxy */
-    const proxy = `https://api.allorigins.win/get?url=${encodeURIComponent(SORO_RSS)}`;
-    const r2 = await fetch(proxy, { cache: 'no-store' });
-    if (r2.ok) {
-      const json = await r2.json();
-      const items = parseRSS(json.contents || '');
-      if (items.length) { renderArticles(items); return; }
-    }
-  } catch(e) {}
-
-  try {
-    /* Attempt 3 — rss2json.com */
-    const r3 = await fetch(
-      `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(SORO_RSS)}&count=3`,
-      { cache: 'no-store' }
-    );
-    if (r3.ok) {
-      const data = await r3.json();
-      if (data.status === 'ok' && data.items?.length) {
-        renderArticles(data.items.map(i => ({
-          title:   i.title,
-          link:    i.link,
-          excerpt: (i.description||'').replace(/<[^>]+>/g,'').slice(0,160),
-          date:    i.pubDate,
-          image:   i.thumbnail || '',
-          cat:     i.categories?.[0] || 'Driving Tips'
-        })));
-        return;
-      }
-    }
-  } catch(e) {}
-
-  showFallback();
+  }
 }
 loadArticles();
 
@@ -1527,17 +1148,18 @@ function cm() {
   document.body.style.overflow = '';
 }
 
-/* ── Reveal — progressive enhancement ── */
-try {
-  const obs = new IntersectionObserver(
-    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
-    { threshold: 0.06, rootMargin: '0px 0px -40px 0px' }
-  );
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-} catch(e) {
-  /* If IntersectionObserver fails for any reason, make everything visible */
-  document.querySelectorAll('.reveal').forEach(el => el.classList.add('vis'));
-}
+/* ── Reveal ── */
+new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
+  { threshold: 0.1 }
+).observe = (function(orig) {
+  return function(el) { orig.call(this, el); };
+})(IntersectionObserver.prototype.observe);
+const obs = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
+  { threshold: 0.08 }
+);
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 /* ── Form ── */
 function handleForm(e) {
@@ -1545,15 +1167,10 @@ function handleForm(e) {
   document.getElementById('form-ok').style.display = 'block';
   e.target.reset();
 }
-
-/* ── Service Worker (PWA) — only on live domain ── */
-if ('serviceWorker' in navigator && location.hostname === 'www.d4driving.co.uk') {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then(reg => console.log('D4Driving SW registered:', reg.scope))
-      .catch(err => console.log('SW registration failed:', err));
-  });
-}
 </script>
+<!-- ElevenLabs Conversational AI -->
+<script src="https://elevenlabs.io/convai-widget/index.js" async></script>
+<elevenlabs-convai agent-id="agent_1901knwr6453et2ab174n22dv063"></elevenlabs-convai>
+
 </body>
 </html>
