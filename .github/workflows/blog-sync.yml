@@ -1,0 +1,201 @@
+name: Soro Blog Sync
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
+permissions:
+  contents: write
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      # ── Step 1: Sync Soro blog articles ──────────────────────────────────
+      - name: Update Blog and Generate Articles
+        env:
+          RSS_URL: "https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032"
+        run: |
+          npm init -y
+          npm install rss-parser
+          node << 'EOF'
+          const Parser = require('rss-parser');
+          const fs = require('fs');
+          const parser = new Parser();
+          (async () => {
+            const feed = await parser.parseURL(process.env.RSS_URL);
+            const blogTemplate = fs.readFileSync('blog-template.html', 'utf8');
+            const articleTemplate = fs.readFileSync('article-template.html', 'utf8');
+
+            let gridCards = '';
+            for (const item of feed.items) {
+              const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
+              const imageUrl = item.enclosure ? item.enclosure.url : 'yaris-cross.webp';
+              const content = item['content:encoded'] || item.content || item.description || "";
+              gridCards += `
+              <a href="${slug}.html" class="blog-card glass-card">
+                <div class="blog-img">
+                  <img src="${imageUrl}" alt="${item.title}" loading="lazy">
+                </div>
+                <div class="blog-body">
+                  <div class="blog-cat">${(item.categories && item.categories[0]) || 'Driving Tips'}</div>
+                  <div class="blog-title">${item.title}</div>
+                  <div class="blog-excerpt">${(item.contentSnippet || "").slice(0,160)}…</div>
+                  <div class="blog-footer">
+                    <span class="blog-date">${item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : ''}</span>
+                    <span class="blog-arrow">→</span>
+                  </div>
+                </div>
+              </a>`;
+              let pageHtml = articleTemplate
+                .replace(/ARTICLE_TITLE/g, item.title)
+                .replace(/ARTICLE_IMAGE/g, imageUrl)
+                .replace(/ARTICLE_SLUG/g, slug)
+                .replace('ARTICLE_CONTENT', content)
+                .replace(/ARTICLE_DATE/g, item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}) : '')
+                .replace(/ARTICLE_CATEGORY/g, (item.categories && item.categories[0]) || 'Driving Tips')
+                .replace(/ARTICLE_EXCERPT/g, (item.contentSnippet || "").slice(0,160));
+              fs.writeFileSync(`${slug}.html`, pageHtml);
+              console.log(`Generated: ${slug}.html`);
+            }
+            const finalBlogHtml = blogTemplate.replace('GRID_GOES_HERE', gridCards);
+            fs.writeFileSync('blog.html', finalBlogHtml);
+            console.log('Blog updated successfully');
+          })();
+          EOF
+
+      # ── Step 2: Parse Google Calendar and write availability.json ─────────
+      - name: Generate Availability
+        run: |
+          node << 'EOF'
+          const https = require('https');
+          const fs    = require('fs');
+
+          const CAL_URL = 'https://calendar.google.com/calendar/ical/info%40d4driving.co.uk/public/basic.ics';
+
+          /* Working hours */
+          const HOURS = {
+            1: { start: 9,  end: 19 }, /* Mon */
+            2: { start: 9,  end: 19 }, /* Tue */
+            3: { start: 9,  end: 19 }, /* Wed */
+            4: { start: 9,  end: 19 }, /* Thu */
+            5: { start: 9,  end: 19 }, /* Fri */
+            6: { start: 10, end: 17 }, /* Sat */
+            0: null                    /* Sun — off */
+          };
+          const LESSON_MIN = 60;
+          const DAYS_AHEAD = 30;
+          const MAX_SLOTS  = 20;
+
+          function fetch(url) {
+            return new Promise((res, rej) => {
+              https.get(url, { headers: { 'User-Agent': 'D4DrivingBot/1.0' } }, (r) => {
+                if (r.statusCode >= 300 && r.statusCode < 400 && r.headers.location) {
+                  return fetch(r.headers.location).then(res).catch(rej);
+                }
+                let data = '';
+                r.on('data', c => data += c);
+                r.on('end', () => res(data));
+              }).on('error', rej);
+            });
+          }
+
+          function parseIcal(text) {
+            const events = [];
+            const blocks = text.split('BEGIN:VEVENT');
+            for (let i = 1; i < blocks.length; i++) {
+              const block = blocks[i];
+              const getVal = (key) => {
+                const re = new RegExp(`${key}(?:;[^:]*)?:([\\s\\S]*?)(?:\\r?\\n(?![\\t ]))`);
+                const m  = block.match(re);
+                return m ? m[1].replace(/\r?\n[\t ]/g, '').trim() : null;
+              };
+              const toDate = (s) => {
+                if (!s) return null;
+                s = s.replace(/^VALUE=DATE:/, '');
+                if (s.length === 8) return new Date(`${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}T00:00:00`);
+                const utc = s.endsWith('Z');
+                return new Date(`${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}T${s.slice(9,11)}:${s.slice(11,13)}:${s.slice(13,15)}${utc?'Z':''}`);
+              };
+              const start = toDate(getVal('DTSTART'));
+              const end   = toDate(getVal('DTEND')) || new Date((start||new Date()).getTime() + 3600000);
+              if (start) events.push({ start, end });
+            }
+            return events;
+          }
+
+          function findSlots(events) {
+            const slots = [];
+            const now   = new Date();
+            for (let d = 0; d < DAYS_AHEAD; d++) {
+              const date = new Date(now);
+              date.setDate(date.getDate() + d);
+              const dow = date.getDay();
+              const wh  = HOURS[dow];
+              if (!wh) continue; /* Sunday */
+
+              const dayStart = new Date(date); dayStart.setHours(wh.start, 0, 0, 0);
+              const dayEnd   = new Date(date); dayEnd.setHours(wh.end,   0, 0, 0);
+
+              const busy = events
+                .filter(e => e.start < dayEnd && e.end > dayStart)
+                .map(e => ({ start: new Date(Math.max(e.start, dayStart)), end: new Date(Math.min(e.end, dayEnd)) }))
+                .sort((a, b) => a.start - b.start);
+
+              let cursor = new Date(Math.max(dayStart, now));
+              const mins = cursor.getMinutes();
+              if (mins > 0) cursor.setMinutes(mins < 30 ? 30 : 60, 0, 0);
+
+              const trySlot = (from, to) => {
+                if ((to - from) / 60000 >= LESSON_MIN) {
+                  slots.push({
+                    date:  date.toISOString().slice(0, 10),
+                    start: from.toISOString(),
+                    end:   to.toISOString()
+                  });
+                }
+              };
+
+              for (const block of busy) {
+                if (cursor < block.start) trySlot(cursor, block.start);
+                cursor = new Date(Math.max(cursor, block.end));
+                if (slots.length >= MAX_SLOTS) return slots;
+              }
+              if (cursor < dayEnd) trySlot(cursor, dayEnd);
+              if (slots.length >= MAX_SLOTS) return slots;
+            }
+            return slots;
+          }
+
+          (async () => {
+            try {
+              const ical   = await fetch(CAL_URL);
+              if (!ical.includes('BEGIN:VCALENDAR')) throw new Error('Invalid iCal response');
+              const events = parseIcal(ical);
+              const slots  = findSlots(events);
+              fs.writeFileSync('availability.json', JSON.stringify({
+                generated: new Date().toISOString(),
+                slots
+              }, null, 2));
+              console.log(`Availability: wrote ${slots.length} slots to availability.json`);
+            } catch(e) {
+              console.error('Availability fetch failed:', e.message);
+              /* Write empty file so website shows fallback gracefully */
+              fs.writeFileSync('availability.json', JSON.stringify({ generated: new Date().toISOString(), slots: [] }, null, 2));
+            }
+          })();
+          EOF
+
+      # ── Step 3: Commit everything ─────────────────────────────────────────
+      - name: Save Changes
+        run: |
+          git config --global user.name "D4Driving-Bot"
+          git config --global user.email "bot@d4driving.co.uk"
+          git add .
+          git commit -m "Sync blog + availability" || echo "No changes to commit"
+          git push
