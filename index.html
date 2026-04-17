@@ -977,7 +977,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       renderSlots(slots);
     } catch(e) {
       console.warn('D4Driving availability:', e.message);
-      grid.innerHTML = `<div class="avail-empty">Couldn't load availability right now — <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to check availability.</div>`;
+      grid.innerHTML = `<div class="avail-empty">Availability updating — please check back shortly, or <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to check availability.</div>`;
     } finally {
       setRefreshState(false);
     }
@@ -1064,8 +1064,9 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <div class="wrap">
     <div class="yt-grid">
       <div class="yt-embed reveal">
-        <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=d4drivingSOM"
-          title="D4Driving YouTube Channel" allowfullscreen loading="lazy"
+        <iframe src="https://www.youtube-nocookie.com/embed/wrGwDyOoGz4"
+          title="D4Driving — Driving Lesson Video"
+          allowfullscreen loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
         </iframe>
       </div>
@@ -1411,61 +1412,87 @@ setTimeout(function () {
 </script>
 
 <script>
-/* ── Soro articles fetch ── */
-async function loadArticles() {
+/* ── Soro articles — live RSS feed ── */
+const SORO_RSS = 'https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032';
+
+function parseRSS(xml) {
+  const doc = new DOMParser().parseFromString(xml, 'text/xml');
+  return Array.from(doc.querySelectorAll('item')).slice(0, 3).map(item => {
+    const get = tag => item.querySelector(tag)?.textContent?.trim() || '';
+    const img = item.querySelector('enclosure')?.getAttribute('url')
+             || item.querySelector('thumbnail')?.getAttribute('url')
+             || item.querySelector('image url')?.textContent?.trim() || '';
+    return { title: get('title'), link: get('link'),
+      excerpt: get('description').replace(/<[^>]+>/g,'').slice(0,160),
+      date: get('pubDate'), image: img, cat: get('category') || 'Driving Tips' };
+  });
+}
+
+function renderArticles(items) {
   const grid = document.getElementById('blog-grid');
-  try {
-    const r = await fetch('articles.json', { cache: 'no-store' });
-    if (!r.ok) throw new Error();
-    const arts = await r.json();
-    if (!arts.length) throw new Error();
-    grid.innerHTML = arts.slice(0, 3).map(a => `
-      <a href="${a.url || 'blog.html'}" class="blog-card glass-card" ${a.url && a.url.startsWith('http') ? 'target="_blank"' : ''}>
+  if (!items.length) { showFallback(); return; }
+  grid.innerHTML = items.map((a, i) => {
+    const date = a.date ? new Date(a.date).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : '';
+    return `
+      <a href="article.html?i=${i}" class="blog-card glass-card">
         <div class="blog-img">
           ${a.image ? `<img src="${a.image}" alt="${a.title}" loading="lazy">` : `<div class="blog-img-placeholder">🚗</div>`}
         </div>
         <div class="blog-body">
-          <div class="blog-cat">${a.category || 'Driving Tips'}</div>
+          <div class="blog-cat">${a.cat}</div>
           <div class="blog-title">${a.title}</div>
-          <div class="blog-excerpt">${a.excerpt || ''}</div>
+          <div class="blog-excerpt">${a.excerpt}${a.excerpt.length===160?'…':''}</div>
           <div class="blog-footer">
-            <span class="blog-date">${a.date ? new Date(a.date).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : ''}</span>
+            <span class="blog-date">${date}</span>
             <span class="blog-arrow">→</span>
           </div>
         </div>
-      </a>`).join('');
-  } catch {
-    grid.innerHTML = `
-      <a href="blog.html" class="blog-card glass-card">
-        <div class="blog-img"><img src="https://d4driving.co.uk/blog1.webp" alt="Roundabouts" loading="lazy"></div>
-        <div class="blog-body">
-          <div class="blog-cat">Test Prep</div>
-          <div class="blog-title">Mastering Peterborough's Toughest Roundabouts</div>
-          <div class="blog-excerpt">Expert tips on the Eye Roundabout, A1139 merges, and the junctions most likely to come up on your test.</div>
-          <div class="blog-footer"><span class="blog-date"></span><span class="blog-arrow">→</span></div>
-        </div>
-      </a>
-      <a href="blog.html" class="blog-card glass-card">
-        <div class="blog-img"><div class="blog-img-placeholder">📋</div></div>
-        <div class="blog-body">
-          <div class="blog-cat">Theory Test</div>
-          <div class="blog-title">How to Pass Your Theory Test First Time</div>
-          <div class="blog-excerpt">Everything you need to know about the hazard perception, multiple choice, and the most common reasons people fail.</div>
-          <div class="blog-footer"><span class="blog-date"></span><span class="blog-arrow">→</span></div>
-        </div>
-      </a>
-      <a href="blog.html" class="blog-card glass-card">
-        <div class="blog-img"><div class="blog-img-placeholder">🧠</div></div>
-        <div class="blog-body">
-          <div class="blog-cat">Nerves &amp; Confidence</div>
-          <div class="blog-title">How to Stay Calm on Your Driving Test Day</div>
-          <div class="blog-excerpt">Practical strategies to manage test nerves, from the night before right up to the moment the examiner says "drive on."</div>
-          <div class="blog-footer"><span class="blog-date"></span><span class="blog-arrow">→</span></div>
-        </div>
       </a>`;
-  }
+  }).join('');
 }
-loadArticles();
+
+function showFallback() {
+  document.getElementById('blog-grid').innerHTML = `
+    <div class="blog-loading" style="grid-column:1/-1;text-align:center;padding:40px;color:var(--ink-low);">
+      <p style="font-size:15px;margin-bottom:12px;">Articles loading…</p>
+    </div>`;
+}
+
+async function loadArticles() {
+  try {
+    const r = await fetch(SORO_RSS, { cache: 'no-store' });
+    if (r.ok) { const items = parseRSS(await r.text()); if (items.length) { renderArticles(items); return; } }
+  } catch(e) {}
+  try {
+    const r = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(SORO_RSS)}`, { cache: 'no-store' });
+    if (r.ok) { const j = await r.json(); const items = parseRSS(j.contents||''); if (items.length) { renderArticles(items); return; } }
+  } catch(e) {}
+  try {
+    const r = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(SORO_RSS)}&count=3`, { cache: 'no-store' });
+    if (r.ok) {
+      const d = await r.json();
+      if (d.status==='ok' && d.items?.length) {
+        renderArticles(d.items.map((it,i) => ({
+          title: it.title, link: it.link,
+          excerpt: (it.description||'').replace(/<[^>]+>/g,'').slice(0,160),
+          date: it.pubDate, image: it.thumbnail||'', cat: it.categories?.[0]||'Driving Tips'
+        })));
+        return;
+      }
+    }
+  } catch(e) {}
+  showFallback();
+}
+
+/* Lazy-load when blog section is visible */
+(function() {
+  const blogSection = document.getElementById('blog');
+  if (!blogSection || !('IntersectionObserver' in window)) { loadArticles(); return; }
+  const o = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { loadArticles(); o.disconnect(); }
+  }, { rootMargin: '300px' });
+  o.observe(blogSection);
+})();
 
 /* ── Nav / scroll ── */
 const nav = document.getElementById('nav');
