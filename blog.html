@@ -5,29 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Driving Tips &amp; Guides | D4Driving Peterborough</title>
 <meta name="description" content="Free driving tips, test guides and advice for learners in Peterborough from D4Driving School of Motoring.">
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://www.d4driving.co.uk/blog.html">
+<meta property="og:title"       content="Driving Tips &amp; Guides | D4Driving Peterborough">
+<meta property="og:description" content="Free expert advice for learners in Peterborough — test prep, roundabout guides, theory tips and more.">
+<meta property="og:image"       content="https://www.d4driving.co.uk/yaris-cross.webp">
+<meta property="og:site_name"   content="D4Driving School of Motoring">
+<meta name="robots"    content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://www.d4driving.co.uk/blog.html">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#BD2026">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <script>document.documentElement.classList.add('js-ready')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Driving Tips & Guides — D4Driving Peterborough",
+  "url": "https://www.d4driving.co.uk/blog.html",
+  "description": "Free driving tips, test preparation guides and advice for learners in Peterborough.",
+  "publisher": {
+    "@type": "DrivingSchool",
+    "name": "D4Driving School of Motoring",
+    "url": "https://www.d4driving.co.uk"
+  }
+}
+</script>
 <style>
 :root {
   --red:#BD2026; --red-hi:#d4252c; --red-lo:rgba(189,32,38,0.08); --red-border:rgba(189,32,38,0.2);
-  --slate:#2C3E50; --slate-hi:#374f65; --slate-lo:rgba(44,62,80,0.06); --slate-mid:rgba(44,62,80,0.12);
+  --slate:#2C3E50; --slate-hi:#374f65; --slate-lo:rgba(44,62,80,0.06);
   --sage:#8fa3a0; --bg:#fbfdff; --bg2:#f3f7fb; --bg3:#eaf1f8;
   --glass-bg:rgba(255,255,255,0.9); --glass-border:rgba(226,232,240,0.8);
   --glass-shadow:0 20px 25px -5px rgba(0,0,0,0.05),0 8px 10px -6px rgba(0,0,0,0.03);
   --ink:#2C3E50; --ink-mid:#536878; --ink-low:#94a3b4; --border:rgba(226,232,240,0.8);
-  --font:'Plus Jakarta Sans',sans-serif;
+  --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:var(--font);background:var(--bg);color:var(--ink);overflow-x:hidden;}
 img{display:block;max-width:100%;}
 a{color:inherit;text-decoration:none;}
-
 .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
 
 /* NAV */
@@ -48,13 +71,24 @@ a{color:inherit;text-decoration:none;}
 .nav-back:hover{color:var(--slate);background:var(--slate-lo);}
 
 /* HERO */
-.blog-hero{background:var(--slate);padding:120px 0 64px;position:relative;overflow:hidden;}
+.blog-hero{background:var(--slate);padding:120px 0 56px;position:relative;overflow:hidden;}
 .blog-hero::before{content:'';position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:400px;height:400px;border-radius:50%;border:1.5px solid rgba(143,163,160,0.1);}
 .blog-hero::after{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--red);}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:14px;}
 .hero-eyebrow::before{content:'';display:block;width:16px;height:2px;background:var(--sage);border-radius:1px;}
 .blog-hero h1{font-size:clamp(32px,5vw,56px);font-weight:800;color:#fff;letter-spacing:-1.5px;line-height:1.05;margin-bottom:14px;}
 .blog-hero p{font-size:16px;color:rgba(255,255,255,0.6);max-width:520px;line-height:1.7;}
+
+/* SEARCH */
+.search-wrap{margin-top:28px;position:relative;max-width:480px;}
+.search-wrap svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:var(--sage);pointer-events:none;}
+#search-input{width:100%;padding:14px 48px 14px 46px;font-family:var(--font);font-size:15px;font-weight:500;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);border-radius:12px;color:#fff;outline:none;transition:background .2s,border-color .2s;}
+#search-input::placeholder{color:rgba(255,255,255,0.4);}
+#search-input:focus{background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.4);}
+.search-clear{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.15);border:none;border-radius:99px;width:22px;height:22px;cursor:pointer;display:none;align-items:center;justify-content:center;color:#fff;font-size:14px;line-height:1;transition:background .2s;}
+.search-clear.show{display:flex;}
+.search-clear:hover{background:rgba(255,255,255,0.25);}
+.search-count{font-size:12px;font-weight:600;color:var(--ink-low);margin-bottom:20px;min-height:20px;}
 
 /* GRID */
 .blog-section{padding:72px 0 96px;}
@@ -78,11 +112,8 @@ a{color:inherit;text-decoration:none;}
 .blog-date{font-size:12px;color:var(--ink-low);font-weight:500;}
 .blog-arrow{font-size:13px;font-weight:700;color:var(--red);transition:transform .2s;}
 .blog-card:hover .blog-arrow{transform:translateX(4px);}
-
-/* LOADING / EMPTY */
-.blog-loading,.blog-empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--ink-low);display:flex;align-items:center;justify-content:center;gap:12px;flex-direction:column;}
-.spinner{width:32px;height:32px;border-radius:50%;border:3px solid var(--border);border-top-color:var(--red);animation:spin .8s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg);}}
+.blog-card.hidden{display:none;}
+.blog-empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--ink-low);font-size:15px;}
 
 /* FOOTER */
 footer{background:var(--slate);padding:40px 0 24px;}
@@ -92,11 +123,14 @@ footer .logo{height:40px;width:auto;}
 .footer-links-row a{font-size:13px;font-weight:500;color:rgba(255,255,255,0.5);transition:color .2s;}
 .footer-links-row a:hover{color:#fff;}
 .footer-copy{margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);font-size:12px;color:rgba(255,255,255,0.3);}
-
-/* WhatsApp */
 .wa-float{position:fixed;bottom:30px;right:30px;background:#25d366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 20px rgba(37,211,102,0.3);z-index:800;transition:transform .3s;text-decoration:none;}
 .wa-float:hover{transform:scale(1.12);}
 .wa-float svg{width:26px;height:26px;fill:#fff;}
+
+@media(max-width:960px){
+  .nav-back span{display:none;}
+  .nav-phone{display:none;}
+}
 </style>
 </head>
 <body>
@@ -105,10 +139,10 @@ footer .logo{height:40px;width:auto;}
   <div class="wrap">
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
-        <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving">
+        <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving" width="180" height="42" decoding="async">
       </a>
       <div class="nav-right">
-        <a href="index.html" class="nav-back">← Back to site</a>
+        <a href="index.html" class="nav-back">← <span>Back to site</span></a>
         <a href="tel:07872347686" class="nav-phone">📞 07872 347686</a>
         <a href="https://cal.com/d4driving" target="_blank" class="btn btn-red">Book Online</a>
       </div>
@@ -121,13 +155,735 @@ footer .logo{height:40px;width:auto;}
     <div class="hero-eyebrow">D4Driving — Peterborough</div>
     <h1>Driving Tips<br>&amp; Guides</h1>
     <p>Free expert advice for learners in Peterborough — from test prep and roundabouts to theory tips and managing nerves.</p>
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="search" id="search-input" placeholder="Search articles…" autocomplete="off" spellcheck="false">
+      <button class="search-clear" id="search-clear" aria-label="Clear search">✕</button>
+    </div>
   </div>
 </div>
 
 <section class="blog-section">
   <div class="wrap">
+    <p class="search-count" id="search-count"></p>
     <div class="blog-grid" id="blog-grid">
-      <div class="blog-loading"><div class="spinner"></div><span>Loading articles…</span></div>
+      
+    <a href="how-nervous-learners-build-confidence.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/f32a9fbb-40e6-4c8d-aabf-fed10f77a51f.webp" alt="How Nervous Learners Build Confidence" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">How Nervous Learners Build Confidence</div>
+        <div class="blog-excerpt">Learn how nervous learners build confidence with calm practice, tailored driving lessons and simple routines that make each step feel manageable.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">16 Apr 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="how-to-gain-roundabout-confidence.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/23426f68-adef-4cfd-b76e-311d164ab745.webp" alt="How to Gain Roundabout Confidence" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">How to Gain Roundabout Confidence</div>
+        <div class="blog-excerpt">Learn how to gain roundabout confidence with calm, practical tips that help you judge speed, lanes and timing without feeling overwhelmed.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">14 Apr 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="7-best-reasons-to-choose-onetoone-tuition.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/98af3846-0351-4112-85df-8fc2205e52bb.webp" alt="7 Best Reasons to Choose One-to-One Tuition" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">7 Best Reasons to Choose One-to-One Tuition</div>
+        <div class="blog-excerpt">Discover the best reasons to choose one-to-one tuition for driving lessons, from faster progress to calmer learning and better test prep.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">12 Apr 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="automatic-driving-lesson-structure-explained.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/87fb4777-874a-4cae-8d37-2c32fadc59bc.webp" alt="Automatic Driving Lesson Structure Explained" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Automatic Driving Lesson Structure Explained</div>
+        <div class="blog-excerpt">Understand automatic driving lesson structure, what each stage covers, how progress builds, and how tailored lessons help you pass with confidence.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">10 Apr 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="is-one-to-one-tuition-worth-it-for-driving.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/78a2a0ea-d328-40d2-ac30-2455139c4543.webp" alt="Is One to One Tuition Worth It for Driving?" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Is One to One Tuition Worth It for Driving?</div>
+        <div class="blog-excerpt">Is one to one tuition worth it for driving lessons? See when personalised teaching saves time, builds confidence and helps you pass sooner.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">8 Apr 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="best-ways-to-stay-calm-driving.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4b4f7c0b-7bf9-4cbb-a7c3-d0067d246df9.webp" alt="Best Ways to Stay Calm Driving" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Best Ways to Stay Calm Driving</div>
+        <div class="blog-excerpt">Discover the best ways to stay calm driving, from breathing and planning to handling mistakes, traffic and test nerves with more confidence.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">6 Apr 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="how-to-overcome-driving-nerves.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/47335f37-0871-4d53-a301-41f56819481b-1774273262846.webp" alt="How to Overcome Driving Nerves" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">How to Overcome Driving Nerves</div>
+        <div class="blog-excerpt">Learn how to overcome driving nerves with calm, practical tips that build confidence, reduce anxiety and help you feel safer behind the wheel.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">4 Apr 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="best-time-of-day-for-driving-lessons.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/dec4f73d-1c1c-4e82-8bbb-e2f20569cb29.webp" alt="Best Time of Day for Driving Lessons" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Best Time of Day for Driving Lessons</div>
+        <div class="blog-excerpt">Find the best time of day for driving lessons based on confidence, traffic, focus and progress, with practical advice for new and test-ready learners.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">3 Apr 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="guide-to-safe-driving-habits-for-new-drivers.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/398a1fe5-f6f4-48ab-9432-666dfdc9db0a.webp" alt="Guide to Safe Driving Habits for New Drivers" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Guide to Safe Driving Habits for New Drivers</div>
+        <div class="blog-excerpt">A practical guide to safe driving habits for new drivers, with simple tips to build confidence, stay alert, and make better decisions on the road.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">2 Apr 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="roundabout-lane-discipline-lesson-peterborough.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3a0ec0c2-503a-46d5-9aff-2c9e97aa23e8.webp" alt="Roundabout Lane Discipline Lesson Peterborough" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Roundabout Lane Discipline Lesson Peterborough</div>
+        <div class="blog-excerpt">Roundabout lane discipline lesson Peterborough drivers can trust - build confidence, choose the right lane, and handle exits calmly and safely.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">1 Apr 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="dvsa-driving-test-changes-2026-explained.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/5192fd4c-f206-4973-92be-5454b5971fff.webp" alt="DVSA Driving Test Changes 2026 Explained" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">DVSA Driving Test Changes 2026 Explained</div>
+        <div class="blog-excerpt">DVSA driving test changes 2026 explained clearly - what may change, what stays the same, and how learners can prepare with confidence now.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">31 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="a-guide-to-learning-clutch-control-smoothly.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4502e9ce-4054-4363-8b04-9c0d990b3bea.webp" alt="A Guide to Learning Clutch Control Smoothly" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">A Guide to Learning Clutch Control Smoothly</div>
+        <div class="blog-excerpt">A guide to learning clutch control smoothly, with calm, practical tips to stop stalling, find the bite, and build confidence in a manual car.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">30 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="manual-vs-automatic-driving-lessons-for-beginners.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/84e007ab-77b0-4c1e-8a3e-8ee11cdba826.webp" alt="Manual vs Automatic Driving Lessons for Beginners" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Manual vs Automatic Driving Lessons for Beginners</div>
+        <div class="blog-excerpt">Manual vs automatic driving lessons for beginners - compare cost, confidence, test prep and long-term flexibility to choose the right start.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">29 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="parallel-parking-lesson-step-by-step.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/fd3c928e-2d71-4ebf-87a3-3f386e1ece71-1774272625720.webp" alt="Parallel Parking Lesson Step by Step" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Parallel Parking Lesson Step by Step</div>
+        <div class="blog-excerpt">A parallel parking lesson step by step for nervous learners - simple reference points, calm steering tips and test-ready advice that works.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">28 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="mistakes-on-driving-test-and-how-to-avoid-them.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/74fe66ff-9f0f-42ca-9d7e-50d6f8ebfc2e.webp" alt="Mistakes on Driving Test and How to Avoid Them" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Mistakes on Driving Test and How to Avoid Them</div>
+        <div class="blog-excerpt">Worried about mistakes on driving test day? Learn the most common faults, why they happen, and how to avoid them with calm, practical tips.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">27 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="is-automatic-licence-valid-for-all-cars.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/25148c3b-32db-47c3-abcc-49072da2ffc7.webp" alt="Is Automatic Licence Valid for All Cars?" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Is Automatic Licence Valid for All Cars?</div>
+        <div class="blog-excerpt">Is automatic licence valid for all cars? Find out what you can legally drive, the key exceptions, and when automatic is the right choice.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">27 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="driving-test-preparation-session-kettering-4-hours.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/d68881d3-769e-4b07-a028-da2ef2b4855f.webp" alt="Driving Test Preparation Session Kettering 4 Hours" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Driving Test Preparation Session Kettering 4 Hours</div>
+        <div class="blog-excerpt">Book a driving test preparation session Kettering 4 hours long to sharpen manoeuvres, route planning and confidence before test day.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">26 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="driving-instructor-vs-driving-school-differences.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/ea1a9350-cd91-4257-9a9d-8de7cc9c2e17.webp" alt="Driving instructor vs driving school differences" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Driving instructor vs driving school differences</div>
+        <div class="blog-excerpt">Understand driving instructor vs driving school differences, from lesson style and pricing to flexibility, so you can choose with confidence.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">25 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="manual-driving-lesson-hill-start-practice-tips.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/ddafdd61-f8cf-498d-9831-27335fc3b0c0.webp" alt="Manual Driving Lesson Hill Start Practice Tips" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Manual Driving Lesson Hill Start Practice Tips</div>
+        <div class="blog-excerpt">Manual driving lesson hill start practice tips to help you control clutch, bite point and handbrake with calm, safe practice and more confidence.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">23 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="best-ways-to-reduce-driving-lesson-anxiety.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/5360d6d5-8a66-4f33-9295-f672a601adb7.webp" alt="Best Ways to Reduce Driving Lesson Anxiety" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Best Ways to Reduce Driving Lesson Anxiety</div>
+        <div class="blog-excerpt">Discover the best ways to reduce driving lesson anxiety with calm, practical tips that build confidence, improve focus, and help you progress.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">22 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="theory-test-pass-tips-that-actually-help.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/01eb4e98-9fab-4f2c-b8c4-7fc45f99a027-1774133615684.webp" alt="Theory Test Pass Tips That Actually Help" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Theory Test Pass Tips That Actually Help</div>
+        <div class="blog-excerpt">Want a theory test pass without last-minute panic? Learn what to study, how to practise hazard perception, and how to feel ready on test day.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">21 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="one-to-one-driving-tuition-benefits-explained.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/de874b02-2e69-4c4d-8d09-0acf3b8abbf9.webp" alt="One to One Driving Tuition Benefits Explained" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">One to One Driving Tuition Benefits Explained</div>
+        <div class="blog-excerpt">Learn the one to one driving tuition benefits that help learners build confidence, improve safety and make steady progress toward test success.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">21 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="how-to-pass-the-driving-test-first-time.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c52a2089-8379-41a7-9437-fa8ab3cf5ceb.webp" alt="How to Pass the Driving Test First Time" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">How to Pass the Driving Test First Time</div>
+        <div class="blog-excerpt">Learn how to pass the driving test first time with calm, practical tips on lessons, manoeuvres, test nerves and smart preparation.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">19 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="female-instructor-or-male-instructor.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c7358890-3f02-4305-98d6-523664671da6.webp" alt="Female Instructor or Male Instructor?" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Female Instructor or Male Instructor?</div>
+        <div class="blog-excerpt">Choosing a female instructor or male instructor? Learn what really matters for confidence, progress and the right fit for driving lessons.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">19 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="best-driving-practice-routes-in-peterborough.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/e4428b5a-81e3-448f-8848-3c5b2d173549.webp" alt="Best Driving Practice Routes in Peterborough" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Best Driving Practice Routes in Peterborough</div>
+        <div class="blog-excerpt">Looking for the best routes to practise driving Peterborough? Try calm local roads, roundabouts and test-style routes that build confidence.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">18 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="most-common-driving-test-faults.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/398660c4-25c4-4365-a56b-c31cc79058c9.webp" alt="Most Common Driving Test Faults" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Most Common Driving Test Faults</div>
+        <div class="blog-excerpt">What are the most common driving test faults? Learn where learners lose marks most often and how to fix them before test day.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">17 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="starting-driving-lessons-with-confidence.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/88fa1a49-65a4-48c1-807c-57a3bd277e10.webp" alt="Starting Driving Lessons With Confidence" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Starting Driving Lessons With Confidence</div>
+        <div class="blog-excerpt">Learn how to start driving lessons as a beginner with calm, practical advice on choosing lessons, building confidence and making steady progress.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">14 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="automatic-or-manual-lessons-in-peterborough.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3d1d0c30-e25b-42ec-9fe4-69b865c427e0.webp" alt="Automatic or Manual Lessons in Peterborough?" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Automatic or Manual Lessons in Peterborough?</div>
+        <div class="blog-excerpt">Comparing automatic lessons vs manual lessons Peterborough learners choose, with clear advice on cost, confidence, test prep and goals.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">14 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="can-you-pass-with-4-hours-of-test-prep.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/f76f4ada-52e9-4b76-9102-bd56a6e2e423.webp" alt="Can You Pass With 4 Hours of Test Prep?" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Can You Pass With 4 Hours of Test Prep?</div>
+        <div class="blog-excerpt">Can you prepare for driving test in four hours? Learn what to focus on, what to expect, and how to use a short session wisely before test day.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">10 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="10-driving-test-day-tips-that-really-help.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/981f83f1-7710-4369-a0d6-17a2c90a221c.webp" alt="10 Driving Test Day Tips That Really Help" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">10 Driving Test Day Tips That Really Help</div>
+        <div class="blog-excerpt">Top driving test day tips for learners to stay calm, avoid common mistakes and give yourself the best chance of passing first time.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">9 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="7-smart-ways-to-practise-hazard-perception.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/20329cf6-cd92-4f01-8770-6a1df4bd6446.webp" alt="7 Smart Ways to Practise Hazard Perception" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">7 Smart Ways to Practise Hazard Perception</div>
+        <div class="blog-excerpt">Learn the best ways to practise hazard perception driving with calm, proven methods that build awareness, timing and test-day confidence.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">9 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="how-many-driving-lessons-do-you-need.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/243bab8f-ae65-42b6-87ba-03b8d86d4988.webp" alt="How Many Driving Lessons Do You Need?" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">How Many Driving Lessons Do You Need?</div>
+        <div class="blog-excerpt">Wondering how often should i take driving lessons? Find the right lesson frequency for confidence, progress, budget, and test success.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">8 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="7-ways-to-feel-confident-behind-the-wheel.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c5b370ab-2d57-453d-8b54-c81be79a176b.webp" alt="7 Ways to Feel Confident Behind the Wheel" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">7 Ways to Feel Confident Behind the Wheel</div>
+        <div class="blog-excerpt">Learn how to build confidence while learning to drive with calm, practical tips that help you feel safer, steadier and more in control.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">7 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="book-driving-lessons-online-in-peterborough.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4c65d2e9-76f7-4925-90ac-6ed123acdbb2.webp" alt="Book Driving Lessons Online in Peterborough" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Book Driving Lessons Online in Peterborough</div>
+        <div class="blog-excerpt">Book driving lessons online Peterborough with clear lesson blocks, honest pricing and a personalised plan that builds confidence fast from lesson one.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">6 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="warmup-lesson-before-your-peterborough-test.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4186cc1c-22df-4317-ad21-72cb5900e022.webp" alt="Warm-Up Lesson Before Your Peterborough Test" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Warm-Up Lesson Before Your Peterborough Test</div>
+        <div class="blog-excerpt">A driving test warm up lesson Peterborough helps you settle nerves, sharpen routines and arrive test-ready with calm, instructor-led preparation.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">4 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="driving-lessons-for-anxious-adults-in-peterborough.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/95b738e9-e8da-42ec-914c-b53f49d853a4.webp" alt="Driving Lessons for Anxious Adults in Peterborough" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Driving Lessons for Anxious Adults in Peterborough</div>
+        <div class="blog-excerpt">Driving lessons for anxious adults Peterborough: learn calm, confidence-building steps, lesson pacing and test prep so you can drive safely and freely.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">2 Mar 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="how-long-should-your-driving-lessons-be.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/0d2dff51-fe10-4dda-ac53-9522550cc7db.webp" alt="How Long Should Your Driving Lessons Be?" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">How Long Should Your Driving Lessons Be?</div>
+        <div class="blog-excerpt">Learn how to choose right lesson length for driving with 1, 1.5, or 2 hour sessions, based on confidence, progress, and test goals.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">28 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="automatic-cars-what-new-drivers-can-expect.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/61ee5947-3cdb-444e-81b9-caa9fcffc47f.webp" alt="Automatic cars: what new drivers can expect" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Automatic cars: what new drivers can expect</div>
+        <div class="blog-excerpt">The future of automatic cars for new drivers: EVs, hybrid tech, test choices, and what to learn now for safer, calmer driving in the years ahead.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">27 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="choosing-an-approved-driving-instructor-in-peterborough.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/a23d2e10-0b09-4b10-9878-784d26e69b91.webp" alt="Choosing an Approved Driving Instructor in Peterborough" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Choosing an Approved Driving Instructor in Peterborough</div>
+        <div class="blog-excerpt">Need an approved driving instructor Peterborough learners trust? Learn what to look for, how lessons work, and how to choose confidently.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">26 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="driving-test-manoeuvres-practice-that-works.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/9b999ef2-f1a2-4e2c-b612-cfff25f0bfff.webp" alt="Driving test manoeuvres practice that works" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Driving test manoeuvres practice that works</div>
+        <div class="blog-excerpt">Driving test manoeuvres practice made simple: learn what examiners want, how to practise safely, and how to build calm, repeatable routines.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">25 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="mock-test-lessons-that-actually-boost-pass-rates.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3b9688f6-8e9f-4ee0-bec6-9c5bcdac4514.webp" alt="Mock Test Lessons That Actually Boost Pass Rates" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Mock Test Lessons That Actually Boost Pass Rates</div>
+        <div class="blog-excerpt">A driving test mock test lesson builds calm, test-ready habits. Learn what happens in one, when to book, and how to use feedback to pass.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">24 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="your-first-driving-lesson-what-to-expect.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4df99afd-2cdd-43dd-8d4f-da60ecbf33e8.webp" alt="Your First Driving Lesson: What to Expect" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Your First Driving Lesson: What to Expect</div>
+        <div class="blog-excerpt">First driving lesson what to expect: how it starts, what you’ll do in the car, common nerves, and how to prepare so you feel calm and in control.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">23 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="driving-lessons-for-nervous-drivers-what-works.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/6936aba2-c087-447d-a348-737de1236b7f.webp" alt="Driving Lessons for Nervous Drivers: What Works" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Driving Lessons for Nervous Drivers: What Works</div>
+        <div class="blog-excerpt">Driving lessons for nervous drivers that build calm confidence fast. Learn what to expect, how to choose an instructor, and progress safely.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">22 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="manual-or-automatic-lessons-which-is-better.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/1b351dfa-492d-46e9-84c4-2a654cd5321c.webp" alt="Manual or Automatic Lessons: Which Is Better?" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Manual or Automatic Lessons: Which Is Better?</div>
+        <div class="blog-excerpt">Manual or automatic lessons which is better? Compare cost, confidence, test outcomes and long-term flexibility so you choose the right option.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">21 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="how-many-driving-lessons-do-you-really-need.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/aae05aca-60c1-49fc-9a4a-b00729204f7d.webp" alt="How Many Driving Lessons Do You Really Need?" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">How Many Driving Lessons Do You Really Need?</div>
+        <div class="blog-excerpt">Wondering how many driving lessons do i need? Learn what affects lesson numbers, realistic UK averages, and how to reach test-ready confidence.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">20 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="intensive-driving-test-prep-session-what-works.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c84bfb1d-6e58-4030-b9ba-372bd9b8e211.webp" alt="Intensive Driving Test Prep Session: What Works" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Intensive Driving Test Prep Session: What Works</div>
+        <div class="blog-excerpt">An intensive driving test preparation session builds confidence fast with focused routes, fault fixing and test-day practice for Peterborough learners.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">19 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="is-a-1hour-automatic-lesson-enough.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/405a5964-0650-4348-94ae-7dbf50b7052a.webp" alt="Is a 1-Hour Automatic Lesson Enough?" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Is a 1-Hour Automatic Lesson Enough?</div>
+        <div class="blog-excerpt">Automatic car lesson 1 hour: what you’ll cover, who it suits, and how to get real progress fast with calm, structured instruction.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">18 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="grantham-driving-test-prep-that-actually-works.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/ff46bd7b-85f0-45f5-9d31-b92808440549.webp" alt="Grantham Driving Test Prep That Actually Works" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Grantham Driving Test Prep That Actually Works</div>
+        <div class="blog-excerpt">Grantham driving test preparation made simpler: what to practise, common local pitfalls, and how to build confidence with focused test-ready lessons.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">17 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="kettering-driving-test-prep-that-actually-works.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4d9d2dcc-164c-45bb-8662-d7d52c03836d.webp" alt="Kettering Driving Test Prep That Actually Works" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Kettering Driving Test Prep That Actually Works</div>
+        <div class="blog-excerpt">Kettering driving test preparation that builds confidence fast. Learn the local routes, avoid common faults, and feel calm and ready on test day.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">16 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="peterborough-driving-test-prep-that-works.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/dd344118-ceaa-4f41-ad3d-15ed09629d8d-1774274206198.webp" alt="Peterborough Driving Test Prep That Works" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Peterborough Driving Test Prep That Works</div>
+        <div class="blog-excerpt">Peterborough driving test preparation made simple: what to practise, common local pitfalls, mock tests and calm strategies to help you pass with confidence.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">15 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
+    <a href="driving-lesson-prices-in-peterborough-what-to-pay.html" class="blog-card glass-card">
+      <div class="blog-img">
+        <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/460c7e14-b0e3-400a-a3b7-a291bd01f071-1774274253501.webp" alt="Driving lesson prices in Peterborough: what to pay" loading="lazy">
+      </div>
+      <div class="blog-body">
+        <div class="blog-cat">Driving Tips</div>
+        <div class="blog-title">Driving lesson prices in Peterborough: what to pay</div>
+        <div class="blog-excerpt">Driving lessons prices Peterborough explained: what affects cost, manual vs automatic, lesson lengths, blocks, and how to choose value with confidence.…</div>
+        <div class="blog-footer">
+          <span class="blog-date">14 Feb 2026</span>
+          <span class="blog-arrow">→</span>
+        </div>
+      </div>
+    </a>
     </div>
   </div>
 </section>
@@ -135,7 +891,7 @@ footer .logo{height:40px;width:auto;}
 <footer>
   <div class="wrap">
     <div class="footer-inner">
-      <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving" class="logo">
+      <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving" class="logo" loading="lazy" decoding="async" width="180" height="40">
       <div class="footer-links-row">
         <a href="index.html">Home</a>
         <a href="index.html#prices">Prices</a>
@@ -154,84 +910,59 @@ footer .logo{height:40px;width:auto;}
 </a>
 
 <script>
-const SORO_RSS = 'https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032';
+/* Search — works on static cards generated by GitHub Actions */
+const searchInput = document.getElementById('search-input');
+const searchClear = document.getElementById('search-clear');
+const searchCount = document.getElementById('search-count');
 
-function parseRSS(xml) {
-  const doc = new DOMParser().parseFromString(xml, 'text/xml');
-  return Array.from(doc.querySelectorAll('item')).map(item => {
-    const get = tag => item.querySelector(tag)?.textContent?.trim() || '';
-    const img = item.querySelector('enclosure')?.getAttribute('url')
-             || item.querySelector('thumbnail')?.getAttribute('url') || '';
-    return {
-      title:   get('title'),
-      link:    get('link'),
-      excerpt: get('description').replace(/<[^>]+>/g,'').slice(0,160),
-      date:    get('pubDate'),
-      image:   img,
-      cat:     get('category') || 'Driving Tips'
-    };
+function updateCount(visible, total) {
+  searchCount.textContent = visible === total
+    ? `${total} article${total !== 1 ? 's' : ''}`
+    : `${visible} result${visible !== 1 ? 's' : ''} for "${searchInput.value.trim()}"`;
+}
+
+const allCards = () => Array.from(document.querySelectorAll('#blog-grid .blog-card'));
+const total = allCards().length;
+if (total > 0) updateCount(total, total);
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase().trim();
+  searchClear.classList.toggle('show', q.length > 0);
+  let visible = 0;
+  allCards().forEach(card => {
+    const title   = card.querySelector('.blog-title')?.textContent.toLowerCase() || '';
+    const excerpt = card.querySelector('.blog-excerpt')?.textContent.toLowerCase() || '';
+    const cat     = card.querySelector('.blog-cat')?.textContent.toLowerCase() || '';
+    const match   = !q || title.includes(q) || excerpt.includes(q) || cat.includes(q);
+    card.classList.toggle('hidden', !match);
+    if (match) visible++;
   });
-}
-
-function renderCards(items) {
-  const grid = document.getElementById('blog-grid');
-  if (!items.length) {
-    grid.innerHTML = '<div class="blog-empty"><p>No articles yet — check back soon!</p></div>';
-    return;
-  }
-  grid.innerHTML = items.map(a => {
-    const date = a.date
-      ? new Date(a.date).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})
-      : '';
-    return `
-      <a href="${a.link||'#'}" class="blog-card glass-card" target="_blank" rel="noopener">
-        <div class="blog-img">
-          ${a.image
-            ? `<img src="${a.image}" alt="${a.title}" loading="lazy">`
-            : `<div class="blog-img-placeholder">🚗</div>`}
-        </div>
-        <div class="blog-body">
-          <div class="blog-cat">${a.cat}</div>
-          <div class="blog-title">${a.title}</div>
-          <div class="blog-excerpt">${a.excerpt}${a.excerpt.length===160?'…':''}</div>
-          <div class="blog-footer">
-            <span class="blog-date">${date}</span>
-            <span class="blog-arrow">→</span>
-          </div>
-        </div>
-      </a>`;
-  }).join('');
-}
-
-async function loadAll() {
-  try {
-    const r = await fetch(SORO_RSS, { cache: 'no-store' });
-    if (r.ok) { renderCards(parseRSS(await r.text())); return; }
-  } catch(e) {}
-  try {
-    const r = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(SORO_RSS)}`, { cache: 'no-store' });
-    if (r.ok) { const j = await r.json(); renderCards(parseRSS(j.contents||'')); return; }
-  } catch(e) {}
-  try {
-    const r = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(SORO_RSS)}`);
-    if (r.ok) {
-      const d = await r.json();
-      if (d.status==='ok' && d.items?.length) {
-        renderCards(d.items.map(i=>({
-          title:i.title, link:i.link,
-          excerpt:(i.description||'').replace(/<[^>]+>/g,'').slice(0,160),
-          date:i.pubDate, image:i.thumbnail||'', cat:i.categories?.[0]||'Driving Tips'
-        })));
-        return;
-      }
+  const empty = document.getElementById('no-results');
+  if (!visible && q) {
+    if (!empty) {
+      const div = document.createElement('div');
+      div.id = 'no-results';
+      div.className = 'blog-empty';
+      div.textContent = 'No articles found — try a different search term.';
+      document.getElementById('blog-grid').appendChild(div);
     }
-  } catch(e) {}
-  document.getElementById('blog-grid').innerHTML =
-    '<div class="blog-empty"><p>Articles temporarily unavailable — please try again shortly.</p></div>';
-}
-loadAll();
+  } else if (empty) {
+    empty.remove();
+  }
+  updateCount(visible || total, total);
+});
 
-/* Nav sticky */
+searchClear.addEventListener('click', () => {
+  searchInput.value = '';
+  searchClear.classList.remove('show');
+  allCards().forEach(c => c.classList.remove('hidden'));
+  const empty = document.getElementById('no-results');
+  if (empty) empty.remove();
+  updateCount(total, total);
+  searchInput.focus();
+});
+
+/* Sticky nav */
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('stuck', window.scrollY > 40));
 </script>
