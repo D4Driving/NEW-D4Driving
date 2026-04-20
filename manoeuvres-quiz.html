@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D4Driving — Manoeuvres Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fbfdff;color:#2C3E50;padding:1.5rem 1rem;min-height:100vh}
+.qz-wrap{max-width:640px;margin:0 auto}
+.qz-header{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem}
+.qz-logo{background:#BD2026;color:#fff;font-size:13px;font-weight:700;padding:5px 10px;border-radius:6px;letter-spacing:.5px}
+.qz-title{font-size:14px;color:#8fa3a0}
+.qz-progress-wrap{margin-bottom:1.5rem}
+.qz-prog-labels{display:flex;justify-content:space-between;font-size:12px;color:#8fa3a0;margin-bottom:6px}
+.qz-prog-bar{height:5px;background:#e8eeee;border-radius:3px;overflow:hidden}
+.qz-prog-fill{height:100%;background:#BD2026;border-radius:3px;transition:width .4s ease}
+.qz-topic-badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:1rem;letter-spacing:.3px;background:#f0f4f4;color:#5a7472}
+.qz-question-card{background:#fff;border:0.5px solid #dde4e4;border-radius:12px;padding:1.25rem;margin-bottom:1rem;box-shadow:0 1px 4px rgba(44,62,80,.05)}
+.qz-q-num{font-size:12px;color:#aab8b8;margin-bottom:.5rem}
+.qz-question{font-size:15px;font-weight:500;color:#2C3E50;line-height:1.6}
+.qz-options{display:flex;flex-direction:column;gap:8px;margin-top:1rem}
+.qz-btn{text-align:left;background:#fff;border:0.5px solid #ccd8d8;border-radius:8px;padding:10px 14px;font-size:14px;color:#2C3E50;cursor:pointer;transition:background .15s,border-color .15s;line-height:1.5;font-family:'Plus Jakarta Sans',sans-serif}
+.qz-btn:hover:not(:disabled){background:#f4f8f8;border-color:#8fa3a0}
+.qz-btn:disabled{cursor:default}
+.qz-btn.correct{background:#eaf3de;border-color:#639922;color:#3B6D11}
+.qz-btn.wrong{background:#fcebeb;border-color:#E24B4A;color:#A32D2D}
+.qz-btn.reveal{background:#eaf3de;border-color:#639922;color:#3B6D11}
+.qz-feedback{font-size:13px;margin-top:.75rem;padding:8px 12px;border-radius:8px;line-height:1.5}
+.qz-feedback.ok{background:#eaf3de;color:#3B6D11}
+.qz-feedback.ko{background:#fcebeb;color:#A32D2D}
+.qz-next{display:block;width:100%;margin-top:1rem;padding:11px;background:#BD2026;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s;font-family:'Plus Jakarta Sans',sans-serif}
+.qz-next:hover{opacity:.9}
+.qz-next:disabled{opacity:.4;cursor:default}
+.qz-score-card{text-align:center;padding:2rem 1.25rem;background:#fff;border:0.5px solid #dde4e4;border-radius:12px;box-shadow:0 1px 4px rgba(44,62,80,.05)}
+.qz-score-ring{width:110px;height:110px;margin:0 auto 1.25rem;position:relative}
+.qz-score-ring svg{transform:rotate(-90deg)}
+.qz-score-ring-label{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.qz-score-ring-num{font-size:28px;font-weight:700;color:#2C3E50}
+.qz-score-ring-den{font-size:13px;color:#8fa3a0}
+.qz-score-msg{font-size:15px;font-weight:500;color:#2C3E50;margin-bottom:.5rem}
+.qz-score-sub{font-size:13px;color:#8fa3a0;margin-bottom:1rem}
+.qz-breakdown{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:1.5rem}
+.qz-bd-item{background:#f4f8f8;border-radius:8px;padding:.75rem;text-align:center}
+.qz-bd-topic{font-size:11px;color:#8fa3a0;margin-bottom:4px;line-height:1.4}
+.qz-bd-score{font-size:18px;font-weight:600;color:#2C3E50}
+.qz-restart{display:inline-block;padding:10px 28px;background:#BD2026;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:opacity .15s;font-family:'Plus Jakarta Sans',sans-serif}
+.qz-restart:hover{opacity:.9}
+.qz-start{text-align:center;padding:2rem 1.25rem;background:#fff;border:0.5px solid #dde4e4;border-radius:12px;box-shadow:0 1px 4px rgba(44,62,80,.05)}
+.qz-start-icon{font-size:40px;margin-bottom:1rem}
+.qz-start h2{font-size:18px;font-weight:600;color:#2C3E50;margin-bottom:.5rem}
+.qz-start p{font-size:14px;color:#8fa3a0;margin-bottom:1.5rem;line-height:1.6}
+.qz-chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:1.5rem}
+.qz-chip{font-size:12px;padding:4px 12px;border-radius:20px;background:#f0f4f4;color:#8fa3a0;border:0.5px solid #dde4e4}
+</style>
+</head>
+<body>
+<div class="qz-wrap" id="app"></div>
+<script>
+const ALL_QS = [
+  {t:"Pulling up on the right",q:"What three factors must be considered when choosing a location to pull up on the right-hand side of the road?",a:"The location must be safe, convenient, and legal."},
+  {t:"Pulling up on the right",q:"Where should you position your car if there are oncoming vehicles while attempting to pull up on the right?",a:"Wait just left of the centre of the road with your right indicator on."},
+  {t:"Pulling up on the right",q:"What sequence of mirror and shoulder checks is required before pulling up on the right?",a:"Check the interior mirror, the right-hand mirror, and perform a quick right shoulder blind spot check."},
+  {t:"Pulling up on the right",q:"Why should you move gradually rather than sharply when pulling over to the right-hand kerb?",a:"A gradual approach reduces the likelihood of hitting the kerb."},
+  {t:"Pulling up on the right",q:"What is the acceptable distance from the kerb when finishing the 'pulling up on the right' manoeuvre?",a:"The car should be within a drain's width of the kerb."},
+  {t:"Pulling up on the right",q:"What three actions secure the car after pulling up on the right?",a:"Apply the parking brake, select neutral, and cancel the signal."},
+  {t:"Pulling up on the right",q:"Approximately how far must you reverse during the 'pulling up on the right' manoeuvre?",a:"You must reverse roughly two car lengths while staying close to the kerb."},
+  {t:"Pulling up on the right",q:"Where should you look immediately before beginning to reverse on the right-hand side?",a:"Observe all around the car, finishing with a look over your left shoulder through the rear window."},
+  {t:"Pulling up on the right",q:"In which direction should you steer to move the car away from the kerb while reversing on the right?",a:"Steer to the left to move the rear of the car away from the kerb."},
+  {t:"Pulling up on the right",q:"In which direction should you steer to move the car closer to the kerb while reversing on the right?",a:"Steer to the right to bring the car closer to the kerb."},
+  {t:"Pulling up on the right",q:"What is the mandatory action if a pedestrian or vehicle approaches while you are reversing?",a:"You must stop the car immediately until it is safe to continue."},
+  {t:"Pulling up on the right",q:"What is the likely consequence of driving forward to readjust your position during a manoeuvre?",a:"The examiner will likely record a driving fault, also known as a minor."},
+  {t:"Pulling up on the right",q:"What is the final observation sequence required before moving off from the right-hand side of the road?",a:"Check the right mirror, interior mirror, left mirror, and the left-hand blind spot."},
+  {t:"Pulling up on the right",q:"Which signal is required when moving off from the right-hand side of the road back into traffic?",a:"A left-hand signal is required once it is safe to move."},
+  {t:"Forward bay parking",q:"How can you make forward bay parking easier when choosing a target bay?",a:"Select a bay that has no other vehicles parked in the immediate vicinity."},
+  {t:"Forward bay parking",q:"When forward bay parking into a bay on the right, how should you position the car to provide more space for the turn?",a:"Position the car toward the left-hand side of the road or lane."},
+  {t:"Forward bay parking",q:"What visual reference indicates the point to begin steering when forward bay parking?",a:"Begin steering when the first line of the target bay appears to disappear into the car."},
+  {t:"Forward bay parking",q:"What steering input is required when entering a parking bay forward?",a:"Apply full lock steering quickly while maintaining a slow driving speed."},
+  {t:"Forward bay parking",q:"How can you tell the car is straight within a parking bay from the driver's seat?",a:"The dashboard will appear to run parallel with an object or line directly in front of the car."},
+  {t:"Forward bay parking",q:"Where should you stop in a forward bay relative to the front line?",a:"Stop when the front line of the bay appears to touch the bottom of your side mirror."},
+  {t:"Forward bay parking",q:"What safety rule applies to forward bay parking if there is an empty bay directly in front of your target bay?",a:"You must stop within your chosen bay and not drive through into the bay in front."},
+  {t:"Forward bay parking",q:"During the test, is it permissible to open the car door to check your position within the bay lines?",a:"Yes, you are allowed to open the door to check your position as long as it is safe to do so."},
+  {t:"Forward bay parking",q:"When exiting a bay in reverse, when are you permitted to steer immediately?",a:"You can steer immediately if there are no vehicles parked in the bays next to you."},
+  {t:"Parallel parking",q:"What is the maximum space length provided for the parallel parking manoeuvre?",a:"The examiner will ask you to reverse into a space approximately two car lengths long."},
+  {t:"Parallel parking",q:"Which mirror are you specifically allowed to adjust downward for the parallel parking manoeuvre?",a:"You are allowed to move the left-hand mirror down to better see the kerb."},
+  {t:"Parallel parking",q:"What must you remember to do after completing a manoeuvre if you adjusted your mirrors downward?",a:"You must adjust the mirrors back to their normal driving position."},
+  {t:"Parallel parking",q:"What is the initial starting position relative to the parked car when parallel parking?",a:"Stop reasonably close alongside the car with your left-hand mirror roughly lined up with its front."},
+  {t:"Parallel parking",q:"What visual marker indicates the point to start the first turn during a parallel park?",a:"Start turning when the front or back of the other vehicle lines up with your passenger door pillar."},
+  {t:"Parallel parking",q:"What is the first steering input required for the parallel park after reaching the alignment point?",a:"Slowly reverse while applying exactly one whole turn of the steering wheel to the left."},
+  {t:"Parallel parking",q:"At what approximate angle should the car be to the kerb before applying the second steering turn in parallel parking?",a:"The car should be at roughly a 45° angle."},
+  {t:"Parallel parking",q:"What steering input is required to bring the car parallel to the kerb during the final stage of parallel parking?",a:"Turn the steering wheel two whole turns to the right while the car is moving very slowly."},
+  {t:"Parallel parking",q:"If you are too far from the kerb during parallel parking, in which direction should you steer to correct it?",a:"Steer more to the left to bring the car closer to the kerb."},
+  {t:"Reverse bay parking",q:"Why is it important to start from the same distance away from the bays in reverse bay parking?",a:"Starting at a consistent distance ensures your reference points remain accurate."},
+  {t:"Reverse bay parking",q:"In the 90-degree reverse bay method, which line should you line up with to enter the 'third' bay?",a:"Line up with the first line of the first bay so it appears to disappear into the car."},
+  {t:"Reverse bay parking",q:"Why must you perform an all-round observation specifically when steering into a reverse bay?",a:"The front of the car will swing out into the road as you turn the wheels."},
+  {t:"Reverse bay parking",q:"How many steering wheel turns are typically required to straighten the wheels after reversing into a bay?",a:"It usually takes between 1¼ and 1½ turns to straighten the wheels."},
+  {t:"Emergency stop",q:"What is the prompt given by the examiner for an emergency stop?",a:"The examiner will give a signal and shout \"Stop!\""},
+  {t:"Emergency stop",q:"At what speed should you drive when you know an emergency stop exercise is imminent?",a:"Drive at a normal speed that is suitable for the specific road and conditions."},
+  {t:"Emergency stop",q:"Are you expected to check your mirrors when the examiner gives the signal to stop for the emergency stop?",a:"No, you should react immediately without checking mirrors to stop as quickly as possible."},
+  {t:"Emergency stop",q:"What is the correct hand position during an emergency stop?",a:"Keep both hands firmly on the steering wheel."},
+  {t:"Emergency stop",q:"In what order should the pedals be depressed during an emergency stop?",a:"Press the foot brake quickly and firmly first, followed immediately by the clutch."},
+  {t:"Emergency stop",q:"What physical sensation in the brake pedal indicates that ABS is active?",a:"The brake pedal will produce a pulsing feeling."},
+  {t:"Emergency stop",q:"What must you do after the car has come to a complete stop during the emergency stop exercise?",a:"Secure the car using the parking brake and select neutral."},
+  {t:"Emergency stop",q:"What observation is required before moving off again after an emergency stop?",a:"Perform a full 360° check, including both blind spots and all mirrors."},
+  {t:"Emergency stop",q:"Why is a signal unnecessary when moving off after an emergency stop?",a:"You are not moving off from the side of the road but are restarting from the middle of the lane."},
+  {t:"Pulling up on the right",q:"When reversing on the right, you should stop if any _____ approaches near your car.",a:"Pedestrian or vehicle."},
+  {t:"Parallel parking",q:"If parallel parking and the kerb appears at a 45° angle to the door handle, you should turn the wheel _____ turns to the right.",a:"Two turns."},
+  {t:"General",q:"The examiner may record a _____ fault for hitting the kerb during a manoeuvre.",a:"Serious fault."},
+  {t:"Forward bay parking",q:"In a forward bay park, the car is straight when the _____ looks parallel with an object in front.",a:"Dashboard."}
+];
+
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
+const TOPICS=["Pulling up on the right","Forward bay parking","Parallel parking","Reverse bay parking","Emergency stop","General"];
+let questions,qi,score,topicScores,topicTotals;
+
+function init(){
+  questions=shuffle(ALL_QS);qi=0;score=0;
+  topicScores={};topicTotals={};
+  TOPICS.forEach(t=>{topicScores[t]=0;topicTotals[t]=0});
+  questions.forEach(q=>topicTotals[q.t]=(topicTotals[q.t]||0)+1);
+  renderStart();
+}
+
+function makeOptions(correct,allAnswers){
+  const wrong=shuffle(allAnswers.filter(a=>a!==correct)).slice(0,3);
+  return shuffle([correct,...wrong]);
+}
+
+function renderStart(){
+  const app=document.getElementById('app');
+  app.innerHTML=`
+    <div class="qz-header"><div class="qz-logo">D4</div><div class="qz-title">Manoeuvres Quiz</div></div>
+    <div class="qz-start">
+      <div class="qz-start-icon">🚗</div>
+      <h2>Driving Test Manoeuvres</h2>
+      <p>Test your knowledge of all five test manoeuvres with ${ALL_QS.length} multiple-choice questions. Questions are shuffled each time.</p>
+      <div class="qz-chips">
+        ${TOPICS.map(t=>`<span class="qz-chip">${t}</span>`).join('')}
+      </div>
+      <button class="qz-restart" onclick="renderQ()">Start quiz →</button>
+    </div>`;
+}
+
+function renderQ(){
+  if(qi>=questions.length){renderScore();return}
+  const q=questions[qi];
+  const others=ALL_QS.map(x=>x.a).filter(a=>a!==q.a);
+  const opts=makeOptions(q.a,others);
+  const app=document.getElementById('app');
+  app.innerHTML=`
+    <div class="qz-header"><div class="qz-logo">D4</div><div class="qz-title">Manoeuvres Quiz</div></div>
+    <div class="qz-progress-wrap">
+      <div class="qz-prog-labels"><span>Question ${qi+1} of ${questions.length}</span><span>${score} correct</span></div>
+      <div class="qz-prog-bar"><div class="qz-prog-fill" style="width:${((qi)/questions.length*100).toFixed(1)}%"></div></div>
+    </div>
+    <div class="qz-topic-badge">${q.t}</div>
+    <div class="qz-question-card">
+      <div class="qz-q-num">Q${qi+1}</div>
+      <div class="qz-question">${q.q}</div>
+    </div>
+    <div class="qz-options" id="opts">
+      ${opts.map((o,i)=>`<button class="qz-btn" onclick="answer(this,'${o.replace(/'/g,"\\'").replace(/"/g,"&quot;")}','${q.a.replace(/'/g,"\\'").replace(/"/g,"&quot;")}','${q.t.replace(/'/g,"\\'")}')">
+        <span style="color:#aab8b8;font-size:12px;margin-right:8px">${String.fromCharCode(65+i)}.</span>${o}
+      </button>`).join('')}
+    </div>
+    <div id="feedback"></div>
+    <button class="qz-next" id="nxt" disabled onclick="next()">Next question →</button>`;
+}
+
+function answer(btn,chosen,correct,topic){
+  if(document.querySelectorAll('.qz-btn[disabled]').length)return;
+  document.querySelectorAll('.qz-btn').forEach(b=>b.disabled=true);
+  const ok=chosen===correct;
+  if(ok){score++;topicScores[topic]=(topicScores[topic]||0)+1;}
+  btn.classList.add(ok?'correct':'wrong');
+  if(!ok){
+    document.querySelectorAll('.qz-btn').forEach(b=>{
+      if(b.innerText.trim().includes(correct.substring(0,20)))b.classList.add('reveal');
+    });
+  }
+  document.getElementById('feedback').innerHTML=`<div class="qz-feedback ${ok?'ok':'ko'}">${ok?'<strong>Correct!</strong>':'<strong>Incorrect.</strong> The correct answer is: '+correct}</div>`;
+  document.getElementById('nxt').disabled=false;
+}
+
+function next(){qi++;renderQ()}
+
+function renderScore(){
+  const pct=Math.round(score/questions.length*100);
+  const r=48;const circ=2*Math.PI*r;const dash=circ*(pct/100);
+  const msg=pct>=80?"Excellent work — you're well prepared!":pct>=60?"Good effort — review the weaker areas below.":"Keep practising — go through your notes and try again.";
+  const usedTopics=[...new Set(questions.map(q=>q.t))];
+  document.getElementById('app').innerHTML=`
+    <div class="qz-header"><div class="qz-logo">D4</div><div class="qz-title">Manoeuvres Quiz — Results</div></div>
+    <div class="qz-score-card">
+      <div class="qz-score-ring">
+        <svg width="110" height="110" viewBox="0 0 110 110">
+          <circle cx="55" cy="55" r="${r}" fill="none" stroke="#e8eeee" stroke-width="8"/>
+          <circle cx="55" cy="55" r="${r}" fill="none" stroke="#BD2026" stroke-width="8" stroke-dasharray="${dash.toFixed(1)} ${circ.toFixed(1)}" stroke-linecap="round"/>
+        </svg>
+        <div class="qz-score-ring-label">
+          <div class="qz-score-ring-num">${pct}%</div>
+          <div class="qz-score-ring-den">${score}/${questions.length}</div>
+        </div>
+      </div>
+      <div class="qz-score-msg">${msg}</div>
+      <div class="qz-score-sub">Score by topic</div>
+      <div class="qz-breakdown">
+        ${usedTopics.map(t=>`<div class="qz-bd-item"><div class="qz-bd-topic">${t}</div><div class="qz-bd-score">${topicScores[t]||0}/${topicTotals[t]||0}</div></div>`).join('')}
+      </div>
+      <button class="qz-restart" onclick="init()">Try again →</button>
+    </div>`;
+}
+
+init();
+</script>
+</body>
+</html>
