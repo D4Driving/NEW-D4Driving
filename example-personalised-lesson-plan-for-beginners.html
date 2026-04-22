@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Soro fills these in automatically -->
+<title>Example Personalised Lesson Plan for Beginners | D4Driving Peterborough</title>
+<meta name="description" content="See an example personalised lesson plan beginner drivers can follow, with realistic goals, lesson structure, confidence tips and steady progress.">
+<meta property="og:title"       content="Example Personalised Lesson Plan for Beginners | D4Driving">
+<meta property="og:description" content="See an example personalised lesson plan beginner drivers can follow, with realistic goals, lesson structure, confidence tips and steady progress.">
+<meta property="og:image"       content="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3ff535b8-1e36-4b67-be5c-a96f27e8cf70.webp">
+<meta property="og:type"        content="article">
+<link rel="canonical" href="https://www.d4driving.co.uk/example-personalised-lesson-plan-for-beginners.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ─── Same token set as index.html ─── */
+:root {
+  --red:        #BD2026;
+  --red-hi:     #d4252c;
+  --red-lo:     rgba(189,32,38,0.08);
+  --red-border: rgba(189,32,38,0.2);
+  --slate:      #2C3E50;
+  --slate-hi:   #374f65;
+  --slate-lo:   rgba(44,62,80,0.06);
+  --slate-mid:  rgba(44,62,80,0.12);
+  --sage:       #8fa3a0;
+  --sage-lo:    rgba(143,163,160,0.15);
+  --bg:         #fbfdff;
+  --bg2:        #f3f7fb;
+  --bg3:        #eaf1f8;
+  --glass-bg:   rgba(255,255,255,0.9);
+  --glass-border: rgba(226,232,240,0.8);
+  --glass-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.03);
+  --ink:        #2C3E50;
+  --ink-mid:    #536878;
+  --ink-low:    #94a3b4;
+  --border:     rgba(226,232,240,0.8);
+  --wa:         #25d366;
+  --font: 'Plus Jakarta Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background-color: var(--bg); color: var(--ink); overflow-x: hidden; }
+img  { display: block; max-width: 100%; }
+a    { color: inherit; text-decoration: none; }
+
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+.article-wrap { max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+/* ─── Glass card ─── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+}
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font); font-size: 14px; font-weight: 700;
+  padding: 12px 24px; border: none; cursor: pointer; border-radius: 12px;
+  transition: all .22s; white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-red   { background: var(--red); color: #fff; box-shadow: 0 4px 14px rgba(189,32,38,0.25); }
+.btn-red:hover { background: var(--red-hi); box-shadow: 0 8px 24px rgba(189,32,38,0.38); }
+.btn-outline { background: transparent; color: var(--slate); border: 1.5px solid var(--border); }
+.btn-outline:hover { border-color: var(--red); color: var(--red); background: var(--red-lo); }
+
+/* ─── NAV ─── */
+#nav {
+  position: sticky; top: 0; z-index: 900;
+  background: rgba(251,253,255,0.95);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px; max-width: 1140px; margin: 0 auto; padding: 0 28px;
+}
+.nav-logo img { height: 40px; width: auto; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-phone { font-size: 14px; font-weight: 700; color: var(--sage); transition: color .2s; }
+.nav-phone:hover { color: var(--slate); }
+.nav-back {
+  font-size: 13px; font-weight: 600; color: var(--ink-mid);
+  display: flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border-radius: 8px; transition: all .2s;
+}
+.nav-back:hover { color: var(--slate); background: var(--slate-lo); }
+
+/* ─── HERO ─── */
+.article-hero {
+  background: var(--slate);
+  padding: 80px 0 0;
+  margin-top: 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg-img {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  filter: brightness(0.15) saturate(0.4);
+  /* Soro sets this via inline style */
+}
+.hero-grade {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(44,62,80,0.9) 0%, rgba(44,62,80,0.7) 60%, rgba(44,62,80,1) 100%);
+}
+.hero-stripe { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); }
+.article-hero-content {
+  position: relative; z-index: 2; max-width: 760px; margin: 0 auto; padding: 0 28px 60px;
+}
+.article-cat {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 18px;
+}
+.article-cat::before { content: ''; display: block; width: 16px; height: 2px; background: var(--sage); border-radius: 2px; }
+.article-hero h1 {
+  font-size: clamp(28px,5vw,52px); font-weight: 800; line-height: 1.1;
+  letter-spacing: -1.5px; color: #fff; margin-bottom: 18px;
+}
+.article-meta {
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5);
+  border-top: 1px solid rgba(255,255,255,0.1); padding-top: 18px; margin-top: 18px;
+}
+.meta-author { display: flex; align-items: center; gap: 10px; }
+.meta-avatar {
+  width: 36px; height: 36px; border-radius: 50%; overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+.meta-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.meta-name { font-weight: 700; color: rgba(255,255,255,0.8); }
+.meta-dot { color: rgba(255,255,255,0.25); }
+
+/* ─── FEATURED IMAGE ─── */
+.featured-img-wrap {
+  margin: 0 auto; max-width: 760px; padding: 0 28px;
+  transform: translateY(-32px);
+}
+.featured-img-wrap img {
+  width: 100%; border-radius: 16px;
+  box-shadow: 0 30px 60px rgba(44,62,80,0.2);
+  max-height: 440px; object-fit: cover;
+}
+
+/* ─── ARTICLE BODY ─── */
+.article-layout {
+  display: grid; grid-template-columns: 1fr 300px; gap: 40px;
+  padding-bottom: 80px;
+}
+@media(max-width:860px){ .article-layout { grid-template-columns: 1fr; } .sidebar { order: -1; } }
+
+.article-content {
+  font-size: 16px; line-height: 1.85; color: var(--ink-mid);
+}
+.article-content h2 {
+  font-size: clamp(22px,3vw,30px); font-weight: 800;
+  color: var(--slate); margin: 40px 0 16px;
+  letter-spacing: -0.5px; line-height: 1.15;
+}
+.article-content h3 {
+  font-size: clamp(18px,2.5vw,22px); font-weight: 700;
+  color: var(--slate); margin: 32px 0 12px;
+}
+.article-content p  { margin-bottom: 20px; }
+.article-content ul,
+.article-content ol { padding-left: 24px; margin-bottom: 20px; }
+.article-content li { margin-bottom: 8px; }
+.article-content a  { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+.article-content a:hover { color: var(--red-hi); }
+.article-content strong { color: var(--slate); font-weight: 700; }
+.article-content blockquote {
+  border-left: 4px solid var(--red); padding: 16px 24px;
+  margin: 28px 0; background: var(--red-lo); border-radius: 0 12px 12px 0;
+  font-style: italic; color: var(--ink);
+}
+.article-content img {
+  border-radius: 12px; margin: 28px 0;
+  box-shadow: 0 8px 24px rgba(44,62,80,0.1);
+}
+
+/* Tip / callout box */
+.article-content .tip-box {
+  background: var(--bg2); border: 1.5px solid var(--border);
+  border-left: 4px solid var(--sage); border-radius: 0 12px 12px 0;
+  padding: 16px 20px; margin: 24px 0; font-style: normal;
+  color: var(--ink-mid);
+}
+.article-content .tip-box strong { color: var(--slate-hi); }
+
+/* ─── SIDEBAR ─── */
+.sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+.sidebar-card { padding: 24px; }
+.sidebar-card h4 {
+  font-size: 14px; font-weight: 700; color: var(--slate);
+  margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px;
+}
+
+.sidebar-cta { background: var(--slate) !important; border-color: transparent !important; }
+.sidebar-cta h4 { color: #fff; }
+.sidebar-cta p  { color: rgba(255,255,255,0.6); font-size: 13.5px; margin-bottom: 16px; }
+.sidebar-cta .price { font-size: 32px; font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 4px; }
+.sidebar-cta .price small { font-size: 14px; font-weight: 400; color: var(--sage); }
+
+.sidebar-share { }
+.share-links { display: flex; flex-direction: column; gap: 8px; }
+.share-link {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 600; padding: 10px 14px; border-radius: 10px;
+  transition: background .2s; color: var(--ink-mid);
+}
+.share-link:hover { background: var(--bg2); color: var(--slate); }
+.share-icon { width: 20px; text-align: center; font-size: 16px; }
+
+.related-links { display: flex; flex-direction: column; gap: 10px; }
+.related-link {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px; border-radius: 10px; transition: background .2s;
+}
+.related-link:hover { background: var(--bg2); }
+.related-link-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.related-link-text { font-size: 13px; font-weight: 600; color: var(--slate); line-height: 1.4; }
+
+/* ─── TAG STRIP ─── */
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+.tag {
+  font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 99px;
+  background: var(--bg2); border: 1px solid var(--border); color: var(--ink-low);
+  transition: all .2s;
+}
+.tag:hover { background: var(--red-lo); border-color: var(--red-border); color: var(--red); }
+
+/* ─── AUTHOR BOX ─── */
+.author-box { display: flex; gap: 20px; align-items: flex-start; margin-top: 40px; padding: 28px; }
+.author-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; object-position: top; flex-shrink: 0; }
+.author-info h4 { font-size: 16px; font-weight: 700; color: var(--slate); margin-bottom: 6px; }
+.author-info p  { font-size: 13.5px; color: var(--ink-mid); line-height: 1.65; margin-bottom: 12px; }
+
+/* ─── CTA SECTION ─── */
+.article-cta { background: var(--bg2); padding: 72px 0; margin-top: 0; }
+.cta-inner { text-align: center; max-width: 560px; margin: 0 auto; }
+.cta-inner h2 { font-size: clamp(26px,4vw,42px); font-weight: 800; color: var(--slate); letter-spacing: -1px; margin-bottom: 14px; }
+.cta-inner p  { color: var(--ink-mid); margin-bottom: 28px; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ─── WhatsApp float ─── */
+.wa-float {
+  position: fixed; bottom: 30px; right: 30px;
+  background-color: var(--wa); color: white;
+  width: 60px; height: 60px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 20px rgba(37,211,102,0.3);
+  z-index: 100; transition: transform .3s;
+}
+.wa-float:hover { transform: scale(1.12); }
+.wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ─── FOOTER ─── */
+footer { background: var(--slate); padding: 48px 0 28px; }
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+.footer-bottom a { color: var(--sage); transition: color .2s; }
+.footer-bottom a:hover { color: #fff; }
+.footer-links-row { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+.footer-links-row a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); transition: color .2s; }
+.footer-links-row a:hover { color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving School of Motoring">
+    </a>
+    <div class="nav-right">
+      <a href="blog.html" class="nav-back">← All Articles</a>
+      <a href="tel:07872347686" class="nav-phone">📞 07872 347686</a>
+      <a href="https://cal.com/d4driving" target="_blank" class="btn btn-red">Book Online</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ARTICLE HERO -->
+<div class="article-hero">
+  <!-- Soro sets background-image via inline style on .hero-bg-img -->
+  <div class="hero-bg-img" style="background-image:url('https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3ff535b8-1e36-4b67-be5c-a96f27e8cf70.webp');"></div>
+  <div class="hero-grade"></div>
+  <div class="hero-stripe"></div>
+  <div class="article-hero-content">
+    <div class="article-cat">Driving Tips</div>
+    <h1>Example Personalised Lesson Plan for Beginners</h1>
+    <div class="article-meta">
+      <div class="meta-author">
+        <div class="meta-avatar"><img src="robert.webp" alt="Robert"></div>
+        <span class="meta-name">Robert</span>
+        <span>· D4Driving School of Motoring</span>
+      </div>
+      <span class="meta-dot">·</span>
+      <span>22 April 2026</span>
+      <span class="meta-dot">·</span>
+      <span>Driving Tips</span>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED IMAGE -->
+<div class="featured-img-wrap">
+  <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3ff535b8-1e36-4b67-be5c-a96f27e8cf70.webp" alt="Example Personalised Lesson Plan for Beginners">
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="article-wrap">
+  <div class="article-layout">
+
+    <!-- ARTICLE BODY — Soro injects content here -->
+    <div>
+      <div class="article-content">
+        <p>Most beginners do not need more pressure. They need a plan that makes the first few lessons feel clear, manageable and tailored to how they learn. That is why an example personalised lesson plan beginner drivers can actually picture in real life is far more useful than a generic checklist copied from a handbook.</p>
+<p>If you are just starting out, the biggest worry is usually not the steering wheel or the gears. It is the unknown. What will happen in lesson one? How fast should progress happen? What if you are nervous, stall the car, or take longer than your mate who passed in three months and has not stopped mentioning it since? A personalised plan answers those questions early and gives you something solid to work from.</p>
+<h2>What a beginner lesson plan should actually do</h2>
+<p>A good lesson plan is not there to make things look tidy on paper. It should help you build safe habits, confidence and steady progress without rushing. For some learners, that means spending extra time on moving off and stopping. For others, it means getting comfortable with road position before touching busier routes.</p>
+<p>This is where a personalised approach matters. A complete beginner in an automatic car may settle quickly with junctions and basic control, while a beginner in a manual may need more time on clutch control and gear changes. An adult learner returning after a bad experience may need calm repetition and shorter targets. A confident 17-year-old may learn quickly, but still need reminders not to confuse confidence with skill.</p>
+<p>A proper plan should adapt to all of that. It is not about doing the same lesson in the same order for every learner. It is about knowing what to teach next, when to repeat something, and when to move on.</p>
+<h2>Example personalised lesson plan beginner drivers can follow</h2>
+<p>Below is a realistic example of how a beginner plan might be structured over the first ten lessons. It is not a fixed timetable. Think of it as a working map rather than a stopwatch.</p>
+<h3>Lessons 1 and 2: Getting comfortable in the car</h3>
+<p>The first stage is about reducing nerves and building familiarity. That usually means cockpit checks, mirrors, controls, moving off safely, stopping under control, and basic steering. If the learner is in a manual car, clutch bite and smooth gear changes are a major focus.</p>
+<p>At this point, quiet residential roads make sense. There is enough happening to learn from, but not so much that everything feels frantic. Progress here is not measured by distance covered. It is measured by how calm and repeatable the basics become.</p>
+<h3>Lessons 3 and 4: Early road awareness</h3>
+<p>Once the learner can move off and stop with reasonable control, the next step is reading the road. This often includes meeting traffic, emerging at simple junctions, checking mirrors before changing speed or direction, and keeping a sensible road position.</p>
+<p>This is usually where beginners realise driving is not just about operating the car. It is about observation and decision-making. Some learners find this stage exciting. Others suddenly feel a wobble in confidence. Both are normal.</p>
+<h3>Lessons 5 and 6: Junctions, routine and consistency</h3>
+<p>By now, the learner should start developing a proper routine. Mirror checks should become more natural. Steering should be less tense. In a manual, gear choice should begin to match the road rather than feel like guesswork.</p>
+<p>These lessons often focus on left and right turns at junctions, planning ahead, and controlling speed on approach. If the learner is ready, simple roundabouts may be introduced. If they are not ready, that is fine too. Pushing too early rarely saves time later.</p>
+<h3>Lessons 7 and 8: Building independence</h3>
+<p>This stage is about doing more with less prompting. The learner may begin following road signs, making choices at roundabouts, and linking several skills together on mixed routes. <a href="https://Www.d4driving.co.uk/manoeuvres-quiz.html">Manoeuvres</a> might also be introduced, such as pulling up on the right, bay parking or parallel parking, depending on confidence and progress.</p>
+<p>This is often where lessons start to feel more like real driving and less like practice drills. It can also be the point where mistakes pop up again because the learner is juggling more at once. That does not mean they are going backwards. It usually means they are stretching into the next level.</p>
+<h3>Lessons 9 and 10: Early test-style habits</h3>
+<p>A beginner is not expected to be test-ready by lesson ten, but it is useful to start building the right habits. That means consistent observation, safe judgement, and responding to signs and markings without relying on constant reminders.</p>
+<p>If progress is strong, the instructor may start identifying the areas most likely to shape the next block of lessons. That could be roundabouts, manoeuvres, clutch control, dual carriageways, or simply confidence in busier traffic. The plan becomes more specific from this point onward.</p>
+<h2>What makes a lesson plan personalised rather than generic</h2>
+<p>The difference is not just the word personalised printed on a website. It is in how the instructor responds to the learner in front of them.</p>
+<p>A generic plan says, lesson three is roundabouts because that is the schedule. A personalised plan says, not yet - your observations at junctions need to be steadier first. Or, yes, let us try a small roundabout because your planning is already strong and you are ready for the next challenge.</p>
+<p>Personalisation also includes pace. Some beginners need time to talk through each step before doing it. Others learn best by trying, reflecting and trying again. Some need encouragement because they are too hard on themselves. Others need a gentle reality check because they think one decent right turn means they are ready for the M1 by teatime.</p>
+<p>That is where instructor-led teaching makes such a difference. Good planning is not random, but it should never feel rigid.</p>
+<h2>A simple way progress can be measured</h2>
+<p>Beginners often ask how they will know if they are improving. The answer should be clear. Progress is not only about ticking off topics. It is about how much support you need while doing them.</p>
+<p>For example, you may start by moving off only with step-by-step prompts. A few lessons later, you can do it safely on your own, check mirrors properly and prepare for the next hazard without being reminded. That is real progress.</p>
+<p>A useful personalised plan will usually track three things: vehicle control, observation and judgement, and confidence under different road conditions. If one of those areas is lagging behind, the next lesson should reflect it.</p>
+<h2>Why beginners benefit from short-term goals</h2>
+<p>Long-term goals matter, especially if you have a <a href="https://Www.d4driving.co.uk/theory-quiz.html">theory test</a> booked or a practical test in mind. But for a beginner, short-term goals are what keep motivation steady.</p>
+<p>A good lesson target might be as simple as making ten smooth move-offs, handling three quiet junctions without rushed decisions, or parking up safely and independently at the end of the lesson. Those wins matter because they are specific. You can feel them improving.</p>
+<p>This also helps nervous learners. Telling yourself you must become a confident driver can feel huge. Telling yourself you are working on mirror checks and smoother braking today feels far more manageable.</p>
+<h2>When the plan needs to change</h2>
+<p>Any honest example personalised lesson plan beginner learners read should include this truth: the plan will probably change.</p>
+<p>That is not a failure. It is exactly what should happen. A learner may progress faster than expected and be ready for more complex roads sooner. Another may need extra time because nerves are slowing down decision-making. Someone switching from automatic to manual will need a reset in certain areas. A learner preparing in Peterborough may also need focused practice on the routes and road types they are likely to meet regularly, rather than endless repetition on roads that do not add much value.</p>
+<p>The best plans are structured, but flexible. They give direction without pretending every learner develops at the same speed.</p>
+<h2>What beginners should look for from an instructor</h2>
+<p>You are not only paying for time in the car. You are paying for judgement, structure and support. A good instructor should be able to explain why you are working on a particular skill, what good looks like, and what needs improving next.</p>
+<p>They should also make the car feel like a safe place to learn. That does not mean pretending every mistake is brilliant. It means correcting things calmly, keeping standards high, and helping you understand that errors are part of learning, not proof that driving is not for you.</p>
+<p>At D4Driving School of Motoring, that is exactly how beginner lessons should feel - patient, clear and built around measurable progress rather than guesswork.</p>
+<p>If you are at the start, do not worry about becoming perfect straight away. Worry about getting the right plan, the right support and the next step right. Confidence usually arrives quietly, somewhere between the lessons where everything feels new and the moment you realise you are driving, thinking and coping far better than you were a few weeks ago.</p>
+      </div>
+
+      <!-- AUTHOR BOX -->
+      <div class="author-box glass-card">
+        <img src="robert.webp" alt="Robert — D4Driving Instructor" class="author-photo">
+        <div class="author-info">
+          <h4>Robert — D4Driving School of Motoring</h4>
+          <p>DVSA Approved Driving Instructor based in Peterborough since 2017. Manual &amp; automatic tuition. 9,000+ YouTube subscribers. Covering Peterborough, Grantham &amp; Kettering test centres.</p>
+          <a href="https://cal.com/d4driving" target="_blank" class="btn btn-red" style="font-size:13px;padding:10px 20px;">Book a Lesson →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- Book CTA -->
+      <div class="sidebar-card glass-card sidebar-cta">
+        <h4>Ready to Start?</h4>
+        <p>Book your first lesson online — choose a date and time that works for you.</p>
+        <div class="price">£40 <small>/ hr from</small></div>
+        <a href="https://cal.com/d4driving" target="_blank" class="btn btn-red" style="width:100%;margin-top:16px;justify-content:center;">Book Online →</a>
+        <a href="tel:07872347686" class="btn btn-outline" style="width:100%;margin-top:10px;justify-content:center;background:rgba(255,255,255,0.08);color:#fff;border-color:rgba(255,255,255,0.2);">📞 07872 347686</a>
+      </div>
+
+      <!-- Share -->
+      <div class="sidebar-card glass-card sidebar-share">
+        <h4>Share This Article</h4>
+        <div class="share-links">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.d4driving.co.uk/example-personalised-lesson-plan-for-beginners.html" target="_blank" class="share-link">
+            <span class="share-icon">📘</span> Share on Facebook
+          </a>
+          <a href="https://wa.me/?text=Example Personalised Lesson Plan for Beginners%20https://www.d4driving.co.uk/example-personalised-lesson-plan-for-beginners.html" target="_blank" class="share-link">
+            <span class="share-icon">💬</span> Share on WhatsApp
+          </a>
+          <a href="https://twitter.com/intent/tweet?text=Example Personalised Lesson Plan for Beginners&url=https://www.d4driving.co.uk/example-personalised-lesson-plan-for-beginners.html" target="_blank" class="share-link">
+            <span class="share-icon">🐦</span> Share on X
+          </a>
+        </div>
+      </div>
+
+      <!-- Related links -->
+      <div class="sidebar-card glass-card">
+        <h4>You Might Also Like</h4>
+        <div class="related-links">
+          <a href="blog.html" class="related-link">
+            <span class="related-link-icon">🔄</span>
+            <span class="related-link-text">Mastering Peterborough's Toughest Roundabouts</span>
+          </a>
+          <a href="blog.html" class="related-link">
+            <span class="related-link-icon">📋</span>
+            <span class="related-link-text">How to Pass Your Theory Test First Time</span>
+          </a>
+          <a href="blog.html" class="related-link">
+            <span class="related-link-icon">🧠</span>
+            <span class="related-link-text">Staying Calm on Your Driving Test Day</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- YouTube promo -->
+      <div class="sidebar-card glass-card">
+        <h4>Free on YouTube</h4>
+        <p style="font-size:13px;color:var(--ink-mid);margin-bottom:14px;">9,000+ subscribers get free mock tests, test routes and driving tips every week.</p>
+        <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;font-size:13px;">▶ Subscribe Free</a>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<!-- CTA SECTION -->
+<div class="article-cta">
+  <div class="cta-inner">
+    <div class="article-cat" style="justify-content:center;">D4Driving — Peterborough</div>
+    <h2>Ready to start your journey?</h2>
+    <p>Book your first lesson online in seconds, or give me a call to have a chat first.</p>
+    <div class="cta-btns">
+      <a href="https://cal.com/d4driving" target="_blank" class="btn btn-red">📅 Book Online Now</a>
+      <a href="tel:07872347686" class="btn btn-outline">📞 07872 347686</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-links-row">
+      <a href="index.html">Home</a>
+      <a href="index.html#fleet">Our Cars</a>
+      <a href="index.html#prices">Prices</a>
+      <a href="https://cal.com/d4driving" target="_blank">Book Online</a>
+      <a href="blog.html">Driving Tips</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="https://www.youtube.com/@d4drivingSOM" target="_blank">YouTube</a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 D4Driving School of Motoring. All rights reserved.</p>
+      <p><a href="index.html">← Back to Homepage</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/447872347686" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+</body>
+</html>
