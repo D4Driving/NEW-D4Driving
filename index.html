@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>D4Driving Peterborough | #1 Rated Driving Lessons</title>
+<title>D4Driving Peterborough | Top-Rated Driving Lessons</title>
 <meta name="description" content="D4Driving School of Motoring — DVSA Approved driving lessons in Peterborough. Brand-new Toyota fleet. Covering Peterborough, Grantham & Kettering. Book online instantly.">
 
 <!--
@@ -13,8 +13,43 @@
   articles.json is auto-written by Soro webhook.
 -->
 
+<!-- Preload LCP image (hero background) -->
+<link rel="preload" as="image" href="yaris-cross.webp" fetchpriority="high">
+
+<!-- Preconnect to font CDN + actual woff2 host -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+<!-- LocalBusiness structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "DrivingSchool",
+  "name": "D4Driving School of Motoring",
+  "description": "DVSA Approved driving school in Peterborough. Manual and automatic lessons in a brand-new Toyota fleet. Covering Peterborough, Grantham and Kettering test centres.",
+  "url": "https://www.d4driving.co.uk",
+  "telephone": "+44-1733-924271",
+  "image": "https://www.d4driving.co.uk/SVGLogo.svg",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Peterborough",
+    "addressRegion": "Cambridgeshire",
+    "addressCountry": "GB"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Peterborough" },
+    { "@type": "City", "name": "Grantham" },
+    { "@type": "City", "name": "Kettering" }
+  ],
+  "founder": { "@type": "Person", "name": "Robert" },
+  "foundingDate": "2017",
+  "priceRange": "££",
+  "sameAs": [
+    "https://www.youtube.com/@d4drivingSOM"
+  ]
+}
+</script>
 <style>
 
 /* ─── TOKENS ─────────────────────────────── */
@@ -166,7 +201,8 @@ p  { line-height: 1.75; }
 }
 .nav-dropdown-btn:hover { color: var(--slate); background: var(--slate-lo); }
 .nav-dropdown-btn svg { transition: transform .2s; }
-.nav-dropdown:hover .nav-dropdown-btn svg { transform: rotate(180deg); }
+.nav-dropdown:hover .nav-dropdown-btn svg,
+.nav-dropdown.open .nav-dropdown-btn svg { transform: rotate(180deg); }
 .nav-dropdown-btn.stuck-mode { color: var(--ink-mid); }
 
 .nav-dropdown-menu {
@@ -188,7 +224,9 @@ p  { line-height: 1.75; }
   transition: opacity .2s ease, transform .2s ease;
   z-index: 901;
 }
-.nav-dropdown:hover .nav-dropdown-menu {
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu,
+.nav-dropdown.open .nav-dropdown-menu {
   opacity: 1;
   pointer-events: all;
   transform: translateX(-50%) translateY(0);
@@ -237,7 +275,7 @@ p  { line-height: 1.75; }
 .nav-dd-soon:hover .nav-dd-title { color: var(--slate); }
 .nav-right { display: flex; align-items: center; gap: 12px; }
 .nav-phone {
-  font-size: 14px; font-weight: 700; color: var(--sage);
+  font-size: 14px; font-weight: 700; color: var(--ink-mid);
   display: flex; align-items: center; gap: 6px; transition: color .2s;
 }
 .nav-phone:hover { color: var(--slate); }
@@ -292,7 +330,7 @@ p  { line-height: 1.75; }
 
 .hero-title { margin-bottom: 20px; }
 .hero-title .accent { color: var(--red); display: block; }
-.hero-sub { font-size: 18px; color: rgba(255,255,255,0.65); margin-bottom: 36px; max-width: 520px; }
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.82); margin-bottom: 36px; max-width: 520px; }
 .hero-sub strong { color: rgba(255,255,255,0.9); font-weight: 600; }
 .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
@@ -502,8 +540,19 @@ p  { line-height: 1.75; }
 /* ─── REVIEWS ────────────────────────────── */
 #reviews { background: var(--bg); }
 .reviews-hd { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
-.stars { color: var(--red); font-size: 16px; letter-spacing: 3px; margin-bottom: 8px; }
-.review-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+.stars { color: var(--red); font-size: 16px; letter-spacing: 3px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.review-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.review-card { display: flex; flex-direction: column; }
+.review-card .r-text { flex: 1; }
+.review-footer { text-align: center; margin-top: 28px; font-size: 14px; color: var(--ink-mid); }
+.review-footer a { color: var(--red); font-weight: 700; }
+.review-footer a:hover { text-decoration: underline; }
+.r-google {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-left: auto; font-size: 11px; font-weight: 700;
+  color: var(--ink-low); letter-spacing: 0.5px;
+}
+.r-google svg { flex-shrink: 0; }
 .review-card { padding: 30px; transition: transform .3s; }
 .review-card:hover { transform: translateY(-4px); }
 .r-quote  { font-size: 36px; color: var(--red); line-height: 1; margin-bottom: 10px; font-family: Georgia, serif; font-weight: 900; }
@@ -602,16 +651,16 @@ p  { line-height: 1.75; }
 footer { background: var(--slate); padding: 64px 0 32px; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 52px; }
 footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
-.footer-tag  { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.75; max-width: 280px; }
+.footer-tag  { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.75; max-width: 280px; }
 .footer-h    { font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--sage); margin-bottom: 18px; }
 .footer-links { display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.5); transition: color .2s; }
+.footer-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.7); transition: color .2s; }
 .footer-links a:hover { color: #fff; }
 .footer-bottom {
   margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.08);
   display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
 }
-.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.6); }
 .footer-bottom a { color: var(--sage); transition: color .2s; }
 .footer-bottom a:hover { color: #fff; }
 
@@ -644,6 +693,18 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 /* ─── REVEAL ─────────────────────────────── */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
 .reveal.vis { opacity: 1; transform: none; }
+
+/* ─── REDUCED MOTION ─────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
+}
 
 /* ─── RESPONSIVE ─────────────────────────── */
 @media(max-width:960px){
@@ -679,7 +740,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <div class="wrap">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
-        <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving School of Motoring">
+        <img src="SVGLogo.svg" alt="D4Driving School of Motoring" width="54" height="42" decoding="async">
       </a>
       <ul class="nav-links">
         <li><a href="#fleet">Cars</a></li>
@@ -689,20 +750,20 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <li><a href="#availability">Availability</a></li>
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#blog">Tips</a></li>
-        <li class="nav-dropdown">
-          <button class="nav-dropdown-btn">
+        <li class="nav-dropdown" id="quizzes-dropdown">
+          <button class="nav-dropdown-btn" id="quizzes-dropdown-btn" aria-haspopup="true" aria-expanded="false" aria-controls="quizzes-dropdown-menu">
             Quizzes
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
-          <div class="nav-dropdown-menu">
-            <a href="theory-quiz.html" class="nav-dd-item">
+          <div class="nav-dropdown-menu" id="quizzes-dropdown-menu" role="menu">
+            <a href="theory-quiz.html" class="nav-dd-item" role="menuitem">
               <div class="nav-dd-item-icon red">📋</div>
               <div class="nav-dd-body">
                 <div class="nav-dd-title">Theory Test Quiz</div>
                 <div class="nav-dd-sub">20 DVSA-style questions</div>
               </div>
             </a>
-            <a href="manoeuvres-quiz.html" class="nav-dd-item">
+            <a href="manoeuvres-quiz.html" class="nav-dd-item" role="menuitem">
               <div class="nav-dd-item-icon slate">🚗</div>
               <div class="nav-dd-body">
                 <div class="nav-dd-title">Manoeuvres Quiz</div>
@@ -737,8 +798,8 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     <a href="#availability" onclick="cm()">Check Availability</a>
     <a href="#reviews"      onclick="cm()">Reviews</a>
     <a href="#blog"     onclick="cm()">Driving Tips</a>
-    <a href="#theory-quiz-promo" onclick="cm()">Theory Quiz</a>
-    <a href="#manoeuvres-quiz-promo" onclick="cm()">Manoeuvres Quiz</a>
+    <a href="theory-quiz.html" onclick="cm()">Theory Quiz</a>
+    <a href="manoeuvres-quiz.html" onclick="cm()">Manoeuvres Quiz</a>
     <a href="#contact"  onclick="cm()">Contact</a>
     <a href="tel:07872347686" style="color:var(--sage);border-bottom:none;margin-top:8px;">📞 07872 347686</a>
   </div>
@@ -801,7 +862,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     </div>
     <div class="fleet-grid reveal">
       <div class="fleet-card glass-card">
-        <div class="fleet-img"><img src="aygo-x.webp" alt="Toyota Aygo X — Manual, D4Driving Peterborough"></div>
+        <div class="fleet-img"><img src="aygo-x.webp" alt="Toyota Aygo X — Manual, D4Driving Peterborough" width="800" height="600" loading="lazy" decoding="async"></div>
         <div class="fleet-body">
           <span class="fleet-badge badge-manual">Manual</span>
           <h3>Toyota Aygo X</h3>
@@ -814,7 +875,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         </div>
       </div>
       <div class="fleet-card glass-card">
-        <div class="fleet-img"><img src="yaris-cross.webp" alt="Toyota Yaris Cross — Automatic, D4Driving Peterborough"></div>
+        <div class="fleet-img"><img src="yaris-cross.webp" alt="Toyota Yaris Cross — Automatic, D4Driving Peterborough" width="800" height="600" loading="lazy" decoding="async"></div>
         <div class="fleet-body">
           <span class="fleet-badge badge-auto">Automatic</span>
           <h3>Toyota Yaris Cross</h3>
@@ -835,7 +896,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <div class="wrap">
     <div class="about-grid">
       <div class="about-img-wrap reveal">
-        <img src="robert.webp" alt="Robert — DVSA Approved Driving Instructor, D4Driving Peterborough" class="about-photo">
+        <img src="robert.webp" alt="Robert — DVSA Approved Driving Instructor, D4Driving Peterborough" class="about-photo" width="640" height="800" loading="lazy" decoding="async">
         <div class="about-badge">
           <span class="num">7+</span>
           <span class="lbl">Years<br>Teaching</span>
@@ -891,6 +952,14 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       <p style="color:var(--ink-mid);margin-top:14px;max-width:480px;">No hidden fees. Pay by cash, bank transfer, or PayPal. Save money with block bookings.</p>
     </div>
     <div class="lesson-grid reveal">
+      <div class="lesson-card glass-card assessment-card">
+        <div class="feat-tag" style="background:var(--slate);">New Students</div>
+        <div class="l-price"><sup>£</sup>55</div>
+        <div class="l-dur">90 Min</div>
+        <div class="l-name">Assessment</div>
+        <div class="l-desc">New students start here — skills audit &amp; personalised pass plan.</div>
+        <a href="#booking" class="btn btn-slate" style="width:100%;">Start Here</a>
+      </div>
       <div class="lesson-card glass-card">
         <div class="l-price"><sup>£</sup>40</div>
         <div class="l-dur">1 Hour</div>
@@ -912,14 +981,6 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <div class="l-name">Extended</div>
         <div class="l-desc">More road time — great for building fluency and confidence.</div>
         <a href="#booking" class="btn btn-outline" style="width:100%;">Book</a>
-      </div>
-      <div class="lesson-card glass-card assessment-card">
-        <div class="feat-tag" style="background:var(--slate);">New Students</div>
-        <div class="l-price"><sup>£</sup>55</div>
-        <div class="l-dur">90 Min</div>
-        <div class="l-name">Assessment</div>
-        <div class="l-desc">New students start here — skills audit &amp; personalised pass plan.</div>
-        <a href="#booking" class="btn btn-slate" style="width:100%;">Start Here</a>
       </div>
     </div>
 
@@ -988,9 +1049,9 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 <section id="availability" class="sec" style="background:var(--bg2);">
   <div class="wrap">
     <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 40px;">
-      <div class="eyebrow" style="justify-content:center;">Live Availability</div>
+      <div class="eyebrow" style="justify-content:center;">Or Book Via WhatsApp</div>
       <h2>Next Available Slots.</h2>
-      <p style="color:var(--ink-mid);margin-top:12px;">Updated live from Robert's calendar. Tap any slot to book instantly via WhatsApp.</p>
+      <p style="color:var(--ink-mid);margin-top:12px;">Prefer to message rather than use the calendar above? These are the next free slots, pulled live from Robert's diary — tap any one to book instantly via WhatsApp.</p>
       <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:20px;flex-wrap:wrap;">
         <span id="avail-updated" style="font-size:12px;font-weight:600;color:var(--ink-low);"></span>
         <button id="avail-refresh-btn" onclick="refreshAvailability()" class="btn btn-outline" style="font-size:12px;padding:8px 16px;gap:7px;border-radius:8px;">
@@ -1134,36 +1195,42 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <div class="wrap">
     <div class="reviews-hd reveal">
       <div>
-        <div class="eyebrow">Student Reviews</div>
+        <div class="eyebrow">Verified Google Reviews</div>
         <h2>Don't Just Take<br>Our Word For It.</h2>
       </div>
       <a href="https://g.page/r/Ca0Y46BYPxNMEAE/review" target="_blank" rel="noopener" class="btn btn-outline">Leave a Review ↗</a>
     </div>
     <div class="review-grid reveal">
       <div class="review-card glass-card">
-        <div class="stars">★★★★★</div>
+        <div class="stars">★★★★★ <span class="r-google" aria-label="Verified Google review">
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.99.66-2.25 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          GOOGLE
+        </span></div>
         <div class="r-quote">"</div>
-        <p class="r-text">Passed first time with Robert! His YouTube videos helped so much with my nerves. I couldn't recommend him highly enough.</p>
-        <div class="r-author"><div class="r-avatar">S</div><div><div class="r-name">Sarah J.</div><div class="r-area">Peterborough</div></div></div>
+        <p class="r-text">Robert was amazing — very professional and a very good teacher. He explained everything very well and always corrected me if I made a mistake. This helped me to pass first time. Definitely will be recommending to my friends and family.</p>
+        <div class="r-author"><div class="r-avatar">GR</div><div><div class="r-name">Gabriele R.</div><div class="r-area">Apr 2026</div></div></div>
       </div>
       <div class="review-card glass-card">
-        <div class="stars">★★★★★</div>
+        <div class="stars">★★★★★ <span class="r-google" aria-label="Verified Google review">
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.99.66-2.25 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          GOOGLE
+        </span></div>
         <div class="r-quote">"</div>
-        <p class="r-text">Mastered the Eye Roundabout thanks to the intensive course. Best instructor in the area — worth every penny.</p>
-        <div class="r-author"><div class="r-avatar">M</div><div><div class="r-name">Michael T.</div><div class="r-area">Hampton</div></div></div>
+        <p class="r-text">Robert is a petrol-head, a very knowledgeable driving instructor. If you are looking for a driving instructor in Peterborough I would definitely recommend Robert. He is a geek when it comes to cars and driving. A very patient individual who will teach you with utmost empathy.</p>
+        <div class="r-author"><div class="r-avatar">AB</div><div><div class="r-name">Avijit B.</div><div class="r-area">Mar 2026</div></div></div>
       </div>
       <div class="review-card glass-card">
-        <div class="stars">★★★★★</div>
+        <div class="stars">★★★★★ <span class="r-google" aria-label="Verified Google review">
+          <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.99.66-2.25 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          GOOGLE
+        </span></div>
         <div class="r-quote">"</div>
-        <p class="r-text">Robert knows the Grantham routes inside out. Calm, patient and thorough — I felt completely ready on test day.</p>
-        <div class="r-author"><div class="r-avatar">D</div><div><div class="r-name">David L.</div><div class="r-area">Werrington</div></div></div>
+        <p class="r-text">Robert is by far one of the best instructors. I remember how anxious I was when I started — I'd done lessons with another instructor who would constantly shout at me when I made a mistake — but with Robert it was different. He was calm in his approach, which made the panic go away, and I passed in no time. After that I've recommended a few of my mates and they've all passed in no time.</p>
+        <div class="r-author"><div class="r-avatar">AK</div><div><div class="r-name">Angie K.</div><div class="r-area">Mar 2026</div></div></div>
       </div>
-      <div class="review-card glass-card">
-        <div class="stars">★★★★★</div>
-        <div class="r-quote">"</div>
-        <p class="r-text">Knowledgeable, helpful and I passed with full confidence. Robert made me feel at ease from the very first lesson.</p>
-        <div class="r-author"><div class="r-avatar">C</div><div><div class="r-name">Chris G.</div><div class="r-area">Peterborough</div></div></div>
-      </div>
+    </div>
+    <div class="review-footer reveal">
+      <a href="https://share.google/4rRVXahUuwZrWQlZC" target="_blank" rel="noopener">Read all reviews on Google →</a>
     </div>
   </div>
 </section>
@@ -1177,17 +1244,17 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     </div>
     <div class="passes-grid reveal">
       <div class="pass-card">
-        <img src="Sonia.webp" alt="Sonia — passed her driving test with D4Driving">
+        <img src="Sonia.webp" alt="Sonia — passed her driving test with D4Driving" width="600" height="600" loading="lazy" decoding="async">
         <div class="pass-label">Passed ✓</div>
         <div class="pass-name">Sonia</div>
       </div>
       <div class="pass-card">
-        <img src="Buddhika.webp" alt="Buddhika — passed his driving test with D4Driving">
+        <img src="Buddhika.webp" alt="Regan — passed his driving test with D4Driving" width="600" height="600" loading="lazy" decoding="async">
         <div class="pass-label">Passed ✓</div>
         <div class="pass-name">Regan</div>
       </div>
       <div class="pass-card">
-        <img src="Sienna.webp" alt="Sienna — passed her driving test with D4Driving">
+        <img src="Sienna.webp" alt="Sienna — passed her driving test with D4Driving" width="600" height="600" loading="lazy" decoding="async">
         <div class="pass-label">Passed ✓</div>
         <div class="pass-name">Sienna</div>
       </div>
@@ -1319,8 +1386,8 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 }
 .theory-promo__eyebrow {
   display: inline-block;
-  background: rgba(189,32,38,0.09);
-  color: #BD2026;
+  background: var(--red-lo);
+  color: var(--red);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.8px;
@@ -1333,14 +1400,14 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 .theory-promo__heading {
   font-size: clamp(22px, 3vw, 30px);
   font-weight: 800;
-  color: #2C3E50;
+  color: var(--slate);
   line-height: 1.2;
   margin-bottom: 14px;
   letter-spacing: -0.5px;
 }
 .theory-promo__desc {
   font-size: 15px;
-  color: #555;
+  color: var(--ink-mid);
   line-height: 1.65;
   margin-bottom: 22px;
 }
@@ -1352,8 +1419,8 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   margin-bottom: 28px;
 }
 .theory-promo__pills li {
-  background: rgba(143,163,160,0.14);
-  color: #2C3E50;
+  background: var(--sage-lo);
+  color: var(--slate);
   font-size: 13px;
   font-weight: 600;
   border-radius: 20px;
@@ -1361,7 +1428,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 }
 .theory-promo__btn {
   display: inline-block;
-  background: #BD2026;
+  background: var(--red);
   color: #fff;
   font-size: 15px;
   font-weight: 700;
@@ -1374,7 +1441,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 }
 .theory-promo__btn:hover { opacity: 0.9; transform: translateY(-1px); }
 .theory-promo__visual {
-  background: linear-gradient(135deg, #2C3E50 0%, #1a2a38 100%);
+  background: linear-gradient(135deg, var(--slate) 0%, #1a2a38 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1398,20 +1465,20 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   gap: 6px;
 }
 .tpm__dot { width: 9px; height: 9px; border-radius: 50%; }
-.tpm__dot--red   { background: #BD2026; }
+.tpm__dot--red   { background: var(--red); }
 .tpm__dot--amber { background: #e8a838; }
 .tpm__dot--green { background: #3da85a; }
-.tpm__title { font-size: 11px; font-weight: 700; color: #8fa3a0; margin-left: 6px; letter-spacing: 0.3px; }
+.tpm__title { font-size: 11px; font-weight: 700; color: var(--sage); margin-left: 6px; letter-spacing: 0.3px; }
 .tpm__body { padding: 16px; }
-.tpm__q-label { font-size: 10px; font-weight: 700; color: #8fa3a0; letter-spacing: 0.4px; margin-bottom: 8px; text-transform: uppercase; }
-.tpm__q-text { font-size: 12px; font-weight: 700; color: #2C3E50; line-height: 1.45; margin-bottom: 12px; }
+.tpm__q-label { font-size: 10px; font-weight: 700; color: var(--sage); letter-spacing: 0.4px; margin-bottom: 8px; text-transform: uppercase; }
+.tpm__q-text { font-size: 12px; font-weight: 700; color: var(--slate); line-height: 1.45; margin-bottom: 12px; }
 .tpm__options { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
-.tpm__opt { border: 1.5px solid rgba(44,62,80,0.14); border-radius: 7px; padding: 7px 10px; font-size: 11px; color: #2C3E50; background: rgba(255,255,255,0.7); }
-.tpm__opt--selected { background: rgba(189,32,38,0.07); border-color: #BD2026; font-weight: 700; }
+.tpm__opt { border: 1.5px solid var(--slate-mid); border-radius: 7px; padding: 7px 10px; font-size: 11px; color: var(--slate); background: rgba(255,255,255,0.7); }
+.tpm__opt--selected { background: var(--red-lo); border-color: var(--red); font-weight: 700; }
 .tpm__progress-wrap { display: flex; align-items: center; gap: 8px; }
-.tpm__progress-bar  { flex: 1; background: rgba(143,163,160,0.2); border-radius: 3px; height: 5px; }
-.tpm__progress-fill { background: #BD2026; height: 100%; border-radius: 3px; }
-.tpm__progress-label { font-size: 10px; color: #8fa3a0; font-weight: 600; white-space: nowrap; }
+.tpm__progress-bar  { flex: 1; background: var(--sage-lo); border-radius: 3px; height: 5px; }
+.tpm__progress-fill { background: var(--red); height: 100%; border-radius: 3px; }
+.tpm__progress-label { font-size: 10px; color: var(--sage); font-weight: 600; white-space: nowrap; }
 @media (max-width: 800px) {
   .theory-promo__card { grid-template-columns: 1fr; }
   .theory-promo__visual { display: none; }
@@ -1509,7 +1576,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   border: 1px solid var(--border);
 }
 .mq-visual {
-  background: linear-gradient(135deg, #2C3E50 0%, #1a2a38 100%);
+  background: linear-gradient(135deg, var(--slate) 0%, #1a2a38 100%);
   display: flex; align-items: center; justify-content: center;
   padding: 40px 32px;
 }
@@ -1527,16 +1594,16 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   display: flex; align-items: center; gap: 6px;
 }
 .mq-dot { width: 9px; height: 9px; border-radius: 50%; }
-.mq-label { font-size: 11px; font-weight: 700; color: #8fa3a0; margin-left: 6px; }
+.mq-label { font-size: 11px; font-weight: 700; color: var(--sage); margin-left: 6px; }
 .mq-content { padding: 16px; }
-.mq-topic { font-size: 10px; font-weight: 700; color: #8fa3a0; letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 8px; }
-.mq-question { font-size: 12px; font-weight: 700; color: #2C3E50; line-height: 1.45; margin-bottom: 12px; }
-.mq-answer-reveal { background: rgba(44,62,80,0.05); border-left: 3px solid #2C3E50; border-radius: 0 7px 7px 0; padding: 8px 10px; margin-bottom: 12px; }
-.mq-answer-label { font-size: 10px; font-weight: 700; color: #2C3E50; margin-bottom: 4px; }
-.mq-answer-text { font-size: 11px; color: #536878; line-height: 1.5; }
+.mq-topic { font-size: 10px; font-weight: 700; color: var(--sage); letter-spacing: 0.4px; text-transform: uppercase; margin-bottom: 8px; }
+.mq-question { font-size: 12px; font-weight: 700; color: var(--slate); line-height: 1.45; margin-bottom: 12px; }
+.mq-answer-reveal { background: var(--slate-lo); border-left: 3px solid var(--slate); border-radius: 0 7px 7px 0; padding: 8px 10px; margin-bottom: 12px; }
+.mq-answer-label { font-size: 10px; font-weight: 700; color: var(--slate); margin-bottom: 4px; }
+.mq-answer-text { font-size: 11px; color: var(--ink-mid); line-height: 1.5; }
 .mq-prog-wrap { display: flex; align-items: center; gap: 8px; }
-.mq-prog-bar { flex: 1; background: rgba(143,163,160,0.2); border-radius: 3px; height: 5px; }
-.mq-prog-label { font-size: 10px; color: #8fa3a0; font-weight: 600; white-space: nowrap; }
+.mq-prog-bar { flex: 1; background: var(--sage-lo); border-radius: 3px; height: 5px; }
+.mq-prog-label { font-size: 10px; color: var(--sage); font-weight: 600; white-space: nowrap; }
 @media(max-width:800px) {
   .mq-card { grid-template-columns: 1fr; }
   .mq-visual { display: none; }
@@ -1590,7 +1657,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving" class="logo">
+        <img src="SVGLogo.svg" alt="D4Driving" class="logo" width="59" height="46" loading="lazy" decoding="async">
         <p class="footer-tag">Expert driving tuition with D4Driving School of Motoring. Helping learners pass with confidence across Peterborough and surrounding areas since 2017.</p>
       </div>
       <div>
@@ -1630,45 +1697,61 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 
 <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
-<!-- Cal.com embed -->
+<!-- Cal.com embed — deferred until #booking is near viewport -->
 <script>
-(function (C, A, L) {
-  let p = function (a, ar) { a.q.push(ar); };
-  let d = C.document;
-  C.Cal = C.Cal || function () {
-    let cal = C.Cal; let ar = arguments;
-    if (!cal.loaded) {
-      cal.ns = {}; cal.q = cal.q || [];
-      d.head.appendChild(d.createElement("script")).src = A;
-      cal.loaded = true;
-    }
-    if (ar[0] === L) {
-      const api = function () { p(api, arguments); };
-      const namespace = ar[1]; api.q = api.q || [];
-      typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar);
-      return;
-    }
-    p(cal, ar);
-  };
-})(window, "https://app.cal.com/embed/embed.js", "init");
+(function () {
+  let calInitialised = false;
 
-Cal("init", { origin: "https://cal.com" });
-Cal("inline", {
-  elementOrSelector: "#cal-embed",
-  calLink: "d4driving",
-  layout: "month_view"
-});
-Cal("ui", {
-  theme: "light",
-  styles: { branding: { brandColor: "#BD2026" } },
-  hideEventTypeDetails: false
-});
+  function initCal() {
+    if (calInitialised) return;
+    calInitialised = true;
 
-// Hide loader once Cal renders
-setTimeout(function () {
-  const loader = document.getElementById('cal-loading');
-  if (loader) loader.style.display = 'none';
-}, 2000);
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal; let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {}; cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1]; api.q = api.q || [];
+          typeof namespace === "string" ? (cal.ns[namespace] = api) && p(api, ar) : p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+
+    Cal("init", { origin: "https://cal.com" });
+    Cal("inline", {
+      elementOrSelector: "#cal-embed",
+      calLink: "d4driving",
+      layout: "month_view"
+    });
+    Cal("ui", {
+      theme: "light",
+      styles: { branding: { brandColor: "#BD2026" } },
+      hideEventTypeDetails: false
+    });
+
+    // Hide loader once Cal renders
+    setTimeout(function () {
+      const loader = document.getElementById('cal-loading');
+      if (loader) loader.style.display = 'none';
+    }, 2000);
+  }
+
+  const booking = document.getElementById('booking');
+  if (!booking || !('IntersectionObserver' in window)) { initCal(); return; }
+  const o = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting) { initCal(); o.disconnect(); }
+  }, { rootMargin: '300px' });
+  o.observe(booking);
+})();
 </script>
 
 <script>
@@ -1696,7 +1779,7 @@ function renderArticles(items) {
     return `
       <a href="article.html?i=${i}" class="blog-card glass-card">
         <div class="blog-img">
-          ${a.image ? `<img src="${a.image}" alt="${a.title}" loading="lazy">` : `<div class="blog-img-placeholder">🚗</div>`}
+          ${a.image ? `<img src="${a.image}" alt="${a.title}" width="800" height="450" loading="lazy" decoding="async">` : `<div class="blog-img-placeholder">🚗</div>`}
         </div>
         <div class="blog-body">
           <div class="blog-cat">${a.cat}</div>
@@ -1720,15 +1803,15 @@ function showFallback() {
 
 async function loadArticles() {
   try {
-    const r = await fetch(SORO_RSS, { cache: 'no-store' });
+    const r = await fetch(SORO_RSS, { cache: 'no-cache' });
     if (r.ok) { const items = parseRSS(await r.text()); if (items.length) { renderArticles(items); return; } }
   } catch(e) {}
   try {
-    const r = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(SORO_RSS)}`, { cache: 'no-store' });
+    const r = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(SORO_RSS)}`, { cache: 'no-cache' });
     if (r.ok) { const j = await r.json(); const items = parseRSS(j.contents||''); if (items.length) { renderArticles(items); return; } }
   } catch(e) {}
   try {
-    const r = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(SORO_RSS)}&count=3`, { cache: 'no-store' });
+    const r = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(SORO_RSS)}&count=3`, { cache: 'no-cache' });
     if (r.ok) {
       const d = await r.json();
       if (d.status==='ok' && d.items?.length) {
@@ -1775,13 +1858,30 @@ function cm() {
   document.body.style.overflow = '';
 }
 
+/* ── Quizzes dropdown — keyboard / touch support ── */
+(function () {
+  const dd  = document.getElementById('quizzes-dropdown');
+  const btn = document.getElementById('quizzes-dropdown-btn');
+  if (!dd || !btn) return;
+  function setOpen(open) {
+    dd.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    setOpen(!dd.classList.contains('open'));
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && dd.classList.contains('open')) {
+      setOpen(false); btn.focus();
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (!dd.contains(e.target)) setOpen(false);
+  });
+})();
+
 /* ── Reveal ── */
-new IntersectionObserver(
-  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
-  { threshold: 0.1 }
-).observe = (function(orig) {
-  return function(el) { orig.call(this, el); };
-})(IntersectionObserver.prototype.observe);
 const obs = new IntersectionObserver(
   entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); }),
   { threshold: 0.08 }
