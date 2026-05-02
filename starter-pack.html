@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Starter Pack — Pass Your UK Driving Test First Time | D4Driving</title>
+<meta name="description" content="Download the free D4Driving Starter Pack — the 5 most common test fails, your first lesson checklist, manual vs automatic guide, and a complete test day plan.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --red:        #BD2026;
+  --red-hi:     #d4252c;
+  --red-lo:     rgba(189,32,38,0.08);
+  --red-border: rgba(189,32,38,0.2);
+  --slate:      #2C3E50;
+  --slate-hi:   #374f65;
+  --sage:       #8fa3a0;
+  --bg:         #fbfdff;
+  --bg2:        #f3f7fb;
+  --glass-bg:   rgba(255,255,255,0.9);
+  --glass-border: rgba(226,232,240,0.8);
+  --glass-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.03);
+  --ink:        #2C3E50;
+  --ink-mid:    #536878;
+  --ink-low:    #94a3b4;
+  --border:     rgba(226,232,240,0.8);
+  --font: 'Plus Jakarta Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font); background-color: var(--bg); color: var(--ink);
+  line-height: 1.6; min-height: 100vh;
+  display: flex; flex-direction: column;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+/* ── Nav (simplified) ── */
+.nav {
+  padding: 16px 0;
+  background: rgba(251,253,255,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1140px; margin: 0 auto; padding: 0 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 52px;
+}
+.nav-logo img { height: 38px; width: auto; }
+.nav-home {
+  font-size: 13px; font-weight: 600; color: var(--ink-mid);
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 8px; transition: all .2s;
+}
+.nav-home:hover { color: var(--slate); background: rgba(44,62,80,0.06); }
+
+/* ── Hero ── */
+.hero {
+  background: var(--slate); position: relative; overflow: hidden;
+  padding: 80px 0 60px;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg,
+    rgba(44,62,80,0.98) 0%,
+    rgba(44,62,80,0.85) 50%,
+    rgba(189,32,38,0.15) 100%);
+}
+.hero-stripe {
+  position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+  background: var(--red); border-radius: 0 2px 2px 0;
+}
+.hero-wrap {
+  position: relative; z-index: 2;
+  max-width: 1140px; margin: 0 auto; padding: 0 28px;
+  display: flex; align-items: center; gap: 60px;
+}
+.hero-text { flex: 1; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--sage); margin-bottom: 16px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 20px; height: 2px;
+  background: var(--sage); border-radius: 2px;
+}
+.hero h1 {
+  font-size: clamp(32px, 5vw, 52px); font-weight: 800;
+  line-height: 1.08; letter-spacing: -1.5px; color: #fff;
+  margin-bottom: 18px;
+}
+.hero h1 .accent { color: var(--red); }
+.hero-sub {
+  font-size: 17px; color: rgba(255,255,255,0.6);
+  max-width: 480px; margin-bottom: 32px; line-height: 1.7;
+}
+.hero-sub strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+/* Download button */
+.dl-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font); font-size: 16px; font-weight: 700;
+  padding: 16px 36px; border: none; cursor: pointer; border-radius: 14px;
+  background: var(--red); color: #fff;
+  box-shadow: 0 6px 20px rgba(189,32,38,0.3);
+  transition: all .25s; text-decoration: none;
+}
+.dl-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(189,32,38,0.45);
+  background: var(--red-hi);
+}
+.dl-btn svg { flex-shrink: 0; }
+.dl-note {
+  font-size: 12px; color: rgba(255,255,255,0.4);
+  margin-top: 14px; display: flex; align-items: center; gap: 6px;
+}
+
+/* PDF preview card */
+.hero-preview {
+  flex-shrink: 0; width: 260px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px; padding: 24px;
+  backdrop-filter: blur(8px);
+}
+.preview-mock {
+  background: #fff; border-radius: 10px;
+  aspect-ratio: 210/297; width: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 24px; text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+.preview-mock .pm-brand {
+  font-size: 10px; font-weight: 700; color: var(--red);
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+}
+.preview-mock .pm-title {
+  font-size: 16px; font-weight: 800; color: var(--slate);
+  line-height: 1.2; margin-bottom: 6px;
+}
+.preview-mock .pm-sub {
+  font-size: 10px; color: var(--ink-low); margin-bottom: 16px;
+}
+.preview-mock .pm-bar {
+  width: 60%; height: 3px; background: var(--red);
+  border-radius: 2px; margin-bottom: 14px;
+}
+.preview-mock .pm-lines {
+  width: 80%; display: flex; flex-direction: column; gap: 5px;
+}
+.preview-mock .pm-line {
+  height: 3px; background: var(--bg2); border-radius: 2px;
+}
+.preview-mock .pm-line.short { width: 60%; }
+.preview-label {
+  text-align: center; margin-top: 16px;
+  font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.45);
+  letter-spacing: 0.5px;
+}
+
+/* ── What's Inside ── */
+.content-sec {
+  max-width: 1140px; margin: 0 auto; padding: 80px 28px;
+}
+.content-sec h2 {
+  font-size: clamp(26px, 3.5vw, 40px); font-weight: 800;
+  letter-spacing: -1px; color: var(--slate); margin-bottom: 12px;
+}
+.content-sec .lead {
+  font-size: 16px; color: var(--ink-mid); margin-bottom: 48px;
+  max-width: 560px;
+}
+
+.features-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.feature-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+  padding: 28px 24px;
+  transition: transform .3s, box-shadow .3s;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 40px -8px rgba(44,62,80,0.12);
+}
+.feature-num {
+  font-size: 42px; font-weight: 800; color: var(--bg2);
+  line-height: 1; margin-bottom: 12px; letter-spacing: -2px;
+}
+.feature-card h3 {
+  font-size: 17px; font-weight: 700; color: var(--slate);
+  margin-bottom: 8px;
+}
+.feature-card p {
+  font-size: 14px; color: var(--ink-mid); line-height: 1.65;
+}
+
+/* ── About strip ── */
+.about-strip {
+  background: var(--bg2); border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.about-inner {
+  max-width: 1140px; margin: 0 auto; padding: 60px 28px;
+  display: flex; align-items: center; gap: 40px;
+}
+.about-avatar {
+  width: 80px; height: 80px; border-radius: 50%; flex-shrink: 0;
+  background: var(--slate);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 800; color: #fff;
+}
+.about-text h3 {
+  font-size: 17px; font-weight: 700; color: var(--slate); margin-bottom: 6px;
+}
+.about-text p {
+  font-size: 14.5px; color: var(--ink-mid); line-height: 1.7; max-width: 600px;
+}
+.about-text p strong { color: var(--slate); font-weight: 600; }
+
+/* ── Bottom CTA ── */
+.bottom-cta {
+  background: var(--slate); padding: 60px 0; text-align: center;
+}
+.bottom-cta-inner {
+  max-width: 1140px; margin: 0 auto; padding: 0 28px;
+}
+.bottom-cta h2 {
+  font-size: clamp(24px, 3vw, 36px); font-weight: 800;
+  color: #fff; margin-bottom: 8px; letter-spacing: -1px;
+}
+.bottom-cta p {
+  font-size: 15px; color: var(--sage); margin-bottom: 28px;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: auto;
+  padding: 28px 0; text-align: center;
+  border-top: 1px solid var(--border);
+}
+.footer p {
+  font-size: 12px; color: var(--ink-low);
+  max-width: 1140px; margin: 0 auto; padding: 0 28px;
+}
+.footer a { color: var(--red); font-weight: 600; }
+.footer a:hover { text-decoration: underline; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .hero-wrap { flex-direction: column; text-align: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-eyebrow { justify-content: center; }
+  .hero-preview { width: 200px; }
+  .dl-btn { justify-content: center; }
+  .dl-note { justify-content: center; }
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  .about-inner { flex-direction: column; text-align: center; }
+}
+@media (max-width: 540px) {
+  .hero { padding: 60px 0 48px; }
+  .hero-preview { display: none; }
+  .features-grid { grid-template-columns: 1fr; }
+  .dl-btn { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving School of Motoring">
+    </a>
+    <a href="index.html" class="nav-home">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      Back to D4Driving
+    </a>
+  </div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-stripe"></div>
+  <div class="hero-wrap">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Free Download</div>
+      <h1>Pass Your UK Driving Test <span class="accent">First Time</span></h1>
+      <p class="hero-sub">
+        The <strong>free starter pack</strong> that shows you what examiners look for,
+        the 5 mistakes that fail most learners, and how to avoid every one of them.
+      </p>
+      <a href="D4Driving_Starter_Pack.pdf" download class="dl-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Free Starter Pack
+      </a>
+      <p class="dl-note">PDF · 8 pages · No email required · Instant download</p>
+    </div>
+    <div class="hero-preview">
+      <div class="preview-mock">
+        <div class="pm-brand">D4Driving</div>
+        <div class="pm-title">Pass Your UK Driving Test First Time</div>
+        <div class="pm-sub">The Complete Starter Pack</div>
+        <div class="pm-bar"></div>
+        <div class="pm-lines">
+          <div class="pm-line"></div>
+          <div class="pm-line"></div>
+          <div class="pm-line short"></div>
+          <div class="pm-line"></div>
+          <div class="pm-line short"></div>
+        </div>
+      </div>
+      <p class="preview-label">8-page PDF guide</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── What's Inside ── -->
+<div class="content-sec">
+  <h2>What's Inside</h2>
+  <p class="lead">Six sections covering everything from your very first lesson to walking out of the test centre with a pass.</p>
+
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-num">01</div>
+      <h3>Why Learners Really Fail</h3>
+      <p>It's not lack of ability — it's predictable mistakes under pressure. We break down what actually goes wrong and why.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">02</div>
+      <h3>The 5 Most Common Fails</h3>
+      <p>Mirror checks, junction hesitation, roundabout observation, speed control, and positioning — with fixes for each one.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">03</div>
+      <h3>First Lesson Checklist</h3>
+      <p>What to bring, what to focus on, and what not to worry about. So your first lesson builds confidence, not anxiety.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">04</div>
+      <h3>Manual vs Automatic</h3>
+      <p>An honest side-by-side comparison — pros, cons, and which one is right for your situation. No sales pitch.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">05</div>
+      <h3>How to Progress Faster</h3>
+      <p>Six techniques most learners never use — from targeted feedback to visualisation between lessons.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-num">06</div>
+      <h3>Your Test Day Plan</h3>
+      <p>What to bring, how to stay calm, and what examiners actually want to see. No surprises on the day.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── About ── -->
+<div class="about-strip">
+  <div class="about-inner">
+    <div class="about-avatar">R</div>
+    <div class="about-text">
+      <h3>Created by Robert — DVSA Approved Instructor</h3>
+      <p>
+        I've been teaching since 2009 and I run <strong>D4Driving School of Motoring</strong> in Peterborough.
+        I created this guide because I kept seeing the same avoidable mistakes, the same nerves, the same fails.
+        This is everything I wish every learner knew before their first lesson.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── Bottom CTA ── -->
+<section class="bottom-cta">
+  <div class="bottom-cta-inner">
+    <h2>Want lessons, not just tips?</h2>
+    <p>Book your first lesson — manual or automatic — in Peterborough, Grantham, or Kettering.</p>
+    <a href="https://www.d4driving.co.uk/#booking" class="dl-btn" style="background:var(--red);">
+      Book a Lesson at D4Driving
+    </a>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <p>&copy; 2026 D4Driving School of Motoring. <a href="index.html">d4driving.co.uk</a> · <a href="https://www.youtube.com/@d4drivingSOM" target="_blank">YouTube</a></p>
+</footer>
+
+</body>
+</html>
