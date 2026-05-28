@@ -348,10 +348,13 @@ p  { line-height: 1.75; }
 .hero-sub strong { color: rgba(255,255,255,0.9); font-weight: 600; }
 .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
-/* Free guide CTA below hero buttons */
+/* Free guide CTAs below hero buttons */
+.hero-guide-links {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px;
+}
 .hero-free-guide {
   display: inline-flex; align-items: center; gap: 9px;
-  margin-top: 18px;
+  margin-top: 0;
   font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
   color: rgba(255,255,255,0.75);
   padding: 10px 20px; border-radius: 99px;
@@ -743,6 +746,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   .fleet-img { height:240px; }
   .hero-btns { flex-direction:column; }
   .btn { justify-content:center; }
+  .hero-guide-links { flex-direction:column; }
   .hero-free-guide { justify-content:center; width:100%; text-align:center; font-size:12px; }
 }
 </style>
@@ -847,10 +851,15 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
           Call AI Receptionist
         </a>
       </div>
-      <a href="starter-pack.html" class="hero-free-guide">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        FREE Starter Pack — Pass Your Test First Time
-      </a>
+      <div class="hero-guide-links">
+        <a href="starter-pack.html" class="hero-free-guide">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          FREE Starter Pack — Pass Your Test First Time
+        </a>
+        <a href="mock-test.html" class="hero-free-guide">
+          🎯 FREE Mock Test — Peterborough
+        </a>
+      </div>
     </div>
   </div>
   <div class="hero-card">
