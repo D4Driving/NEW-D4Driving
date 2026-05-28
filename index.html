@@ -299,6 +299,20 @@ p  { line-height: 1.75; }
   transition: color .2s, padding-left .2s;
 }
 .mobile-nav a:hover { color: var(--red); padding-left: 8px; }
+.mobile-nav-mock-btn {
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  margin-top: 16px; padding: 14px 20px; border-radius: 99px;
+  background: var(--red); color: #fff !important;
+  font-size: 15px; font-weight: 800; letter-spacing: 0.3px;
+  border-bottom: none !important; padding-left: 20px !important;
+  box-shadow: 0 4px 16px rgba(189,32,38,0.28);
+  transition: background .22s, box-shadow .22s, transform .22s !important;
+}
+.mobile-nav-mock-btn:hover {
+  background: var(--red-hi) !important; color: #fff !important;
+  box-shadow: 0 8px 24px rgba(189,32,38,0.38);
+  transform: translateY(-2px) !important; padding-left: 20px !important;
+}
 
 /* ─── HERO ───────────────────────────────── */
 #hero {
@@ -801,9 +815,11 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     <a href="#blog"     onclick="cm()">Driving Tips</a>
     <a href="theory-quiz.html" onclick="cm()">Theory Quiz</a>
     <a href="manoeuvres-quiz.html" onclick="cm()">Manoeuvres Quiz</a>
-    <a href="mock-test.html" onclick="cm()" style="color:var(--red);font-weight:700;">🎯 Free Mock Test</a>
     <a href="#contact"  onclick="cm()">Contact</a>
     <a href="tel:07872347686" style="color:var(--sage);border-bottom:none;margin-top:8px;">📞 07872 347686</a>
+    <a href="mock-test.html" onclick="cm()" class="mobile-nav-mock-btn">
+      🎯 FREE Mock Test
+    </a>
   </div>
 </nav>
 
@@ -1123,7 +1139,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   function renderSlots(slots) {
     const grid = document.getElementById('avail-grid');
     if (!slots.length) {
-      grid.innerHTML = '<div class="avail-empty">No availability found in the next 30 days — please <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert</a> directly.</div>';
+      grid.innerHTML = '<div class="avail-empty">No availability found in the next 45 days — please <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert</a> directly.</div>';
       return;
     }
     let html = '';
@@ -1165,7 +1181,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         updEl.textContent = ago < 2 ? 'Updated just now' : `Updated ${ago} min ago`;
       }
       if (!data.slots || !data.slots.length) {
-        grid.innerHTML = `<div class="avail-empty">No availability found in the next 30 days — <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to arrange a time.</div>`;
+        grid.innerHTML = `<div class="avail-empty">No availability found in the next 45 days — <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to arrange a time.</div>`;
         return;
       }
       const slots = data.slots.map(s => ({
