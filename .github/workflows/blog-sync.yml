@@ -89,8 +89,8 @@ jobs:
             0: null                    /* Sun — off */
           };
           const LESSON_MIN = 60;
-          const DAYS_AHEAD = 30;
-          const MAX_SLOTS  = 20;
+          const DAYS_AHEAD = 45;
+          const MAX_SLOTS  = 30;
 
           function fetch(url) {
             return new Promise((res, rej) => {
