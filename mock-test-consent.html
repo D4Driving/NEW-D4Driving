@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filming Consent & Terms — D4Driving Free Mock Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red:   #BD2026;
+    --slate: #2C3E50;
+    --ink:   #2C3E50;
+    --ink-mid: #536878;
+    --border: #e2e8f0;
+    --font: 'Plus Jakarta Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font); color: var(--ink);
+    background: #fff; max-width: 780px;
+    margin: 0 auto; padding: 48px 40px 80px;
+    font-size: 15px; line-height: 1.75;
+  }
+
+  /* ── Header ── */
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding-bottom: 28px; border-bottom: 2px solid var(--red); margin-bottom: 36px;
+  }
+  .doc-header img { height: 46px; width: auto; }
+  .doc-meta { text-align: right; }
+  .doc-meta .doc-title {
+    font-size: 22px; font-weight: 800; color: var(--slate); line-height: 1.2;
+  }
+  .doc-meta .doc-sub {
+    font-size: 12px; color: var(--ink-mid); margin-top: 4px;
+  }
+
+  /* ── Print button ── */
+  .print-bar {
+    background: #f3f7fb; border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 40px; gap: 16px;
+  }
+  .print-bar p { font-size: 13.5px; color: var(--ink-mid); }
+  .print-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--slate); color: #fff;
+    padding: 10px 20px; border-radius: 8px; font-size: 13px;
+    font-weight: 700; font-family: var(--font); border: none; cursor: pointer;
+    white-space: nowrap; transition: background .2s;
+  }
+  .print-btn:hover { background: var(--red); }
+
+  /* ── Sections ── */
+  .section { margin-bottom: 36px; }
+  .section-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--red);
+    margin-bottom: 12px; display: flex; align-items: center; gap: 10px;
+  }
+  .section-title::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+  h2 { font-size: 18px; font-weight: 800; color: var(--slate); margin-bottom: 10px; }
+  p { color: var(--ink-mid); margin-bottom: 10px; }
+  p:last-child { margin-bottom: 0; }
+  ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+  ul li { display: flex; align-items: flex-start; gap: 10px; color: var(--ink-mid); }
+  ul li::before {
+    content: '✓'; font-weight: 800; color: var(--red);
+    font-size: 12px; margin-top: 3px; flex-shrink: 0;
+  }
+  strong { color: var(--slate); font-weight: 700; }
+
+  /* ── Signature block ── */
+  .sig-block {
+    margin-top: 48px; border: 1.5px solid var(--border); border-radius: 14px;
+    padding: 28px 32px; background: #f9fbff;
+  }
+  .sig-block-title {
+    font-size: 13px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 1.5px; color: var(--slate); margin-bottom: 20px;
+  }
+  .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .sig-field { }
+  .sig-label { font-size: 11px; font-weight: 700; color: var(--ink-mid); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 40px; }
+  .sig-line { border-bottom: 1.5px solid var(--border); margin-top: 4px; }
+  .sig-sub { font-size: 11px; color: var(--ink-mid); margin-top: 6px; }
+
+  /* ── Notice box ── */
+  .notice {
+    background: rgba(189,32,38,0.06); border: 1px solid rgba(189,32,38,0.2);
+    border-radius: 10px; padding: 16px 20px; margin-bottom: 10px;
+  }
+  .notice p { color: var(--slate); font-size: 13.5px; margin: 0; }
+
+  /* ── Footer ── */
+  .doc-footer {
+    margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-mid);
+    flex-wrap: wrap; gap: 8px;
+  }
+
+  /* ── Print styles ── */
+  @media print {
+    .print-bar { display: none; }
+    body { padding: 20px; font-size: 13px; }
+    .sig-label { margin-bottom: 50px; }
+    a { color: inherit; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="doc-header">
+  <img src="SVGLogo.svg" alt="D4Driving School of Motoring">
+  <div class="doc-meta">
+    <div class="doc-title">Filming Consent &amp; Terms</div>
+    <div class="doc-sub">D4Driving Free Mock Test Programme<br>Version 1.0 · May 2026</div>
+  </div>
+</div>
+
+<!-- Print bar -->
+<div class="print-bar">
+  <p>Read this document carefully before submitting your application. Print or save as PDF for your records.</p>
+  <button class="print-btn" onclick="window.print()">
+    🖨 Print / Save as PDF
+  </button>
+</div>
+
+<!-- Section 1 -->
+<div class="section">
+  <div class="section-title">1 · About This Document</div>
+  <p>
+    This document sets out the terms and conditions of the <strong>D4Driving Free Mock Test Programme</strong>, operated by
+    <strong>D4Driving School of Motoring</strong> ("D4Driving", "we", "us"), and the filming consent you provide when you apply.
+  </p>
+  <p>
+    By ticking the consent box in the application form on <strong>www.d4driving.co.uk/mock-test.html</strong> you confirm that
+    you have read, understood, and agree to the terms set out in this document.
+  </p>
+</div>
+
+<!-- Section 2 -->
+<div class="section">
+  <div class="section-title">2 · The Offer</div>
+  <p>D4Driving will provide one <strong>free mock driving test</strong> to successful applicants, subject to availability. The session will:</p>
+  <ul>
+    <li>Be conducted by Robert (DVSA Approved Driving Instructor, ADI licence number available on request)</li>
+    <li>Follow the current DVSA marking criteria used in the official practical driving test</li>
+    <li>Last approximately 40–50 minutes including a debrief</li>
+    <li>Take place from the Peterborough test centre area only</li>
+    <li>Be available in manual or automatic transmission</li>
+  </ul>
+  <div class="notice">
+    <p><strong>Availability:</strong> Sessions take place on alternating Mondays, with a maximum of 3 applicants per session. Acceptance is at D4Driving's sole discretion. Applying does not guarantee a slot.</p>
+  </div>
+</div>
+
+<!-- Section 3 -->
+<div class="section">
+  <div class="section-title">3 · Filming Consent</div>
+  <p>In exchange for receiving a free mock test, you give D4Driving your <strong>full consent</strong> to:</p>
+  <ul>
+    <li>Film the full mock test session, including footage from in-car cameras and any external cameras used</li>
+    <li>Record your face, voice, driving performance, and any commentary or conversation during the session</li>
+    <li>Edit and publish the footage on the D4Driving YouTube channel (<a href="https://www.youtube.com/@d4drivingSOM" target="_blank">@d4drivingSOM</a>)</li>
+    <li>Share clips or excerpts on other D4Driving social media channels including TikTok and Instagram</li>
+    <li>Use the footage for promotional or educational purposes without restriction on duration</li>
+  </ul>
+  <p>
+    D4Driving retains full copyright and ownership of all footage recorded during the session.
+    You may not claim any fee, royalty, or compensation in connection with the use of this footage.
+  </p>
+</div>
+
+<!-- Section 4 -->
+<div class="section">
+  <div class="section-title">4 · Your Rights &amp; Protections</div>
+  <ul>
+    <li>Your full home address and any sensitive personal details will <strong>not</strong> be published</li>
+    <li>If you wish, your first name only may be used in any video title or description</li>
+    <li>You may request a copy of any footage in which you appear, subject to a reasonable request</li>
+    <li>If you are under 18, a parent or guardian must co-sign this consent form before the session</li>
+  </ul>
+  <p>
+    D4Driving will handle your personal data (name, contact details, experience level) in accordance with UK GDPR.
+    Your data will only be used to administer the mock test programme and will not be shared with third parties.
+  </p>
+</div>
+
+<!-- Section 5 -->
+<div class="section">
+  <div class="section-title">5 · No Cash Alternative</div>
+  <p>
+    The free mock test has no cash equivalent and cannot be exchanged for money, lesson credits, or any other benefit.
+    The offer is personal to the applicant and is non-transferable.
+  </p>
+</div>
+
+<!-- Section 6 -->
+<div class="section">
+  <div class="section-title">6 · Cancellation &amp; Rescheduling</div>
+  <ul>
+    <li>We ask for at least <strong>48 hours' notice</strong> if you need to cancel or reschedule</li>
+    <li>Late cancellations (under 48 hours) or no-shows will forfeit the slot</li>
+    <li>D4Driving reserves the right to reschedule at short notice due to instructor availability or vehicle issues</li>
+    <li>If we cancel, we will offer an alternative date or release you from this agreement with no obligation</li>
+  </ul>
+</div>
+
+<!-- Section 7 -->
+<div class="section">
+  <div class="section-title">7 · No Obligation to Continue</div>
+  <p>
+    Participation in the free mock test programme carries <strong>no obligation</strong> to book paid lessons with D4Driving,
+    either before or after the session. You are free to use the feedback however you choose.
+  </p>
+</div>
+
+<!-- Section 8 -->
+<div class="section">
+  <div class="section-title">8 · Contact</div>
+  <p>
+    If you have any questions about these terms or your filming consent, please contact Robert directly:<br>
+    <strong>WhatsApp / Phone:</strong> 07872 347686<br>
+    <strong>Email:</strong> info@d4driving.co.uk<br>
+    <strong>Website:</strong> www.d4driving.co.uk
+  </p>
+</div>
+
+<!-- Signature block -->
+<div class="sig-block">
+  <div class="sig-block-title">Declaration &amp; Signature (Optional — for printed copies)</div>
+  <p style="font-size:13.5px;color:var(--ink-mid);margin-bottom:24px;">
+    By signing below I confirm I have read and understood the D4Driving Free Mock Test Filming Consent &amp; Terms (Version 1.0, May 2026)
+    and I agree to be bound by them. I confirm I am 17 years of age or older, or that a parent/guardian signature is provided below.
+  </p>
+  <div class="sig-grid">
+    <div class="sig-field">
+      <div class="sig-label">Applicant Full Name</div>
+      <div class="sig-line"></div>
+      <div class="sig-sub">Please print clearly</div>
+    </div>
+    <div class="sig-field">
+      <div class="sig-label">Date</div>
+      <div class="sig-line"></div>
+      <div class="sig-sub">DD / MM / YYYY</div>
+    </div>
+    <div class="sig-field">
+      <div class="sig-label">Applicant Signature</div>
+      <div class="sig-line"></div>
+      <div class="sig-sub">&nbsp;</div>
+    </div>
+    <div class="sig-field">
+      <div class="sig-label">Parent / Guardian (if under 18)</div>
+      <div class="sig-line"></div>
+      <div class="sig-sub">Signature &amp; printed name</div>
+    </div>
+  </div>
+</div>
+
+<!-- Doc footer -->
+<div class="doc-footer">
+  <span>D4Driving School of Motoring · www.d4driving.co.uk · info@d4driving.co.uk</span>
+  <span>Free Mock Test Programme · Filming Consent &amp; Terms v1.0 · May 2026</span>
+</div>
+
+</body>
+</html>
