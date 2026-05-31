@@ -554,6 +554,21 @@ p  { line-height: 1.75; }
 .booking-header h3 { font-size: 20px; }
 .booking-header p  { font-size: 14px; color: var(--ink-mid); margin-top: 4px; }
 
+/* ─── INSTRUCTOR SELECTOR ────────────────── */
+.instr-selector { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 700px; margin: 0 auto 40px; }
+.instr-card {
+  display: flex; align-items: center; gap: 18px; padding: 22px 24px;
+  border-radius: 16px; background: var(--glass-bg); border: 2px solid var(--glass-border);
+  transition: all .22s; text-decoration: none; color: var(--ink);
+}
+.instr-card.instr-active { border-color: var(--red); box-shadow: 0 0 0 3px rgba(189,32,38,0.08); }
+.instr-card:not(.instr-active):hover { border-color: var(--red); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(189,32,38,0.1); }
+.instr-photo { width: 68px; height: 68px; border-radius: 50%; object-fit: cover; object-position: center top; flex-shrink: 0; border: 2px solid var(--border); }
+.instr-name { font-size: 17px; font-weight: 800; color: var(--slate); margin-bottom: 3px; }
+.instr-detail { font-size: 12px; color: var(--ink-mid); line-height: 1.5; }
+.instr-cta { font-size: 12px; font-weight: 700; color: var(--red); margin-top: 6px; }
+.instr-card:not(.instr-active) .instr-cta { color: var(--ink-low); }
+
 /* ─── REVIEWS ────────────────────────────── */
 #reviews { background: var(--bg); }
 .reviews-hd { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
@@ -730,6 +745,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   .about-grid { grid-template-columns:1fr; gap:40px; }
   .about-img-wrap::after { display:none; }
   .fleet-grid { grid-template-columns:1fr 1fr; gap:20px; }
+  .instr-selector { grid-template-columns:1fr; max-width:420px; }
   .yt-grid,.contact-grid { grid-template-columns:1fr; gap:36px; }
   .cov-grid { grid-template-columns:1fr 1fr; }
   .centres-grid { grid-template-columns:1fr; }
@@ -986,8 +1002,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
           <div class="chk"><div class="chk-dot">✓</div>Patient, structured lessons for all abilities</div>
           <div class="chk"><div class="chk-dot">✓</div>Peterborough test centre specialist</div>
         </div>
-        <!-- TODO: replace #booking with Rakesh's Cal.com link once received -->
-        <a href="#booking" class="btn btn-slate">Book with Rakesh</a>
+        <a href="rakesh.d4driving.html" class="btn btn-slate">Book with Rakesh →</a>
       </div>
     </div>
   </div>
@@ -1095,14 +1110,35 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <div class="wrap">
     <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 44px;">
       <div class="eyebrow" style="justify-content:center;">Book Online</div>
-      <h2>Reserve Your Slot.</h2>
-      <p style="color:var(--ink-mid);margin-top:12px;">Pick a date and time that works for you — it only takes a minute. Or call <a href="tel:07872347686" style="color:var(--red);font-weight:700;">07872 347686</a> to chat first.</p>
+      <h2>Choose Your Instructor.</h2>
+      <p style="color:var(--ink-mid);margin-top:12px;">Select an instructor below to book — or call <a href="tel:07872347686" style="color:var(--red);font-weight:700;">07872 347686</a> to chat first.</p>
     </div>
+
+    <!-- Instructor selector -->
+    <div class="instr-selector reveal">
+      <div class="instr-card instr-active">
+        <img src="Robert.webp" alt="Robert" class="instr-photo">
+        <div>
+          <div class="instr-name">Robert</div>
+          <div class="instr-detail">Toyota Aygo X · Manual<br>Toyota Yaris Cross · Auto</div>
+          <div class="instr-cta">↓ Calendar below</div>
+        </div>
+      </div>
+      <a href="rakesh.d4driving.html" class="instr-card">
+        <img src="Rakesh.webp" alt="Rakesh" class="instr-photo">
+        <div>
+          <div class="instr-name">Rakesh</div>
+          <div class="instr-detail">VW Golf · Manual</div>
+          <div class="instr-cta">View Rakesh's page →</div>
+        </div>
+      </a>
+    </div>
+
     <div class="booking-wrap reveal">
       <div class="booking-card glass-card">
         <div class="booking-header">
           <div>
-            <h3>D4Driving — Book a Lesson</h3>
+            <h3>Robert's Calendar — Book a Lesson</h3>
             <p>Peterborough · Grantham · Kettering</p>
           </div>
           <span class="price-badge">From £40/hr</span>
