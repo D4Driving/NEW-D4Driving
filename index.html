@@ -395,7 +395,7 @@ p  { line-height: 1.75; }
 
 /* ─── FLEET ──────────────────────────────── */
 #fleet { background: var(--bg2); }
-.fleet-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+.fleet-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
 .fleet-card {
   overflow: hidden; transition: transform .3s, box-shadow .3s;
 }
@@ -729,7 +729,8 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   .burger{ display:flex; }
   .about-grid { grid-template-columns:1fr; gap:40px; }
   .about-img-wrap::after { display:none; }
-  .fleet-grid,.yt-grid,.contact-grid { grid-template-columns:1fr; gap:36px; }
+  .fleet-grid { grid-template-columns:1fr 1fr; gap:20px; }
+  .yt-grid,.contact-grid { grid-template-columns:1fr; gap:36px; }
   .cov-grid { grid-template-columns:1fr 1fr; }
   .centres-grid { grid-template-columns:1fr; }
   .lesson-grid { grid-template-columns:1fr 1fr; }
@@ -742,6 +743,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 }
 @media(max-width:540px){
   .cov-grid { grid-template-columns:1fr 1fr; }
+  .fleet-grid { grid-template-columns:1fr; }
   .lesson-grid,.block-grid,.passes-grid,.blog-grid { grid-template-columns:1fr; }
   .fleet-img { height:240px; }
   .hero-btns { flex-direction:column; }
@@ -841,7 +843,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       </h1>
       <p class="hero-sub">
         DVSA Approved instruction in <strong>Peterborough,</strong> test prep in <strong>Grantham &amp; Kettering</strong>.
-        Brand-new Toyota dual-control cars. Flexible times. Real results.
+        Modern dual-controlled cars. Flexible times. Real results.
       </p>
       <div class="hero-btns">
         <a href="#booking" class="btn btn-red">Book Online Instantly</a>
@@ -885,7 +887,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     <div class="reveal">
       <div class="eyebrow">Our Tuition Vehicles</div>
       <h2>Two Modern Toyotas.<br>Your Choice.</h2>
-      <p style="color:var(--ink-mid);margin-top:14px;max-width:480px;">Both feature dual controls and are maintained to the highest standard. Just pick the type that suits you.</p>
+      <p style="color:var(--ink-mid);margin-top:14px;max-width:560px;">All feature dual controls and are maintained to the highest standard. Pick the car and transmission type that suits you.</p>
     </div>
     <div class="fleet-grid reveal">
       <div class="fleet-card glass-card">
@@ -911,6 +913,19 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
             <span class="fleet-pill">Dual Controls</span>
             <span class="fleet-pill">Automatic</span>
             <span class="fleet-pill">2025 Plate</span>
+          </div>
+        </div>
+      </div>
+      <div class="fleet-card glass-card">
+        <div class="fleet-img"><img src="vw-golf.webp" alt="VW Golf — Manual, Rakesh Kumar, D4Driving Peterborough" width="800" height="600" loading="lazy" decoding="async"></div>
+        <div class="fleet-body">
+          <span class="fleet-badge badge-manual">Manual</span>
+          <h3>VW Golf</h3>
+          <p>Rakesh's modern white Golf — composed, comfortable and great for building real-world confidence.</p>
+          <div class="fleet-pills">
+            <span class="fleet-pill">Dual Controls</span>
+            <span class="fleet-pill">Manual Gearbox</span>
+            <span class="fleet-pill">With Rakesh</span>
           </div>
         </div>
       </div>
@@ -982,7 +997,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 <section id="coverage" class="sec" style="background:var(--bg);">
   <div class="wrap">
     <div class="reveal">
-      <div class="eyebrow">Where My Students Pass</div>
+      <div class="eyebrow">Where Our Students Pass</div>
       <h2>Peterborough &amp; Beyond.</h2>
       <p style="color:var(--ink-mid);margin-top:14px;max-width:480px;">Expert knowledge of every route, junction, and roundabout — so you walk into your test knowing exactly what to expect.</p>
     </div>
