@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms & Conditions | D4Driving School of Motoring</title>
+<meta name="description" content="Terms and Conditions of Driving Tuition — D4Driving School of Motoring. Version 2.0, June 2026.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ─── TOKENS ─────────────────────────────── */
+:root {
+  --red:        #BD2026;
+  --red-hi:     #d4252c;
+  --red-lo:     rgba(189,32,38,0.08);
+  --red-border: rgba(189,32,38,0.2);
+  --slate:      #2C3E50;
+  --slate-hi:   #374f65;
+  --slate-lo:   rgba(44,62,80,0.06);
+  --sage:       #8fa3a0;
+  --bg:         #fbfdff;
+  --bg2:        #f3f7fb;
+  --glass-bg:   rgba(255,255,255,0.9);
+  --glass-border: rgba(226,232,240,0.8);
+  --glass-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.03);
+  --ink:        #2C3E50;
+  --ink-mid:    #536878;
+  --ink-low:    #94a3b4;
+  --border:     rgba(226,232,240,0.8);
+  --font: 'Plus Jakarta Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); overflow-x: hidden; line-height: 1.6; }
+img  { display: block; max-width: 100%; }
+a    { color: inherit; text-decoration: none; }
+ul   { list-style: none; }
+
+/* ─── LAYOUT ─────────────────────────────── */
+.wrap     { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+.wrap-doc { max-width: 780px;  margin: 0 auto; padding: 0 28px; }
+.sec      { padding: 80px 0; }
+
+/* ─── GLASS CARD ─────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+}
+
+/* ─── TYPE ───────────────────────────────── */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+}
+.eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--red); flex-shrink: 0; border-radius: 2px; }
+h2 { font-size: clamp(26px,3.5vw,40px); font-weight: 800; line-height: 1.1; letter-spacing: -1px; color: var(--slate); }
+
+/* ─── BUTTONS ────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font); font-size: 14px; font-weight: 700;
+  padding: 14px 28px; border: none; cursor: pointer; border-radius: 12px;
+  transition: all .22s; white-space: nowrap; text-decoration: none;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-red { background: var(--red); color: #fff; box-shadow: 0 4px 14px rgba(189,32,38,0.25); }
+.btn-red:hover { background: var(--red-hi); box-shadow: 0 8px 24px rgba(189,32,38,0.38); }
+.btn-slate { background: var(--slate); color: #fff; box-shadow: 0 4px 14px rgba(44,62,80,0.2); }
+.btn-slate:hover { background: var(--slate-hi); }
+.btn-outline { background: transparent; color: var(--slate); border: 1.5px solid var(--border); }
+.btn-outline:hover { border-color: var(--red); color: var(--red); background: var(--red-lo); }
+
+/* ─── NAV ────────────────────────────────── */
+#nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; padding: 12px 0; transition: all .3s; }
+#nav.stuck {
+  background: rgba(251,253,255,0.95); backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(44,62,80,0.06); padding: 0;
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo img { height: 42px; width: auto; }
+.nav-links { display: flex; gap: 6px; }
+.nav-links a { font-size: 13px; font-weight: 600; color: var(--ink-mid); padding: 8px 14px; border-radius: 8px; transition: all .2s; }
+.nav-links a:hover { color: var(--slate); background: var(--slate-lo); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
+.burger span { display: block; width: 22px; height: 2px; background: var(--slate); border-radius: 2px; transition: all .3s; }
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-nav {
+  display: none; position: fixed; inset: 68px 0 0;
+  background: rgba(251,253,255,0.99); z-index: 899;
+  padding: 24px 28px; flex-direction: column;
+  border-top: 1px solid var(--border); overflow-y: auto;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-size: 20px; font-weight: 700; color: var(--slate); padding: 16px 0; border-bottom: 1px solid var(--border); transition: color .2s; }
+.mobile-nav a:hover { color: var(--red); }
+
+/* ─── PAGE HEADER ────────────────────────── */
+#page-header {
+  background: var(--slate); padding: 120px 0 72px;
+  position: relative; overflow: hidden;
+}
+#page-header::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px; background: var(--red); border-radius: 0 2px 2px 0;
+}
+.page-header-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--sage); margin-bottom: 16px;
+}
+.page-header-eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--sage); border-radius: 2px; }
+#page-header h1 { font-size: clamp(32px,4.5vw,56px); font-weight: 800; line-height: 1.05; letter-spacing: -1.5px; color: #fff; margin-bottom: 14px; }
+#page-header h1 span { color: var(--red); }
+#page-header p { font-size: 16px; color: rgba(255,255,255,0.65); max-width: 520px; margin-bottom: 28px; }
+.header-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ─── T&C DOCUMENT ───────────────────────── */
+.doc-intro {
+  background: var(--bg2); border-left: 4px solid var(--red);
+  padding: 20px 24px; border-radius: 0 12px 12px 0;
+  margin-bottom: 48px;
+  font-size: 15px; color: var(--ink-mid); line-height: 1.75; font-style: italic;
+}
+
+.tc-section {
+  margin-bottom: 40px;
+  border-radius: 12px; overflow: hidden;
+}
+.tc-section-header {
+  background: var(--slate); color: #fff;
+  padding: 14px 22px;
+  font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+}
+.tc-section-body { padding: 24px 22px; background: var(--glass-bg); border: 1px solid var(--glass-border); border-top: none; border-radius: 0 0 12px 12px; }
+
+.tc-clause { display: flex; gap: 18px; margin-bottom: 18px; }
+.tc-clause:last-child { margin-bottom: 0; }
+.tc-num { font-size: 13px; font-weight: 700; color: var(--red); flex-shrink: 0; min-width: 36px; padding-top: 1px; }
+.tc-text { font-size: 14.5px; color: var(--ink-mid); line-height: 1.75; }
+.tc-text strong { color: var(--slate); font-weight: 700; }
+.tc-sub { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+.tc-sub-item { display: flex; gap: 10px; font-size: 14px; color: var(--ink-mid); }
+.tc-sub-item span:first-child { font-weight: 700; color: var(--slate); flex-shrink: 0; }
+
+.tc-definitions { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+.tc-def { display: grid; grid-template-columns: 200px 1fr; gap: 12px; font-size: 14px; }
+.tc-def-term { font-weight: 700; color: var(--slate); }
+.tc-def-meaning { color: var(--ink-mid); line-height: 1.65; }
+
+/* ─── ACCEPTANCE FORM ────────────────────── */
+.form-section { background: var(--bg2); }
+.form-wrap { max-width: 640px; margin: 0 auto; }
+.form-card { padding: 40px; border-radius: 20px; }
+.form-card h2 { margin-bottom: 8px; }
+.form-card .sub { color: var(--ink-mid); font-size: 15px; margin-bottom: 32px; line-height: 1.6; }
+
+.form-group { margin-bottom: 22px; }
+.form-group label { display: block; font-size: 13px; font-weight: 700; color: var(--slate); margin-bottom: 8px; letter-spacing: .3px; }
+.form-group label span { color: var(--red); }
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"] {
+  width: 100%; padding: 13px 16px; border-radius: 10px;
+  border: 1.5px solid var(--border); background: var(--bg);
+  font-family: var(--font); font-size: 14.5px; color: var(--ink);
+  transition: border-color .2s;
+}
+.form-group input:focus { outline: none; border-color: var(--red); }
+.form-group input[readonly] { background: var(--bg2); color: var(--ink-low); cursor: default; }
+
+.radio-group { display: flex; flex-direction: column; gap: 10px; }
+.radio-opt { display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: var(--ink-mid); cursor: pointer; }
+.radio-opt input[type="radio"] { accent-color: var(--red); width: 16px; height: 16px; flex-shrink: 0; }
+
+#guardian-fields { display: none; padding: 20px; border-radius: 10px; background: var(--bg2); border: 1px solid var(--border); margin-top: 8px; }
+#guardian-fields .form-group { margin-bottom: 16px; }
+#guardian-fields .form-group:last-child { margin-bottom: 0; }
+
+.agree-wrap {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 20px; border-radius: 12px;
+  background: var(--red-lo); border: 1.5px solid var(--red-border);
+  margin-bottom: 28px;
+}
+.agree-wrap input[type="checkbox"] { accent-color: var(--red); width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; }
+.agree-wrap label { font-size: 14px; color: var(--ink); line-height: 1.65; cursor: pointer; }
+.agree-wrap label a { color: var(--red); text-decoration: underline; font-weight: 600; }
+
+.form-success {
+  display: none; text-align: center; padding: 32px 24px;
+  background: rgba(16,185,129,0.06); border: 1.5px solid rgba(16,185,129,0.25);
+  border-radius: 14px; margin-top: 8px;
+}
+.form-success .tick { font-size: 40px; margin-bottom: 12px; }
+.form-success h3 { color: #065f46; font-size: 20px; margin-bottom: 8px; }
+.form-success p { color: #047857; font-size: 14.5px; line-height: 1.65; }
+
+/* ─── REVEAL ─────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ─── FOOTER ─────────────────────────────── */
+footer { background: var(--slate); padding: 60px 0 32px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+.footer-tag { font-size: 14px; color: rgba(255,255,255,0.45); margin-top: 16px; line-height: 1.7; }
+.footer-h { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 14px; color: rgba(255,255,255,0.65); transition: color .2s; }
+.footer-links a:hover { color: #fff; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.35); }
+.footer-bottom a { color: rgba(255,255,255,0.5); transition: color .2s; }
+.footer-bottom a:hover { color: #fff; }
+
+/* ─── WA FLOAT ───────────────────────────── */
+.wa-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 800;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25d366; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.4); transition: transform .25s;
+}
+.wa-float:hover { transform: translateY(-3px) scale(1.06); }
+.wa-float svg { width: 28px; height: 28px; fill: #fff; }
+#btt {
+  position: fixed; bottom: 92px; right: 24px; z-index: 800;
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--glass-bg); backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border); box-shadow: var(--glass-shadow);
+  font-size: 16px; cursor: pointer; color: var(--slate); font-family: var(--font);
+  display: none; align-items: center; justify-content: center; transition: all .2s;
+}
+#btt:hover { background: var(--red); color: #fff; border-color: var(--red); }
+
+/* ─── RESPONSIVE ─────────────────────────── */
+@media(max-width:900px){
+  .nav-links { display: none; }
+  .burger { display: flex; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .tc-def { grid-template-columns: 1fr; gap: 4px; }
+  .form-card { padding: 28px 22px; }
+}
+@media(max-width:560px){
+  #page-header { padding: 100px 0 56px; }
+  .header-actions { flex-direction: column; }
+  .header-actions .btn { text-align: center; justify-content: center; }
+}
+
+@media print {
+  #nav, .wa-float, #btt, .form-section, #page-header .header-actions { display: none !important; }
+  #page-header { padding: 40px 0 32px; }
+  .tc-section-header { background: #2C3E50 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav id="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="SVGLogo.svg" alt="D4Driving School of Motoring" width="54" height="42" decoding="async">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#fleet">Cars</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#prices">Prices</a></li>
+        <li><a href="index.html#booking">Book Now</a></li>
+        <li><a href="mock-test.html">🎯 Free Mock Test</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="index.html#booking" class="btn btn-red">Book Now</a>
+        <button class="burger" id="burg" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mnav">
+    <a href="index.html" onclick="cm()">Home</a>
+    <a href="index.html#fleet" onclick="cm()">Cars</a>
+    <a href="index.html#prices" onclick="cm()">Prices</a>
+    <a href="index.html#booking" onclick="cm()">Book Now</a>
+    <a href="mock-test.html" onclick="cm()">🎯 Free Mock Test</a>
+    <a href="index.html#contact" onclick="cm()">Contact</a>
+  </div>
+</nav>
+
+<!-- ════ PAGE HEADER ════ -->
+<section id="page-header">
+  <div class="wrap">
+    <div class="page-header-eyebrow">D4Driving School of Motoring</div>
+    <h1>Terms &amp; <span>Conditions</span></h1>
+    <p>Version 2.0 — June 2026. These terms govern all driving tuition provided by D4Driving School of Motoring.</p>
+    <div class="header-actions">
+      <a href="D4Driving_Terms_And_Conditions_v2.pdf" download class="btn btn-red">⬇ Download PDF</a>
+      <a href="#acceptance" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.3);">Sign &amp; Accept →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ T&C CONTENT ════ -->
+<section class="sec" style="background:var(--bg);">
+  <div class="wrap-doc">
+
+    <div class="doc-intro">
+      These Terms and Conditions govern the provision of driving tuition by D4Driving School of Motoring ('D4Driving', 'the School') to students ('the Student') who are consumers as defined by the Consumer Rights Act 2015. Please read them carefully before booking any lessons.
+    </div>
+
+    <!-- 1. Definitions -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">1. Definitions and Interpretation</div>
+      <div class="tc-section-body">
+        <div class="tc-clause">
+          <div class="tc-num">1.1</div>
+          <div class="tc-text">
+            In these Terms and Conditions, unless the context otherwise requires, the following expressions have the following meanings:
+            <div class="tc-definitions">
+              <div class="tc-def"><div class="tc-def-term">"Business"</div><div class="tc-def-meaning">means any business, trade, craft, or profession carried on by the Student or any other person or organisation.</div></div>
+              <div class="tc-def"><div class="tc-def-term">"Consumer"</div><div class="tc-def-meaning">means a consumer as defined by the Consumer Rights Act 2015: an individual who receives tuition for personal use wholly or mainly outside the purposes of any Business.</div></div>
+              <div class="tc-def"><div class="tc-def-term">"D4Driving" / "the School"</div><div class="tc-def-meaning">means D4Driving School of Motoring, a trading name operated by Robert Szatkowski ADI, of 46 Vixen Close, Peterborough, PE1 5ZD.</div></div>
+              <div class="tc-def"><div class="tc-def-term">"DVSA"</div><div class="tc-def-meaning">means the Driver and Vehicle Standards Agency.</div></div>
+              <div class="tc-def"><div class="tc-def-term">"Instructor"</div><div class="tc-def-meaning">means the Approved Driving Instructor delivering tuition to the Student, whether that is Robert Szatkowski ADI or a Franchisee Instructor (as defined in Clause 2).</div></div>
+              <div class="tc-def"><div class="tc-def-term">"Franchisee Instructor"</div><div class="tc-def-meaning">means an independently registered ADI who delivers tuition under licence from D4Driving pursuant to a franchise agreement with Robert Szatkowski.</div></div>
+              <div class="tc-def"><div class="tc-def-term">"Price List"</div><div class="tc-def-meaning">means D4Driving's current standard fees for driving tuition, available at www.d4driving.co.uk or on request.</div></div>
+              <div class="tc-def"><div class="tc-def-term">"Student"</div><div class="tc-def-meaning">means the individual recipient of driving instruction as named in the Acceptance Clause of this document.</div></div>
+              <div class="tc-def"><div class="tc-def-term">"Parent / Guardian"</div><div class="tc-def-meaning">means an individual with legal responsibility for the Student who assumes legal liability for the Student's actions in accordance with these Terms and Conditions, where the Student is under 18 years of age on the date of signing.</div></div>
+              <div class="tc-def"><div class="tc-def-term">"Regulations"</div><div class="tc-def-meaning">means the Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013.</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="tc-clause">
+          <div class="tc-num">1.2</div>
+          <div class="tc-text">Unless the context otherwise requires, references to these Terms and Conditions include any amendments or supplements in force at the relevant time; clause references are to clauses of these Terms and Conditions; headings are for convenience only and do not affect interpretation; words in the singular include the plural and vice versa; and references to any gender include all genders.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Franchisee Instructors -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">2. D4Driving School of Motoring and Franchisee Instructors</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">2.1</div><div class="tc-text">D4Driving School of Motoring is a trading name operated by Robert Szatkowski ADI, a self-employed independent driving instructor. Robert Szatkowski is registered with the DVSA as an Approved Driving Instructor and his ADI registration is kept up to date. His current ADI certificate is displayed in any vehicle used for tuition.</div></div>
+        <div class="tc-clause"><div class="tc-num">2.2</div><div class="tc-text">Some tuition offered under the D4Driving brand is delivered by Franchisee Instructors. Franchisee Instructors are independently registered ADIs who operate under a franchise licence from D4Driving. All Franchisee Instructors hold a current DVSA ADI registration, which is displayed in their vehicle during lessons.</div></div>
+        <div class="tc-clause"><div class="tc-num">2.3</div><div class="tc-text">Whether tuition is delivered by Robert Szatkowski or a Franchisee Instructor, the Student's contract for tuition is with D4Driving School of Motoring. D4Driving is responsible for ensuring that all Instructors operating under its brand meet the standards set out in these Terms and Conditions.</div></div>
+        <div class="tc-clause"><div class="tc-num">2.4</div><div class="tc-text">Where a Student's tuition is to be delivered by a Franchisee Instructor, the Student will be informed of that Instructor's name, ADI number, and contact details in writing before or at the time of the first lesson.</div></div>
+        <div class="tc-clause"><div class="tc-num">2.5</div><div class="tc-text">D4Driving requires all Franchisee Instructors to comply with these Terms and Conditions in full when delivering tuition under the D4Driving brand.</div></div>
+      </div>
+    </div>
+
+    <!-- 3. Booking, Cancellation -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">3. Booking, Cancellation and Delays</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">3.1</div><div class="tc-text">A lesson will only be made available to the Student if there is a pre-booked appointment. Lessons may be booked in person, by telephone, by email, via social media, or through the D4Driving website at www.d4driving.co.uk. It is the responsibility of both the Student and the Instructor to agree all matters relating to each lesson, including date, time, location, and duration.</div></div>
+        <div class="tc-clause"><div class="tc-num">3.2</div><div class="tc-text">A request to book a lesson is an offer by the Student. A binding contract for that lesson is formed only when D4Driving or the Instructor confirms acceptance of the booking.</div></div>
+        <div class="tc-clause"><div class="tc-num">3.3</div><div class="tc-text">Where a Student makes a single booking for two or more lessons and that booking is accepted, the contract covers all lessons included in the booking.</div></div>
+        <div class="tc-clause"><div class="tc-num">3.4</div><div class="tc-text">D4Driving will not reserve lesson slots or guarantee regularity of lessons except for specific slots accepted under a confirmed booking. D4Driving will use reasonable endeavours to make regular lesson slots available to the Student.</div></div>
+        <div class="tc-clause"><div class="tc-num">3.5</div><div class="tc-text">If the Student knows they will be late for a lesson, they should contact the Instructor as soon as possible. If the Student arrives more than 15 minutes after the scheduled start time, or is not ready to begin within that time, the Instructor will endeavour to provide the lesson but may treat it as cancelled without notice by the Student, in which case Clause 3.9 will apply.</div></div>
+        <div class="tc-clause"><div class="tc-num">3.6</div><div class="tc-text">The Student may cancel a lesson without charge if notice of cancellation is given within 24 hours of making the booking. Where a payment has been made in advance, a full refund will be provided.</div></div>
+        <div class="tc-clause">
+          <div class="tc-num">3.7</div>
+          <div class="tc-text">
+            Where a lesson is cancelled more than 24 hours after the booking was made, the following cancellation charges apply based on how much notice is given before the lesson start time:
+            <div class="tc-sub">
+              <div class="tc-sub-item"><span>(a)</span><span>More than 72 hours' notice: no charge.</span></div>
+              <div class="tc-sub-item"><span>(b)</span><span>Between 48 and 72 hours' notice: 25% of the lesson fee.</span></div>
+              <div class="tc-sub-item"><span>(c)</span><span>Between 24 and 48 hours' notice: 50% of the lesson fee.</span></div>
+              <div class="tc-sub-item"><span>(d)</span><span>Less than 24 hours' notice: 100% of the lesson fee.</span></div>
+            </div>
+            <div style="margin-top:10px;font-size:13.5px;font-style:italic;color:var(--ink-low);">These charges apply regardless of when the original booking was made.</div>
+          </div>
+        </div>
+        <div class="tc-clause"><div class="tc-num">3.8</div><div class="tc-text">If the Student cancels a lesson with less than 24 hours' notice due to exceptional circumstances — including but not limited to serious illness, accident, or bereavement — D4Driving will consider the circumstances and may, at its discretion, waive or reduce the cancellation charge.</div></div>
+        <div class="tc-clause"><div class="tc-num">3.9</div><div class="tc-text">D4Driving or the Instructor may cancel a booked lesson without liability to the Student if at least 24 hours' prior notice is given, and no charge will apply to the Student for that lesson. If D4Driving or the Instructor cancels a lesson with less than 24 hours' notice, the Student will be credited with one additional lesson at no charge.</div></div>
+        <div class="tc-clause"><div class="tc-num">3.10</div><div class="tc-text">Notwithstanding Clause 3.9, D4Driving or the Instructor may cancel a booked lesson at any time before its start without the above credit applying where: (a) due to illness, unavailability of a suitable vehicle, or other circumstances beyond the Instructor's reasonable control, the lesson cannot be provided fully or properly — in which case any advance payment will be refunded in full; or (b) the Instructor has reasonable grounds to believe the Student is not fit to drive at the time of the lesson due to alcohol, drugs (whether prescribed or otherwise), illness, or other medical condition — in which case D4Driving may at its discretion charge or not charge for that lesson, acting reasonably in doing so.</div></div>
+        <div class="tc-clause"><div class="tc-num">3.11</div><div class="tc-text">D4Driving will use reasonable endeavours to start each lesson at the booked time. If the start of a lesson is delayed by 15 minutes or more, the Student may cancel and will receive a full refund of any advance payment. If the Student does not cancel, the Instructor will add the delayed time to the lesson at no extra charge, or carry it over to a subsequent lesson. If no further lesson is booked, a proportionate refund will be made.</div></div>
+        <div class="tc-clause"><div class="tc-num">3.12</div><div class="tc-text">Where the contract is not made on D4Driving's premises, the Regulations provide the Student with a 14-day cancellation right. During this period the Student may cancel any lesson for any reason. If a lesson falls within the 14-day period and the Student has expressly requested it and it has been delivered, that lesson may not be cancelled and the Student must pay for it in accordance with Clause 5. Any advance payment for other cancelled lessons will be refunded within 14 days of receiving the cancellation.</div></div>
+      </div>
+    </div>
+
+    <!-- 4. Location and Duration -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">4. Location and Duration of Lessons</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">4.1</div><div class="tc-text">The location for each lesson will be agreed with the Student at the time of booking. The Instructor may choose a location that requires additional travel in the interests of road safety. If the Student wishes to be collected and taken to that location, travel time will form part of the lesson time.</div></div>
+        <div class="tc-clause"><div class="tc-num">4.2</div><div class="tc-text">The minimum lesson duration is one hour. Subject to agreement between the Student and the Instructor, lessons may be extended in increments of 30 minutes.</div></div>
+      </div>
+    </div>
+
+    <!-- 5. Fees and Payment -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">5. Fees and Payment</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">5.1</div><div class="tc-text">The Student is required to pay D4Driving's fees for all lessons. Fees are charged on an hourly basis. Current fees are set out in the Price List, available at www.d4driving.co.uk or on request from the Instructor.</div></div>
+        <div class="tc-clause"><div class="tc-num">5.2</div><div class="tc-text">D4Driving may update its fees at any time by giving the Student at least 14 days' written or electronic notice. Any fee change will not affect the price of any lesson already booked and paid for at the time notice is given.</div></div>
+        <div class="tc-clause"><div class="tc-num">5.3</div><div class="tc-text">Payment must be made in advance of each lesson, or in accordance with any advance booking arrangement agreed with the Instructor. Accepted payment methods include bank transfer, card payment, or other electronic payment methods as agreed. A receipt will be provided on request.</div></div>
+      </div>
+    </div>
+
+    <!-- 6. D4Driving's Obligations -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">6. D4Driving's Obligations</div>
+      <div class="tc-section-body">
+        <div class="tc-clause">
+          <div class="tc-num">6.1</div>
+          <div class="tc-text">D4Driving will at all times:
+            <div class="tc-sub">
+              <div class="tc-sub-item"><span>(a)</span><span>use reasonable endeavours to provide driving instruction at the agreed lesson times;</span></div>
+              <div class="tc-sub-item"><span>(b)</span><span>use reasonable endeavours to train the Student to a high standard, though D4Driving accepts no responsibility for errors made by the Student;</span></div>
+              <div class="tc-sub-item"><span>(c)</span><span>ensure that all Instructors are professional and courteous towards the Student and other road users;</span></div>
+              <div class="tc-sub-item"><span>(d)</span><span>ensure that all Instructors act in accordance with the DVSA Code of Practice for Approved Driving Instructors (a copy of which is available on request); and</span></div>
+              <div class="tc-sub-item"><span>(e)</span><span>ensure that all Instructors act in accordance with applicable law.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Student's Obligations -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">7. Student's Obligations</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">7.1</div><div class="tc-text">The Student confirms that they are receiving driving tuition as a consumer as defined in Clause 1.1 above.</div></div>
+        <div class="tc-clause"><div class="tc-num">7.2</div><div class="tc-text">The Student must hold a valid UK provisional or full driving licence, or a licence that is legally recognised in the UK for the purposes of driving tuition in accordance with current DVSA requirements. It is the Student's responsibility to ensure their licence is valid. If in doubt, the Student should check with the DVLA or DVSA before booking.</div></div>
+        <div class="tc-clause"><div class="tc-num">7.3</div><div class="tc-text">The Student must have their driving licence with them at all times during lessons.</div></div>
+        <div class="tc-clause"><div class="tc-num">7.4</div><div class="tc-text">If the Student has been disqualified from driving and is undertaking tuition for a retest, they must be legally entitled to receive tuition and must provide proof of that entitlement to the Instructor.</div></div>
+        <div class="tc-clause"><div class="tc-num">7.5</div><div class="tc-text">The Student must be able to read a number plate at the distance specified in the Highway Code.</div></div>
+        <div class="tc-clause"><div class="tc-num">7.6</div><div class="tc-text">The Student must wear any prescribed glasses or contact lenses at all times during lessons.</div></div>
+        <div class="tc-clause"><div class="tc-num">7.7</div><div class="tc-text">The Student must inform the Instructor of any medical conditions or prescribed medication that may affect their driving ability.</div></div>
+        <div class="tc-clause"><div class="tc-num">7.8</div><div class="tc-text">If the Student fails to comply with any of Clauses 7.2 to 7.7, or D4Driving determines that the Student is not acting as a consumer as defined in Clause 1.1, D4Driving may immediately cancel one or more lessons. D4Driving may at its discretion charge for any lessons cancelled in such circumstances.</div></div>
+      </div>
+    </div>
+
+    <!-- 8. Vehicles and Insurance -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">8. Vehicles and Insurance</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">8.1</div><div class="tc-text">D4Driving will ensure that all vehicles provided for lessons by any Instructor operating under the D4Driving brand are fitted with dual controls, are fully roadworthy, taxed, hold a valid MOT where required, and are fully insured for driving instruction purposes.</div></div>
+        <div class="tc-clause"><div class="tc-num">8.2</div><div class="tc-text">The Student may request to use their own vehicle for lessons. Whether this is permitted is at D4Driving's sole discretion. The Student must provide proof of the vehicle's roadworthiness, tax, valid MOT where required, and suitable insurance for driving instruction purposes.</div></div>
+      </div>
+    </div>
+
+    <!-- 9. Driving Tests -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">9. Driving Tests</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">9.1</div><div class="tc-text">The Instructor will discuss driving tests with the Student and advise when, in their professional opinion, the Student is ready to take a test.</div></div>
+        <div class="tc-clause"><div class="tc-num">9.2</div><div class="tc-text">The Student is responsible for booking their theory and practical tests and for checking all details on their DVSA confirmation letter.</div></div>
+        <div class="tc-clause"><div class="tc-num">9.3</div><div class="tc-text">Before booking a test, the Student must confirm with the Instructor that the Instructor considers them ready.</div></div>
+        <div class="tc-clause"><div class="tc-num">9.4</div><div class="tc-text">The Student must inform the Instructor of all test details, including date and location, at least 10 working days before the test date.</div></div>
+        <div class="tc-clause"><div class="tc-num">9.5</div><div class="tc-text">The Student must bring all required documentation to their test. Failure to do so may result in the test being cancelled and test fees being lost.</div></div>
+        <div class="tc-clause"><div class="tc-num">9.6</div><div class="tc-text">Unless the Instructor considers their vehicle unsuitable, or Clause 9.9 applies, the Instructor generally permits Students to use the Instructor's vehicle for their practical test. Whether this is permitted for any particular test is at the Instructor's discretion.</div></div>
+        <div class="tc-clause"><div class="tc-num">9.7</div><div class="tc-text">If the Instructor's vehicle is unavailable or unusable on the test date, D4Driving will use reasonable endeavours to arrange an alternative vehicle. If this is not possible, D4Driving will not be liable for the cost of a replacement test booking.</div></div>
+        <div class="tc-clause"><div class="tc-num">9.8</div><div class="tc-text">If a test is cancelled by the DVSA with insufficient time for the Student to give the Instructor the required notice under Clause 3.7, the Student remains liable for the Instructor's fees for time and vehicle use. D4Driving will advise the Student on making a compensation claim to the DVSA.</div></div>
+        <div class="tc-clause"><div class="tc-num">9.9</div><div class="tc-text">If, in the Instructor's professional opinion, the Student has not made expected progress between the test booking date and the test date, the Instructor may withdraw permission for the Student to use the Instructor's vehicle for that test. D4Driving will not be liable for any test fees lost as a result.</div></div>
+      </div>
+    </div>
+
+    <!-- 10. Cancellation and Termination -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">10. Cancellation and Termination of Tuition</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">10.1</div><div class="tc-text">D4Driving may, at its discretion, terminate a Student's tuition if the Student's conduct, progress, or commitment consistently falls below the standards that D4Driving reasonably expects.</div></div>
+        <div class="tc-clause"><div class="tc-num">10.2</div><div class="tc-text">The Student may terminate their tuition at any time, subject to giving notice of any individual lesson cancellations in accordance with Clause 3.</div></div>
+        <div class="tc-clause"><div class="tc-num">10.3</div><div class="tc-text">Where Clause 10.1 or 10.2 applies, D4Driving will refund to the Student any fees paid in advance for lessons not yet delivered.</div></div>
+      </div>
+    </div>
+
+    <!-- 11. Liability -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">11. Liability</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">11.1</div><div class="tc-text">D4Driving will be responsible for any foreseeable loss or damage suffered by the Student as a result of D4Driving's breach of these Terms and Conditions or negligence. Loss or damage is foreseeable if it is an obvious consequence of such breach or negligence, or if it was in the reasonable contemplation of both parties at the time the contract was formed. D4Driving will not be responsible for loss or damage that is not foreseeable.</div></div>
+        <div class="tc-clause"><div class="tc-num">11.2</div><div class="tc-text">D4Driving provides tuition only for the Student's personal use. D4Driving will not be liable to the Student for any loss of profit, loss of business, interruption to business, or loss of business opportunity.</div></div>
+        <div class="tc-clause"><div class="tc-num">11.3</div><div class="tc-text">Nothing in these Terms and Conditions excludes or limits D4Driving's liability for death or personal injury caused by negligence, or for fraud or fraudulent misrepresentation.</div></div>
+        <div class="tc-clause"><div class="tc-num">11.4</div><div class="tc-text">Nothing in these Terms and Conditions is intended to exclude, limit, or otherwise affect any rights of the Student as a consumer under the Consumer Rights Act 2015, the Regulations, the Consumer Protection Act 1987, or any other applicable consumer protection legislation, as amended from time to time. For further information about consumer rights, the Student may contact Citizens Advice or their local Trading Standards office.</div></div>
+      </div>
+    </div>
+
+    <!-- 12. Changes -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">12. Changes to These Terms and Conditions</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">12.1</div><div class="tc-text">D4Driving may update these Terms and Conditions from time to time. D4Driving will give the Student at least 14 days' written or electronic notice of any material change. Changes will not apply to lessons already booked before the date of the notice. Continued booking of lessons after the notice period constitutes acceptance of the updated terms. The current version of these Terms and Conditions is always available at www.d4driving.co.uk.</div></div>
+      </div>
+    </div>
+
+    <!-- 13. Data Protection -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">13. Data Protection</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">13.1</div><div class="tc-text">All personal information collected, processed, and held by D4Driving will be handled in accordance with the UK General Data Protection Regulation (UK GDPR) as incorporated into UK law by the Data Protection Act 2018, and the Student's rights thereunder.</div></div>
+        <div class="tc-clause"><div class="tc-num">13.2</div><div class="tc-text">Where tuition is delivered by a Franchisee Instructor, that Franchisee Instructor acts as a separate and independent data controller in respect of personal data collected during that tuition. D4Driving and the Franchisee Instructor each process personal data for their own purposes in connection with the tuition arrangement.</div></div>
+        <div class="tc-clause"><div class="tc-num">13.3</div><div class="tc-text">Full details of how D4Driving collects, processes, stores, and retains personal data — including the purposes for which it is used, the legal bases for processing, data subject rights, and any data sharing arrangements — are set out in D4Driving's Privacy Notice, available at www.d4driving.co.uk.</div></div>
+        <div class="tc-clause"><div class="tc-num">13.4</div><div class="tc-text">The Student may exercise their rights under the UK GDPR (including the right to access, rectify, or erase their personal data) by contacting D4Driving at the address or email listed on the website. Where the Student's tuition is delivered by a Franchisee Instructor and their request relates to data processed by that Instructor, the Student should contact the Franchisee Instructor directly using the details provided under Clause 2.4.</div></div>
+      </div>
+    </div>
+
+    <!-- 14. Regulatory Information -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">14. Regulatory Information</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">14.1</div><div class="tc-text">D4Driving is required by the Regulations to make certain information available to the Student as a consumer before any contract is formed. That information is set out in these Terms and Conditions or will be provided to the Student before the booking is accepted. All such information forms part of the contract between the Student and D4Driving.</div></div>
+        <div class="tc-clause"><div class="tc-num">14.2</div><div class="tc-text">Any other information provided by D4Driving about its tuition, services, or Instructors that the Student takes into account when deciding to book a lesson will also form part of the contract.</div></div>
+      </div>
+    </div>
+
+    <!-- 15. Complaints -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">15. Complaints</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">15.1</div><div class="tc-text">D4Driving welcomes feedback and takes all complaints seriously. If the Student has a complaint about their tuition or any related service, they should raise it first with their Instructor, in person, by telephone, or by email.</div></div>
+        <div class="tc-clause"><div class="tc-num">15.2</div><div class="tc-text">If the complaint is not resolved to the Student's satisfaction within 14 days, or if the complaint relates to a Franchisee Instructor and the Student wishes to escalate it, the Student may contact D4Driving directly in writing at: Robert Szatkowski, 46 Vixen Close, Peterborough, PE1 5ZD, or by email at the address listed on www.d4driving.co.uk.</div></div>
+        <div class="tc-clause"><div class="tc-num">15.3</div><div class="tc-text">D4Driving will acknowledge receipt of any written complaint within 5 working days and will aim to provide a full response within 28 days.</div></div>
+        <div class="tc-clause"><div class="tc-num">15.4</div><div class="tc-text">D4Driving is not currently a member of an approved Alternative Dispute Resolution (ADR) scheme. If D4Driving is unable to resolve a complaint to the Student's satisfaction, the Student may seek independent advice from Citizens Advice (www.citizensadvice.org.uk) or contact the DVSA.</div></div>
+      </div>
+    </div>
+
+    <!-- 16–18. Boilerplate -->
+    <div class="tc-section reveal">
+      <div class="tc-section-header">16. No Waiver</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">16.1</div><div class="tc-text">No failure or delay by D4Driving or the Student in exercising any right under these Terms and Conditions shall constitute a waiver of that right. No waiver of any breach of any provision shall be treated as a waiver of any subsequent breach of the same or any other provision.</div></div>
+      </div>
+    </div>
+
+    <div class="tc-section reveal">
+      <div class="tc-section-header">17. Severance</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">17.1</div><div class="tc-text">If any provision of these Terms and Conditions is held by a competent authority to be invalid or unenforceable in whole or in part, the validity of the remaining provisions and the remainder of the provision in question shall not be affected.</div></div>
+      </div>
+    </div>
+
+    <div class="tc-section reveal">
+      <div class="tc-section-header">18. Governing Law and Jurisdiction</div>
+      <div class="tc-section-body">
+        <div class="tc-clause"><div class="tc-num">18.1</div><div class="tc-text">These Terms and Conditions, the contract, and any relationship between the Student and D4Driving (whether contractual or otherwise) are governed by and construed in accordance with the law of England and Wales.</div></div>
+        <div class="tc-clause"><div class="tc-num">18.2</div><div class="tc-text">As a consumer, the Student benefits from any mandatory provisions of the law of their country of residence. Nothing in Clause 18.1 removes or reduces those rights.</div></div>
+        <div class="tc-clause"><div class="tc-num">18.3</div><div class="tc-text">Any dispute, controversy, or claim relating to these Terms and Conditions, the contract, or the relationship between the Student and D4Driving shall be subject to the jurisdiction of the courts of England, Wales, Scotland, or Northern Ireland, as determined by the Student's place of residence.</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════ ACCEPTANCE FORM ════ -->
+<section id="acceptance" class="sec form-section">
+  <div class="wrap">
+    <div class="form-wrap">
+      <div class="form-card glass-card reveal">
+        <div class="eyebrow" style="justify-content:flex-start;">Clause 19</div>
+        <h2 style="margin-bottom:8px;">Accept These Terms</h2>
+        <p class="sub">By completing this form you confirm that you have read, understood, and agree to be bound by D4Driving's Terms and Conditions of Driving Tuition (Version 2.0, June 2026). Your submission is time-stamped and sent to D4Driving as your electronic acceptance.</p>
+
+        <form id="tc-form" action="https://formspree.io/f/mwvzyrzz" method="POST" novalidate>
+          <!-- Hidden fields -->
+          <input type="hidden" name="_subject" value="T&C Acceptance — D4Driving">
+          <input type="hidden" name="form_type" value="terms_acceptance">
+          <input type="hidden" name="tc_version" value="v2.0 June 2026">
+
+          <div class="form-group">
+            <label for="student-name">Full name <span>*</span></label>
+            <input type="text" id="student-name" name="student_name" placeholder="Your full legal name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="student-email">Email address <span>*</span></label>
+            <input type="email" id="student-email" name="email" placeholder="you@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label>Age confirmation <span>*</span></label>
+            <div class="radio-group">
+              <label class="radio-opt">
+                <input type="radio" name="age_confirmation" value="18_or_over" id="age-adult" required checked>
+                I am 18 years of age or over
+              </label>
+              <label class="radio-opt">
+                <input type="radio" name="age_confirmation" value="under_18" id="age-minor">
+                I am under 18 — my parent or guardian details are below
+              </label>
+            </div>
+            <div id="guardian-fields">
+              <div class="form-group">
+                <label for="guardian-name">Parent / Guardian full name <span>*</span></label>
+                <input type="text" id="guardian-name" name="guardian_name" placeholder="Parent or guardian's full legal name">
+              </div>
+              <div class="form-group">
+                <label for="guardian-email">Parent / Guardian email <span>*</span></label>
+                <input type="email" id="guardian-email" name="guardian_email" placeholder="parent@example.com">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="accept-date">Date</label>
+            <input type="text" id="accept-date" name="acceptance_date" readonly>
+          </div>
+
+          <div class="agree-wrap">
+            <input type="checkbox" id="agree" name="agreed" value="yes" required>
+            <label for="agree">
+              I confirm I have read, understood, and agree to be bound by <a href="D4Driving_Terms_And_Conditions_v2.pdf" target="_blank">D4Driving's Terms and Conditions of Driving Tuition</a> (Version 2.0, June 2026). I understand that D4Driving will hold a record of this acceptance.
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-red" id="tc-submit" style="width:100%;font-size:15px;padding:16px;">
+            I Accept These Terms &amp; Conditions →
+          </button>
+        </form>
+
+        <div class="form-success" id="tc-success">
+          <div class="tick">✅</div>
+          <h3>Thank you — acceptance recorded.</h3>
+          <p>A copy of your acceptance has been sent to D4Driving. Please keep a copy of these Terms for your records — you can <a href="D4Driving_Terms_And_Conditions_v2.pdf" download style="color:#047857;font-weight:700;">download the PDF here</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="SVGLogo.svg" alt="D4Driving" width="59" height="46" loading="lazy" decoding="async" style="margin-bottom:0">
+        <p class="footer-tag">Expert driving tuition with D4Driving School of Motoring. Helping learners pass with confidence across Peterborough and surrounding areas since 2017.</p>
+      </div>
+      <div>
+        <div class="footer-h">Quick Links</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#fleet">Cars</a>
+          <a href="index.html#prices">Lesson Prices</a>
+          <a href="index.html#booking">Book a Lesson</a>
+          <a href="mock-test.html">Free Mock Test</a>
+          <a href="blog.html">Driving Tips</a>
+          <a href="terms.html" style="color:#fff;">Terms &amp; Conditions</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-h">Contact</div>
+        <div class="footer-links">
+          <a href="tel:07872347686">📞 07872 347686</a>
+          <a href="https://wa.me/447872347686" target="_blank">💬 WhatsApp</a>
+          <a href="https://www.youtube.com/@d4drivingSOM" target="_blank">▶ YouTube (@d4drivingSOM)</a>
+          <a href="https://g.page/r/Ca0Y46BYPxNMEAE/review" target="_blank">⭐ Leave a Review</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 D4Driving School of Motoring. All rights reserved.</p>
+      <p><a href="#page-header">Back to top ↑</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/447872347686" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<script>
+/* Nav */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('stuck', window.scrollY > 10);
+  document.getElementById('btt').style.display = window.scrollY > 400 ? 'flex' : 'none';
+}, { passive: true });
+const burg = document.getElementById('burg');
+const mnav = document.getElementById('mnav');
+burg.addEventListener('click', () => { burg.classList.toggle('open'); mnav.classList.toggle('open'); });
+function cm() { burg.classList.remove('open'); mnav.classList.remove('open'); }
+
+/* Reveal */
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+/* Auto-fill today's date */
+const today = new Date();
+document.getElementById('accept-date').value = today.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+
+/* Under-18 toggle */
+document.querySelectorAll('input[name="age_confirmation"]').forEach(r => {
+  r.addEventListener('change', () => {
+    const gf = document.getElementById('guardian-fields');
+    const isMinor = document.getElementById('age-minor').checked;
+    gf.style.display = isMinor ? 'block' : 'none';
+    gf.querySelectorAll('input').forEach(i => { i.required = isMinor; });
+  });
+});
+
+/* Form AJAX submit */
+const form = document.getElementById('tc-form');
+const submitBtn = document.getElementById('tc-submit');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  if (!document.getElementById('agree').checked) {
+    alert('Please tick the agreement checkbox before submitting.');
+    return;
+  }
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Submitting…';
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('tc-success').style.display = 'block';
+    } else {
+      throw new Error('Server error');
+    }
+  } catch {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'I Accept These Terms & Conditions →';
+    alert('Something went wrong. Please try again or email info@d4driving.co.uk.');
+  }
+});
+</script>
+</body>
+</html>
