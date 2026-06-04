@@ -202,7 +202,8 @@ a    { color: inherit; text-decoration: none; }
   background: var(--bg2);
   position: relative;
 }
-#map { height: 520px; width: 100%; }
+#map, #map-kettering { height: 520px; width: 100%; }
+@media (max-width: 768px) { #map, #map-kettering { height: 360px; } }
 
 .map-controls {
   position: absolute; bottom: 16px; left: 16px; z-index: 800;
@@ -528,15 +529,54 @@ footer {
     </div>
   </div>
 
-  <!-- ── KETTERING (coming soon) ── -->
+  <!-- ── KETTERING ── -->
   <div class="area-panel" id="panel-kettering" style="display:none;">
-    <div class="glass-card coming-soon" style="margin-top:32px;">
-      <div class="icon">🗺</div>
-      <h3>Kettering routes coming soon</h3>
-      <p>Routes around the Kettering test centre are being built now.<br>Drop your email and we'll let you know when they go live.</p>
-      <div class="notify-form">
-        <input type="email" placeholder="your@email.com" id="email-kettering">
-        <button class="btn btn-red" onclick="notifyMe('kettering')">Notify me</button>
+    <div class="route-tabs" style="padding-top:32px;">
+      <button class="route-tab active" data-route="pytchley">Pytchley – Kettering Centre</button>
+    </div>
+
+    <div class="routes-layout">
+      <div>
+        <div class="map-wrap">
+          <div id="map-kettering"></div>
+          <div class="map-controls">
+            <button class="map-btn map-btn-white" id="btn-fit-kettering">⤢ Fit route</button>
+            <button class="map-btn map-btn-red" id="btn-gpx-kettering">↓ GPX</button>
+          </div>
+        </div>
+        <div class="glass-card" style="margin-top:20px; padding:24px;">
+          <h3 style="font-size:16px;font-weight:800;color:var(--slate);margin-bottom:16px;">📋 Instructor notes</h3>
+          <div class="note-list" id="route-notes-kettering"></div>
+        </div>
+        <div class="glass-card" style="margin-top:20px; padding:24px;" id="video-card-kettering">
+          <h3 style="font-size:16px;font-weight:800;color:var(--slate);margin-bottom:16px;">▶ Route walkthrough video</h3>
+          <div id="video-container-kettering"></div>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="glass-card info-card">
+          <h3><span class="icon icon-red">📍</span>Route details</h3>
+          <div class="stat-row">
+            <div class="stat-box"><div class="val" id="stat-distance-kettering">—</div><div class="key">Distance</div></div>
+            <div class="stat-box"><div class="val" id="stat-duration-kettering">—</div><div class="key">Est. time</div></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap;">
+            <span class="diff-badge" id="stat-difficulty-kettering"></span>
+            <span style="font-size:12px;color:var(--ink-low);" id="stat-waypoint-count-kettering"></span>
+          </div>
+          <p style="font-size:13.5px;color:var(--ink-mid);line-height:1.65;" id="route-description-kettering"></p>
+        </div>
+        <div class="glass-card info-card">
+          <h3><span class="icon icon-slate">🔵</span>Waypoints</h3>
+          <div class="waypoint-list" id="waypoint-list-kettering"></div>
+        </div>
+        <div class="glass-card info-card" style="background:linear-gradient(135deg,var(--slate) 0%,#1a2b3c 100%);border-color:transparent;">
+          <p style="font-size:13px;color:var(--sage);margin-bottom:4px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Want to practise this route?</p>
+          <h3 style="font-size:18px;font-weight:800;color:#fff;margin-bottom:8px;display:block;">Book a lesson with Robert</h3>
+          <p style="font-size:13px;color:var(--sage);margin-bottom:20px;line-height:1.6;">Tell Robert you've studied this route — he'll start you on roads you already know.</p>
+          <a href="index.html#booking" class="btn btn-red" style="width:100%;justify-content:center;">Book Online →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -658,12 +698,30 @@ const ROUTES = {
       ],
     },
   },
+  kettering: {
+    'pytchley': {
+      name: 'Pytchley – Kettering Centre',
+      gpxFile: 'gpx/kettering-pytchley.gpx',
+      difficulty: 'intermediate',
+      description: 'A route from Kettering DTC out to Pytchley and back through Kettering town centre. Covers a mix of rural roads, town roads, and test-centre-area navigation.',
+      notes: [],
+      youtubeId: null,
+      waypoints: [],
+    },
+  },
 };
 
 // ─── STATE ─────────────────────────────────────────────────────────────────
-let map, routeLayer, waypointMarkers = [], gpxCache = {};
+const maps = {};           // Leaflet map instance per area
+const routeLayers = {};    // active polyline per area
+const wptMarkers = {};     // waypoint markers per area
+const gpxCache = {};
 let currentArea = 'peterborough';
 let currentRouteKey = 'stop-sign';
+let currentGpxData = null;
+
+// DOM id suffix per area — peterborough uses unsuffixed IDs, others use -area
+function sfx(area) { return area === 'peterborough' ? '' : '-' + area; }
 
 // ─── HELPERS ───────────────────────────────────────────────────────────────
 function haversine(a, b) {
@@ -696,12 +754,17 @@ function parseGpx(xmlText) {
 }
 
 // ─── MAP INIT ──────────────────────────────────────────────────────────────
-function initMap() {
-  map = L.map('map', { zoomControl: true });
+function initMap(area) {
+  if (maps[area]) return;
+  const id = 'map' + sfx(area);
+  const el = document.getElementById(id);
+  if (!el) return;
+  maps[area] = L.map(id, { zoomControl: true });
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a>',
     maxZoom: 19,
-  }).addTo(map);
+  }).addTo(maps[area]);
+  wptMarkers[area] = [];
 }
 
 // ─── LOAD & RENDER ROUTE ───────────────────────────────────────────────────
@@ -709,9 +772,9 @@ async function loadRoute(area, routeKey) {
   const config = ROUTES[area]?.[routeKey];
   if (!config) return;
 
-  // Show loading state
-  document.getElementById('stat-distance').textContent = '…';
-  document.getElementById('stat-duration').textContent = '…';
+  const s = sfx(area);
+  document.getElementById('stat-distance' + s).textContent = '…';
+  document.getElementById('stat-duration' + s).textContent = '…';
 
   // Fetch GPX (cached after first load)
   let track, resolvedWaypoints;
@@ -723,41 +786,35 @@ async function loadRoute(area, routeKey) {
     }
     const { track: t, gpxWaypoints } = gpxCache[config.gpxFile];
     track = t;
-
-    // Merge: config waypoints (named) override GPX waypoints by position
     const named = config.waypoints || [];
     resolvedWaypoints = gpxWaypoints.map((wp, i) => ({
       lat: wp.lat, lon: wp.lon,
       name: named[i]?.name || (i === 0 ? 'Start' : `Waypoint ${i}`),
     }));
-    // If config has more named entries than GPX wpts, use config coords directly
-    if (named.length > gpxWaypoints.length) {
-      resolvedWaypoints = named;
-    }
+    if (named.length > gpxWaypoints.length) resolvedWaypoints = named;
   } catch(e) {
     console.error('GPX load failed:', e);
-    document.getElementById('stat-distance').textContent = 'Error';
+    document.getElementById('stat-distance' + s).textContent = 'Error';
     return;
   }
 
-  renderMap(track, resolvedWaypoints);
-  renderSidebar(config, track, resolvedWaypoints);
-  renderVideo(config);
-
-  // Store for GPX download
+  renderMap(area, track, resolvedWaypoints);
+  renderSidebar(area, config, track, resolvedWaypoints);
+  renderVideo(area, config);
   currentGpxData = { config, track, waypoints: resolvedWaypoints };
 }
 
 // ─── RENDER MAP ────────────────────────────────────────────────────────────
-function renderMap(track, waypoints) {
-  if (routeLayer) map.removeLayer(routeLayer);
-  waypointMarkers.forEach(m => map.removeLayer(m));
-  waypointMarkers = [];
+function renderMap(area, track, waypoints) {
+  const m = maps[area];
+  if (routeLayers[area]) m.removeLayer(routeLayers[area]);
+  (wptMarkers[area] || []).forEach(mk => m.removeLayer(mk));
+  wptMarkers[area] = [];
 
-  routeLayer = L.polyline(track, {
+  routeLayers[area] = L.polyline(track, {
     color: '#BD2026', weight: 5, opacity: 0.85,
     lineCap: 'round', lineJoin: 'round',
-  }).addTo(map);
+  }).addTo(m);
 
   const startIcon = L.divIcon({
     html: `<div style="background:#22c55e;width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>`,
@@ -769,48 +826,48 @@ function renderMap(track, waypoints) {
   });
 
   waypoints.forEach((wp, i) => {
-    const m = L.marker([wp.lat, wp.lon], { icon: i === 0 ? startIcon : wptIcon(i) })
-      .addTo(map).bindPopup(`<strong>${wp.name}</strong>`);
-    waypointMarkers.push(m);
+    const mk = L.marker([wp.lat, wp.lon], { icon: i === 0 ? startIcon : wptIcon(i) })
+      .addTo(m).bindPopup(`<strong>${wp.name}</strong>`);
+    wptMarkers[area].push(mk);
   });
 
-  map.fitBounds(routeLayer.getBounds(), { padding: [40,40] });
+  m.fitBounds(routeLayers[area].getBounds(), { padding: [40,40] });
 }
 
 // ─── RENDER SIDEBAR ────────────────────────────────────────────────────────
-function renderSidebar(config, track, waypoints) {
+function renderSidebar(area, config, track, waypoints) {
+  const s = sfx(area);
   const km = routeDistance(track);
-  const miles = km / 1.60934;
-  document.getElementById('stat-distance').textContent = miles.toFixed(1) + ' mi';
-  document.getElementById('stat-duration').textContent = Math.round(km / 20 * 60) + ' min';
-  const diff = document.getElementById('stat-difficulty');
+  document.getElementById('stat-distance' + s).textContent = (km / 1.60934).toFixed(1) + ' mi';
+  document.getElementById('stat-duration' + s).textContent = Math.round(km / 20 * 60) + ' min';
+  const diff = document.getElementById('stat-difficulty' + s);
   diff.className = 'diff-badge ' + diffClass(config.difficulty);
   diff.textContent = config.difficulty.charAt(0).toUpperCase() + config.difficulty.slice(1);
-  document.getElementById('stat-waypoint-count').textContent = waypoints.length + ' waypoints';
-  document.getElementById('route-description').textContent = config.description;
+  document.getElementById('stat-waypoint-count' + s).textContent = waypoints.length + ' waypoints';
+  document.getElementById('route-description' + s).textContent = config.description;
 
-  const list = document.getElementById('waypoint-list');
+  const list = document.getElementById('waypoint-list' + s);
   list.innerHTML = '';
   waypoints.forEach((wp, i) => {
     const el = document.createElement('div');
     el.className = 'waypoint-item';
     el.innerHTML = `<div class="waypoint-num">${i === 0 ? '★' : i}</div><span>${wp.name}</span>`;
     el.addEventListener('click', () => {
-      map.setView([wp.lat, wp.lon], 16, { animate: true });
-      waypointMarkers[i]?.openPopup();
+      maps[area].setView([wp.lat, wp.lon], 16, { animate: true });
+      wptMarkers[area][i]?.openPopup();
     });
     list.appendChild(el);
   });
 
-  const notes = document.getElementById('route-notes');
-  notes.innerHTML = (config.notes || []).map(n =>
-    `<div class="note-item"><div class="note-dot"></div><span>${n}</span></div>`
-  ).join('') || '<p style="font-size:13px;color:var(--ink-low);">Instructor notes coming soon.</p>';
+  document.getElementById('route-notes' + s).innerHTML =
+    (config.notes || []).map(n =>
+      `<div class="note-item"><div class="note-dot"></div><span>${n}</span></div>`
+    ).join('') || '<p style="font-size:13px;color:var(--ink-low);">Instructor notes coming soon.</p>';
 }
 
 // ─── RENDER VIDEO ──────────────────────────────────────────────────────────
-function renderVideo(config) {
-  const vc = document.getElementById('video-container');
+function renderVideo(area, config) {
+  const vc = document.getElementById('video-container' + sfx(area));
   if (config.youtubeId) {
     vc.innerHTML = `<div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;">
       <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${config.youtubeId}"
@@ -825,18 +882,16 @@ function renderVideo(config) {
 }
 
 // ─── GPX DOWNLOAD ──────────────────────────────────────────────────────────
-let currentGpxData = null;
 function downloadGpx() {
   if (!currentGpxData) return;
   const { config, track, waypoints } = currentGpxData;
-  const pts = track.map(p => `    <trkpt lat="${p[0]}" lon="${p[1]}"></trkpt>`).join('\n');
+  const pts  = track.map(p => `    <trkpt lat="${p[0]}" lon="${p[1]}"></trkpt>`).join('\n');
   const wpts = waypoints.map(w => `  <wpt lat="${w.lat}" lon="${w.lon}"><name>${w.name}</name></wpt>`).join('\n');
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="D4Driving" xmlns="http://www.topografix.com/GPX/1/1">\n  <metadata><name>${config.name} – D4Driving</name></metadata>\n${wpts}\n  <trk><name>${config.name}</name><trkseg>\n${pts}\n  </trkseg></trk>\n</gpx>`;
-  const a = Object.assign(document.createElement('a'), {
+  const xml  = `<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="D4Driving" xmlns="http://www.topografix.com/GPX/1/1">\n  <metadata><name>${config.name} – D4Driving</name></metadata>\n${wpts}\n  <trk><name>${config.name}</name><trkseg>\n${pts}\n  </trkseg></trk>\n</gpx>`;
+  Object.assign(document.createElement('a'), {
     href: URL.createObjectURL(new Blob([xml], { type: 'application/gpx+xml' })),
     download: `d4driving-${currentArea}-${currentRouteKey}.gpx`,
-  });
-  a.click();
+  }).click();
 }
 
 // ─── TABS ──────────────────────────────────────────────────────────────────
@@ -847,22 +902,39 @@ document.querySelectorAll('.area-tab').forEach(btn => {
     currentArea = btn.dataset.area;
     document.querySelectorAll('.area-panel').forEach(p => p.style.display = 'none');
     document.getElementById('panel-' + currentArea).style.display = '';
+
+    // Init map for this area if it has routes and hasn't been initialised yet
+    if (ROUTES[currentArea] && !maps[currentArea]) {
+      initMap(currentArea);
+      const firstRoute = Object.keys(ROUTES[currentArea])[0];
+      currentRouteKey = firstRoute;
+      loadRoute(currentArea, firstRoute);
+    }
   });
 });
 
 document.querySelectorAll('.route-tab').forEach(btn => {
   btn.addEventListener('click', () => {
-    document.querySelectorAll('.route-tab').forEach(b => b.classList.remove('active'));
+    // Only update tabs within the active panel
+    document.querySelectorAll('#panel-' + currentArea + ' .route-tab')
+      .forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     currentRouteKey = btn.dataset.route;
     loadRoute(currentArea, currentRouteKey);
   });
 });
 
+// Fit + GPX buttons wired per area
 document.getElementById('btn-fit').addEventListener('click', () => {
-  if (routeLayer) map.fitBounds(routeLayer.getBounds(), { padding: [40,40] });
+  const rl = routeLayers['peterborough'];
+  if (rl) maps['peterborough'].fitBounds(rl.getBounds(), { padding: [40,40] });
 });
 document.getElementById('btn-gpx').addEventListener('click', downloadGpx);
+document.getElementById('btn-fit-kettering').addEventListener('click', () => {
+  const rl = routeLayers['kettering'];
+  if (rl) maps['kettering'].fitBounds(rl.getBounds(), { padding: [40,40] });
+});
+document.getElementById('btn-gpx-kettering').addEventListener('click', downloadGpx);
 
 // ─── NAV ───────────────────────────────────────────────────────────────────
 const nav = document.getElementById('nav');
@@ -879,7 +951,7 @@ function notifyMe(area) {
 }
 
 // ─── INIT ──────────────────────────────────────────────────────────────────
-initMap();
+initMap('peterborough');
 loadRoute('peterborough', 'stop-sign');
 </script>
 </body>
