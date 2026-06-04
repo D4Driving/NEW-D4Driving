@@ -904,11 +904,16 @@ document.querySelectorAll('.area-tab').forEach(btn => {
     document.getElementById('panel-' + currentArea).style.display = '';
 
     // Init map for this area if it has routes and hasn't been initialised yet
+    // setTimeout defers until the browser has painted the newly-visible panel
     if (ROUTES[currentArea] && !maps[currentArea]) {
-      initMap(currentArea);
-      const firstRoute = Object.keys(ROUTES[currentArea])[0];
-      currentRouteKey = firstRoute;
-      loadRoute(currentArea, firstRoute);
+      setTimeout(() => {
+        initMap(currentArea);
+        const firstRoute = Object.keys(ROUTES[currentArea])[0];
+        currentRouteKey = firstRoute;
+        loadRoute(currentArea, firstRoute);
+      }, 50);
+    } else if (maps[currentArea]) {
+      maps[currentArea].invalidateSize();
     }
   });
 });
