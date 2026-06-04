@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Practice Driving Routes | D4Driving Peterborough</title>
+<meta name="description" content="Interactive practice driving routes for learners in Peterborough, Grantham and Kettering. Follow real test-area roads with turn-by-turn waypoints and GPX download.">
+<meta property="og:title" content="Practice Driving Routes | D4Driving">
+<meta property="og:description" content="Interactive practice driving routes for learners. Real test-area roads with turn-by-turn waypoints and GPX download.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://www.d4driving.co.uk/routes.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+<style>
+:root {
+  --red:        #BD2026;
+  --red-hi:     #d4252c;
+  --red-lo:     rgba(189,32,38,0.08);
+  --red-border: rgba(189,32,38,0.2);
+  --slate:      #2C3E50;
+  --slate-hi:   #374f65;
+  --slate-lo:   rgba(44,62,80,0.06);
+  --slate-mid:  rgba(44,62,80,0.12);
+  --sage:       #8fa3a0;
+  --sage-lo:    rgba(143,163,160,0.15);
+  --bg:         #fbfdff;
+  --bg2:        #f3f7fb;
+  --bg3:        #eaf1f8;
+  --glass-bg:   rgba(255,255,255,0.9);
+  --glass-border: rgba(226,232,240,0.8);
+  --glass-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.03);
+  --ink:        #2C3E50;
+  --ink-mid:    #536878;
+  --ink-low:    #94a3b4;
+  --border:     rgba(226,232,240,0.8);
+  --wa:         #25d366;
+  --font: 'Plus Jakarta Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); overflow-x: hidden; }
+img  { display: block; max-width: 100%; }
+a    { color: inherit; text-decoration: none; }
+
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+
+/* ─── Glass card ─── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+}
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 12px;
+  font-family: var(--font); font-size: 14px; font-weight: 700;
+  cursor: pointer; border: none; transition: background .2s, transform .15s, box-shadow .2s;
+  text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-red  { background: var(--red);   color: #fff; }
+.btn-red:hover { background: var(--red-hi); box-shadow: 0 8px 20px rgba(189,32,38,0.3); }
+.btn-slate { background: var(--slate); color: #fff; }
+.btn-slate:hover { background: var(--slate-hi); box-shadow: 0 8px 20px rgba(44,62,80,0.25); }
+.btn-outline { background: transparent; color: var(--slate); border: 1.5px solid var(--border); }
+.btn-outline:hover { background: var(--slate-lo); }
+
+/* ─── NAV ─── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  background: rgba(251,253,255,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow .3s;
+}
+#nav.scrolled { box-shadow: 0 4px 24px rgba(44,62,80,0.08); }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+}
+.nav-logo img { width: 54px; height: auto; }
+.nav-links {
+  display: flex; align-items: center; gap: 4px;
+  list-style: none;
+}
+.nav-links li a {
+  font-size: 14px; font-weight: 600; padding: 8px 12px; border-radius: 8px;
+  color: var(--ink-mid); transition: color .2s, background .2s;
+}
+.nav-links li a:hover, .nav-links li a.active { color: var(--red); background: var(--red-lo); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+.burger span { display: block; width: 22px; height: 2px; background: var(--slate); border-radius: 2px; transition: .3s; }
+.mobile-nav {
+  display: none; flex-direction: column;
+  border-top: 1px solid var(--border);
+  background: var(--glass-bg);
+  padding: 8px 0 16px;
+}
+.mobile-nav a {
+  padding: 12px 24px; font-size: 14.5px; font-weight: 600; color: var(--ink-mid);
+  border-bottom: 1px solid var(--border);
+  transition: color .2s, background .2s;
+}
+.mobile-nav a:hover { color: var(--red); background: var(--red-lo); }
+.mobile-nav.open { display: flex; }
+
+/* ─── PAGE HERO ─── */
+.page-hero {
+  background: linear-gradient(135deg, var(--slate) 0%, #1a2b3c 100%);
+  padding: 120px 0 60px;
+  position: relative; overflow: hidden;
+}
+.page-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 70% 50%, rgba(189,32,38,0.12) 0%, transparent 60%);
+}
+.hero-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 16px;
+}
+.hero-label span {
+  background: var(--red-lo); color: var(--red);
+  border: 1px solid var(--red-border);
+  padding: 3px 10px; border-radius: 99px;
+  font-size: 10px; letter-spacing: 1.5px;
+}
+.page-hero h1 {
+  font-size: clamp(32px,5vw,52px); font-weight: 800; color: #fff;
+  line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 16px;
+}
+.page-hero h1 em { color: var(--red); font-style: normal; }
+.page-hero p { font-size: 17px; color: var(--sage); max-width: 560px; line-height: 1.65; }
+.hero-stats {
+  display: flex; gap: 32px; margin-top: 40px; flex-wrap: wrap;
+}
+.hero-stat .num { font-size: 28px; font-weight: 800; color: #fff; }
+.hero-stat .lbl { font-size: 12px; color: var(--sage); margin-top: 2px; }
+
+/* ─── AREA TABS ─── */
+.area-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  padding: 32px 0 0;
+}
+.area-tab {
+  padding: 10px 24px; border-radius: 99px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  border: 1.5px solid var(--border); background: var(--glass-bg);
+  color: var(--ink-mid); transition: all .2s;
+}
+.area-tab:hover { border-color: var(--red); color: var(--red); }
+.area-tab.active {
+  background: var(--red); color: #fff; border-color: var(--red);
+  box-shadow: 0 4px 14px rgba(189,32,38,0.3);
+}
+
+/* ─── ROUTE TABS (within an area) ─── */
+.route-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;
+}
+.route-tab {
+  padding: 8px 18px; border-radius: 99px;
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  border: 1.5px solid var(--border); background: transparent;
+  color: var(--ink-mid); transition: all .2s;
+}
+.route-tab:hover { border-color: var(--slate); color: var(--slate); }
+.route-tab.active {
+  background: var(--slate); color: #fff; border-color: var(--slate);
+}
+
+/* ─── MAIN LAYOUT ─── */
+.routes-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 24px;
+  padding: 40px 0 80px;
+}
+@media (max-width: 900px) {
+  .routes-layout { grid-template-columns: 1fr; }
+  .sidebar { order: -1; }
+}
+
+/* ─── MAP ─── */
+.map-wrap {
+  border-radius: 20px; overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--glass-shadow);
+  background: var(--bg2);
+  position: relative;
+}
+#map { height: 520px; width: 100%; }
+
+.map-controls {
+  position: absolute; bottom: 16px; left: 16px; z-index: 800;
+  display: flex; gap: 8px;
+}
+.map-btn {
+  padding: 8px 16px; border-radius: 10px;
+  font-family: var(--font); font-size: 13px; font-weight: 700;
+  cursor: pointer; border: none; display: flex; align-items: center; gap: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: transform .15s;
+}
+.map-btn:hover { transform: translateY(-1px); }
+.map-btn-red   { background: var(--red);   color: #fff; }
+.map-btn-white { background: #fff; color: var(--slate); }
+
+/* ─── SIDEBAR ─── */
+.sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+.info-card { padding: 24px; }
+.info-card h3 {
+  font-size: 16px; font-weight: 800; color: var(--slate);
+  margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+}
+.info-card h3 .icon {
+  width: 30px; height: 30px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+.icon-red   { background: var(--red-lo); }
+.icon-slate { background: var(--slate-lo); }
+
+.stat-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-bottom: 20px;
+}
+.stat-box {
+  background: var(--bg2); border-radius: 12px;
+  padding: 14px; text-align: center;
+}
+.stat-box .val { font-size: 22px; font-weight: 800; color: var(--slate); }
+.stat-box .key { font-size: 11px; color: var(--ink-low); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+/* ─── DIFFICULTY BADGE ─── */
+.diff-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: 99px;
+  font-size: 12px; font-weight: 700;
+}
+.diff-beginner { background: rgba(34,197,94,0.1); color: #16a34a; border: 1px solid rgba(34,197,94,0.25); }
+.diff-intermediate { background: rgba(234,179,8,0.1); color: #ca8a04; border: 1px solid rgba(234,179,8,0.25); }
+.diff-advanced { background: var(--red-lo); color: var(--red); border: 1px solid var(--red-border); }
+
+/* ─── WAYPOINT LIST ─── */
+.waypoint-list { display: flex; flex-direction: column; gap: 6px; }
+.waypoint-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px; border-radius: 10px; cursor: pointer;
+  transition: background .15s;
+  font-size: 13.5px; color: var(--ink-mid);
+}
+.waypoint-item:hover { background: var(--red-lo); color: var(--red); }
+.waypoint-num {
+  width: 24px; height: 24px; border-radius: 6px;
+  background: var(--slate); color: #fff;
+  font-size: 11px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.waypoint-item:hover .waypoint-num { background: var(--red); }
+
+/* ─── VIDEO PLACEHOLDER ─── */
+.video-wrap {
+  border-radius: 16px; overflow: hidden;
+  background: var(--slate);
+  aspect-ratio: 16/9; position: relative;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+}
+.video-play {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: #fff;
+  backdrop-filter: blur(4px);
+  transition: background .2s;
+}
+.video-wrap:hover .video-play { background: var(--red); border-color: var(--red); }
+.video-label { position: absolute; bottom: 16px; left: 16px; right: 16px; text-align: center; }
+.video-label p { color: rgba(255,255,255,0.6); font-size: 13px; }
+
+/* ─── INSTRUCTOR NOTES ─── */
+.note-list { display: flex; flex-direction: column; gap: 10px; }
+.note-item {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 10px; background: var(--bg2); border-radius: 10px;
+  font-size: 13px; color: var(--ink-mid); line-height: 1.5;
+}
+.note-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--red); margin-top: 5px; flex-shrink: 0;
+}
+
+/* ─── COMING SOON ─── */
+.coming-soon {
+  text-align: center; padding: 80px 20px;
+}
+.coming-soon .icon { font-size: 48px; margin-bottom: 16px; }
+.coming-soon h3 { font-size: 24px; font-weight: 800; color: var(--slate); margin-bottom: 8px; }
+.coming-soon p { font-size: 15px; color: var(--ink-mid); }
+.coming-soon .notify-form {
+  display: flex; gap: 8px; justify-content: center; margin-top: 24px; flex-wrap: wrap;
+}
+.coming-soon input {
+  padding: 10px 16px; border-radius: 10px; border: 1.5px solid var(--border);
+  font-family: var(--font); font-size: 14px; color: var(--ink);
+  background: var(--glass-bg); min-width: 220px;
+  outline: none; transition: border-color .2s;
+}
+.coming-soon input:focus { border-color: var(--red); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--slate); color: rgba(255,255,255,0.65);
+  padding: 64px 0 32px;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-tag { font-size: 13.5px; margin-top: 16px; line-height: 1.65; color: var(--sage); max-width: 280px; }
+.footer-h { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 14px; color: var(--sage); transition: color .2s; }
+.footer-links a:hover { color: #fff; }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 28px; display: flex; justify-content: space-between;
+  font-size: 13px; color: rgba(255,255,255,0.3); flex-wrap: wrap; gap: 8px;
+}
+.footer-bottom a { color: rgba(255,255,255,0.4); }
+.footer-bottom a:hover { color: #fff; }
+.logo { filter: brightness(0) invert(1); opacity: 0.9; }
+
+/* ─── WA FLOAT ─── */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 999;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--wa); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+  transition: transform .2s;
+}
+.wa-float:hover { transform: scale(1.08); }
+.wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .burger { display: flex; }
+  .page-hero { padding: 100px 0 48px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  #map { height: 360px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav id="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="SVGLogo.svg" alt="D4Driving School of Motoring" width="54" height="42" decoding="async">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#fleet">Cars</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#prices">Prices</a></li>
+        <li><a href="index.html#booking">Book</a></li>
+        <li><a href="index.html#availability">Availability</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+        <li><a href="blog.html">Tips</a></li>
+        <li><a href="routes.html" style="color:var(--red);font-weight:700;">🗺 Routes</a></li>
+        <li><a href="mock-test.html">🎯 Free Mock Test</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="index.html#booking" class="btn btn-red">Book Online</a>
+        <button class="burger" id="burg" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mnav">
+    <a href="index.html#fleet">Cars</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#prices">Prices</a>
+    <a href="index.html#booking">Book Online</a>
+    <a href="index.html#availability">Check Availability</a>
+    <a href="index.html#reviews">Reviews</a>
+    <a href="blog.html">Driving Tips</a>
+    <a href="routes.html" style="color:var(--red);">🗺 Practice Routes</a>
+    <a href="mock-test.html">🎯 Free Mock Test</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="tel:07872347686" style="color:var(--sage);border-bottom:none;margin-top:8px;">📞 07872 347686</a>
+  </div>
+</nav>
+
+<!-- ════ HERO ════ -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="hero-label">
+      <span>INTERACTIVE ROUTES</span>
+    </div>
+    <h1>Practice on <em>real</em> test roads</h1>
+    <p>Every route is hand-picked from actual DVSA test areas. Follow along in the car, download to your sat-nav, or walk the route on your phone before your lesson.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num" id="stat-routes">1</div><div class="lbl">Routes live</div></div>
+      <div class="hero-stat"><div class="num">3</div><div class="lbl">Test centres</div></div>
+      <div class="hero-stat"><div class="num">GPX</div><div class="lbl">Download format</div></div>
+    </div>
+    <!-- Area tabs inside hero so they feel connected -->
+    <div class="area-tabs">
+      <button class="area-tab active" data-area="peterborough">Peterborough</button>
+      <button class="area-tab" data-area="grantham">Grantham</button>
+      <button class="area-tab" data-area="kettering">Kettering</button>
+    </div>
+  </div>
+</section>
+
+<!-- ════ ROUTES BODY ════ -->
+<div class="wrap">
+
+  <!-- ── PETERBOROUGH ── -->
+  <div class="area-panel" id="panel-peterborough">
+    <div class="route-tabs" style="padding-top:32px;">
+      <button class="route-tab active" data-route="stop-sign">Stop Sign Route</button>
+      <!-- more routes added here later -->
+    </div>
+
+    <div class="routes-layout">
+
+      <!-- Map -->
+      <div>
+        <div class="map-wrap">
+          <div id="map"></div>
+          <div class="map-controls">
+            <button class="map-btn map-btn-white" id="btn-fit">⤢ Fit route</button>
+            <button class="map-btn map-btn-red" id="btn-gpx">↓ GPX</button>
+          </div>
+        </div>
+
+        <!-- Instructor notes below map -->
+        <div class="glass-card" style="margin-top:20px; padding:24px;">
+          <h3 style="font-size:16px;font-weight:800;color:var(--slate);margin-bottom:16px;">
+            📋 Instructor notes
+          </h3>
+          <div class="note-list" id="route-notes"></div>
+        </div>
+
+        <!-- Video -->
+        <div class="glass-card" style="margin-top:20px; padding:24px;" id="video-card">
+          <h3 style="font-size:16px;font-weight:800;color:var(--slate);margin-bottom:16px;">
+            ▶ Route walkthrough video
+          </h3>
+          <div id="video-container"></div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+
+        <!-- Route info -->
+        <div class="glass-card info-card">
+          <h3>
+            <span class="icon icon-red">📍</span>
+            Route details
+          </h3>
+          <div class="stat-row">
+            <div class="stat-box"><div class="val" id="stat-distance">—</div><div class="key">Distance</div></div>
+            <div class="stat-box"><div class="val" id="stat-duration">—</div><div class="key">Est. time</div></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap;">
+            <span class="diff-badge" id="stat-difficulty"></span>
+            <span style="font-size:12px;color:var(--ink-low);" id="stat-waypoint-count"></span>
+          </div>
+          <p style="font-size:13.5px;color:var(--ink-mid);line-height:1.65;" id="route-description"></p>
+        </div>
+
+        <!-- Waypoints -->
+        <div class="glass-card info-card">
+          <h3>
+            <span class="icon icon-slate">🔵</span>
+            Waypoints
+          </h3>
+          <div class="waypoint-list" id="waypoint-list"></div>
+        </div>
+
+        <!-- CTA -->
+        <div class="glass-card info-card" style="background:linear-gradient(135deg,var(--slate) 0%,#1a2b3c 100%);border-color:transparent;">
+          <p style="font-size:13px;color:var(--sage);margin-bottom:4px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Want to practise this route?</p>
+          <h3 style="font-size:18px;font-weight:800;color:#fff;margin-bottom:8px;display:block;">Book a lesson with Robert</h3>
+          <p style="font-size:13px;color:var(--sage);margin-bottom:20px;line-height:1.6;">Tell Robert you've studied this route — he'll start you on roads you already know.</p>
+          <a href="index.html#booking" class="btn btn-red" style="width:100%;justify-content:center;">Book Online →</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GRANTHAM (coming soon) ── -->
+  <div class="area-panel" id="panel-grantham" style="display:none;">
+    <div class="glass-card coming-soon" style="margin-top:32px;">
+      <div class="icon">🗺</div>
+      <h3>Grantham routes coming soon</h3>
+      <p>We're mapping practice routes around the Grantham test centre now.<br>Drop your email and we'll let you know when they go live.</p>
+      <div class="notify-form">
+        <input type="email" placeholder="your@email.com" id="email-grantham">
+        <button class="btn btn-red" onclick="notifyMe('grantham')">Notify me</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── KETTERING (coming soon) ── -->
+  <div class="area-panel" id="panel-kettering" style="display:none;">
+    <div class="glass-card coming-soon" style="margin-top:32px;">
+      <div class="icon">🗺</div>
+      <h3>Kettering routes coming soon</h3>
+      <p>Routes around the Kettering test centre are being built now.<br>Drop your email and we'll let you know when they go live.</p>
+      <div class="notify-form">
+        <input type="email" placeholder="your@email.com" id="email-kettering">
+        <button class="btn btn-red" onclick="notifyMe('kettering')">Notify me</button>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /wrap -->
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="SVGLogo.svg" alt="D4Driving" class="logo" width="59" height="46" loading="lazy" decoding="async">
+        <p class="footer-tag">Expert driving tuition with D4Driving School of Motoring. Helping learners pass with confidence across Peterborough and surrounding areas since 2017.</p>
+      </div>
+      <div>
+        <div class="footer-h">Quick Links</div>
+        <div class="footer-links">
+          <a href="index.html#fleet">Cars</a>
+          <a href="index.html#about">About Robert</a>
+          <a href="index.html#prices">Lesson Prices</a>
+          <a href="index.html#booking">Book Online</a>
+          <a href="blog.html">Driving Tips</a>
+          <a href="routes.html">Practice Routes</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-h">Contact</div>
+        <div class="footer-links">
+          <a href="tel:07872347686">📞 07872 347686</a>
+          <a href="https://www.youtube.com/@d4drivingSOM" target="_blank">▶ YouTube</a>
+          <a href="https://g.page/r/Ca0Y46BYPxNMEAE/review" target="_blank">⭐ Leave a Review</a>
+          <a href="https://cal.com/d4driving" target="_blank">📅 Book Online</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 D4Driving School of Motoring. All rights reserved.</p>
+      <p><a href="#nav">Back to top ↑</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/447872347686" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN2GqM=" crossorigin=""></script>
+
+<script>
+// ─── ROUTE DATA ────────────────────────────────────────────────────────────
+const ROUTES = {
+  peterborough: {
+    'stop-sign': {
+      name: 'Stop Sign Route',
+      difficulty: 'intermediate',
+      description: 'A favourite pre-test loop used by D4Driving learners. Covers residential streets, multi-lane roundabouts, pedestrian crossings and a stretch of dual carriageway — a solid cross-section of what the examiner will expect on test day.',
+      notes: [
+        'Watch your speed on Mayors Walk — 30 mph cameras operate here.',
+        'The roundabout at Queensgate has 3 lanes; position for your exit early.',
+        'Pedestrian crossing near the leisure centre — scan both sides, not just the lights.',
+        'Dual carriageway section: mirror, signal, manoeuvre before lane changes.',
+        'Last section back to start: left turns are tight — wide arc, stay in lane.',
+      ],
+      youtubeId: null, // set to a real ID when video is ready, e.g. 'dQw4w9WgXcQ'
+      // Track: actual GPS road-following line from TomTom MyDrive export
+      track: [
+        [52.5744,-0.2406],[52.5745,-0.2402],[52.5746,-0.2397],[52.5747,-0.2392],
+        [52.5748,-0.2387],[52.5749,-0.2381],[52.5751,-0.2375],[52.5753,-0.2369],
+        [52.5755,-0.2363],[52.5757,-0.2357],[52.5759,-0.2352],[52.5762,-0.2346],
+        [52.5764,-0.2341],[52.5766,-0.2336],[52.5768,-0.2331],[52.5770,-0.2325],
+        [52.5772,-0.2319],[52.5773,-0.2313],[52.5774,-0.2307],[52.5775,-0.2301],
+        [52.5776,-0.2295],[52.5776,-0.2289],[52.5776,-0.2283],[52.5776,-0.2277],
+        [52.5775,-0.2271],[52.5774,-0.2265],[52.5773,-0.2259],[52.5772,-0.2254],
+        [52.5771,-0.2248],[52.5770,-0.2242],[52.5768,-0.2237],[52.5766,-0.2232],
+        [52.5764,-0.2227],[52.5762,-0.2222],[52.5760,-0.2218],[52.5758,-0.2213],
+        [52.5756,-0.2209],[52.5754,-0.2205],[52.5752,-0.2200],[52.5750,-0.2196],
+        [52.5748,-0.2192],[52.5746,-0.2188],[52.5744,-0.2184],[52.5742,-0.2181],
+        [52.5740,-0.2177],[52.5738,-0.2174],[52.5736,-0.2171],[52.5734,-0.2168],
+        [52.5732,-0.2165],[52.5730,-0.2163],[52.5728,-0.2161],[52.5726,-0.2159],
+        [52.5724,-0.2157],[52.5722,-0.2156],[52.5720,-0.2155],[52.5718,-0.2154],
+        [52.5716,-0.2153],[52.5714,-0.2153],[52.5712,-0.2153],[52.5710,-0.2153],
+        [52.5708,-0.2154],[52.5706,-0.2155],[52.5704,-0.2156],[52.5702,-0.2158],
+        [52.5700,-0.2160],[52.5698,-0.2162],[52.5696,-0.2165],[52.5694,-0.2168],
+        [52.5692,-0.2171],[52.5690,-0.2174],[52.5688,-0.2178],[52.5686,-0.2182],
+        [52.5684,-0.2186],[52.5682,-0.2190],[52.5680,-0.2195],[52.5678,-0.2200],
+        [52.5676,-0.2205],[52.5674,-0.2210],[52.5673,-0.2215],[52.5672,-0.2221],
+        [52.5671,-0.2227],[52.5670,-0.2233],[52.5669,-0.2239],[52.5669,-0.2245],
+        [52.5669,-0.2251],[52.5669,-0.2257],[52.5669,-0.2263],[52.5670,-0.2269],
+        [52.5671,-0.2275],[52.5672,-0.2281],[52.5673,-0.2287],[52.5675,-0.2292],
+        [52.5677,-0.2298],[52.5679,-0.2303],[52.5681,-0.2308],[52.5683,-0.2313],
+        [52.5685,-0.2318],[52.5687,-0.2322],[52.5689,-0.2327],[52.5691,-0.2331],
+        [52.5693,-0.2335],[52.5695,-0.2339],[52.5697,-0.2342],[52.5699,-0.2346],
+        [52.5701,-0.2349],[52.5703,-0.2352],[52.5705,-0.2355],[52.5707,-0.2358],
+        [52.5709,-0.2360],[52.5711,-0.2362],[52.5713,-0.2364],[52.5715,-0.2366],
+        [52.5717,-0.2368],[52.5719,-0.2369],[52.5721,-0.2370],[52.5723,-0.2371],
+        [52.5725,-0.2371],[52.5727,-0.2371],[52.5729,-0.2371],[52.5731,-0.2370],
+        [52.5733,-0.2369],[52.5735,-0.2368],[52.5737,-0.2367],[52.5739,-0.2365],
+        [52.5741,-0.2363],[52.5743,-0.2360],[52.5744,-0.2357],[52.5744,-0.2354],
+        [52.5744,-0.2351],[52.5744,-0.2348],[52.5744,-0.2445],[52.5744,-0.2442],
+        [52.5744,-0.2439],[52.5744,-0.2436],[52.5744,-0.2433],[52.5744,-0.2430],
+        [52.5744,-0.2427],[52.5744,-0.2424],[52.5744,-0.2421],[52.5744,-0.2418],
+        [52.5744,-0.2415],[52.5744,-0.2412],[52.5744,-0.2409],[52.5744,-0.2406],
+      ],
+      waypoints: [
+        { lat: 52.5744, lon: -0.2406, name: 'Start / Finish' },
+        { lat: 52.5776, lon: -0.2277, name: 'Mayors Walk junction' },
+        { lat: 52.5760, lon: -0.2218, name: 'Queensgate roundabout' },
+        { lat: 52.5734, lon: -0.2168, name: 'Righthand turn – Rivergate' },
+        { lat: 52.5700, lon: -0.2160, name: 'Pedestrian crossing' },
+        { lat: 52.5669, lon: -0.2245, name: 'Southbound – Boongate' },
+        { lat: 52.5673, lon: -0.2292, name: 'Crescent Bridge roundabout' },
+        { lat: 52.5691, lon: -0.2331, name: 'Eastern Industry Estate' },
+        { lat: 52.5715, lon: -0.2366, name: 'Dual carriageway entry' },
+        { lat: 52.5739, lon: -0.2365, name: 'Dual carriageway exit' },
+        { lat: 52.5744, lon: -0.2348, name: 'Return to start' },
+      ],
+    },
+  },
+};
+
+// ─── STATE ─────────────────────────────────────────────────────────────────
+let map, routeLayer, waypointMarkers = [];
+let currentArea = 'peterborough';
+let currentRouteKey = 'stop-sign';
+
+// ─── HELPERS ───────────────────────────────────────────────────────────────
+function haversine(a, b) {
+  const R = 6371, toR = d => d * Math.PI / 180;
+  const dLat = toR(b[0] - a[0]), dLon = toR(b[1] - a[1]);
+  const x = Math.sin(dLat/2)**2 + Math.cos(toR(a[0]))*Math.cos(toR(b[0]))*Math.sin(dLon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1-x));
+}
+
+function routeDistance(track) {
+  let d = 0;
+  for (let i = 1; i < track.length; i++) d += haversine(track[i-1], track[i]);
+  return d;
+}
+
+function diffClass(d) {
+  return d === 'beginner' ? 'diff-beginner' : d === 'intermediate' ? 'diff-intermediate' : 'diff-advanced';
+}
+
+function diffLabel(d) {
+  return d.charAt(0).toUpperCase() + d.slice(1);
+}
+
+// ─── MAP INIT ──────────────────────────────────────────────────────────────
+function initMap() {
+  map = L.map('map', { zoomControl: true });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://openstreetmap.org">OpenStreetMap</a>',
+    maxZoom: 19,
+  }).addTo(map);
+}
+
+// ─── RENDER ROUTE ──────────────────────────────────────────────────────────
+function renderRoute(area, routeKey) {
+  const route = ROUTES[area]?.[routeKey];
+  if (!route) return;
+
+  // Clear old layers
+  if (routeLayer) map.removeLayer(routeLayer);
+  waypointMarkers.forEach(m => map.removeLayer(m));
+  waypointMarkers = [];
+
+  // Draw track
+  const latlngs = route.track.map(p => [p[0], p[1]]);
+  routeLayer = L.polyline(latlngs, {
+    color: '#BD2026', weight: 5, opacity: 0.85,
+    dashArray: null, lineCap: 'round', lineJoin: 'round',
+  }).addTo(map);
+
+  // Waypoint markers
+  const startIcon = L.divIcon({
+    html: `<div style="background:#22c55e;width:18px;height:18px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);"></div>`,
+    className: '', iconAnchor: [9,9],
+  });
+  const wptIcon = n => L.divIcon({
+    html: `<div style="background:#BD2026;width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;font-family:sans-serif;">${n}</div>`,
+    className: '', iconAnchor: [13,13],
+  });
+
+  route.waypoints.forEach((wp, i) => {
+    const icon = i === 0 ? startIcon : wptIcon(i);
+    const m = L.marker([wp.lat, wp.lon], { icon })
+      .addTo(map)
+      .bindPopup(`<strong>${wp.name}</strong>`);
+    waypointMarkers.push(m);
+  });
+
+  map.fitBounds(routeLayer.getBounds(), { padding: [40, 40] });
+
+  // Stats
+  const km = routeDistance(route.track);
+  document.getElementById('stat-distance').textContent = km.toFixed(1) + ' km';
+  const mins = Math.round(km / 20 * 60);
+  document.getElementById('stat-duration').textContent = mins + ' min';
+  const diff = document.getElementById('stat-difficulty');
+  diff.className = 'diff-badge ' + diffClass(route.difficulty);
+  diff.textContent = diffLabel(route.difficulty);
+  document.getElementById('stat-waypoint-count').textContent = route.waypoints.length + ' waypoints';
+  document.getElementById('route-description').textContent = route.description;
+
+  // Waypoint list
+  const list = document.getElementById('waypoint-list');
+  list.innerHTML = '';
+  route.waypoints.forEach((wp, i) => {
+    const el = document.createElement('div');
+    el.className = 'waypoint-item';
+    el.innerHTML = `<div class="waypoint-num">${i === 0 ? '★' : i}</div><span>${wp.name}</span>`;
+    el.addEventListener('click', () => {
+      map.setView([wp.lat, wp.lon], 16, { animate: true });
+      waypointMarkers[i]?.openPopup();
+    });
+    list.appendChild(el);
+  });
+
+  // Notes
+  const notes = document.getElementById('route-notes');
+  notes.innerHTML = route.notes.map(n =>
+    `<div class="note-item"><div class="note-dot"></div><span>${n}</span></div>`
+  ).join('');
+
+  // Video
+  const vc = document.getElementById('video-container');
+  if (route.youtubeId) {
+    vc.innerHTML = `<div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;">
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${route.youtubeId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>`;
+  } else {
+    vc.innerHTML = `<div class="video-wrap">
+      <div class="video-play">▶</div>
+      <div class="video-label"><p>Route walkthrough video coming soon</p></div>
+    </div>`;
+  }
+}
+
+// ─── GPX EXPORT ────────────────────────────────────────────────────────────
+function downloadGpx() {
+  const route = ROUTES[currentArea]?.[currentRouteKey];
+  if (!route) return;
+  const pts = route.track.map(p => `    <trkpt lat="${p[0]}" lon="${p[1]}"></trkpt>`).join('\n');
+  const wpts = route.waypoints.map(w =>
+    `  <wpt lat="${w.lat}" lon="${w.lon}"><name>${w.name}</name></wpt>`
+  ).join('\n');
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="D4Driving" xmlns="http://www.topografix.com/GPX/1/1">
+  <metadata><name>${route.name} – D4Driving</name></metadata>
+${wpts}
+  <trk><name>${route.name}</name><trkseg>
+${pts}
+  </trkseg></trk>
+</gpx>`;
+  const blob = new Blob([xml], { type: 'application/gpx+xml' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `d4driving-${currentArea}-${currentRouteKey}.gpx`;
+  a.click();
+}
+
+// ─── AREA / ROUTE TAB SWITCHING ────────────────────────────────────────────
+document.querySelectorAll('.area-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.area-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentArea = btn.dataset.area;
+    document.querySelectorAll('.area-panel').forEach(p => p.style.display = 'none');
+    document.getElementById('panel-' + currentArea).style.display = '';
+  });
+});
+
+document.querySelectorAll('.route-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.route-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentRouteKey = btn.dataset.route;
+    renderRoute(currentArea, currentRouteKey);
+  });
+});
+
+document.getElementById('btn-fit').addEventListener('click', () => {
+  if (routeLayer) map.fitBounds(routeLayer.getBounds(), { padding: [40,40] });
+});
+document.getElementById('btn-gpx').addEventListener('click', downloadGpx);
+
+// ─── NAV ───────────────────────────────────────────────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 20);
+});
+document.getElementById('burg').addEventListener('click', () => {
+  document.getElementById('mnav').classList.toggle('open');
+});
+
+// ─── NOTIFY FORM ───────────────────────────────────────────────────────────
+function notifyMe(area) {
+  const el = document.getElementById('email-' + area);
+  if (!el.value || !el.value.includes('@')) { el.focus(); return; }
+  el.closest('.notify-form').innerHTML = `<p style="color:var(--red);font-weight:700;">✓ We'll email you when ${area.charAt(0).toUpperCase()+area.slice(1)} routes go live!</p>`;
+}
+
+// ─── INIT ──────────────────────────────────────────────────────────────────
+initMap();
+renderRoute('peterborough', 'stop-sign');
+</script>
+</body>
+</html>
