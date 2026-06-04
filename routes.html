@@ -790,7 +790,8 @@ function renderRoute(area, routeKey) {
 
   // Stats
   const km = routeDistance(route.track);
-  document.getElementById('stat-distance').textContent = km.toFixed(1) + ' km';
+  const miles = km / 1.60934;
+  document.getElementById('stat-distance').textContent = miles.toFixed(1) + ' mi';
   const mins = Math.round(km / 20 * 60);
   document.getElementById('stat-duration').textContent = mins + ' min';
   const diff = document.getElementById('stat-difficulty');
