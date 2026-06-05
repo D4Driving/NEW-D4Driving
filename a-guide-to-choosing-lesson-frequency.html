@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Soro fills these in automatically -->
+<title>A Guide to Choosing Lesson Frequency | D4Driving Peterborough</title>
+<meta name="description" content="A practical guide to choosing lesson frequency for driving lessons, with smart advice on progress, confidence, budget, and test readiness.">
+<meta property="og:title"       content="A Guide to Choosing Lesson Frequency | D4Driving">
+<meta property="og:description" content="A practical guide to choosing lesson frequency for driving lessons, with smart advice on progress, confidence, budget, and test readiness.">
+<meta property="og:image"       content="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/789338e8-df1c-4b0c-8811-2f09653142e3.webp">
+<meta property="og:type"        content="article">
+<link rel="canonical" href="https://www.d4driving.co.uk/a-guide-to-choosing-lesson-frequency.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ─── Same token set as index.html ─── */
+:root {
+  --red:        #BD2026;
+  --red-hi:     #d4252c;
+  --red-lo:     rgba(189,32,38,0.08);
+  --red-border: rgba(189,32,38,0.2);
+  --slate:      #2C3E50;
+  --slate-hi:   #374f65;
+  --slate-lo:   rgba(44,62,80,0.06);
+  --slate-mid:  rgba(44,62,80,0.12);
+  --sage:       #8fa3a0;
+  --sage-lo:    rgba(143,163,160,0.15);
+  --bg:         #fbfdff;
+  --bg2:        #f3f7fb;
+  --bg3:        #eaf1f8;
+  --glass-bg:   rgba(255,255,255,0.9);
+  --glass-border: rgba(226,232,240,0.8);
+  --glass-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.03);
+  --ink:        #2C3E50;
+  --ink-mid:    #536878;
+  --ink-low:    #94a3b4;
+  --border:     rgba(226,232,240,0.8);
+  --wa:         #25d366;
+  --font: 'Plus Jakarta Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background-color: var(--bg); color: var(--ink); overflow-x: hidden; }
+img  { display: block; max-width: 100%; }
+a    { color: inherit; text-decoration: none; }
+
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+.article-wrap { max-width: 760px; margin: 0 auto; padding: 0 28px; }
+
+/* ─── Glass card ─── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+}
+
+/* ─── Buttons ─── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font); font-size: 14px; font-weight: 700;
+  padding: 12px 24px; border: none; cursor: pointer; border-radius: 12px;
+  transition: all .22s; white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-red   { background: var(--red); color: #fff; box-shadow: 0 4px 14px rgba(189,32,38,0.25); }
+.btn-red:hover { background: var(--red-hi); box-shadow: 0 8px 24px rgba(189,32,38,0.38); }
+.btn-outline { background: transparent; color: var(--slate); border: 1.5px solid var(--border); }
+.btn-outline:hover { border-color: var(--red); color: var(--red); background: var(--red-lo); }
+
+/* ─── NAV ─── */
+#nav {
+  position: sticky; top: 0; z-index: 900;
+  background: rgba(251,253,255,0.95);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px; max-width: 1140px; margin: 0 auto; padding: 0 28px;
+}
+.nav-logo img { height: 40px; width: auto; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-phone { font-size: 14px; font-weight: 700; color: var(--sage); transition: color .2s; }
+.nav-phone:hover { color: var(--slate); }
+.nav-back {
+  font-size: 13px; font-weight: 600; color: var(--ink-mid);
+  display: flex; align-items: center; gap: 6px; padding: 8px 14px;
+  border-radius: 8px; transition: all .2s;
+}
+.nav-back:hover { color: var(--slate); background: var(--slate-lo); }
+
+/* ─── HERO ─── */
+.article-hero {
+  background: var(--slate);
+  padding: 80px 0 0;
+  margin-top: 0;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg-img {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  filter: brightness(0.15) saturate(0.4);
+  /* Soro sets this via inline style */
+}
+.hero-grade {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(44,62,80,0.9) 0%, rgba(44,62,80,0.7) 60%, rgba(44,62,80,1) 100%);
+}
+.hero-stripe { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); }
+.article-hero-content {
+  position: relative; z-index: 2; max-width: 760px; margin: 0 auto; padding: 0 28px 60px;
+}
+.article-cat {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--sage); margin-bottom: 18px;
+}
+.article-cat::before { content: ''; display: block; width: 16px; height: 2px; background: var(--sage); border-radius: 2px; }
+.article-hero h1 {
+  font-size: clamp(28px,5vw,52px); font-weight: 800; line-height: 1.1;
+  letter-spacing: -1.5px; color: #fff; margin-bottom: 18px;
+}
+.article-meta {
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5);
+  border-top: 1px solid rgba(255,255,255,0.1); padding-top: 18px; margin-top: 18px;
+}
+.meta-author { display: flex; align-items: center; gap: 10px; }
+.meta-avatar {
+  width: 36px; height: 36px; border-radius: 50%; overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+.meta-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.meta-name { font-weight: 700; color: rgba(255,255,255,0.8); }
+.meta-dot { color: rgba(255,255,255,0.25); }
+
+/* ─── FEATURED IMAGE ─── */
+.featured-img-wrap {
+  margin: 0 auto; max-width: 760px; padding: 0 28px;
+  transform: translateY(-32px);
+}
+.featured-img-wrap img {
+  width: 100%; border-radius: 16px;
+  box-shadow: 0 30px 60px rgba(44,62,80,0.2);
+  max-height: 440px; object-fit: cover;
+}
+
+/* ─── ARTICLE BODY ─── */
+.article-layout {
+  display: grid; grid-template-columns: 1fr 300px; gap: 40px;
+  padding-bottom: 80px;
+}
+@media(max-width:860px){ .article-layout { grid-template-columns: 1fr; } .sidebar { order: -1; } }
+
+.article-content {
+  font-size: 16px; line-height: 1.85; color: var(--ink-mid);
+}
+.article-content h2 {
+  font-size: clamp(22px,3vw,30px); font-weight: 800;
+  color: var(--slate); margin: 40px 0 16px;
+  letter-spacing: -0.5px; line-height: 1.15;
+}
+.article-content h3 {
+  font-size: clamp(18px,2.5vw,22px); font-weight: 700;
+  color: var(--slate); margin: 32px 0 12px;
+}
+.article-content p  { margin-bottom: 20px; }
+.article-content ul,
+.article-content ol { padding-left: 24px; margin-bottom: 20px; }
+.article-content li { margin-bottom: 8px; }
+.article-content a  { color: var(--red); text-decoration: underline; text-underline-offset: 3px; }
+.article-content a:hover { color: var(--red-hi); }
+.article-content strong { color: var(--slate); font-weight: 700; }
+.article-content blockquote {
+  border-left: 4px solid var(--red); padding: 16px 24px;
+  margin: 28px 0; background: var(--red-lo); border-radius: 0 12px 12px 0;
+  font-style: italic; color: var(--ink);
+}
+.article-content img {
+  border-radius: 12px; margin: 28px 0;
+  box-shadow: 0 8px 24px rgba(44,62,80,0.1);
+}
+
+/* Tip / callout box */
+.article-content .tip-box {
+  background: var(--bg2); border: 1.5px solid var(--border);
+  border-left: 4px solid var(--sage); border-radius: 0 12px 12px 0;
+  padding: 16px 20px; margin: 24px 0; font-style: normal;
+  color: var(--ink-mid);
+}
+.article-content .tip-box strong { color: var(--slate-hi); }
+
+/* ─── SIDEBAR ─── */
+.sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+.sidebar-card { padding: 24px; }
+.sidebar-card h4 {
+  font-size: 14px; font-weight: 700; color: var(--slate);
+  margin-bottom: 14px; text-transform: uppercase; letter-spacing: 1px;
+}
+
+.sidebar-cta { background: var(--slate) !important; border-color: transparent !important; }
+.sidebar-cta h4 { color: #fff; }
+.sidebar-cta p  { color: rgba(255,255,255,0.6); font-size: 13.5px; margin-bottom: 16px; }
+.sidebar-cta .price { font-size: 32px; font-weight: 800; color: #fff; letter-spacing: -1px; margin-bottom: 4px; }
+.sidebar-cta .price small { font-size: 14px; font-weight: 400; color: var(--sage); }
+
+.sidebar-share { }
+.share-links { display: flex; flex-direction: column; gap: 8px; }
+.share-link {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; font-weight: 600; padding: 10px 14px; border-radius: 10px;
+  transition: background .2s; color: var(--ink-mid);
+}
+.share-link:hover { background: var(--bg2); color: var(--slate); }
+.share-icon { width: 20px; text-align: center; font-size: 16px; }
+
+.related-links { display: flex; flex-direction: column; gap: 10px; }
+.related-link {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px; border-radius: 10px; transition: background .2s;
+}
+.related-link:hover { background: var(--bg2); }
+.related-link-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.related-link-text { font-size: 13px; font-weight: 600; color: var(--slate); line-height: 1.4; }
+
+/* ─── TAG STRIP ─── */
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
+.tag {
+  font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 99px;
+  background: var(--bg2); border: 1px solid var(--border); color: var(--ink-low);
+  transition: all .2s;
+}
+.tag:hover { background: var(--red-lo); border-color: var(--red-border); color: var(--red); }
+
+/* ─── AUTHOR BOX ─── */
+.author-box { display: flex; gap: 20px; align-items: flex-start; margin-top: 40px; padding: 28px; }
+.author-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; object-position: top; flex-shrink: 0; }
+.author-info h4 { font-size: 16px; font-weight: 700; color: var(--slate); margin-bottom: 6px; }
+.author-info p  { font-size: 13.5px; color: var(--ink-mid); line-height: 1.65; margin-bottom: 12px; }
+
+/* ─── CTA SECTION ─── */
+.article-cta { background: var(--bg2); padding: 72px 0; margin-top: 0; }
+.cta-inner { text-align: center; max-width: 560px; margin: 0 auto; }
+.cta-inner h2 { font-size: clamp(26px,4vw,42px); font-weight: 800; color: var(--slate); letter-spacing: -1px; margin-bottom: 14px; }
+.cta-inner p  { color: var(--ink-mid); margin-bottom: 28px; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* ─── WhatsApp float ─── */
+.wa-float {
+  position: fixed; bottom: 30px; right: 30px;
+  background-color: var(--wa); color: white;
+  width: 60px; height: 60px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 20px rgba(37,211,102,0.3);
+  z-index: 100; transition: transform .3s;
+}
+.wa-float:hover { transform: scale(1.12); }
+.wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ─── FOOTER ─── */
+footer { background: var(--slate); padding: 48px 0 28px; }
+.footer-bottom {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+.footer-bottom a { color: var(--sage); transition: color .2s; }
+.footer-bottom a:hover { color: #fff; }
+.footer-links-row { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 24px; }
+.footer-links-row a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.5); transition: color .2s; }
+.footer-links-row a:hover { color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="https://d4driving.co.uk/400dpiLogoCropped.png" alt="D4Driving School of Motoring">
+    </a>
+    <div class="nav-right">
+      <a href="blog.html" class="nav-back">← All Articles</a>
+      <a href="tel:07872347686" class="nav-phone">📞 07872 347686</a>
+      <a href="https://cal.com/d4driving" target="_blank" class="btn btn-red">Book Online</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ARTICLE HERO -->
+<div class="article-hero">
+  <!-- Soro sets background-image via inline style on .hero-bg-img -->
+  <div class="hero-bg-img" style="background-image:url('https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/789338e8-df1c-4b0c-8811-2f09653142e3.webp');"></div>
+  <div class="hero-grade"></div>
+  <div class="hero-stripe"></div>
+  <div class="article-hero-content">
+    <div class="article-cat">Driving Tips</div>
+    <h1>A Guide to Choosing Lesson Frequency</h1>
+    <div class="article-meta">
+      <div class="meta-author">
+        <div class="meta-avatar"><img src="robert.webp" alt="Robert"></div>
+        <span class="meta-name">Robert</span>
+        <span>· D4Driving School of Motoring</span>
+      </div>
+      <span class="meta-dot">·</span>
+      <span>5 June 2026</span>
+      <span class="meta-dot">·</span>
+      <span>Driving Tips</span>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED IMAGE -->
+<div class="featured-img-wrap">
+  <img src="https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/789338e8-df1c-4b0c-8811-2f09653142e3.webp" alt="A Guide to Choosing Lesson Frequency">
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="article-wrap">
+  <div class="article-layout">
+
+    <!-- ARTICLE BODY — Soro injects content here -->
+    <div>
+      <div class="article-content">
+        <p>Some learners book one lesson a week and settle in nicely. Others leave a fortnight between sessions, spend the first 20 minutes remembering clutch control, and wonder why progress feels slow. A good guide to choosing lesson frequency starts with one simple point - the best schedule is the one that helps you improve steadily without feeling rushed, overwhelmed, or out of pocket.</p>
+<p>That balance matters more than people think. Too few lessons, and skills go rusty between sessions. Too many, and your brain can feel like it has done a full day’s revision before you have even reached the roundabout. The right frequency depends on how quickly you retain new skills, how nervous you feel, how much private practice you can do, and how soon you want to be test-ready.</p>
+<h2>Why lesson frequency matters more than most learners expect</h2>
+<p>Driving is not just about understanding what to do. It is about doing it calmly, consistently, and without needing a running commentary in your head every five seconds. That takes repetition.</p>
+<p>When lessons are spaced well, each session builds on the last one. You spend less time revisiting old ground and more time moving forward. That usually means better value for money, because your paid lesson time goes into improving rather than re-learning.</p>
+<p>There is a confidence piece here too. Learners who leave long gaps often feel as if they are starting from behind each time. That can be frustrating, especially if nerves are already in the mix. Regular lessons help keep the car, the roads, and the routines familiar, which makes everything feel more manageable.</p>
+<h2>A practical guide to choosing lesson frequency</h2>
+<p>If you are trying to decide between one lesson a week, two lessons a week, or something more flexible, think about your learning pattern rather than what your mate did. Your schedule should fit your progress, not somebody else’s story about passing in twelve weeks.</p>
+<p>For most beginners, one or two lessons a week works well. One lesson a week can be a sensible starting point if you want time to absorb each session and keep costs predictable. Two lessons a week often suits learners who want faster momentum, especially if they are aiming for a test in the near future.</p>
+<p>The key question is this: when your next lesson starts, do you feel ready to build on what you learned last time, or do you feel as if you are having to recover lost ground? If it is the second one, your frequency may need adjusting.</p>
+<h3>Once a week - steady and manageable</h3>
+<p>One lesson a week is often the most realistic option for busy learners. It gives you time to process new skills, fit lessons around work or college, and spread the cost more comfortably.</p>
+<p>This can work very well if you remember things clearly from one lesson to the next and you are not in a rush to get to test standard. It also suits nervous beginners who prefer a measured pace. Learning to drive should stretch you, but it should not feel like being launched into controlled chaos.</p>
+<p>The trade-off is speed. Weekly lessons can mean slower overall progress, particularly if you cannot practise privately between sessions. If you are learning in a manual car, longer gaps can make clutch control, moving off smoothly, and gear changes take a bit longer to bed in.</p>
+<h3>Twice a week - quicker progress and better continuity</h3>
+<p>Two lessons a week often gives learners stronger continuity. Skills stay fresh, mistakes get corrected sooner, and confidence can build more quickly because you are spending more regular time behind the wheel.</p>
+<p>This is especially useful if you have a clear target, such as an upcoming test, or if you know you learn best through repetition. It can also help learners who are a little anxious, because familiarity tends to reduce nerves. The more often you drive, the less alien it feels.</p>
+<p>That said, more is not automatically better. If lessons are too close together for your energy levels, you may start one session still mentally tired from the last. Driving needs concentration. If your schedule is packed and you are arriving flustered, the extra frequency may not give you the benefit you expected.</p>
+<h3>Intensive schedules - useful, but not for everyone</h3>
+<p>Some learners prefer a more concentrated run of lessons over a short period. This can be effective when someone already has a foundation and needs focused <a href="https://Www.d4driving.co.uk/mock-test.html">test preparation</a>, or when they have a deadline in mind.</p>
+<p>But intensive learning is not magic. If you are a complete beginner who gets overwhelmed easily, cramming several hours close together can leave you feeling mentally full. There is a difference between productive practice and information overload. A good instructor will spot that quickly and adjust the plan.</p>
+<h2>How confidence should shape your schedule</h2>
+<p>Confidence is not just a nice extra. It affects how well you learn, how willing you are to try new situations, and how calmly you respond when something unexpected happens.</p>
+<p>If you are very nervous, regular shorter sessions can be more helpful than occasional long ones. They create routine without making every lesson feel like a major event. You get more chances to reinforce the basics, settle your nerves, and see that progress is happening even if it feels gradual.</p>
+<p>On the other hand, if you are reasonably confident but need more polish and consistency, slightly longer lessons may help because they allow time to cover a wider mix of roads and situations. Sometimes it is not about more lessons. It is about giving each lesson enough room to settle, practise, and improve.</p>
+<h2>Budget matters - but value matters more</h2>
+<p>Most learners have a budget in mind, and fair enough. Driving lessons are an investment, and nobody wants to spend more than necessary. But the cheapest-looking schedule is not always the one that saves you the most overall.</p>
+<p>If long gaps mean you forget key skills and repeat the same material, you may spend more across the full course of lessons. A slightly more regular timetable can sometimes reduce the total number of hours needed because progress is more consistent.</p>
+<p>That does not mean everyone should book as often as possible. It means your lesson plan should be realistic. If paying for two lessons a week leaves you stressed, one well-used lesson a week is better than overcommitting and then cancelling half of them. A calm, sustainable rhythm usually beats a heroic plan that falls apart by week three.</p>
+<h2>Don’t forget private practice</h2>
+<p>If you have access to private practice with a suitable supervising driver, that changes the picture. Learners who can practise between lessons often make strong progress even with fewer professional sessions, because they are keeping skills active.</p>
+<p>The important bit is quality. Private practice works best when it supports what you are learning with your instructor rather than inventing its own system. Mixed messages can slow things down. Calm repetition of the right habits is what helps.</p>
+<p>If you cannot practise privately, a more regular lesson frequency often becomes more important. Your lesson time is then your main driving time, so keeping momentum matters.</p>
+<h2>Signs your current frequency is not quite right</h2>
+<p>You do not need a grand rethink every week, but it helps to notice patterns. If every lesson starts with a long recap, if your confidence drops between sessions, or if progress feels patchy rather than steady, your schedule may need a tweak.</p>
+<p>Likewise, if you are feeling mentally drained, dreading lessons because they are too intense, or struggling to retain new material because too much is being packed in, that is worth addressing too. The right frequency should challenge you without flattening you.</p>
+<p>A patient, instructor-led approach makes a big difference here. At D4Driving School of Motoring, lesson planning is tailored to the learner, which is exactly how it should be. Some people need more repetition. Some need more time. Some are ready to push on. Good teaching meets the learner where they are, not where a generic timetable says they ought to be.</p>
+<h2>Choosing lesson length alongside frequency</h2>
+<p>Frequency is only half the decision. Lesson length matters as well. A one-hour lesson can be ideal for beginners or nervous learners who want manageable chunks. A 1.5-hour or 2-hour lesson gives more time to settle in, tackle new routes, and practise different road types without feeling rushed.</p>
+<p>If you only have lessons once a week, a slightly longer session may help maintain momentum. If you are having lessons twice a week, shorter sessions might be enough because you are seeing the car regularly anyway. It depends on your concentration, stamina, and current stage of learning.</p>
+<p>There is no badge for choosing the hardest option. The best setup is the one that helps you stay calm, learn well, and keep moving forward.</p>
+<h2>What to choose if you are close to your test</h2>
+<p>As your test approaches, lesson frequency often needs to increase a little. Not because panic is useful - it is not - but because consistency becomes more important when you are polishing decision-making, observation, and independent driving.</p>
+<p>This is usually the stage where small habits matter. A few well-timed sessions close together can help sharpen routines and build confidence before test day. For learners in Peterborough, Kettering, or Grantham, this can be especially helpful when preparing on <a href="https://Www.d4driving.co.uk/routes.html">local routes</a> and typical test conditions.</p>
+<p>You do not need to cram every spare hour into the diary. You just want enough consistency that your driving feels settled, familiar, and reliable.</p>
+<p>The right lesson frequency is the one that keeps you progressing without turning learning into a slog. If your schedule supports confidence, gives you time to absorb what you are learning, and keeps your skills fresh, you are probably on the right track. Driving should feel more natural as you go - not perfect overnight, just steadily more comfortable each time you get in the car.</p>
+      </div>
+
+      <!-- AUTHOR BOX -->
+      <div class="author-box glass-card">
+        <img src="robert.webp" alt="Robert — D4Driving Instructor" class="author-photo">
+        <div class="author-info">
+          <h4>Robert — D4Driving School of Motoring</h4>
+          <p>DVSA Approved Driving Instructor based in Peterborough since 2017. Manual &amp; automatic tuition. 9,000+ YouTube subscribers. Covering Peterborough, Grantham &amp; Kettering test centres.</p>
+          <a href="https://cal.com/d4driving" target="_blank" class="btn btn-red" style="font-size:13px;padding:10px 20px;">Book a Lesson →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- Book CTA -->
+      <div class="sidebar-card glass-card sidebar-cta">
+        <h4>Ready to Start?</h4>
+        <p>Book your first lesson online — choose a date and time that works for you.</p>
+        <div class="price">£40 <small>/ hr from</small></div>
+        <a href="https://cal.com/d4driving" target="_blank" class="btn btn-red" style="width:100%;margin-top:16px;justify-content:center;">Book Online →</a>
+        <a href="tel:07872347686" class="btn btn-outline" style="width:100%;margin-top:10px;justify-content:center;background:rgba(255,255,255,0.08);color:#fff;border-color:rgba(255,255,255,0.2);">📞 07872 347686</a>
+      </div>
+
+      <!-- Share -->
+      <div class="sidebar-card glass-card sidebar-share">
+        <h4>Share This Article</h4>
+        <div class="share-links">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.d4driving.co.uk/a-guide-to-choosing-lesson-frequency.html" target="_blank" class="share-link">
+            <span class="share-icon">📘</span> Share on Facebook
+          </a>
+          <a href="https://wa.me/?text=A Guide to Choosing Lesson Frequency%20https://www.d4driving.co.uk/a-guide-to-choosing-lesson-frequency.html" target="_blank" class="share-link">
+            <span class="share-icon">💬</span> Share on WhatsApp
+          </a>
+          <a href="https://twitter.com/intent/tweet?text=A Guide to Choosing Lesson Frequency&url=https://www.d4driving.co.uk/a-guide-to-choosing-lesson-frequency.html" target="_blank" class="share-link">
+            <span class="share-icon">🐦</span> Share on X
+          </a>
+        </div>
+      </div>
+
+      <!-- Related links -->
+      <div class="sidebar-card glass-card">
+        <h4>You Might Also Like</h4>
+        <div class="related-links">
+          <a href="blog.html" class="related-link">
+            <span class="related-link-icon">🔄</span>
+            <span class="related-link-text">Mastering Peterborough's Toughest Roundabouts</span>
+          </a>
+          <a href="blog.html" class="related-link">
+            <span class="related-link-icon">📋</span>
+            <span class="related-link-text">How to Pass Your Theory Test First Time</span>
+          </a>
+          <a href="blog.html" class="related-link">
+            <span class="related-link-icon">🧠</span>
+            <span class="related-link-text">Staying Calm on Your Driving Test Day</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- YouTube promo -->
+      <div class="sidebar-card glass-card">
+        <h4>Free on YouTube</h4>
+        <p style="font-size:13px;color:var(--ink-mid);margin-bottom:14px;">9,000+ subscribers get free mock tests, test routes and driving tips every week.</p>
+        <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;font-size:13px;">▶ Subscribe Free</a>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<!-- CTA SECTION -->
+<div class="article-cta">
+  <div class="cta-inner">
+    <div class="article-cat" style="justify-content:center;">D4Driving — Peterborough</div>
+    <h2>Ready to start your journey?</h2>
+    <p>Book your first lesson online in seconds, or give me a call to have a chat first.</p>
+    <div class="cta-btns">
+      <a href="https://cal.com/d4driving" target="_blank" class="btn btn-red">📅 Book Online Now</a>
+      <a href="tel:07872347686" class="btn btn-outline">📞 07872 347686</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-links-row">
+      <a href="index.html">Home</a>
+      <a href="index.html#fleet">Our Cars</a>
+      <a href="index.html#prices">Prices</a>
+      <a href="https://cal.com/d4driving" target="_blank">Book Online</a>
+      <a href="blog.html">Driving Tips</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="https://www.youtube.com/@d4drivingSOM" target="_blank">YouTube</a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 D4Driving School of Motoring. All rights reserved.</p>
+      <p><a href="index.html">← Back to Homepage</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp -->
+<a href="https://wa.me/447872347686" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+</body>
+</html>
