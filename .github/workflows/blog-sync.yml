@@ -191,7 +191,40 @@ jobs:
           })();
           EOF
 
-      # ── Step 3: Commit everything ─────────────────────────────────────────
+      # ── Step 3: Regenerate sitemap.xml ────────────────────────────────────
+      - name: Generate Sitemap
+        run: |
+          node << 'EOF'
+          const fs = require('fs');
+          const SITE = 'https://www.d4driving.co.uk';
+          const EXCLUDE = new Set(['article-template.html', 'blog-template.html']);
+          const PRIORITY = {
+            'index.html': '1.0',
+            'rakesh.d4driving.html': '0.9',
+            'blog.html': '0.8',
+            'mock-test.html': '0.8',
+            'starter-pack.html': '0.8',
+            'routes.html': '0.7',
+            'theory-quiz.html': '0.7',
+            'manoeuvres-quiz.html': '0.7',
+            'terms.html': '0.3',
+            'privacy.html': '0.3',
+            'mock-test-consent.html': '0.3'
+          };
+          const files = fs.readdirSync('.')
+            .filter(f => f.endsWith('.html') && !EXCLUDE.has(f))
+            .sort((a, b) => (PRIORITY[b] || '0.6').localeCompare(PRIORITY[a] || '0.6') || a.localeCompare(b));
+          const urls = files.map(f => {
+            const loc = f === 'index.html' ? `${SITE}/` : `${SITE}/${f}`;
+            const pri = PRIORITY[f] || '0.6';
+            return `  <url>\n    <loc>${loc}</loc>\n    <priority>${pri}</priority>\n  </url>`;
+          }).join('\n');
+          fs.writeFileSync('sitemap.xml',
+            `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
+          console.log(`sitemap.xml written with ${files.length} URLs`);
+          EOF
+
+      # ── Step 4: Commit everything ─────────────────────────────────────────
       - name: Save Changes
         run: |
           git config --global user.name "D4Driving-Bot"
