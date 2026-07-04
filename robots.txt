@@ -3,4 +3,4 @@ Allow: /
 Disallow: /article-template.html
 Disallow: /blog-template.html
 
-Sitemap: https://www.d4driving.co.uk/sitemap.xml
+Sitemap: https://d4driving.co.uk/sitemap.xml

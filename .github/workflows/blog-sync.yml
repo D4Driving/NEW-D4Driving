@@ -196,7 +196,7 @@ jobs:
         run: |
           node << 'EOF'
           const fs = require('fs');
-          const SITE = 'https://www.d4driving.co.uk';
+          const SITE = 'https://d4driving.co.uk';
           const EXCLUDE = new Set(['article-template.html', 'blog-template.html']);
           const PRIORITY = {
             'index.html': '1.0',
