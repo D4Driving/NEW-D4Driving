@@ -715,6 +715,22 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 .wa-float:hover { transform: scale(1.12); }
 .wa-float svg { width: 28px; height: 28px; fill: #fff; }
 
+/* ─── STICKY MOBILE CTA ──────────────────── */
+.sticky-cta {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
+  display: none; padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(255,255,255,0.94); backdrop-filter: blur(12px);
+  border-top: 1px solid var(--border); box-shadow: 0 -6px 20px rgba(44,62,80,0.1);
+  transform: translateY(110%); transition: transform .3s;
+}
+.sticky-cta.show { transform: translateY(0); }
+.sticky-cta .btn { width: 100%; justify-content: center; }
+@media (max-width: 768px) {
+  .sticky-cta { display: block; }
+  body.cta-visible .wa-float { bottom: 88px; }
+  body.cta-visible #btt { bottom: 158px; }
+}
+
 /* ─── BACK TO TOP ────────────────────────── */
 #btt {
   position: fixed; bottom: 100px; right: 30px; z-index: 800;
@@ -823,6 +839,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
           </div>
         </li>
         <li><a href="mock-test.html" style="color:var(--red);font-weight:700;">🎯 Free Mock Test</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-right">
@@ -843,6 +860,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     <a href="#blog"     onclick="cm()">Driving Tips</a>
     <a href="theory-quiz.html" onclick="cm()">Theory Quiz</a>
     <a href="routes.html" onclick="cm()">🗺 Test Routes</a>
+    <a href="#faq"      onclick="cm()">FAQ</a>
     <a href="#contact"  onclick="cm()">Contact</a>
     <a href="tel:07872347686" style="color:var(--sage);border-bottom:none;margin-top:8px;">📞 07872 347686</a>
     <a href="mock-test.html" onclick="cm()" class="mobile-nav-mock-btn">
@@ -1633,6 +1651,117 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 </style>
 
 
+<!-- ════ FAQ ════ -->
+<style>
+/* ─── FAQ ────────────────────────────────── */
+#faq .faq-list { max-width: 780px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 14px; }
+#faq details { border-radius: 14px; overflow: hidden; }
+#faq summary {
+  cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 20px 24px; font-weight: 700; font-size: 16px; color: var(--ink);
+}
+#faq summary::-webkit-details-marker { display: none; }
+#faq summary::after {
+  content: '+'; flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--red-lo); color: var(--red); font-weight: 800; font-size: 16px; transition: transform .25s;
+}
+#faq details[open] summary::after { transform: rotate(45deg); }
+#faq .faq-a { padding: 0 24px 22px; color: var(--ink-mid); font-size: 15px; }
+#faq .faq-a a { color: var(--red); font-weight: 700; }
+#faq .faq-a a:hover { text-decoration: underline; }
+</style>
+<section id="faq" class="sec" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;">
+      <div class="eyebrow" style="justify-content:center;">Common Questions</div>
+      <h2>Frequently Asked Questions.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="glass-card">
+        <summary>How many driving lessons do I need to pass?</summary>
+        <div class="faq-a">The DVSA says learners who pass typically have around 45 hours of professional lessons, but it varies a lot from person to person. At D4Driving every new student starts with a 90-minute assessment lesson, after which you get a personalised pass plan with a realistic estimate for you. Our structured approach is a big part of why 83% of our students pass first time.</div>
+      </details>
+      <details class="glass-card">
+        <summary>How much do driving lessons cost in Peterborough?</summary>
+        <div class="faq-a">Single lessons are £40 per hour, with a 1.5-hour lesson at £55 and a 2-hour lesson at £75. Block bookings bring the rate down: 10 hours for £380, 15 hours for £540, or 20 hours for £720. A semi-intensive course (21.5 hours plus full test prep) is £800. See the full breakdown in our <a href="#prices">prices section</a>.</div>
+      </details>
+      <details class="glass-card">
+        <summary>Do you offer manual and automatic lessons?</summary>
+        <div class="faq-a">Yes, both. Robert teaches manual in a Toyota Aygo X and automatic in a Toyota Yaris Cross. Rakesh teaches manual in a VW Golf. All cars are modern and fitted with dual controls for your safety.</div>
+      </details>
+      <details class="glass-card">
+        <summary>What areas do you cover?</summary>
+        <div class="faq-a">We teach across Peterborough and surrounding areas including Hampton, Werrington, the Ortons, Stanground, Yaxley and Whittlesey. We also offer driving test preparation for the Grantham and Kettering test centres.</div>
+      </details>
+      <details class="glass-card">
+        <summary>Are your instructors DVSA approved?</summary>
+        <div class="faq-a">Yes. Robert is a DVSA Approved Driving Instructor (ADI) and has been teaching in Peterborough since 2017. Rakesh is also a fully qualified DVSA Approved Driving Instructor (ADI).</div>
+      </details>
+      <details class="glass-card">
+        <summary>What is your first-time pass rate?</summary>
+        <div class="faq-a">83% of D4Driving students pass their driving test on the first attempt — well above the national average of around 48%. We've helped 430+ local learners pass, and we hold a 5.0-star rating from 33 Google reviews.</div>
+      </details>
+      <details class="glass-card">
+        <summary>How do I book a driving lesson?</summary>
+        <div class="faq-a">The fastest way is to <a href="#booking">book online</a> — you'll see real availability and get instant confirmation. You can also message us on WhatsApp or call/text <a href="tel:07872347686">07872 347686</a>.</div>
+      </details>
+      <details class="glass-card">
+        <summary>Is the free mock driving test really free?</summary>
+        <div class="faq-a">Yes — completely free. In exchange, you agree to the session being filmed and published on our YouTube channel, where 25,000+ subscribers learn from real mock tests. Sessions run in Peterborough on selected Mondays with limited slots. <a href="mock-test.html">Learn more and apply here</a>.</div>
+      </details>
+    </div>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many driving lessons do I need to pass?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The DVSA says learners who pass typically have around 45 hours of professional lessons, but it varies from person to person. At D4Driving every new student starts with a 90-minute assessment lesson, after which they get a personalised pass plan with a realistic estimate. 83% of D4Driving students pass first time." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much do driving lessons cost in Peterborough?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Single lessons are £40 per hour, with a 1.5-hour lesson at £55 and a 2-hour lesson at £75. Block bookings reduce the rate: 10 hours for £380, 15 hours for £540, or 20 hours for £720. A semi-intensive course (21.5 hours plus full test prep) is £800." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer manual and automatic driving lessons?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, both. Robert teaches manual in a Toyota Aygo X and automatic in a Toyota Yaris Cross. Rakesh teaches manual in a VW Golf. All cars are modern and fitted with dual controls." }
+    },
+    {
+      "@type": "Question",
+      "name": "What areas does D4Driving cover?",
+      "acceptedAnswer": { "@type": "Answer", "text": "D4Driving teaches across Peterborough and surrounding areas including Hampton, Werrington, the Ortons, Stanground, Yaxley and Whittlesey, and offers driving test preparation for the Grantham and Kettering test centres." }
+    },
+    {
+      "@type": "Question",
+      "name": "Are D4Driving instructors DVSA approved?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Robert is a DVSA Approved Driving Instructor (ADI) teaching in Peterborough since 2017, and Rakesh is also a fully qualified DVSA Approved Driving Instructor (ADI)." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is D4Driving's first-time pass rate?",
+      "acceptedAnswer": { "@type": "Answer", "text": "83% of D4Driving students pass their driving test on the first attempt, well above the UK national average of around 48%. D4Driving has helped 430+ local learners pass and holds a 5.0-star rating from 33 Google reviews." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I book a driving lesson with D4Driving?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Book online at www.d4driving.co.uk with real-time availability and instant confirmation, message on WhatsApp, or call/text 07872 347686." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the D4Driving free mock driving test really free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free. In exchange, students agree to the session being filmed and published on the D4Driving YouTube channel. Sessions run in Peterborough on selected Mondays with limited slots." }
+    }
+  ]
+}
+</script>
+
 <!-- ════ CONTACT ════ -->
 <section id="contact" class="sec" style="background:var(--bg2);">
   <div class="wrap">
@@ -1689,6 +1818,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
           <a href="#booking">Book Online</a>
           <a href="blog.html">Driving Tips</a>
           <a href="routes.html">Test Routes</a>
+          <a href="#faq">FAQ</a>
           <a href="terms.html">Terms &amp; Conditions</a>
           <a href="privacy.html">Privacy Policy</a>
         </div>
@@ -1710,6 +1840,11 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   </div>
 </footer>
 
+<!-- Sticky mobile CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <a href="#booking" class="btn btn-red">Book Your Lesson — From £40/hr</a>
+</div>
+
 <!-- WhatsApp Float -->
 <a href="https://wa.me/447872347686" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -1718,6 +1853,29 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 </a>
 
 <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<!-- Sticky mobile CTA: show after hero scrolls out, hide while booking section is on screen -->
+<script>
+(function () {
+  const bar = document.getElementById('sticky-cta');
+  const hero = document.getElementById('hero');
+  const booking = document.getElementById('booking');
+  if (!bar || !hero) return;
+  const update = () => {
+    const heroOut = hero.getBoundingClientRect().bottom < 0;
+    let bookingIn = false;
+    if (booking) {
+      const b = booking.getBoundingClientRect();
+      bookingIn = b.top < window.innerHeight && b.bottom > 0;
+    }
+    const show = heroOut && !bookingIn;
+    bar.classList.toggle('show', show);
+    document.body.classList.toggle('cta-visible', show);
+  };
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
 
 <!-- Cal.com embed — deferred until #booking is near viewport -->
 <script>
