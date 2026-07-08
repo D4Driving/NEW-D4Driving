@@ -313,15 +313,18 @@ footer { background: var(--slate); padding: 60px 0 32px; }
       </div>
     </div>
   </div>
-  <div class="mobile-nav" id="mnav">
-    <a href="index.html" onclick="cm()">Home</a>
-    <a href="index.html#fleet" onclick="cm()">Cars</a>
-    <a href="index.html#prices" onclick="cm()">Prices</a>
-    <a href="index.html#booking" onclick="cm()">Book with Robert</a>
-    <a href="mock-test.html" onclick="cm()">🎯 Free Mock Test</a>
-    <a href="index.html#contact" onclick="cm()">Contact</a>
-  </div>
 </nav>
+
+<!-- Mobile menu — must live OUTSIDE #nav: the .stuck backdrop-filter creates a
+     containing block that would trap this fixed overlay inside the nav bar -->
+<div class="mobile-nav" id="mnav">
+  <a href="index.html" onclick="cm()">Home</a>
+  <a href="index.html#fleet" onclick="cm()">Cars</a>
+  <a href="index.html#prices" onclick="cm()">Prices</a>
+  <a href="index.html#booking" onclick="cm()">Book with Robert</a>
+  <a href="mock-test.html" onclick="cm()">🎯 Free Mock Test</a>
+  <a href="index.html#contact" onclick="cm()">Contact</a>
+</div>
 
 <!-- ════ PAGE HEADER ════ -->
 <section id="page-header">
