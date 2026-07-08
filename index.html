@@ -850,24 +850,27 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       </div>
     </div>
   </div>
-  <div class="mobile-nav" id="mnav">
-    <a href="#fleet"    onclick="cm()">Cars</a>
-    <a href="#about"    onclick="cm()">About</a>
-    <a href="#prices"   onclick="cm()">Prices</a>
-    <a href="#booking"      onclick="cm()">Book Online</a>
-    <a href="#availability" onclick="cm()">Check Availability</a>
-    <a href="#reviews"      onclick="cm()">Reviews</a>
-    <a href="#blog"     onclick="cm()">Driving Tips</a>
-    <a href="theory-quiz.html" onclick="cm()">Theory Quiz</a>
-    <a href="routes.html" onclick="cm()">🗺 Test Routes</a>
-    <a href="#faq"      onclick="cm()">FAQ</a>
-    <a href="#contact"  onclick="cm()">Contact</a>
-    <a href="tel:07872347686" style="color:var(--sage);border-bottom:none;margin-top:8px;">📞 07872 347686</a>
-    <a href="mock-test.html" onclick="cm()" class="mobile-nav-mock-btn">
-      🎯 FREE Mock Test
-    </a>
-  </div>
 </nav>
+
+<!-- Mobile menu — must live OUTSIDE #nav: the .stuck backdrop-filter creates a
+     containing block that would trap this fixed overlay inside the 68px nav bar -->
+<div class="mobile-nav" id="mnav">
+  <a href="#fleet"    onclick="cm()">Cars</a>
+  <a href="#about"    onclick="cm()">About</a>
+  <a href="#prices"   onclick="cm()">Prices</a>
+  <a href="#booking"      onclick="cm()">Book Online</a>
+  <a href="#availability" onclick="cm()">Check Availability</a>
+  <a href="#reviews"      onclick="cm()">Reviews</a>
+  <a href="#blog"     onclick="cm()">Driving Tips</a>
+  <a href="theory-quiz.html" onclick="cm()">Theory Quiz</a>
+  <a href="routes.html" onclick="cm()">🗺 Test Routes</a>
+  <a href="#faq"      onclick="cm()">FAQ</a>
+  <a href="#contact"  onclick="cm()">Contact</a>
+  <a href="tel:07872347686" style="color:var(--sage);border-bottom:none;margin-top:8px;">📞 07872 347686</a>
+  <a href="mock-test.html" onclick="cm()" class="mobile-nav-mock-btn">
+    🎯 FREE Mock Test
+  </a>
+</div>
 
 <!-- ════ HERO ════ -->
 <section id="hero">
