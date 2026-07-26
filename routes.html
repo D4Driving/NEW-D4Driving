@@ -182,6 +182,31 @@ a    { color: inherit; text-decoration: none; }
 .route-tab.active {
   background: var(--slate); color: #fff; border-color: var(--slate);
 }
+.route-tab.locked { opacity: .8; }
+.route-tab.locked::after { content: ' 🔒'; font-size: 11px; }
+
+/* ─── LOCKED ROUTE ─── */
+/* sits over the Leaflet map; map-controls are z-index 800 */
+.route-lock {
+  position: absolute; inset: 0; z-index: 900;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px; text-align: center;
+  background: rgba(255,255,255,.86);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.route-lock-card { max-width: 360px; }
+.route-lock-card .lock-icon { font-size: 34px; margin-bottom: 12px; }
+.route-lock-card h3 {
+  font-size: 19px; font-weight: 800; color: var(--slate); margin-bottom: 8px;
+}
+.route-lock-card p {
+  font-size: 14px; color: var(--ink-mid); line-height: 1.55; margin-bottom: 18px;
+}
+.lock-hint {
+  font-size: 13px; color: var(--ink-low); line-height: 1.5;
+  padding: 14px; border: 1px dashed var(--border); border-radius: 12px;
+}
 
 /* ─── MAIN LAYOUT ─── */
 .routes-layout {
@@ -422,8 +447,8 @@ footer {
     <h1>Practice on <em>real</em> test roads</h1>
     <p>Every route is hand-picked from actual DVSA test areas. Follow along in the car, download to your sat-nav, or walk the route on your phone before your lesson.</p>
     <div class="hero-stats">
-      <div class="hero-stat"><div class="num" id="stat-routes">1</div><div class="lbl">Routes live</div></div>
-      <div class="hero-stat"><div class="num">3</div><div class="lbl">Test centres</div></div>
+      <div class="hero-stat"><div class="num" id="stat-routes">—</div><div class="lbl">Routes live</div></div>
+      <div class="hero-stat"><div class="num" id="stat-centres">—</div><div class="lbl">Test centres</div></div>
       <div class="hero-stat"><div class="num">GPX</div><div class="lbl">Download format</div></div>
     </div>
     <!-- Area tabs inside hero so they feel connected -->
@@ -442,10 +467,8 @@ footer {
 
   <!-- ── PETERBOROUGH ── -->
   <div class="area-panel" id="panel-peterborough">
-    <div class="route-tabs" style="padding-top:32px;">
-      <button class="route-tab active" data-route="stop-sign">Stop Sign Route</button>
-      <button class="route-tab" data-route="gunthorpe-eye-paston">Gunthorpe – Eye Rdbt – Paston</button>
-    </div>
+    <!-- Route tabs are built from the Supabase catalogue at runtime -->
+    <div class="route-tabs" id="route-tabs-peterborough" style="padding-top:32px;"></div>
 
     <div class="routes-layout">
 
@@ -532,9 +555,8 @@ footer {
 
   <!-- ── KETTERING ── -->
   <div class="area-panel" id="panel-kettering" style="display:none;">
-    <div class="route-tabs" style="padding-top:32px;">
-      <button class="route-tab active" data-route="pytchley">Pytchley – Kettering Centre</button>
-    </div>
+    <!-- Route tabs are built from the Supabase catalogue at runtime -->
+    <div class="route-tabs" id="route-tabs-kettering" style="padding-top:32px;"></div>
 
     <div class="routes-layout">
       <div>
@@ -659,75 +681,36 @@ footer {
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <script>
-// ─── ROUTE CONFIG ──────────────────────────────────────────────────────────
-// To add a new route:
-// 1. Drop the .gpx file into the gpx/ folder
-// 2. Add an entry below — gpxFile, name, difficulty, description, notes, youtubeId
-// 3. Waypoints are auto-read from the GPX; add names via waypoints[] or leave empty for "Waypoint N"
-const ROUTES = {
-  peterborough: {
-    'stop-sign': {
-      name: 'Stop Sign Route',
-      gpxFile: 'gpx/peterborough-stop-sign.gpx',
-      difficulty: 'intermediate',
-      description: 'A favourite pre-test loop used by D4Driving learners. Covers residential streets, multi-lane roundabouts, pedestrian crossings and a stretch of dual carriageway — a solid cross-section of what the examiner will expect on test day.',
-      notes: [
-        'Watch your speed on Mayors Walk — 30 mph cameras operate here.',
-        'The roundabout at Queensgate has 3 lanes; position for your exit early.',
-        'Pedestrian crossing near the leisure centre — scan both sides, not just the lights.',
-        'Dual carriageway section: mirror, signal, manoeuvre before lane changes.',
-        'Last section back to start: left turns are tight — wide arc, stay in lane.',
-      ],
-      youtubeId: 'knSsf0sarNA',
-      waypoints: [
-        { lat: 52.56983, lon: -0.21815, name: 'Start – Second Drove, left into Fengate' },
-        { lat: 52.57112, lon: -0.23718, name: '1. Mini Rdbt – left, 1st exit' },
-        { lat: 52.57025, lon: -0.24162, name: '2. Rivergate Rdbt – straight, 2nd exit' },
-        { lat: 52.57394, lon: -0.24763, name: '3. Queensgate Rdbt – straight, 2nd exit' },
-        { lat: 52.57659, lon: -0.24889, name: '4. Waitrose Rdbt – right, 3rd exit' },
-        { lat: 52.58084, lon: -0.24369, name: '5. Mini Rdbt – right, 2nd exit' },
-        { lat: 52.58193, lon: -0.23817, name: '6. Park Road – follow ahead' },
-        { lat: 52.58631, lon: -0.24147, name: "7. Queen's Drive West – right into Dogsthorpe Rd" },
-        { lat: 52.58941, lon: -0.23909, name: '8. Garton End Road – follow ahead' },
-        { lat: 52.58893, lon: -0.22306, name: '9. Newark Avenue – left into Eastfield Road' },
-        { lat: 52.58818, lon: -0.21298, name: "10. Sainsbury's Rdbt – right, 4th exit" },
-        { lat: 52.57662, lon: -0.22189, name: '11. Boongate Rdbt – left, 1st exit' },
-        { lat: 52.57871, lon: -0.2138,  name: '12. Vicarage Farm Road – follow ahead' },
-        { lat: 52.57963, lon: -0.20425, name: "13. Crossroads – right into Storey's Bar Road" },
-        { lat: 52.57383, lon: -0.20968, name: '14. Fengate – follow ahead' },
-        { lat: 52.56983, lon: -0.21815, name: '15. Fengate – left into Second Drove (Finish)' },
-      ],
+// ─── SUPABASE ──────────────────────────────────────────────────────────────
+// Route data lives in Supabase now, not in this file and not in a public
+// folder. This key is publishable and safe to ship: Row Level Security is what
+// actually decides who can read what, and it is enforced server side.
+//
+// To add a new route: use the admin page. No code changes, no redeploy.
+const SUPABASE_URL = 'https://zzgmwdbvboalehafyict.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_D_a8lr1sOPmoOYAXYI1JbA_zUT41DdY';
+let accessToken = null;    // set once magic-link sign-in lands
+
+async function sb(path) {
+  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+    headers: {
+      apikey: SUPABASE_KEY,
+      Authorization: 'Bearer ' + (accessToken || SUPABASE_KEY),
     },
-    'gunthorpe-eye-paston': {
-      name: 'Gunthorpe – Eye Rdbt – Paston',
-      gpxFile: 'gpx/peterborough-gunthorpe-eye-paston.gpx',
-      difficulty: 'intermediate',
-      description: 'A route heading north from the test centre through Gunthorpe, out to the Eye roundabout, looping through Paston and back. Covers fast A-roads, rural stretches and residential return roads.',
-      notes: [],
-      youtubeId: 'TdgjoiLrZ8E',
-      waypoints: [],
-    },
-  },
-  kettering: {
-    'pytchley': {
-      name: 'Pytchley – Kettering Centre',
-      gpxFile: 'gpx/kettering-pytchley.gpx',
-      difficulty: 'intermediate',
-      description: 'A route from Kettering DTC out to Pytchley and back through Kettering town centre. Covers a mix of rural roads, town roads, and test-centre-area navigation.',
-      notes: [],
-      youtubeId: null,
-      waypoints: [],
-    },
-  },
-};
+  });
+  if (!res.ok) throw new Error(res.status + ' ' + (await res.text()));
+  return res.json();
+}
 
 // ─── STATE ─────────────────────────────────────────────────────────────────
 const maps = {};           // Leaflet map instance per area
 const routeLayers = {};    // active polyline per area
 const wptMarkers = {};     // waypoint markers per area
-const gpxCache = {};
+const catalogue = {};      // centre slug -> [ teaser rows from routes_public ]
+const centres = {};        // centre slug -> { name, pricing, status }
+const routeCache = {};     // route id -> full route, or { locked: true }
 let currentArea = 'peterborough';
-let currentRouteKey = 'stop-sign';
+let currentRouteKey = null;
 let currentGpxData = null;
 
 // DOM id suffix per area — peterborough uses unsuffixed IDs, others use -area
@@ -749,18 +732,44 @@ function diffClass(d) {
   return d === 'beginner' ? 'diff-beginner' : d === 'intermediate' ? 'diff-intermediate' : 'diff-advanced';
 }
 
-// ─── GPX PARSER ────────────────────────────────────────────────────────────
-function parseGpx(xmlText) {
-  const doc = new DOMParser().parseFromString(xmlText, 'application/xml');
-  const track = Array.from(doc.querySelectorAll('trkpt')).map(p => [
-    parseFloat(p.getAttribute('lat')), parseFloat(p.getAttribute('lon'))
+// ─── CATALOGUE ─────────────────────────────────────────────────────────────
+// routes_public is a teaser view: name, distance, difficulty, whether a video
+// exists. It deliberately carries no track, no waypoint coordinates and no
+// instructor notes, so a locked route can still be advertised to someone who
+// has not paid for it.
+const accessibleIds = new Set();
+
+async function loadCatalogue() {
+  const [rows, centreRows, accessible] = await Promise.all([
+    sb('routes_public?select=*&order=centre_slug.asc,sort_order.asc'),
+    sb('centres?select=*'),
+    sb('routes?select=id'),   // RLS returns only the routes we may actually read
   ]);
-  const gpxWaypoints = Array.from(doc.querySelectorAll('wpt')).map((p, i) => ({
-    lat: parseFloat(p.getAttribute('lat')),
-    lon: parseFloat(p.getAttribute('lon')),
-    name: p.querySelector('name')?.textContent || null,
-  }));
-  return { track, gpxWaypoints };
+  for (const c of centreRows) centres[c.slug] = c;
+  for (const r of rows) (catalogue[r.centre_slug] ||= []).push(r);
+  accessibleIds.clear();
+  for (const r of accessible) accessibleIds.add(r.id);
+}
+
+const isLocked = meta => !accessibleIds.has(meta.id);
+
+function buildTabs(area) {
+  const host = document.getElementById('route-tabs-' + area);
+  if (!host) return;
+  host.innerHTML = '';
+  (catalogue[area] || []).forEach((meta, i) => {
+    const b = document.createElement('button');
+    b.className = 'route-tab' + (i === 0 ? ' active' : '') + (isLocked(meta) ? ' locked' : '');
+    b.dataset.route = meta.key;
+    b.textContent = meta.name;
+    b.addEventListener('click', () => {
+      host.querySelectorAll('.route-tab').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      currentRouteKey = meta.key;
+      loadRoute(area, meta.key);
+    });
+    host.appendChild(b);
+  });
 }
 
 // ─── MAP INIT ──────────────────────────────────────────────────────────────
@@ -779,39 +788,111 @@ function initMap(area) {
 
 // ─── LOAD & RENDER ROUTE ───────────────────────────────────────────────────
 async function loadRoute(area, routeKey) {
-  const config = ROUTES[area]?.[routeKey];
-  if (!config) return;
+  const meta = (catalogue[area] || []).find(r => r.key === routeKey);
+  if (!meta) return;
 
   const s = sfx(area);
   document.getElementById('stat-distance' + s).textContent = '…';
   document.getElementById('stat-duration' + s).textContent = '…';
 
-  // Fetch GPX (cached after first load)
-  let track, resolvedWaypoints;
-  try {
-    if (!gpxCache[config.gpxFile]) {
-      const res = await fetch(config.gpxFile);
-      if (!res.ok) throw new Error(res.status);
-      gpxCache[config.gpxFile] = parseGpx(await res.text());
+  let data = routeCache[meta.id];
+  if (!data) {
+    try {
+      // RLS decides this. A route we are not entitled to comes back as [].
+      const [full] = await sb('routes?id=eq.' + meta.id +
+        '&select=name,difficulty,description,notes,youtube_id,track');
+      if (!full) {
+        data = { locked: true };
+      } else {
+        const wpts = await sb('waypoints?route_id=eq.' + meta.id +
+          '&select=seq,lat,lon,name&order=seq.asc');
+        data = {
+          locked: false,
+          ...full,
+          waypoints: wpts.map((w, i) => ({
+            lat: w.lat, lon: w.lon,
+            name: w.name || (i === 0 ? 'Start' : `Waypoint ${i}`),
+          })),
+        };
+      }
+      routeCache[meta.id] = data;
+    } catch (e) {
+      console.error('Route load failed:', e);
+      document.getElementById('stat-distance' + s).textContent = 'Error';
+      return;
     }
-    const { track: t, gpxWaypoints } = gpxCache[config.gpxFile];
-    track = t;
-    const named = config.waypoints || [];
-    resolvedWaypoints = gpxWaypoints.map((wp, i) => ({
-      lat: wp.lat, lon: wp.lon,
-      name: named[i]?.name || (i === 0 ? 'Start' : `Waypoint ${i}`),
-    }));
-    if (named.length > gpxWaypoints.length) resolvedWaypoints = named;
-  } catch(e) {
-    console.error('GPX load failed:', e);
-    document.getElementById('stat-distance' + s).textContent = 'Error';
-    return;
   }
 
-  renderMap(area, track, resolvedWaypoints);
-  renderSidebar(area, config, track, resolvedWaypoints);
-  renderVideo(area, config);
-  currentGpxData = { config, track, waypoints: resolvedWaypoints };
+  if (data.locked) { renderLocked(area, meta); return; }
+
+  showLock(area, false);
+  renderMap(area, data.track, data.waypoints);
+  renderSidebar(area, meta, data);
+  renderVideo(area, data);
+  currentGpxData = { name: data.name, track: data.track, waypoints: data.waypoints };
+}
+
+// ─── LOCKED STATE ──────────────────────────────────────────────────────────
+function showLock(area, on, meta) {
+  const wrap = document.getElementById('map' + sfx(area))?.closest('.map-wrap');
+  if (!wrap) return;
+  let ov = wrap.querySelector('.route-lock');
+  if (!on) { ov?.remove(); return; }
+  if (!ov) {
+    ov = document.createElement('div');
+    ov.className = 'route-lock';
+    wrap.appendChild(ov);
+  }
+  const c = centres[meta.centre_slug] || {};
+  const price = c.complete_price_pence
+    ? '£' + (c.complete_price_pence / 100).toFixed(2)
+    : '';
+  ov.innerHTML =
+    '<div class="route-lock-card">' +
+      '<div class="lock-icon">🔒</div>' +
+      '<h3>' + meta.name + '</h3>' +
+      '<p>' + (meta.distance_km / 1.60934).toFixed(1) + ' miles, ' +
+        meta.waypoint_count + ' waypoints' +
+        (meta.has_video ? ', with a full walkthrough video' : '') + '.</p>' +
+      '<div class="lock-hint">Part of the ' + (c.name || '') + ' route pack' +
+        (price ? ' — ' + price + ' for every route at this test centre, ' +
+                 'including any we add later' : '') + '.</div>' +
+    '</div>';
+}
+
+function renderLocked(area, meta) {
+  const s = sfx(area);
+  const m = maps[area];
+  if (m) {
+    if (routeLayers[area]) { m.removeLayer(routeLayers[area]); routeLayers[area] = null; }
+    (wptMarkers[area] || []).forEach(mk => m.removeLayer(mk));
+    wptMarkers[area] = [];
+  }
+  showLock(area, true, meta);
+
+  // Everything below is teaser data from routes_public — safe to show anyone.
+  document.getElementById('stat-distance' + s).textContent =
+    (meta.distance_km / 1.60934).toFixed(1) + ' mi';
+  document.getElementById('stat-duration' + s).textContent =
+    Math.round(meta.distance_km / 20 * 60) + ' min';
+  const diff = document.getElementById('stat-difficulty' + s);
+  diff.className = 'diff-badge ' + diffClass(meta.difficulty);
+  diff.textContent = meta.difficulty.charAt(0).toUpperCase() + meta.difficulty.slice(1);
+  document.getElementById('stat-waypoint-count' + s).textContent =
+    meta.waypoint_count + ' waypoints';
+  document.getElementById('route-description' + s).textContent = meta.description;
+
+  document.getElementById('waypoint-list' + s).innerHTML =
+    '<div class="lock-hint">Turn-by-turn waypoints unlock with the route pack.</div>';
+  document.getElementById('route-notes' + s).innerHTML =
+    '<div class="lock-hint">Instructor notes unlock with the route pack.</div>';
+  document.getElementById('video-container' + s).innerHTML =
+    '<div class="video-wrap"><div class="video-play">🔒</div><div class="video-label"><p>' +
+    (meta.has_video ? 'Walkthrough video unlocks with the route pack'
+                    : 'Route walkthrough video coming soon') +
+    '</p></div></div>';
+
+  currentGpxData = null;
 }
 
 // ─── RENDER MAP ────────────────────────────────────────────────────────────
@@ -841,20 +922,24 @@ function renderMap(area, track, waypoints) {
     wptMarkers[area].push(mk);
   });
 
+  // The container may not have its final size on first paint, which makes
+  // fitBounds zoom out too far. Re-measure before fitting.
+  m.invalidateSize();
   m.fitBounds(routeLayers[area].getBounds(), { padding: [40,40] });
 }
 
 // ─── RENDER SIDEBAR ────────────────────────────────────────────────────────
-function renderSidebar(area, config, track, waypoints) {
+function renderSidebar(area, meta, data) {
   const s = sfx(area);
-  const km = routeDistance(track);
+  const km = meta.distance_km ?? routeDistance(data.track);
+  const waypoints = data.waypoints;
   document.getElementById('stat-distance' + s).textContent = (km / 1.60934).toFixed(1) + ' mi';
   document.getElementById('stat-duration' + s).textContent = Math.round(km / 20 * 60) + ' min';
   const diff = document.getElementById('stat-difficulty' + s);
-  diff.className = 'diff-badge ' + diffClass(config.difficulty);
-  diff.textContent = config.difficulty.charAt(0).toUpperCase() + config.difficulty.slice(1);
+  diff.className = 'diff-badge ' + diffClass(data.difficulty);
+  diff.textContent = data.difficulty.charAt(0).toUpperCase() + data.difficulty.slice(1);
   document.getElementById('stat-waypoint-count' + s).textContent = waypoints.length + ' waypoints';
-  document.getElementById('route-description' + s).textContent = config.description;
+  document.getElementById('route-description' + s).textContent = data.description;
 
   const list = document.getElementById('waypoint-list' + s);
   list.innerHTML = '';
@@ -870,17 +955,17 @@ function renderSidebar(area, config, track, waypoints) {
   });
 
   document.getElementById('route-notes' + s).innerHTML =
-    (config.notes || []).map(n =>
+    (data.notes || []).map(n =>
       `<div class="note-item"><div class="note-dot"></div><span>${n}</span></div>`
     ).join('') || '<p style="font-size:13px;color:var(--ink-low);">Instructor notes coming soon.</p>';
 }
 
 // ─── RENDER VIDEO ──────────────────────────────────────────────────────────
-function renderVideo(area, config) {
+function renderVideo(area, data) {
   const vc = document.getElementById('video-container' + sfx(area));
-  if (config.youtubeId) {
+  if (data.youtube_id) {
     vc.innerHTML = `<div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;">
-      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${config.youtubeId}"
+      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${data.youtube_id}"
         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>`;
   } else {
@@ -894,10 +979,10 @@ function renderVideo(area, config) {
 // ─── GPX DOWNLOAD ──────────────────────────────────────────────────────────
 function downloadGpx() {
   if (!currentGpxData) return;
-  const { config, track, waypoints } = currentGpxData;
+  const { name, track, waypoints } = currentGpxData;
   const pts  = track.map(p => `    <trkpt lat="${p[0]}" lon="${p[1]}"></trkpt>`).join('\n');
   const wpts = waypoints.map(w => `  <wpt lat="${w.lat}" lon="${w.lon}"><name>${w.name}</name></wpt>`).join('\n');
-  const xml  = `<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="D4Driving" xmlns="http://www.topografix.com/GPX/1/1">\n  <metadata><name>${config.name} – D4Driving</name></metadata>\n${wpts}\n  <trk><name>${config.name}</name><trkseg>\n${pts}\n  </trkseg></trk>\n</gpx>`;
+  const xml  = `<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="D4Driving" xmlns="http://www.topografix.com/GPX/1/1">\n  <metadata><name>${name} – D4Driving</name></metadata>\n${wpts}\n  <trk><name>${name}</name><trkseg>\n${pts}\n  </trkseg></trk>\n</gpx>`;
   Object.assign(document.createElement('a'), {
     href: URL.createObjectURL(new Blob([xml], { type: 'application/gpx+xml' })),
     download: `d4driving-${currentArea}-${currentRouteKey}.gpx`,
@@ -915,29 +1000,19 @@ document.querySelectorAll('.area-tab').forEach(btn => {
 
     // Init map for this area if it has routes and hasn't been initialised yet
     // setTimeout defers until the browser has painted the newly-visible panel
-    if (ROUTES[currentArea] && !maps[currentArea]) {
+    if (catalogue[currentArea]?.length && !maps[currentArea]) {
       setTimeout(() => {
         initMap(currentArea);
-        const firstRoute = Object.keys(ROUTES[currentArea])[0];
-        currentRouteKey = firstRoute;
-        loadRoute(currentArea, firstRoute);
+        buildTabs(currentArea);
+        currentRouteKey = catalogue[currentArea][0].key;
+        loadRoute(currentArea, currentRouteKey);
       }, 50);
     } else if (maps[currentArea]) {
       maps[currentArea].invalidateSize();
     }
   });
 });
-
-document.querySelectorAll('.route-tab').forEach(btn => {
-  btn.addEventListener('click', () => {
-    // Only update tabs within the active panel
-    document.querySelectorAll('#panel-' + currentArea + ' .route-tab')
-      .forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentRouteKey = btn.dataset.route;
-    loadRoute(currentArea, currentRouteKey);
-  });
-});
+// Route tabs are created by buildTabs(), which wires their own click handlers.
 
 // Fit + GPX buttons wired per area
 document.getElementById('btn-fit').addEventListener('click', () => {
@@ -966,8 +1041,30 @@ function notifyMe(area) {
 }
 
 // ─── INIT ──────────────────────────────────────────────────────────────────
-initMap('peterborough');
-loadRoute('peterborough', 'stop-sign');
+(async function init() {
+  try {
+    await loadCatalogue();
+  } catch (e) {
+    console.error('Catalogue load failed:', e);
+    const host = document.getElementById('route-tabs-peterborough');
+    if (host) host.innerHTML =
+      '<p style="font-size:13px;color:var(--ink-low);">' +
+      'Routes are temporarily unavailable — please try again shortly.</p>';
+    return;
+  }
+  const totalRoutes = Object.values(catalogue).reduce((n, rs) => n + rs.length, 0);
+  const liveCentres = Object.values(centres).filter(c => c.status === 'live').length;
+  document.getElementById('stat-routes').textContent = totalRoutes;
+  document.getElementById('stat-centres').textContent = liveCentres;
+
+  buildTabs('peterborough');
+  initMap('peterborough');
+  const first = catalogue.peterborough?.[0];
+  if (first) {
+    currentRouteKey = first.key;
+    loadRoute('peterborough', first.key);
+  }
+})();
 </script>
 </body>
 </html>

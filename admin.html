@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Route Admin | D4Driving</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --red:        #BD2026;
+  --red-hi:     #d4252c;
+  --red-lo:     rgba(189,32,38,0.08);
+  --red-border: rgba(189,32,38,0.2);
+  --slate:      #2C3E50;
+  --slate-hi:   #374f65;
+  --slate-lo:   rgba(44,62,80,0.06);
+  --sage:       #8fa3a0;
+  --bg:         #fbfdff;
+  --bg2:        #f3f7fb;
+  --glass-bg:   rgba(255,255,255,0.9);
+  --glass-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.03);
+  --ink:        #2C3E50;
+  --ink-mid:    #536878;
+  --ink-low:    #94a3b4;
+  --border:     rgba(226,232,240,0.8);
+  --ok:         #16a34a;
+  --font: 'Plus Jakarta Sans', sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--font); background: var(--bg); color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { letter-spacing: -0.4px; }
+input, select, textarea, button { font-family: inherit; font-size: 14px; }
+
+/* ─── SIGN IN ─── */
+.signin-wrap {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 24px; background: var(--slate);
+}
+.signin-card {
+  background: #fff; border-radius: 22px; padding: 40px; width: 100%; max-width: 400px;
+  box-shadow: 0 30px 60px rgba(0,0,0,.25);
+}
+.signin-card h1 { font-size: 24px; font-weight: 800; margin-bottom: 6px; }
+.signin-card .sub { font-size: 14px; color: var(--ink-mid); margin-bottom: 26px; }
+
+/* ─── SHELL ─── */
+.topbar {
+  background: var(--slate); color: #fff; padding: 16px 28px;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.topbar .brand { font-size: 17px; font-weight: 800; }
+.topbar .who { font-size: 13px; color: var(--sage); margin-left: auto; }
+.tabbar {
+  display: flex; gap: 8px; padding: 18px 28px 0; flex-wrap: wrap;
+  border-bottom: 1px solid var(--border); background: var(--bg2);
+}
+.tab {
+  padding: 10px 20px; border: none; background: transparent; cursor: pointer;
+  font-size: 14px; font-weight: 600; color: var(--ink-mid);
+  border-bottom: 3px solid transparent; margin-bottom: -1px;
+}
+.tab:hover { color: var(--slate); }
+.tab.active { color: var(--red); border-bottom-color: var(--red); }
+.page { padding: 28px; max-width: 1240px; margin: 0 auto; }
+
+/* ─── LAYOUT ─── */
+.split { display: grid; grid-template-columns: 300px 1fr; gap: 22px; align-items: start; }
+@media (max-width: 880px) { .split { grid-template-columns: 1fr; } }
+
+.card {
+  background: var(--glass-bg); border: 1px solid var(--border);
+  border-radius: 18px; box-shadow: var(--glass-shadow); padding: 22px;
+}
+.card + .card { margin-top: 18px; }
+.card h2 { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
+.card .hint { font-size: 13px; color: var(--ink-low); margin-bottom: 18px; line-height: 1.5; }
+
+/* ─── FORM ─── */
+label.f { display: block; margin-bottom: 14px; }
+label.f > span {
+  display: block; font-size: 12px; font-weight: 700; color: var(--ink-mid);
+  text-transform: uppercase; letter-spacing: .5px; margin-bottom: 6px;
+}
+.inp {
+  width: 100%; padding: 11px 14px; border: 1.5px solid var(--border);
+  border-radius: 11px; background: #fff; color: var(--ink); transition: border-color .15s;
+}
+.inp:focus { outline: none; border-color: var(--slate); }
+textarea.inp { min-height: 96px; resize: vertical; line-height: 1.55; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } }
+
+.check { display: flex; align-items: center; gap: 9px; margin-bottom: 12px; font-size: 14px; }
+.check input { width: 17px; height: 17px; accent-color: var(--red); cursor: pointer; }
+
+.btn {
+  padding: 11px 20px; border-radius: 11px; border: none; cursor: pointer;
+  font-weight: 700; font-size: 14px; transition: filter .15s, opacity .15s;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn:disabled { opacity: .5; cursor: not-allowed; filter: none; }
+.btn-red { background: var(--red); color: #fff; }
+.btn-slate { background: var(--slate); color: #fff; }
+.btn-ghost { background: transparent; color: var(--ink-mid); border: 1.5px solid var(--border); }
+.btn-sm { padding: 7px 13px; font-size: 13px; border-radius: 9px; }
+.btn-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 6px; }
+
+/* ─── ROUTE LIST ─── */
+.centre-group { margin-bottom: 20px; }
+.centre-group > h3 {
+  font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--ink-low); margin-bottom: 8px;
+}
+.route-item {
+  width: 100%; text-align: left; padding: 11px 14px; border-radius: 11px;
+  border: 1.5px solid transparent; background: transparent; cursor: pointer;
+  font-size: 14px; font-weight: 600; color: var(--ink-mid); margin-bottom: 4px;
+  display: flex; align-items: center; gap: 8px;
+}
+.route-item:hover { background: var(--slate-lo); }
+.route-item.active { background: var(--slate); color: #fff; }
+.route-item .dot {
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: var(--ok);
+}
+.route-item .dot.paid   { background: var(--red); }
+.route-item .dot.hidden { background: var(--ink-low); }
+
+/* ─── WAYPOINTS ─── */
+.wpt-row {
+  display: grid; grid-template-columns: 34px 1fr; gap: 10px;
+  align-items: center; margin-bottom: 8px;
+}
+.wpt-num {
+  width: 30px; height: 30px; border-radius: 50%; background: var(--red);
+  color: #fff; font-size: 12px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.wpt-row .inp { padding: 9px 12px; }
+
+/* ─── TABLE ─── */
+.tbl-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 620px; }
+th {
+  text-align: left; padding: 10px 12px; font-size: 11px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .6px; color: var(--ink-low);
+  border-bottom: 1.5px solid var(--border);
+}
+td { padding: 11px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+tr.revoked td { opacity: .45; text-decoration: line-through; }
+tr.revoked td:last-child { text-decoration: none; opacity: 1; }
+
+.pill {
+  display: inline-block; padding: 3px 10px; border-radius: 99px;
+  font-size: 11px; font-weight: 700;
+  background: var(--slate-lo); color: var(--slate);
+}
+.pill.stripe { background: var(--red-lo); color: var(--red); }
+
+/* ─── FEEDBACK ─── */
+.msg { padding: 12px 15px; border-radius: 11px; font-size: 14px; margin-bottom: 16px; display: none; }
+.msg.show { display: block; }
+.msg.err { background: var(--red-lo); color: var(--red); border: 1px solid var(--red-border); }
+.msg.ok  { background: rgba(22,163,74,.09); color: var(--ok); border: 1px solid rgba(22,163,74,.25); }
+.empty { font-size: 14px; color: var(--ink-low); padding: 26px 0; text-align: center; }
+.saved { font-size: 13px; font-weight: 700; color: var(--ok); opacity: 0; transition: opacity .2s; }
+.saved.show { opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- ════════ SIGN IN ════════ -->
+<div class="signin-wrap" id="signin">
+  <form class="signin-card" id="signin-form">
+    <h1>Route Admin</h1>
+    <p class="sub">D4Driving test routes and members.</p>
+    <div class="msg err" id="signin-msg"></div>
+    <label class="f">
+      <span>Email</span>
+      <input class="inp" type="email" id="si-email" autocomplete="username" required>
+    </label>
+    <label class="f">
+      <span>Password</span>
+      <input class="inp" type="password" id="si-pass" autocomplete="current-password" required>
+    </label>
+    <button class="btn btn-red" style="width:100%;margin-top:6px;" id="si-btn">Sign in</button>
+  </form>
+</div>
+
+<!-- ════════ APP ════════ -->
+<div id="app" style="display:none;">
+  <div class="topbar">
+    <div class="brand">D4Driving · Route Admin</div>
+    <div class="who" id="who"></div>
+    <button class="btn btn-ghost btn-sm" id="signout" style="color:#fff;border-color:rgba(255,255,255,.3);">Sign out</button>
+  </div>
+
+  <div class="tabbar">
+    <button class="tab active" data-panel="routes">Routes</button>
+    <button class="tab" data-panel="members">Members</button>
+    <button class="tab" data-panel="centres">Test centres</button>
+  </div>
+
+  <!-- ─── ROUTES ─── -->
+  <div class="page panel" id="panel-routes">
+    <div class="msg" id="routes-msg"></div>
+    <div class="split">
+
+      <div>
+        <div class="card">
+          <h2>Routes</h2>
+          <p class="hint">
+            <span style="color:var(--ok);">●</span> free &nbsp;
+            <span style="color:var(--red);">●</span> paid &nbsp;
+            <span style="color:var(--ink-low);">●</span> hidden
+          </p>
+          <div id="route-list"></div>
+        </div>
+
+        <div class="card">
+          <h2>Add a route</h2>
+          <p class="hint">Upload a GPX and it becomes a route. Waypoint names can be filled in afterwards.</p>
+          <label class="f">
+            <span>Test centre</span>
+            <select class="inp" id="up-centre"></select>
+          </label>
+          <label class="f">
+            <span>Route name</span>
+            <input class="inp" id="up-name" placeholder="e.g. Werrington – Gunthorpe loop">
+          </label>
+          <label class="f">
+            <span>GPX file</span>
+            <input class="inp" type="file" id="up-file" accept=".gpx,application/gpx+xml">
+          </label>
+          <div class="btn-row">
+            <button class="btn btn-slate" id="up-btn">Upload route</button>
+            <span class="saved" id="up-saved">Added</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="editor"><div class="card"><p class="empty">Pick a route on the left to edit it.</p></div></div>
+
+    </div>
+  </div>
+
+  <!-- ─── MEMBERS ─── -->
+  <div class="page panel" id="panel-members" style="display:none;">
+    <div class="msg" id="members-msg"></div>
+
+    <div class="card">
+      <h2>Give someone access</h2>
+      <p class="hint">
+        Access is stored against an email address, so you can grant it before someone has ever
+        signed in — they just need to sign in with that same address afterwards.
+      </p>
+      <div class="row2">
+        <label class="f">
+          <span>Email</span>
+          <input class="inp" type="email" id="gr-email" placeholder="learner@example.com">
+        </label>
+        <label class="f">
+          <span>What they get</span>
+          <select class="inp" id="gr-scope"></select>
+        </label>
+      </div>
+      <label class="f">
+        <span>Note (optional)</span>
+        <input class="inp" id="gr-note" placeholder="e.g. paid by bank transfer 26/07">
+      </label>
+      <div class="btn-row">
+        <button class="btn btn-red" id="gr-btn">Grant access</button>
+        <span class="saved" id="gr-saved">Granted</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Who has access</h2>
+      <p class="hint">Revoking keeps the record but removes access immediately.</p>
+      <div class="tbl-scroll"><table>
+        <thead><tr>
+          <th>Email</th><th>Access</th><th>Source</th><th>Granted</th><th></th>
+        </tr></thead>
+        <tbody id="ent-body"></tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ─── CENTRES ─── -->
+  <div class="page panel" id="panel-centres" style="display:none;">
+    <div class="msg" id="centres-msg"></div>
+    <div class="card">
+      <h2>Test centres and pricing</h2>
+      <p class="hint">
+        Only turn the Essentials 3-pack on once a centre has roughly 8 or more routes —
+        below that it just undercuts the Complete pack.
+      </p>
+      <div id="centre-list"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+// ─── SETUP ─────────────────────────────────────────────────────────────────
+const SUPABASE_URL = 'https://zzgmwdbvboalehafyict.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_D_a8lr1sOPmoOYAXYI1JbA_zUT41DdY';
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let routes = [], centres = [], selectedId = null;
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g,
+  c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+
+function msg(el, text, kind) {
+  const m = $(el);
+  m.textContent = text;
+  m.className = 'msg ' + kind + (text ? ' show' : '');
+}
+function flash(id) {
+  const el = $(id);
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 1800);
+}
+
+// ─── AUTH ──────────────────────────────────────────────────────────────────
+$('signin-form').addEventListener('submit', async e => {
+  e.preventDefault();
+  $('si-btn').disabled = true;
+  msg('signin-msg', '', 'err');
+  const { error } = await db.auth.signInWithPassword({
+    email: $('si-email').value.trim(),
+    password: $('si-pass').value,
+  });
+  $('si-btn').disabled = false;
+  if (error) msg('signin-msg', error.message, 'err');
+});
+
+$('signout').addEventListener('click', () => db.auth.signOut());
+
+db.auth.onAuthStateChange((_event, session) => gate(session));
+db.auth.getSession().then(({ data }) => gate(data.session));
+
+async function gate(session) {
+  if (!session) {
+    $('signin').style.display = 'flex';
+    $('app').style.display = 'none';
+    return;
+  }
+  // Being signed in is not the same as being an admin. RLS enforces this
+  // server side too — this check is only so the UI fails clearly.
+  const { data: profile } = await db
+    .from('profiles').select('is_admin').eq('id', session.user.id).maybeSingle();
+
+  if (!profile?.is_admin) {
+    await db.auth.signOut();
+    msg('signin-msg', 'That account is not an administrator.', 'err');
+    return;
+  }
+  $('signin').style.display = 'none';
+  $('app').style.display = '';
+  $('who').textContent = session.user.email;
+  loadAll();
+}
+
+// ─── TABS ──────────────────────────────────────────────────────────────────
+document.querySelectorAll('.tab').forEach(t => {
+  t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    document.querySelectorAll('.panel').forEach(p => p.style.display = 'none');
+    $('panel-' + t.dataset.panel).style.display = '';
+  });
+});
+
+// ─── LOAD ──────────────────────────────────────────────────────────────────
+async function loadAll() {
+  const [rRes, cRes] = await Promise.all([
+    db.from('routes')
+      .select('id,centre_slug,key,name,difficulty,description,notes,youtube_id,is_free,in_essentials,published,sort_order,distance_km')
+      .order('centre_slug').order('sort_order'),
+    db.from('centres').select('*').order('sort_order'),
+  ]);
+  if (rRes.error) return msg('routes-msg', rRes.error.message, 'err');
+  routes = rRes.data;
+  centres = cRes.data || [];
+
+  renderRouteList();
+  renderCentreSelects();
+  renderCentres();
+  loadEntitlements();
+  if (selectedId) renderEditor(selectedId);
+}
+
+// ─── ROUTE LIST ────────────────────────────────────────────────────────────
+function renderRouteList() {
+  const host = $('route-list');
+  host.innerHTML = '';
+  for (const c of centres) {
+    const mine = routes.filter(r => r.centre_slug === c.slug);
+    if (!mine.length) continue;
+    const g = document.createElement('div');
+    g.className = 'centre-group';
+    g.innerHTML = '<h3>' + esc(c.name) + '</h3>';
+    for (const r of mine) {
+      const b = document.createElement('button');
+      b.className = 'route-item' + (r.id === selectedId ? ' active' : '');
+      const state = !r.published ? 'hidden' : (r.is_free ? '' : 'paid');
+      b.innerHTML = '<span class="dot ' + state + '"></span><span>' + esc(r.name) + '</span>';
+      b.addEventListener('click', () => { selectedId = r.id; renderRouteList(); renderEditor(r.id); });
+      g.appendChild(b);
+    }
+    host.appendChild(g);
+  }
+  if (!routes.length) host.innerHTML = '<p class="empty">No routes yet.</p>';
+}
+
+function renderCentreSelects() {
+  $('up-centre').innerHTML = centres
+    .map(c => '<option value="' + esc(c.slug) + '">' + esc(c.name) + '</option>').join('');
+
+  const opts = ['<option value="all|*">Everything, every centre</option>'];
+  for (const c of centres) {
+    opts.push('<option value="centre|' + esc(c.slug) + '">Complete — ' + esc(c.name) + '</option>');
+    opts.push('<option value="pack|essentials:' + esc(c.slug) + '">Essentials 3-pack — ' + esc(c.name) + '</option>');
+  }
+  for (const r of routes) {
+    opts.push('<option value="route|' + r.id + '">Single route — ' + esc(r.name) + '</option>');
+  }
+  $('gr-scope').innerHTML = opts.join('');
+}
+
+// ─── ROUTE EDITOR ──────────────────────────────────────────────────────────
+async function renderEditor(id) {
+  const r = routes.find(x => x.id === id);
+  if (!r) return;
+
+  const { data: wpts, error } = await db
+    .from('waypoints').select('id,seq,lat,lon,name').eq('route_id', id).order('seq');
+  if (error) return msg('routes-msg', error.message, 'err');
+
+  $('editor').innerHTML =
+    '<div class="card">' +
+      '<h2>' + esc(r.name) + '</h2>' +
+      '<p class="hint">' + esc(r.key) + ' · ' +
+        (r.distance_km ? (r.distance_km / 1.60934).toFixed(1) + ' miles' : 'distance unknown') +
+      '</p>' +
+      '<label class="f"><span>Name</span>' +
+        '<input class="inp" id="e-name" value="' + esc(r.name) + '"></label>' +
+      '<div class="row2">' +
+        '<label class="f"><span>Difficulty</span><select class="inp" id="e-diff">' +
+          ['beginner','intermediate','advanced'].map(d =>
+            '<option' + (r.difficulty === d ? ' selected' : '') + '>' + d + '</option>').join('') +
+        '</select></label>' +
+        '<label class="f"><span>Order in list</span>' +
+          '<input class="inp" type="number" id="e-sort" value="' + (r.sort_order ?? 0) + '"></label>' +
+      '</div>' +
+      '<label class="f"><span>Description</span>' +
+        '<textarea class="inp" id="e-desc">' + esc(r.description) + '</textarea></label>' +
+      '<label class="f"><span>Instructor notes — one per line</span>' +
+        '<textarea class="inp" id="e-notes">' + esc((r.notes || []).join('\n')) + '</textarea></label>' +
+      '<label class="f"><span>YouTube video ID</span>' +
+        '<input class="inp" id="e-yt" placeholder="e.g. knSsf0sarNA" value="' + esc(r.youtube_id) + '"></label>' +
+      '<div class="check"><input type="checkbox" id="e-free"' + (r.is_free ? ' checked' : '') + '>' +
+        '<label for="e-free">Free — anyone can see this one (the shop window)</label></div>' +
+      '<div class="check"><input type="checkbox" id="e-ess"' + (r.in_essentials ? ' checked' : '') + '>' +
+        '<label for="e-ess">Part of the Essentials 3-pack</label></div>' +
+      '<div class="check"><input type="checkbox" id="e-pub"' + (r.published ? ' checked' : '') + '>' +
+        '<label for="e-pub">Published — visible on the site at all</label></div>' +
+      '<div class="btn-row">' +
+        '<button class="btn btn-red" id="e-save">Save route</button>' +
+        '<span class="saved" id="e-saved">Saved</span>' +
+        '<button class="btn btn-ghost btn-sm" id="e-del" style="margin-left:auto;">Delete route</button>' +
+      '</div>' +
+    '</div>' +
+    '<div class="card">' +
+      '<h2>Waypoints</h2>' +
+      '<p class="hint">These are the numbered pins on the map. Leave one blank and it shows as “Waypoint N”.</p>' +
+      (wpts.length
+        ? '<div id="wpt-rows">' + wpts.map((w, i) =>
+            '<div class="wpt-row">' +
+              '<div class="wpt-num">' + (i === 0 ? '★' : i) + '</div>' +
+              '<input class="inp wpt-name" data-id="' + w.id + '" value="' + esc(w.name) + '" ' +
+                'placeholder="' + (i === 0 ? 'Start' : 'Waypoint ' + i) + '">' +
+            '</div>').join('') + '</div>' +
+          '<div class="btn-row"><button class="btn btn-slate" id="w-save">Save waypoint names</button>' +
+          '<span class="saved" id="w-saved">Saved</span></div>'
+        : '<p class="empty">This route has no waypoints.</p>') +
+    '</div>';
+
+  $('e-save').addEventListener('click', () => saveRoute(id));
+  $('e-del').addEventListener('click', () => deleteRoute(id, r.name));
+  if (wpts.length) $('w-save').addEventListener('click', () => saveWaypoints(id));
+}
+
+async function saveRoute(id) {
+  $('e-save').disabled = true;
+  const notes = $('e-notes').value.split('\n').map(s => s.trim()).filter(Boolean);
+  const { error } = await db.from('routes').update({
+    name:        $('e-name').value.trim(),
+    difficulty:  $('e-diff').value,
+    sort_order:  parseInt($('e-sort').value, 10) || 0,
+    description: $('e-desc').value.trim(),
+    notes,
+    youtube_id:  $('e-yt').value.trim() || null,
+    is_free:     $('e-free').checked,
+    in_essentials: $('e-ess').checked,
+    published:   $('e-pub').checked,
+  }).eq('id', id);
+  $('e-save').disabled = false;
+
+  if (error) return msg('routes-msg', error.message, 'err');
+  msg('routes-msg', '', 'ok');
+  flash('e-saved');
+  await loadAll();
+}
+
+async function saveWaypoints(id) {
+  $('w-save').disabled = true;
+  const rows = [...document.querySelectorAll('.wpt-name')];
+  const results = await Promise.all(rows.map(inp =>
+    db.from('waypoints').update({ name: inp.value.trim() || null }).eq('id', inp.dataset.id)
+  ));
+  $('w-save').disabled = false;
+
+  const bad = results.find(r => r.error);
+  if (bad) return msg('routes-msg', bad.error.message, 'err');
+  msg('routes-msg', '', 'ok');
+  flash('w-saved');
+}
+
+async function deleteRoute(id, name) {
+  if (!confirm('Delete "' + name + '" and all of its waypoints?\n\nThis cannot be undone.')) return;
+  const { error } = await db.from('routes').delete().eq('id', id);
+  if (error) return msg('routes-msg', error.message, 'err');
+  selectedId = null;
+  $('editor').innerHTML = '<div class="card"><p class="empty">Pick a route on the left to edit it.</p></div>';
+  await loadAll();
+}
+
+// ─── GPX UPLOAD ────────────────────────────────────────────────────────────
+function parseGpx(xml) {
+  const doc = new DOMParser().parseFromString(xml, 'application/xml');
+  if (doc.querySelector('parsererror')) throw new Error('That file is not valid GPX.');
+  const r5 = v => Math.round(parseFloat(v) * 1e5) / 1e5;
+  const track = [...doc.querySelectorAll('trkpt')].map(p =>
+    [r5(p.getAttribute('lat')), r5(p.getAttribute('lon'))]);
+  const wpts = [...doc.querySelectorAll('wpt')].map(p => ({
+    lat: r5(p.getAttribute('lat')),
+    lon: r5(p.getAttribute('lon')),
+    name: p.querySelector('name')?.textContent?.trim() || null,
+  }));
+  if (!track.length) throw new Error('No track points found in that GPX.');
+  return { track, wpts };
+}
+
+function distanceKm(track) {
+  const R = 6371, toR = d => d * Math.PI / 180;
+  let total = 0;
+  for (let i = 1; i < track.length; i++) {
+    const [la1, lo1] = track[i - 1], [la2, lo2] = track[i];
+    const dLat = toR(la2 - la1), dLon = toR(lo2 - lo1);
+    const a = Math.sin(dLat / 2) ** 2 +
+      Math.cos(toR(la1)) * Math.cos(toR(la2)) * Math.sin(dLon / 2) ** 2;
+    total += R * 2 * Math.asin(Math.sqrt(a));
+  }
+  return total;
+}
+
+const slugify = s => s.toLowerCase().trim()
+  .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
+
+$('up-btn').addEventListener('click', async () => {
+  const centre = $('up-centre').value;
+  const name = $('up-name').value.trim();
+  const file = $('up-file').files[0];
+  if (!name || !file) return msg('routes-msg', 'A route name and a GPX file are both needed.', 'err');
+
+  $('up-btn').disabled = true;
+  try {
+    const { track, wpts } = parseGpx(await file.text());
+    const km = distanceKm(track);
+    const siblings = routes.filter(r => r.centre_slug === centre);
+
+    const { data: created, error } = await db.from('routes').insert({
+      centre_slug: centre,
+      key: slugify(name),
+      name,
+      difficulty: 'intermediate',
+      description: '',
+      notes: [],
+      track,
+      distance_km: +km.toFixed(2),
+      is_free: false,
+      published: false,          // stays hidden until you have filled it in
+      sort_order: siblings.length + 1,
+    }).select('id').single();
+    if (error) throw error;
+
+    if (wpts.length) {
+      const { error: wErr } = await db.from('waypoints').insert(
+        wpts.map((w, i) => ({ route_id: created.id, seq: i, lat: w.lat, lon: w.lon, name: w.name }))
+      );
+      if (wErr) throw wErr;
+    }
+
+    $('up-name').value = ''; $('up-file').value = '';
+    msg('routes-msg', '', 'ok');
+    flash('up-saved');
+    selectedId = created.id;
+    await loadAll();
+  } catch (e) {
+    msg('routes-msg', e.message || String(e), 'err');
+  }
+  $('up-btn').disabled = false;
+});
+
+// ─── MEMBERS ───────────────────────────────────────────────────────────────
+async function loadEntitlements() {
+  const { data, error } = await db.from('entitlements').select('*')
+    .order('granted_at', { ascending: false });
+  if (error) return msg('members-msg', error.message, 'err');
+
+  const label = e => {
+    if (e.scope_type === 'all') return 'Everything';
+    if (e.scope_type === 'centre')
+      return 'Complete — ' + (centres.find(c => c.slug === e.scope_value)?.name || e.scope_value);
+    if (e.scope_type === 'pack') {
+      const slug = e.scope_value.replace('essentials:', '');
+      return 'Essentials — ' + (centres.find(c => c.slug === slug)?.name || slug);
+    }
+    return 'Route — ' + (routes.find(r => r.id === e.scope_value)?.name || 'unknown');
+  };
+
+  $('ent-body').innerHTML = data.length ? data.map(e =>
+    '<tr class="' + (e.revoked_at ? 'revoked' : '') + '">' +
+      '<td>' + esc(e.email) + (e.note ? '<br><span style="font-size:12px;color:var(--ink-low);">' + esc(e.note) + '</span>' : '') + '</td>' +
+      '<td>' + esc(label(e)) + '</td>' +
+      '<td><span class="pill ' + (e.source === 'stripe' ? 'stripe' : '') + '">' + esc(e.source) + '</span></td>' +
+      '<td>' + new Date(e.granted_at).toLocaleDateString('en-GB') + '</td>' +
+      '<td><button class="btn btn-ghost btn-sm" data-ent="' + e.id + '" data-on="' +
+        (e.revoked_at ? '1' : '0') + '">' + (e.revoked_at ? 'Restore' : 'Revoke') + '</button></td>' +
+    '</tr>').join('')
+    : '<tr><td colspan="5"><p class="empty">Nobody has been given access yet.</p></td></tr>';
+
+  document.querySelectorAll('[data-ent]').forEach(b => {
+    b.addEventListener('click', async () => {
+      const { error } = await db.from('entitlements')
+        .update({ revoked_at: b.dataset.on === '1' ? null : new Date().toISOString() })
+        .eq('id', b.dataset.ent);
+      if (error) return msg('members-msg', error.message, 'err');
+      loadEntitlements();
+    });
+  });
+}
+
+$('gr-btn').addEventListener('click', async () => {
+  const email = $('gr-email').value.trim().toLowerCase();
+  if (!email.includes('@')) return msg('members-msg', 'That does not look like an email address.', 'err');
+  const [scope_type, scope_value] = $('gr-scope').value.split('|');
+
+  $('gr-btn').disabled = true;
+  const { error } = await db.from('entitlements').upsert({
+    email, scope_type, scope_value,
+    source: 'manual',
+    note: $('gr-note').value.trim() || null,
+    revoked_at: null,
+    granted_at: new Date().toISOString(),
+  }, { onConflict: 'email,scope_type,scope_value' });
+  $('gr-btn').disabled = false;
+
+  if (error) return msg('members-msg', error.message, 'err');
+  $('gr-email').value = ''; $('gr-note').value = '';
+  msg('members-msg', '', 'ok');
+  flash('gr-saved');
+  loadEntitlements();
+});
+
+// ─── CENTRES ───────────────────────────────────────────────────────────────
+function renderCentres() {
+  $('centre-list').innerHTML = centres.map(c => {
+    const count = routes.filter(r => r.centre_slug === c.slug).length;
+    return '<div style="padding:16px 0;border-bottom:1px solid var(--border);">' +
+      '<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">' +
+        '<strong style="font-size:15px;">' + esc(c.name) + '</strong>' +
+        '<span class="pill">' + count + ' route' + (count === 1 ? '' : 's') + '</span>' +
+      '</div>' +
+      '<div class="row2">' +
+        '<label class="f"><span>Status</span><select class="inp" data-c="' + esc(c.slug) + '" data-f="status">' +
+          '<option value="live"' + (c.status === 'live' ? ' selected' : '') + '>Live</option>' +
+          '<option value="coming_soon"' + (c.status === 'coming_soon' ? ' selected' : '') + '>Coming soon</option>' +
+        '</select></label>' +
+        '<label class="f"><span>Complete pack (pence)</span>' +
+          '<input class="inp" type="number" data-c="' + esc(c.slug) + '" data-f="complete_price_pence" value="' + (c.complete_price_pence ?? '') + '"></label>' +
+      '</div>' +
+      '<div class="row2">' +
+        '<label class="f"><span>Essentials 3-pack (pence)</span>' +
+          '<input class="inp" type="number" data-c="' + esc(c.slug) + '" data-f="essentials_price_pence" value="' + (c.essentials_price_pence ?? '') + '"></label>' +
+        '<div class="check" style="margin-top:26px;">' +
+          '<input type="checkbox" data-c="' + esc(c.slug) + '" data-f="essentials_enabled"' + (c.essentials_enabled ? ' checked' : '') + '>' +
+          '<label>Sell the Essentials 3-pack here' + (count < 8 ? ' <span style="color:var(--ink-low);">(only ' + count + ' routes)</span>' : '') + '</label>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('') +
+  '<div class="btn-row" style="margin-top:18px;">' +
+    '<button class="btn btn-red" id="c-save">Save centres</button>' +
+    '<span class="saved" id="c-saved">Saved</span></div>';
+
+  $('c-save').addEventListener('click', saveCentres);
+}
+
+async function saveCentres() {
+  $('c-save').disabled = true;
+  const patch = {};
+  document.querySelectorAll('[data-c]').forEach(el => {
+    const slug = el.dataset.c, field = el.dataset.f;
+    patch[slug] = patch[slug] || {};
+    patch[slug][field] = el.type === 'checkbox' ? el.checked
+      : el.type === 'number' ? (el.value === '' ? null : parseInt(el.value, 10))
+      : el.value;
+  });
+  const results = await Promise.all(Object.entries(patch).map(([slug, fields]) =>
+    db.from('centres').update(fields).eq('slug', slug)));
+  $('c-save').disabled = false;
+
+  const bad = results.find(r => r.error);
+  if (bad) return msg('centres-msg', bad.error.message, 'err');
+  msg('centres-msg', '', 'ok');
+  flash('c-saved');
+  loadAll();
+}
+</script>
+</body>
+</html>
