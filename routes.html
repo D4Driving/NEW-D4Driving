@@ -208,6 +208,48 @@ a    { color: inherit; text-decoration: none; }
   padding: 14px; border: 1px dashed var(--border); border-radius: 12px;
 }
 
+/* ─── SIGN IN ─── */
+.auth-strip {
+  display: flex; justify-content: flex-end; align-items: center;
+  gap: 10px; margin-bottom: 18px; min-height: 34px;
+}
+.auth-btn {
+  padding: 8px 17px; border-radius: 99px; border: none; cursor: pointer;
+  font-family: var(--font); font-size: 13px; font-weight: 700;
+  background: var(--red); color: #fff; transition: filter .15s;
+}
+.auth-btn:hover { filter: brightness(1.1); }
+.auth-btn:disabled { opacity: .55; cursor: not-allowed; }
+.auth-btn.ghost {
+  background: transparent; color: var(--sage);
+  border: 1.5px solid rgba(255,255,255,.25);
+}
+.auth-who { font-size: 13px; color: var(--sage); }
+
+.auth-modal {
+  display: none; position: fixed; inset: 0; z-index: 2000;
+  background: rgba(20,30,42,.6); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center; padding: 24px;
+}
+.auth-modal.open { display: flex; }
+.auth-card {
+  background: #fff; border-radius: 20px; padding: 32px;
+  width: 100%; max-width: 400px; box-shadow: 0 30px 60px rgba(0,0,0,.3);
+}
+.auth-card h3 { font-size: 20px; font-weight: 800; color: var(--slate); margin-bottom: 8px; }
+.auth-card > p { font-size: 14px; color: var(--ink-mid); line-height: 1.55; margin-bottom: 20px; }
+.auth-input {
+  width: 100%; padding: 12px 15px; border: 1.5px solid var(--border);
+  border-radius: 12px; font-family: var(--font); font-size: 14px; color: var(--ink);
+}
+.auth-input:focus { outline: none; border-color: var(--slate); }
+.auth-msg { font-size: 13px; line-height: 1.5; margin: 12px 0 0; min-height: 18px; color: var(--ink-mid); }
+.auth-msg.ok  { color: #16a34a; font-weight: 600; }
+.auth-msg.err { color: var(--red); font-weight: 600; }
+.auth-actions { display: flex; gap: 10px; margin-top: 18px; }
+.auth-actions .auth-btn { flex: 1; padding: 11px; }
+.auth-actions .ghost { color: var(--ink-mid); border-color: var(--border); }
+
 /* ─── MAIN LAYOUT ─── */
 .routes-layout {
   display: grid;
@@ -441,6 +483,11 @@ footer {
 <!-- ════ HERO ════ -->
 <section class="page-hero">
   <div class="wrap">
+    <div class="auth-strip">
+      <span class="auth-who" id="auth-who" style="display:none;"></span>
+      <button class="auth-btn" id="auth-signin">Sign in</button>
+      <button class="auth-btn ghost" id="auth-signout" style="display:none;">Sign out</button>
+    </div>
     <div class="hero-label">
       <span>INTERACTIVE ROUTES</span>
     </div>
@@ -677,8 +724,23 @@ footer {
   </svg>
 </a>
 
+<!-- ════ SIGN IN DIALOG ════ -->
+<div class="auth-modal" id="auth-modal">
+  <div class="auth-card">
+    <h3>Sign in</h3>
+    <p>Pop in your email and we'll send you a sign-in link — no password to remember.</p>
+    <input class="auth-input" type="email" id="auth-email" placeholder="you@example.com" autocomplete="email">
+    <p class="auth-msg" id="auth-msg"></p>
+    <div class="auth-actions">
+      <button class="auth-btn" id="auth-send">Email me a link</button>
+      <button class="auth-btn ghost" id="auth-cancel">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
 // ─── SUPABASE ──────────────────────────────────────────────────────────────
@@ -701,6 +763,88 @@ async function sb(path) {
   if (!res.ok) throw new Error(res.status + ' ' + (await res.text()));
   return res.json();
 }
+
+// ─── AUTH ──────────────────────────────────────────────────────────────────
+// Magic link rather than a password: a learner uses this for a few months and
+// then passes, so a password is friction they'd only have to reset.
+const sbAuth = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+let ready = false;   // true once the first catalogue load has finished
+
+function paintAuth(session) {
+  const on = !!session;
+  document.getElementById('auth-signin').style.display  = on ? 'none' : '';
+  document.getElementById('auth-signout').style.display = on ? '' : 'none';
+  const who = document.getElementById('auth-who');
+  who.style.display = on ? '' : 'none';
+  who.textContent = on ? session.user.email : '';
+}
+
+function openAuth() {
+  document.getElementById('auth-modal').classList.add('open');
+  const m = document.getElementById('auth-msg');
+  m.textContent = ''; m.className = 'auth-msg';
+  document.getElementById('auth-email').focus();
+}
+function closeAuth() {
+  document.getElementById('auth-modal').classList.remove('open');
+}
+
+async function sendLink() {
+  const email = document.getElementById('auth-email').value.trim();
+  const m = document.getElementById('auth-msg');
+  if (!email.includes('@')) {
+    m.textContent = "That doesn't look like an email address.";
+    m.className = 'auth-msg err';
+    return;
+  }
+  const btn = document.getElementById('auth-send');
+  btn.disabled = true;
+  m.textContent = 'Sending…';
+  m.className = 'auth-msg';
+
+  const { error } = await sbAuth.auth.signInWithOtp({
+    email,
+    options: { emailRedirectTo: location.origin + '/routes.html' },
+  });
+
+  btn.disabled = false;
+  m.textContent = error ? error.message : 'Check your email — the link is on its way.';
+  m.className = 'auth-msg ' + (error ? 'err' : 'ok');
+}
+
+// Entitlements are tied to the session, so every cached answer is now stale.
+async function refreshForAuth() {
+  Object.keys(routeCache).forEach(k => delete routeCache[k]);
+  try {
+    await loadCatalogue();
+  } catch (e) {
+    console.error('Catalogue reload failed:', e);
+    return;
+  }
+  buildTabs(currentArea);
+  if (currentRouteKey) loadRoute(currentArea, currentRouteKey);
+}
+
+document.getElementById('auth-signin').addEventListener('click', openAuth);
+document.getElementById('auth-cancel').addEventListener('click', closeAuth);
+document.getElementById('auth-send').addEventListener('click', sendLink);
+document.getElementById('auth-signout').addEventListener('click', () => sbAuth.auth.signOut());
+document.getElementById('auth-modal').addEventListener('click', e => {
+  if (e.target.id === 'auth-modal') closeAuth();
+});
+document.getElementById('auth-email').addEventListener('keydown', e => {
+  if (e.key === 'Enter') sendLink();
+});
+
+// INITIAL_SESSION is handled by init() below, so the very first catalogue load
+// already reflects the pupil's entitlements instead of flashing locked first.
+sbAuth.auth.onAuthStateChange(async (event, session) => {
+  if (event === 'INITIAL_SESSION') return;
+  accessToken = session?.access_token || null;
+  paintAuth(session);
+  closeAuth();
+  if (ready) await refreshForAuth();
+});
 
 // ─── STATE ─────────────────────────────────────────────────────────────────
 const maps = {};           // Leaflet map instance per area
@@ -745,6 +889,8 @@ async function loadCatalogue() {
     sb('centres?select=*'),
     sb('routes?select=id'),   // RLS returns only the routes we may actually read
   ]);
+  // Safe to call again after signing in or out — start from empty each time.
+  Object.keys(catalogue).forEach(k => delete catalogue[k]);
   for (const c of centreRows) centres[c.slug] = c;
   for (const r of rows) (catalogue[r.centre_slug] ||= []).push(r);
   accessibleIds.clear();
@@ -857,7 +1003,13 @@ function showLock(area, on, meta) {
       '<div class="lock-hint">Part of the ' + (c.name || '') + ' route pack' +
         (price ? ' — ' + price + ' for every route at this test centre, ' +
                  'including any we add later' : '') + '.</div>' +
+      (accessToken ? '' :
+        '<button class="auth-btn" id="lock-signin" style="margin-top:16px;">' +
+        'Already bought a pack? Sign in</button>') +
     '</div>';
+
+  const signinBtn = ov.querySelector('#lock-signin');
+  if (signinBtn) signinBtn.addEventListener('click', openAuth);
 }
 
 function renderLocked(area, meta) {
@@ -1042,6 +1194,17 @@ function notifyMe(area) {
 
 // ─── INIT ──────────────────────────────────────────────────────────────────
 (async function init() {
+  // Settle the session first — including one arriving in the URL hash from a
+  // magic link — so the first catalogue load already knows what this pupil
+  // owns, rather than flashing everything locked and then correcting itself.
+  try {
+    const { data } = await sbAuth.auth.getSession();
+    accessToken = data.session?.access_token || null;
+    paintAuth(data.session);
+  } catch (e) {
+    console.error('Auth init failed:', e);
+  }
+
   try {
     await loadCatalogue();
   } catch (e) {
@@ -1064,6 +1227,7 @@ function notifyMe(area) {
     currentRouteKey = first.key;
     loadRoute('peterborough', first.key);
   }
+  ready = true;   // from here on, signing in or out triggers a refresh
 })();
 </script>
 </body>
