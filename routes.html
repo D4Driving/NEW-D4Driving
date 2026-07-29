@@ -876,6 +876,21 @@ function diffClass(d) {
   return d === 'beginner' ? 'diff-beginner' : d === 'intermediate' ? 'diff-intermediate' : 'diff-advanced';
 }
 
+// Estimated time. GPX files carry no timestamps, so this is distance over an
+// assumed average speed — there is nothing better to measure.
+//
+// 33 km/h (~20.5 mph) is the average across a mixed test route: town streets,
+// roundabouts and a stretch of faster road. It is deliberately calibrated so a
+// route reads as no longer than a real DVSA test, which runs about 40 minutes.
+// Don't drop it back towards "realistic town speed" — at 20 km/h the longer
+// routes claimed an hour, which made them look nothing like a test.
+//
+// This holds while the longest route is under about 21 km. Past that the
+// estimate creeps over 40 again, and the fix is a per-route avg_speed_kmh
+// column rather than nudging this number up further.
+const AVG_SPEED_KMH = 33;
+const estMinutes = km => Math.round(km / AVG_SPEED_KMH * 60);
+
 // ─── CATALOGUE ─────────────────────────────────────────────────────────────
 // routes_public is a teaser view: name, distance, difficulty, whether a video
 // exists. It deliberately carries no track, no waypoint coordinates and no
@@ -1026,7 +1041,7 @@ function renderLocked(area, meta) {
   document.getElementById('stat-distance' + s).textContent =
     (meta.distance_km / 1.60934).toFixed(1) + ' mi';
   document.getElementById('stat-duration' + s).textContent =
-    Math.round(meta.distance_km / 20 * 60) + ' min';
+    estMinutes(meta.distance_km) + ' min';
   const diff = document.getElementById('stat-difficulty' + s);
   diff.className = 'diff-badge ' + diffClass(meta.difficulty);
   diff.textContent = meta.difficulty.charAt(0).toUpperCase() + meta.difficulty.slice(1);
@@ -1074,10 +1089,19 @@ function renderMap(area, track, waypoints) {
     wptMarkers[area].push(mk);
   });
 
-  // The container may not have its final size on first paint, which makes
-  // fitBounds zoom out too far. Re-measure before fitting.
-  m.invalidateSize();
-  m.fitBounds(routeLayers[area].getBounds(), { padding: [40,40] });
+  // The container may not have its final size when this runs, so fitBounds
+  // picks a zoom for the wrong dimensions and frames far too wide.
+  //
+  // invalidateSize() on its own is not enough: it re-measures, but the browser
+  // may not have finished laying out the newly-shown panel yet, so it measures
+  // stale numbers. That made the bug intermittent rather than fixed. Deferring
+  // to the next animation frame guarantees layout has settled first.
+  const layer = routeLayers[area];
+  requestAnimationFrame(() => {
+    if (routeLayers[area] !== layer) return;   // a newer route won the race
+    m.invalidateSize();
+    m.fitBounds(layer.getBounds(), { padding: [40,40] });
+  });
 }
 
 // ─── RENDER SIDEBAR ────────────────────────────────────────────────────────
@@ -1086,7 +1110,7 @@ function renderSidebar(area, meta, data) {
   const km = meta.distance_km ?? routeDistance(data.track);
   const waypoints = data.waypoints;
   document.getElementById('stat-distance' + s).textContent = (km / 1.60934).toFixed(1) + ' mi';
-  document.getElementById('stat-duration' + s).textContent = Math.round(km / 20 * 60) + ' min';
+  document.getElementById('stat-duration' + s).textContent = estMinutes(km) + ' min';
   const diff = document.getElementById('stat-difficulty' + s);
   diff.className = 'diff-badge ' + diffClass(data.difficulty);
   diff.textContent = data.difficulty.charAt(0).toUpperCase() + data.difficulty.slice(1);
