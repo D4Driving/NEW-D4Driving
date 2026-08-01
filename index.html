@@ -503,7 +503,8 @@ p  { line-height: 1.75; }
 }
 .block-section-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--sage); border-radius: 2px; }
 
-.block-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.block-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; }
+.tp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 .block-card {
   padding: 24px; border-left: 3px solid transparent; transition: all .3s;
   display: flex; flex-direction: column;
@@ -774,6 +775,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   .centres-grid { grid-template-columns:1fr; }
   .lesson-grid { grid-template-columns:1fr 1fr; }
   .block-grid { grid-template-columns:1fr 1fr; }
+  .tp-grid { grid-template-columns:1fr; }
   .review-grid { grid-template-columns:1fr; }
   .passes-grid { grid-template-columns:1fr 1fr; }
   .blog-grid { grid-template-columns:1fr 1fr; }
@@ -783,7 +785,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 @media(max-width:540px){
   .cov-grid { grid-template-columns:1fr 1fr; }
   .fleet-grid { grid-template-columns:1fr; }
-  .lesson-grid,.block-grid,.passes-grid,.blog-grid { grid-template-columns:1fr; }
+  .lesson-grid,.block-grid,.tp-grid,.passes-grid,.blog-grid { grid-template-columns:1fr; }
   .fleet-img { height:240px; }
   .hero-btns { flex-direction:column; }
   .btn { justify-content:center; }
@@ -1074,14 +1076,14 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     <div class="lesson-grid reveal">
       <div class="lesson-card glass-card assessment-card">
         <div class="feat-tag" style="background:var(--slate);">New Students</div>
-        <div class="l-price"><sup>£</sup>55</div>
+        <div class="l-price"><sup>£</sup>45</div>
         <div class="l-dur">90 Min</div>
         <div class="l-name">Assessment</div>
-        <div class="l-desc">New students start here — skills audit &amp; personalised pass plan.</div>
+        <div class="l-desc">New students start here — skills audit &amp; personalised pass plan. <strong>One per student — new students only.</strong></div>
         <a href="#booking" class="btn btn-slate" style="width:100%;">Start Here</a>
       </div>
       <div class="lesson-card glass-card">
-        <div class="l-price"><sup>£</sup>40</div>
+        <div class="l-price"><sup>£</sup>42</div>
         <div class="l-dur">1 Hour</div>
         <div class="l-name">Single</div>
         <div class="l-desc">A top-up or refresher between longer sessions.</div>
@@ -1089,14 +1091,14 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       </div>
       <div class="lesson-card featured glass-card">
         <div class="feat-tag">Most Popular</div>
-        <div class="l-price"><sup>£</sup>55</div>
+        <div class="l-price"><sup>£</sup>60</div>
         <div class="l-dur">1.5 Hours</div>
         <div class="l-name">Standard</div>
         <div class="l-desc">The ideal balance of time and value for regular progress.</div>
         <a href="#booking" class="btn btn-red" style="width:100%;">Book</a>
       </div>
       <div class="lesson-card glass-card">
-        <div class="l-price"><sup>£</sup>75</div>
+        <div class="l-price"><sup>£</sup>80</div>
         <div class="l-dur">2 Hours</div>
         <div class="l-name">Extended</div>
         <div class="l-desc">More road time — great for building fluency and confidence.</div>
@@ -1108,31 +1110,63 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     <div class="block-grid reveal">
       <div class="block-card glass-card">
         <span class="pop-tag"></span>
+        <div class="block-hrs-wrap"><div class="block-hrs">5 <small>hrs</small></div></div>
+        <div class="block-price">£200</div>
+        <div class="block-sub">£40/hr</div>
+        <a href="https://buy.stripe.com/7sY5kEfi24MZ7YCfx5bII08" target="_blank" class="btn btn-outline" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+      </div>
+      <div class="block-card glass-card">
+        <span class="pop-tag"></span>
         <div class="block-hrs-wrap"><div class="block-hrs">10 <small>hrs</small></div></div>
-        <div class="block-price">£380</div>
-        <div class="block-sub"></div>
-        <a href="https://buy.stripe.com/9B6dRa5Hsenz1Ae70zbII00" target="_blank" class="btn btn-outline" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+        <div class="block-price">£390</div>
+        <div class="block-sub">£39/hr</div>
+        <a href="https://buy.stripe.com/dRm5kEfi23IVa6KacLbII04" target="_blank" class="btn btn-outline" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
       </div>
       <div class="block-card pop glass-card">
         <span class="pop-tag">★ Most Popular</span>
         <div class="block-hrs-wrap"><div class="block-hrs">15 <small>hrs</small></div></div>
-        <div class="block-price">£540</div>
-        <div class="block-sub"></div>
-        <a href="https://buy.stripe.com/eVq7sM1rc2ERgv8doXbII01" target="_blank" class="btn btn-red" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+        <div class="block-price">£560</div>
+        <div class="block-sub">£37.33/hr</div>
+        <a href="https://buy.stripe.com/bJe5kE4DogvHbaOdoXbII05" target="_blank" class="btn btn-red" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
       </div>
       <div class="block-card glass-card">
         <span class="pop-tag"></span>
         <div class="block-hrs-wrap"><div class="block-hrs">20 <small>hrs</small></div></div>
-        <div class="block-price">£720</div>
-        <div class="block-sub"></div>
-        <a href="https://buy.stripe.com/eVqeVe2vg6V73Im84DbII02" target="_blank" class="btn btn-outline" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+        <div class="block-price">£740</div>
+        <div class="block-sub">£37/hr — best value</div>
+        <a href="https://buy.stripe.com/4gMcN62vg4MZ7YCet1bII06" target="_blank" class="btn btn-outline" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
       </div>
       <div class="block-card glass-card" style="border-left-color:var(--slate);">
         <span class="pop-tag"></span>
         <div class="block-hrs-wrap"><div class="block-hrs" style="font-size:28px;letter-spacing:-0.5px;">Semi<br>Intensive</div></div>
-        <div class="block-price">£800</div>
+        <div class="block-price">£840</div>
         <div class="block-sub"><strong>21.5 hrs + full test prep</strong></div>
-        <a href="https://buy.stripe.com/cNi5kE9XI3IVfr484DbII03" target="_blank" class="btn btn-slate" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+        <a href="https://buy.stripe.com/cNi4gA4DoenzceS84DbII07" target="_blank" class="btn btn-slate" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+      </div>
+    </div>
+
+    <div class="block-section-label reveal">Test Preparation Sessions — 4 Hours</div>
+    <div class="tp-grid reveal">
+      <div class="lesson-card glass-card">
+        <div class="l-price"><sup>£</sup>160</div>
+        <div class="l-dur">4 Hours</div>
+        <div class="l-name">Peterborough Test Prep</div>
+        <div class="l-desc">Four full hours of focused training on Peterborough test routes and manoeuvres.</div>
+        <a href="https://cal.com/d4driving/peterborough-test-preparation" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;">Book Test Prep</a>
+      </div>
+      <div class="lesson-card glass-card">
+        <div class="l-price"><sup>£</sup>160</div>
+        <div class="l-dur">4 Hours</div>
+        <div class="l-name">Grantham Test Prep</div>
+        <div class="l-desc">4-hour session — includes travel to/from Grantham; approx. 2 hours' training on local test routes.</div>
+        <a href="https://cal.com/d4driving/grantham-test-preparation" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;">Book Test Prep</a>
+      </div>
+      <div class="lesson-card glass-card">
+        <div class="l-price"><sup>£</sup>160</div>
+        <div class="l-dur">4 Hours</div>
+        <div class="l-name">Kettering Test Prep</div>
+        <div class="l-desc">4-hour session — includes travel to/from Kettering; approx. 2 hours' training on local test routes.</div>
+        <a href="https://cal.com/d4driving/kettering-test-preparation" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;">Book Test Prep</a>
       </div>
     </div>
   </div>
@@ -1174,7 +1208,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
             <h3>Robert's Calendar — Book a Lesson</h3>
             <p>Peterborough · Grantham · Kettering</p>
           </div>
-          <span class="price-badge">From £40/hr</span>
+          <span class="price-badge">From £37/hr</span>
         </div>
         <div id="cal-loading" class="cal-loading">
           <div class="spinner"></div>
@@ -1692,7 +1726,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       </details>
       <details class="glass-card">
         <summary>How much do driving lessons cost in Peterborough?</summary>
-        <div class="faq-a">Single lessons are £40 per hour, with a 1.5-hour lesson at £55 and a 2-hour lesson at £75. Block bookings bring the rate down: 10 hours for £380, 15 hours for £540, or 20 hours for £720. A semi-intensive course (21.5 hours plus full test prep) is £800. See the full breakdown in our <a href="#prices">prices section</a>.</div>
+        <div class="faq-a">Single lessons are £42 per hour, with a 1.5-hour lesson at £60 and a 2-hour lesson at £80. New students start with a 90-minute assessment lesson for £45 (one per student). Block bookings bring the rate down: 5 hours for £200, 10 hours for £390, 15 hours for £560, or 20 hours for £740 — that's just £37 per hour. A semi-intensive course (21.5 hours plus full test prep) is £840, and 4-hour test preparation sessions in Peterborough, Grantham or Kettering are £160. See the full breakdown in our <a href="#prices">prices section</a>.</div>
       </details>
       <details class="glass-card">
         <summary>Do you offer manual and automatic lessons?</summary>
@@ -1734,7 +1768,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     {
       "@type": "Question",
       "name": "How much do driving lessons cost in Peterborough?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Single lessons are £40 per hour, with a 1.5-hour lesson at £55 and a 2-hour lesson at £75. Block bookings reduce the rate: 10 hours for £380, 15 hours for £540, or 20 hours for £720. A semi-intensive course (21.5 hours plus full test prep) is £800." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Single lessons are £42 per hour, with a 1.5-hour lesson at £60 and a 2-hour lesson at £80. New students start with a 90-minute assessment lesson for £45 (one per student). Block bookings reduce the rate: 5 hours for £200, 10 hours for £390, 15 hours for £560, or 20 hours for £740 (£37 per hour). A semi-intensive course (21.5 hours plus full test prep) is £840. Test preparation sessions (4 hours) in Peterborough, Grantham or Kettering are £160." }
     },
     {
       "@type": "Question",
@@ -1850,7 +1884,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 
 <!-- Sticky mobile CTA -->
 <div class="sticky-cta" id="sticky-cta">
-  <a href="#booking" class="btn btn-red">Book Your Lesson — From £40/hr</a>
+  <a href="#booking" class="btn btn-red">Book Your Lesson — From £37/hr</a>
 </div>
 
 <!-- WhatsApp Float -->
