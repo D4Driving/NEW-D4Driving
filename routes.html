@@ -270,8 +270,10 @@ a    { color: inherit; text-decoration: none; }
   background: var(--bg2);
   position: relative;
 }
-#map, #map-kettering { height: 520px; width: 100%; }
-@media (max-width: 768px) { #map, #map-kettering { height: 360px; } }
+#map, #map-grantham, #map-kettering { height: 520px; width: 100%; }
+@media (max-width: 768px) {
+  #map, #map-grantham, #map-kettering { height: 360px; }
+}
 
 .map-controls {
   position: absolute; bottom: 16px; left: 16px; z-index: 800;
@@ -589,13 +591,51 @@ footer {
 
   <!-- ── GRANTHAM (coming soon) ── -->
   <div class="area-panel" id="panel-grantham" style="display:none;">
-    <div class="glass-card coming-soon" style="margin-top:32px;">
-      <div class="icon">🗺</div>
-      <h3>Grantham routes coming soon</h3>
-      <p>We're mapping practice routes around the Grantham test centre now.<br>Drop your email and we'll let you know when they go live.</p>
-      <div class="notify-form">
-        <input type="email" placeholder="your@email.com" id="email-grantham">
-        <button class="btn btn-red" onclick="notifyMe('grantham')">Notify me</button>
+    <!-- Route tabs are built from the Supabase catalogue at runtime -->
+    <div class="route-tabs" id="route-tabs-grantham" style="padding-top:32px;"></div>
+
+    <div class="routes-layout">
+      <div>
+        <div class="map-wrap">
+          <div id="map-grantham"></div>
+          <div class="map-controls">
+            <button class="map-btn map-btn-white" id="btn-fit-grantham">⤢ Fit route</button>
+            <button class="map-btn map-btn-red" id="btn-gpx-grantham">↓ GPX</button>
+          </div>
+        </div>
+        <div class="glass-card" style="margin-top:20px; padding:24px;">
+          <h3 style="font-size:16px;font-weight:800;color:var(--slate);margin-bottom:16px;">📋 Instructor notes</h3>
+          <div class="note-list" id="route-notes-grantham"></div>
+        </div>
+        <div class="glass-card" style="margin-top:20px; padding:24px;" id="video-card-grantham">
+          <h3 style="font-size:16px;font-weight:800;color:var(--slate);margin-bottom:16px;">▶ Route walkthrough video</h3>
+          <div id="video-container-grantham"></div>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <div class="glass-card info-card">
+          <h3><span class="icon icon-red">📍</span>Route details</h3>
+          <div class="stat-row">
+            <div class="stat-box"><div class="val" id="stat-distance-grantham">—</div><div class="key">Distance</div></div>
+            <div class="stat-box"><div class="val" id="stat-duration-grantham">—</div><div class="key">Est. time</div></div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:16px;flex-wrap:wrap;">
+            <span class="diff-badge" id="stat-difficulty-grantham"></span>
+            <span style="font-size:12px;color:var(--ink-low);" id="stat-waypoint-count-grantham"></span>
+          </div>
+          <p style="font-size:13.5px;color:var(--ink-mid);line-height:1.65;" id="route-description-grantham"></p>
+        </div>
+        <div class="glass-card info-card">
+          <h3><span class="icon icon-slate">🔵</span>Waypoints</h3>
+          <div class="waypoint-list" id="waypoint-list-grantham"></div>
+        </div>
+        <div class="glass-card info-card" style="background:linear-gradient(135deg,var(--slate) 0%,#1a2b3c 100%);border-color:transparent;">
+          <p style="font-size:13px;color:var(--sage);margin-bottom:4px;font-weight:600;letter-spacing:1px;text-transform:uppercase;">Want to practise this route?</p>
+          <h3 style="font-size:18px;font-weight:800;color:#fff;margin-bottom:8px;display:block;">Book a lesson with Robert</h3>
+          <p style="font-size:13px;color:var(--sage);margin-bottom:20px;line-height:1.6;">Tell Robert you've studied this route — he'll start you on roads you already know.</p>
+          <a href="index.html#booking" class="btn btn-red" style="width:100%;justify-content:center;">Book Online →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -755,6 +795,9 @@ let accessToken = null;    // set once magic-link sign-in lands
 
 async function sb(path) {
   const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+    // no-store, or the browser can serve a cached catalogue and the site keeps
+    // showing the old route list after something is published in the admin.
+    cache: 'no-store',
     headers: {
       apikey: SUPABASE_KEY,
       Authorization: 'Bearer ' + (accessToken || SUPABASE_KEY),
@@ -885,10 +928,11 @@ function diffClass(d) {
 // Don't drop it back towards "realistic town speed" — at 20 km/h the longer
 // routes claimed an hour, which made them look nothing like a test.
 //
-// This holds while the longest route is under about 21 km. Past that the
+// This holds while the longest route is under about 22 km. Past that the
 // estimate creeps over 40 again, and the fix is a per-route avg_speed_kmh
-// column rather than nudging this number up further.
-const AVG_SPEED_KMH = 33;
+// column rather than nudging this number up a third time — the routes will
+// have too much town/rural spread by then for one constant to fit them all.
+const AVG_SPEED_KMH = 35;
 const estMinutes = km => Math.round(km / AVG_SPEED_KMH * 60);
 
 // ─── CATALOGUE ─────────────────────────────────────────────────────────────
@@ -918,7 +962,20 @@ function buildTabs(area) {
   const host = document.getElementById('route-tabs-' + area);
   if (!host) return;
   host.innerHTML = '';
-  (catalogue[area] || []).forEach((meta, i) => {
+
+  // A converted panel whose routes are all still drafts would otherwise render
+  // an empty map and a sidebar full of dashes. Hide the layout and say so.
+  const list = catalogue[area] || [];
+  const layout = document.getElementById('panel-' + area)?.querySelector('.routes-layout');
+  if (!list.length) {
+    host.innerHTML = '<p style="font-size:14px;color:var(--ink-low);padding:8px 0;">' +
+      'Routes for this test centre are being mapped now — check back soon.</p>';
+    if (layout) layout.style.display = 'none';
+    return;
+  }
+  if (layout) layout.style.display = '';
+
+  list.forEach((meta, i) => {
     const b = document.createElement('button');
     b.className = 'route-tab' + (i === 0 ? ' active' : '') + (isLocked(meta) ? ' locked' : '');
     b.dataset.route = meta.key;
@@ -1174,14 +1231,18 @@ document.querySelectorAll('.area-tab').forEach(btn => {
     document.querySelectorAll('.area-panel').forEach(p => p.style.display = 'none');
     document.getElementById('panel-' + currentArea).style.display = '';
 
-    // Init map for this area if it has routes and hasn't been initialised yet
+    // Always build the tabs: buildTabs also renders the "being mapped now"
+    // state for a converted panel whose routes are all still drafts, and that
+    // has to run even though there is nothing to put a map in.
+    buildTabs(currentArea);
+
     // setTimeout defers until the browser has painted the newly-visible panel
-    if (catalogue[currentArea]?.length && !maps[currentArea]) {
+    const list = catalogue[currentArea] || [];
+    if (list.length && !maps[currentArea]) {
       setTimeout(() => {
         initMap(currentArea);
-        buildTabs(currentArea);
-        currentRouteKey = catalogue[currentArea][0].key;
-        loadRoute(currentArea, currentRouteKey);
+        currentRouteKey = list[0].key;
+        loadRoute(currentArea, list[0].key);
       }, 50);
     } else if (maps[currentArea]) {
       maps[currentArea].invalidateSize();
@@ -1191,16 +1252,17 @@ document.querySelectorAll('.area-tab').forEach(btn => {
 // Route tabs are created by buildTabs(), which wires their own click handlers.
 
 // Fit + GPX buttons wired per area
-document.getElementById('btn-fit').addEventListener('click', () => {
-  const rl = routeLayers['peterborough'];
-  if (rl) maps['peterborough'].fitBounds(rl.getBounds(), { padding: [40,40] });
+// Fit + GPX buttons, wired for every area that has a real map panel.
+// Add a slug here when its coming-soon panel is converted; the optional
+// chaining means a missing panel is simply skipped rather than throwing.
+['peterborough', 'grantham', 'kettering'].forEach(area => {
+  const s = sfx(area);
+  document.getElementById('btn-fit' + s)?.addEventListener('click', () => {
+    const rl = routeLayers[area];
+    if (rl) maps[area].fitBounds(rl.getBounds(), { padding: [40,40] });
+  });
+  document.getElementById('btn-gpx' + s)?.addEventListener('click', downloadGpx);
 });
-document.getElementById('btn-gpx').addEventListener('click', downloadGpx);
-document.getElementById('btn-fit-kettering').addEventListener('click', () => {
-  const rl = routeLayers['kettering'];
-  if (rl) maps['kettering'].fitBounds(rl.getBounds(), { padding: [40,40] });
-});
-document.getElementById('btn-gpx-kettering').addEventListener('click', downloadGpx);
 
 // ─── NAV ───────────────────────────────────────────────────────────────────
 const nav = document.getElementById('nav');
@@ -1240,7 +1302,10 @@ function notifyMe(area) {
     return;
   }
   const totalRoutes = Object.values(catalogue).reduce((n, rs) => n + rs.length, 0);
-  const liveCentres = Object.values(centres).filter(c => c.status === 'live').length;
+  // Count centres that actually have a published route, rather than trusting
+  // the status flag — that way the headline can't claim a centre is live while
+  // all of its routes are still drafts.
+  const liveCentres = Object.keys(catalogue).length;
   document.getElementById('stat-routes').textContent = totalRoutes;
   document.getElementById('stat-centres').textContent = liveCentres;
 
