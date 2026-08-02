@@ -1,6 +1,6 @@
 /* D4Driving Service Worker — v1.0 */
 
-const CACHE = 'd4driving-v1';
+const CACHE = 'd4driving-v2';
 
 /* Assets to cache on install */
 const PRECACHE = [
@@ -55,6 +55,20 @@ self.addEventListener('fetch', event => {
           return res;
         })
         .catch(() => caches.match('/index.html'))
+    );
+    return;
+  }
+
+  /* JSON data (availability.json, articles.json) — ALWAYS network first so live data never goes stale */
+  if (event.request.url.endsWith('.json')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(res => {
+          const clone = res.clone();
+          caches.open(CACHE).then(c => c.put(event.request, clone));
+          return res;
+        })
+        .catch(() => caches.match(event.request))
     );
     return;
   }

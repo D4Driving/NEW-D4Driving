@@ -17,6 +17,12 @@
 <meta name="twitter:description" content="DVSA Approved driving lessons in Peterborough. 83% first-time pass rate, 430+ local passes, 5.0★ on Google.">
 <meta name="twitter:image"       content="https://d4driving.co.uk/yaris-cross.webp">
 
+<!-- PWA / icons -->
+<meta name="theme-color" content="#BD2026">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
 <!--
   SETUP:
   Upload these files alongside index.html:
@@ -1875,6 +1881,8 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
           <a href="#faq">FAQ</a>
           <a href="terms.html">Terms &amp; Conditions</a>
           <a href="privacy.html">Privacy Policy</a>
+          <a href="#" id="pwa-install" style="display:none;color:var(--red);font-weight:700;">📲 Install Our Free App</a>
+          <span id="ios-install-tip" style="display:none;font-size:12px;color:var(--sage);line-height:1.5;">On iPhone: open in Safari, tap <strong>Share</strong> ⬆ then <strong>"Add to Home Screen"</strong></span>
         </div>
       </div>
       <div>
@@ -1907,6 +1915,34 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 </a>
 
 <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<!-- PWA: service worker + install button -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+}
+(function () {
+  const btn = document.getElementById('pwa-install');
+  const tip = document.getElementById('ios-install-tip');
+  if (!btn) return;
+  let deferred = null;
+  const standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  if (standalone) return; /* already installed */
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferred = e;
+    btn.style.display = 'block';
+  });
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (isIOS) btn.style.display = 'block';
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (deferred) { deferred.prompt(); deferred = null; }
+    else if (tip) { tip.style.display = 'block'; }
+  });
+  window.addEventListener('appinstalled', () => { btn.style.display = 'none'; if (tip) tip.style.display = 'none'; });
+})();
+</script>
 
 <!-- Sticky mobile CTA: show after hero scrolls out, hide while booking section is on screen -->
 <script>
