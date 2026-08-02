@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Book with Rakesh Kumar | D4Driving Peterborough</title>
-<meta name="description" content="Book a manual driving lesson with Rakesh Kumar — DVSA Approved Instructor at D4Driving Peterborough. VW Golf. Flexible hours, 5 session types, block packages available.">
+<meta name="description" content="Book a manual driving lesson with Rakesh Kumar — DVSA Approved Instructor at D4Driving Peterborough. VW Golf. Flexible hours, block bookings from £37/hr, test prep in Peterborough, Grantham &amp; Kettering.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -192,6 +192,7 @@ p  { line-height: 1.75; }
 
 /* Individual lesson cards */
 .lesson-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.tp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 48px; }
 .lesson-card { padding: 28px 24px; text-align: center; border-top: 3px solid transparent; transition: border-color .2s, transform .2s; }
 .lesson-card:hover { border-top-color: var(--red); transform: translateY(-4px); }
 .lesson-card.featured { border-top-color: var(--red); }
@@ -276,6 +277,7 @@ footer { background: var(--slate); padding: 60px 0 32px; }
   .car-grid { grid-template-columns: 1fr; }
   .lesson-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
   .block-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .tp-grid { grid-template-columns: 1fr; gap: 14px; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .session-featured { grid-template-columns: 1fr; gap: 20px; }
   .sf-right { text-align: left; }
@@ -398,18 +400,32 @@ footer { background: var(--slate); padding: 60px 0 32px; }
       <p>All sessions open directly in Rakesh's live Cal.com calendar — pick a date and time that works for you.</p>
     </div>
 
-    <!-- Test Prep — featured -->
-    <div class="session-featured reveal">
-      <div>
-        <div class="sf-tag">Peterborough Special</div>
-        <h3>Peterborough Test Preparation</h3>
-        <p>A comprehensive 4-hour session covering the full Peterborough test route, all manoeuvres, and a complete mock test with detailed debrief. Ideal for students approaching their practical test.</p>
-        <a href="https://cal.com/rakesh-d4driving/peterborough-test-preparation" target="_blank" rel="noopener" class="btn btn-red" style="margin-top:24px;">Book Test Prep →</a>
+    <!-- Test Prep — 3 locations -->
+    <div class="block-label reveal">Test Preparation Sessions — 4 Hours</div>
+    <div class="tp-grid reveal">
+      <div class="lesson-card glass-card featured">
+        <div class="l-tag">★ Home Test Centre</div>
+        <div class="l-price"><sup>£</sup>160</div>
+        <div class="l-dur">4 Hours</div>
+        <div class="l-name">Peterborough Test Prep</div>
+        <div class="l-desc">Four full hours covering the Peterborough test routes, all manoeuvres, and a complete mock test with debrief.</div>
+        <a href="https://buy.stripe.com/3cIaEQ1ms532fmT3Cp9ws0h" target="_blank" rel="noopener" class="btn btn-red" style="width:100%;">Buy Test Prep</a>
       </div>
-      <div class="sf-right">
-        <div class="sf-dur">4 <small>hrs</small></div>
-        <div class="sf-label">Full Session</div>
-        <div style="font-size:36px;font-weight:800;color:#fff;margin-top:12px;">£150</div>
+      <div class="lesson-card glass-card">
+        <div class="l-tag"></div>
+        <div class="l-price"><sup>£</sup>160</div>
+        <div class="l-dur">4 Hours</div>
+        <div class="l-name">Grantham Test Prep</div>
+        <div class="l-desc">4-hour session — includes travel to/from Grantham; approx. 2 hours' training on local test routes.</div>
+        <a href="https://buy.stripe.com/6oUaEQ0ioeDC4Iffl79ws0i" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;">Buy Test Prep</a>
+      </div>
+      <div class="lesson-card glass-card">
+        <div class="l-tag"></div>
+        <div class="l-price"><sup>£</sup>160</div>
+        <div class="l-dur">4 Hours</div>
+        <div class="l-name">Kettering Test Prep</div>
+        <div class="l-desc">4-hour session — includes travel to/from Kettering; approx. 2 hours' training on local test routes.</div>
+        <a href="https://buy.stripe.com/cNi7sE6GM3YYfmT2yl9ws0j" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;">Buy Test Prep</a>
       </div>
     </div>
 
@@ -418,16 +434,16 @@ footer { background: var(--slate); padding: 60px 0 32px; }
 
       <div class="lesson-card glass-card">
         <div class="l-tag">New Students</div>
-        <div class="l-price"><sup>£</sup>55</div>
+        <div class="l-price"><sup>£</sup>45</div>
         <div class="l-dur">90 Minutes</div>
         <div class="l-name">Assessment</div>
-        <div class="l-desc">Start here — a thorough skills assessment and a personalised lesson plan tailored to you.</div>
+        <div class="l-desc">Start here — a thorough skills assessment and a personalised lesson plan tailored to you. <strong>One per student — new students only.</strong></div>
         <a href="https://cal.com/rakesh-d4driving/driving-assessment" target="_blank" rel="noopener" class="btn btn-slate" style="width:100%;">Book →</a>
       </div>
 
       <div class="lesson-card glass-card">
         <div class="l-tag"></div>
-        <div class="l-price"><sup>£</sup>40</div>
+        <div class="l-price"><sup>£</sup>42</div>
         <div class="l-dur">1 Hour</div>
         <div class="l-name">Standard</div>
         <div class="l-desc">A focused lesson to build on a specific skill or keep up consistent progress.</div>
@@ -436,7 +452,7 @@ footer { background: var(--slate); padding: 60px 0 32px; }
 
       <div class="lesson-card glass-card featured">
         <div class="l-tag">★ Most Popular</div>
-        <div class="l-price"><sup>£</sup>55</div>
+        <div class="l-price"><sup>£</sup>60</div>
         <div class="l-dur">1.5 Hours</div>
         <div class="l-name">Extended</div>
         <div class="l-desc">The ideal balance of time and value — enough road time to make real progress.</div>
@@ -445,7 +461,7 @@ footer { background: var(--slate); padding: 60px 0 32px; }
 
       <div class="lesson-card glass-card">
         <div class="l-tag"></div>
-        <div class="l-price"><sup>£</sup>75</div>
+        <div class="l-price"><sup>£</sup>80</div>
         <div class="l-dur">2 Hours</div>
         <div class="l-name">Long</div>
         <div class="l-desc">Maximum road time — great for building fluency and confidence quickly.</div>
@@ -459,31 +475,31 @@ footer { background: var(--slate); padding: 60px 0 32px; }
     <div class="block-grid reveal">
       <div class="block-card glass-card">
         <span class="pop-tag"></span>
+        <div class="block-hrs-wrap"><div class="block-hrs">5 <small>hrs</small></div></div>
+        <div class="block-price">£200</div>
+        <div class="block-sub">£40/hr</div>
+        <a href="https://buy.stripe.com/9B66oA2qw7badeLfl79ws0c" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+      </div>
+      <div class="block-card glass-card">
+        <span class="pop-tag"></span>
         <div class="block-hrs-wrap"><div class="block-hrs">10 <small>hrs</small></div></div>
-        <div class="block-price">£380</div>
-        <div class="block-sub"></div>
-        <a href="https://buy.stripe.com/cNi28k3uA0MM3Ebfl79ws00" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+        <div class="block-price">£390</div>
+        <div class="block-sub">£39/hr</div>
+        <a href="https://buy.stripe.com/28EbIUfdi0MM0rZdcZ9ws0d" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
       </div>
       <div class="block-card pop glass-card">
         <span class="pop-tag">★ Most Popular</span>
         <div class="block-hrs-wrap"><div class="block-hrs">15 <small>hrs</small></div></div>
-        <div class="block-price">£540</div>
-        <div class="block-sub"></div>
-        <a href="https://buy.stripe.com/00wdR2ghmanm2A71uh9ws01" target="_blank" rel="noopener" class="btn btn-red" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+        <div class="block-price">£560</div>
+        <div class="block-sub">£37.33/hr</div>
+        <a href="https://buy.stripe.com/aFabIU7KQ2UU8Yv3Cp9ws0e" target="_blank" rel="noopener" class="btn btn-red" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
       </div>
       <div class="block-card glass-card">
         <span class="pop-tag"></span>
         <div class="block-hrs-wrap"><div class="block-hrs">20 <small>hrs</small></div></div>
-        <div class="block-price">£720</div>
-        <div class="block-sub"></div>
-        <a href="https://buy.stripe.com/28E14gfdifHG2A7fl79ws02" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
-      </div>
-      <div class="block-card glass-card" style="border-left-color:var(--slate);">
-        <span class="pop-tag"></span>
-        <div class="block-hrs-wrap"><div class="block-hrs" style="font-size:28px;letter-spacing:-0.5px;line-height:1.1;">Semi<br>Intensive</div></div>
-        <div class="block-price">£800</div>
-        <div class="block-sub"><strong>21.5 hrs + full test prep</strong></div>
-        <a href="https://buy.stripe.com/5kQaEQaX27bacaH5Kx9ws03" target="_blank" rel="noopener" class="btn btn-slate" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
+        <div class="block-price">£740</div>
+        <div class="block-sub">£37/hr — best value</div>
+        <a href="https://buy.stripe.com/28EfZa3uA676eiPfl79ws0f" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
       </div>
     </div>
 
