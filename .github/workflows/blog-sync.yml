@@ -57,6 +57,7 @@ jobs:
                 .replace(/ARTICLE_IMAGE/g, imageUrl)
                 .replace(/ARTICLE_SLUG/g, slug)
                 .replace('ARTICLE_CONTENT', content)
+                .replace(/ARTICLE_DATE_ISO/g, item.pubDate ? new Date(item.pubDate).toISOString().slice(0,10) : '')
                 .replace(/ARTICLE_DATE/g, item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}) : '')
                 .replace(/ARTICLE_CATEGORY/g, (item.categories && item.categories[0]) || 'Driving Tips')
                 .replace(/ARTICLE_EXCERPT/g, (item.contentSnippet || "").slice(0,160));
