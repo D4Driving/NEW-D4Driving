@@ -477,7 +477,7 @@ p  { line-height: 1.75; }
 /* ─── PRICES ─────────────────────────────── */
 #prices { background: var(--bg); }
 .lesson-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 48px; }
-.lesson-card { padding: 28px 22px; position: relative; overflow: hidden; transition: transform .3s; }
+.lesson-card { padding: 28px 22px; position: relative; overflow: hidden; transition: transform .3s; display: flex; flex-direction: column; }
 .lesson-card:hover { transform: translateY(-6px); }
 .lesson-card.featured { background: var(--slate) !important; border-color: transparent !important; box-shadow: 0 20px 40px rgba(44,62,80,0.2) !important; }
 .feat-tag {
@@ -493,7 +493,8 @@ p  { line-height: 1.75; }
 .lesson-card.featured .l-dur { color: rgba(143,163,160,0.8); }
 .l-name { font-size: 18px; font-weight: 700; color: var(--slate); margin: 18px 0 8px; }
 .lesson-card.featured .l-name { color: #fff; }
-.l-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.6; margin-bottom: 20px; }
+.l-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.6; margin-bottom: 20px; flex: 1; }
+.lesson-card .btn { margin-top: auto; }
 .lesson-card.featured .l-desc { color: rgba(255,255,255,0.55); }
 
 .block-section-label {

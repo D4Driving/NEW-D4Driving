@@ -193,7 +193,7 @@ p  { line-height: 1.75; }
 /* Individual lesson cards */
 .lesson-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
 .tp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 48px; }
-.lesson-card { padding: 28px 24px; text-align: center; border-top: 3px solid transparent; transition: border-color .2s, transform .2s; }
+.lesson-card { padding: 28px 24px; text-align: center; border-top: 3px solid transparent; transition: border-color .2s, transform .2s; display: flex; flex-direction: column; }
 .lesson-card:hover { border-top-color: var(--red); transform: translateY(-4px); }
 .lesson-card.featured { border-top-color: var(--red); }
 .l-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 12px; min-height: 16px; }
@@ -201,7 +201,8 @@ p  { line-height: 1.75; }
 .l-price sup { font-size: 20px; vertical-align: super; }
 .l-dur { font-size: 12px; font-weight: 600; color: var(--ink-low); text-transform: uppercase; letter-spacing: 1px; margin: 8px 0 4px; }
 .l-name { font-size: 16px; font-weight: 700; color: var(--slate); margin-bottom: 10px; }
-.l-desc { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 20px; line-height: 1.6; }
+.l-desc { font-size: 13.5px; color: var(--ink-mid); margin-bottom: 20px; line-height: 1.6; flex: 1; }
+.lesson-card .btn { margin-top: auto; }
 
 /* ─── BLOCK PACKAGES ─────────────────────── */
 .block-label {
@@ -438,7 +439,7 @@ footer { background: var(--slate); padding: 60px 0 32px; }
         <div class="l-dur">90 Minutes</div>
         <div class="l-name">Assessment</div>
         <div class="l-desc">Start here — a thorough skills assessment and a personalised lesson plan tailored to you. <strong>One per student — new students only.</strong></div>
-        <a href="https://cal.com/rakesh-d4driving/driving-assessment" target="_blank" rel="noopener" class="btn btn-slate" style="width:100%;">Book →</a>
+        <a href="https://cal.com/rakesh-d4driving/1.5hrs-assessment-lesson-manual-car" target="_blank" rel="noopener" class="btn btn-slate" style="width:100%;">Book →</a>
       </div>
 
       <div class="lesson-card glass-card">
@@ -447,7 +448,7 @@ footer { background: var(--slate); padding: 60px 0 32px; }
         <div class="l-dur">1 Hour</div>
         <div class="l-name">Standard</div>
         <div class="l-desc">A focused lesson to build on a specific skill or keep up consistent progress.</div>
-        <a href="https://cal.com/rakesh-d4driving/1-hr-driving-lesson" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;">Book →</a>
+        <a href="https://cal.com/rakesh-d4driving/1-hour-driving-tuition-manual-car" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;">Book →</a>
       </div>
 
       <div class="lesson-card glass-card featured">
@@ -465,7 +466,7 @@ footer { background: var(--slate); padding: 60px 0 32px; }
         <div class="l-dur">2 Hours</div>
         <div class="l-name">Long</div>
         <div class="l-desc">Maximum road time — great for building fluency and confidence quickly.</div>
-        <a href="https://cal.com/rakesh-d4driving/2-hrs-driving-lesson" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;">Book →</a>
+        <a href="https://cal.com/rakesh-d4driving/2-hours-driving-lesson" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;">Book →</a>
       </div>
 
     </div>
