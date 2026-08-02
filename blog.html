@@ -13,6 +13,10 @@
 <meta property="og:site_name"   content="D4Driving School of Motoring">
 <meta name="robots"    content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://d4driving.co.uk/blog.html">
+<meta name="theme-color" content="#BD2026">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#BD2026">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -1904,5 +1908,6 @@ searchClear.addEventListener('click', () => {
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => nav.classList.toggle('stuck', window.scrollY > 40));
 </script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));}</script>
 </body>
 </html>
