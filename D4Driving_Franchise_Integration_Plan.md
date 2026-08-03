@@ -52,15 +52,17 @@ Payments are handled separately — each instructor manages their own Stripe acc
 - Robert: `cal.com/d4driving` (existing, unchanged)
 - Rakesh: `cal.com/rakesh-d4driving` (set up by Robert/Rakesh)
 
-**Rakesh's event type URLs:**
+**Rakesh's event type URLs** (current as of Aug 2026 — slugs were changed by Rakesh, the originals 404):
 
-| Session | URL |
-|---|---|
-| Driving Assessment (90 min / £55) | `cal.com/rakesh-d4driving/driving-assessment` |
-| 1-hr Lesson (£40) | `cal.com/rakesh-d4driving/1-hr-driving-lesson` |
-| 1.5-hr Lesson (£55) | `cal.com/rakesh-d4driving/1.5-hrs-driving-lesson` |
-| 2-hr Lesson (£75) | `cal.com/rakesh-d4driving/2-hrs-driving-lesson` |
-| Peterborough Test Prep (4 hrs / £150) | `cal.com/rakesh-d4driving/peterborough-test-preparation` |
+| Session | Price | URL |
+|---|---|---|
+| Assessment, 90 min (new students, once) | £45 | `cal.com/rakesh-d4driving/1.5-hrs-assessment-lesson-manual` |
+| 1-hr Lesson | £42 | `cal.com/rakesh-d4driving/1-hour-driving-tuition-manual-car` |
+| 1.5-hr Lesson | £60 | `cal.com/rakesh-d4driving/1.5-hrs.-driving-lesson-manual` (note the dot in "hrs.") |
+| 2-hr Lesson | £80 | `cal.com/rakesh-d4driving/2-hours-driving-lesson` |
+| Test Prep ×3 locations | £160 | Sold via **Stripe links**, not Cal.com — see section 12 |
+
+**Robert's test prep event types:** `cal.com/d4driving/peterborough-test-preparation`, `/grantham-test-preparation`, `/kettering-test-preparation`
 
 ---
 
@@ -83,6 +85,8 @@ Two-card instructor selector added above Robert's Cal.com embed:
 ---
 
 ## 4. `rakesh.d4driving.html` — ✅ Complete
+
+> ⚠️ Prices below are the **original June 2026 build**. Superseded by the 1 Aug 2026 rollout (section 11) — semi-intensive dropped, 5hr block added, test prep in 3 locations. Current prices: §11 and `D4Driving_Pricing_Update_July2026.md`.
 
 **Sections:**
 
