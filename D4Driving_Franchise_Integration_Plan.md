@@ -1,5 +1,5 @@
 # D4Driving — Franchise Integration Plan
-_Last updated: 4 July 2026_
+_Last updated: 2 August 2026_
 
 ## Context
 
@@ -156,12 +156,31 @@ Two-card instructor selector added above Robert's Cal.com embed:
 
 ---
 
+## 11. Pricing Rollout — ✅ Complete (1 August 2026)
+
+Full detail in `D4Driving_Pricing_Update_July2026.md`. Both pages live with new prices, all Stripe/Cal.com links swapped, old links deactivated, FB announcement posted. Rakesh's structure differs deliberately: no semi-intensive, and test prep in all 3 locations sold via Stripe (Robert's test prep books through Cal.com).
+
+---
+
+## 12. PWA, Analytics & Competitor Monitoring — ✅ Complete (2 August 2026)
+
+**Progressive Web App activated.** `manifest.json` and `sw.js` had existed in the repo since May but were never linked from any page, so the site was never actually installable. Now wired into index, rakesh, mock-test and both templates: SW registration, install button in the footer (`#pwa-install`) with an iOS Add-to-Home-Screen tip, plus favicons which had been missing site-wide. Two fixes made in passing — the service worker would have permanently cached `availability.json` (now network-first for all `.json`), and the cache version was bumped to `d4driving-v3`. **Bump this version on significant site changes** so returning visitors get fresh assets. There is no native app; "install the D4Driving app" in the YouTube videos refers to this.
+
+**Cloudflare Web Analytics** (cookieless, free, token in `index.html`). Snippet sits before `</body>` on all 132 pages including the templates, so new articles inherit it. **No cookie consent banner is required** because it sets no cookies and does not track individuals — `privacy.html` §4, §5 and §9.3 document this. Limitation: pageviews only, no custom event tracking — booking conversion figures come from Cal.com and Stripe dashboards. YouTube video descriptions carry `?utm_source=youtube`; the canonical tags added on 1 Aug prevent those tagged URLs being indexed as duplicates.
+
+**Competitor Watch agent.** Weekly cloud routine (Mondays 07:00 UTC) monitoring 20+ Peterborough driving schools, writing dated reports to the private repo `D4Driving/intelligence-report`. Needs a cloud environment with **Full** network access — the default "Trusted" level blocks outbound fetches. Baseline finding: market runs £35–44/hr, D4Driving's £37/hr block floor is the most competitive among quality schools, and no local competitor has EV positioning.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
 |---|---|---|
+| **Electric Toyota C-HR+ launch** | Robert + Claude | Arriving early Sept 2026. Needs photos → fleet card, EV FAQ, schema, blog content. Claim wording: "first instructor in Peterborough teaching in the all-new electric Toyota C-HR+" (NOT "first electric car" — competitors use Leaf/Zoe/BYD) |
 | **Rakesh's availability in `availability.json`** | Robert + Rakesh | Rakesh's iCal URL (from his public Google Calendar) needs adding to `blog-sync.yml`; add `instructor` field to each slot; update index.html display with instructor badge |
 | **Cal.com T&C checkboxes** | Robert + Rakesh | Add required booking question to every event type: "I agree to D4Driving's Terms & Conditions: d4driving.co.uk/terms.html" |
+| **Rakesh's Cal.com assessment price** | Rakesh | His 1.5hr assessment event displays no price — should show £45 |
+| **Google review count in schema** | Robert + Claude | `aggregateRating` in index.html is a fixed number (36 at Aug 2026) — refresh every couple of months |
 | **Rakesh's pricing on `index.html`** | Robert | Block packages for Rakesh not yet on main site pricing section — optional, his page covers it |
 | **Orphaned file `vw-golf.webp`** | Robert | Old hyphen-filename version still in repo; safe to delete once confirmed unused |
 
