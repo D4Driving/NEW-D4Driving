@@ -1,6 +1,6 @@
 /* D4Driving Service Worker — v1.0 */
 
-const CACHE = 'd4driving-v2';
+const CACHE = 'd4driving-v3';
 
 /* Assets to cache on install */
 const PRECACHE = [

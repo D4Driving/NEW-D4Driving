@@ -2,6 +2,8 @@ User-agent: *
 Allow: /
 Disallow: /article-template.html
 Disallow: /blog-template.html
+Disallow: /theory_quiz_promo.html
+Disallow: /mock-test-consent.html
 Disallow: /admin.html
 
 Sitemap: https://d4driving.co.uk/sitemap.xml

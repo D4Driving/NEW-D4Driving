@@ -369,7 +369,7 @@ footer { background: var(--slate); padding: 60px 0 32px; }
         </div>
         <div class="tc-clause">
           <div class="tc-num">2.4</div>
-          <div class="tc-text">We collect data about website visitors through Cal.com (our booking system) and through the ElevenLabs conversational AI widget embedded on our website. Please see Clause 5 for details.</div>
+          <div class="tc-text">We collect data about website visitors through Cal.com (our booking system), through the ElevenLabs conversational AI widget embedded on our website, and through Cloudflare Web Analytics, which records anonymous, aggregate visitor statistics only. Please see Clause 5 for details.</div>
         </div>
       </div>
     </div>
@@ -450,6 +450,10 @@ footer { background: var(--slate); padding: 60px 0 32px; }
               <div class="tp-card">
                 <div class="tp-name">ElevenLabs — AI Assistant Widget</div>
                 <div class="tp-desc">Our website features a conversational AI assistant powered by ElevenLabs. If you interact with this widget, your voice input and any text you provide may be processed by ElevenLabs' servers. We recommend reviewing their privacy policy before using the widget. Interactions are not stored by D4Driving beyond any summary or lead information passed to us. <a href="https://elevenlabs.io/privacy" target="_blank" rel="noopener">elevenlabs.io/privacy</a></div>
+              </div>
+              <div class="tp-card">
+                <div class="tp-name">Cloudflare Web Analytics — Website Statistics</div>
+                <div class="tp-desc">We use Cloudflare Web Analytics to understand how many people visit our website and which pages are most useful. This service is privacy-first: it does <strong>not</strong> use cookies, does not track you across websites, does not build a profile of you, and does not collect any information that identifies you personally. It records only aggregate data such as page views, the website that referred you, and general device type. <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></div>
               </div>
             </div>
           </div>
@@ -548,14 +552,18 @@ footer { background: var(--slate); padding: 60px 0 32px; }
       <div class="tc-section-body">
         <div class="tc-clause">
           <div class="tc-num">9.1</div>
-          <div class="tc-text">Our website at www.d4driving.co.uk may use cookies and similar tracking technologies. Cookies are small text files placed on your device when you visit a website.</div>
+          <div class="tc-text">Our website at d4driving.co.uk may use cookies and similar technologies. Cookies are small text files placed on your device when you visit a website.</div>
         </div>
         <div class="tc-clause">
           <div class="tc-num">9.2</div>
-          <div class="tc-text">We use only the cookies necessary to operate the website and our booking system (Cal.com). We do not currently use advertising cookies, tracking pixels, or behavioural analytics tools.</div>
+          <div class="tc-text">We use only the cookies necessary to operate the website and our booking system (Cal.com). We do not use advertising cookies, tracking pixels, or behavioural advertising tools, and we do not sell or share your data with advertisers.</div>
         </div>
         <div class="tc-clause">
           <div class="tc-num">9.3</div>
+          <div class="tc-text">We use <strong>Cloudflare Web Analytics</strong> to measure general website traffic — for example, how many people visited a page and which website referred them. This tool is deliberately privacy-first: it sets <strong>no cookies</strong>, does not track visitors across other websites, and does not collect information that identifies you personally. Because it does not store or access information on your device, it does not require cookie consent. See Clause 5 for further detail.</div>
+        </div>
+        <div class="tc-clause">
+          <div class="tc-num">9.4</div>
           <div class="tc-text">You can control cookies through your browser settings. Disabling cookies may affect the functionality of the booking system on our website.</div>
         </div>
       </div>
@@ -650,5 +658,6 @@ const ro = new IntersectionObserver(entries => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 </script>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5fde75a7a3e54255b4dd181e5d51e692"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
