@@ -174,6 +174,8 @@ Full detail in `D4Driving_Pricing_Update_July2026.md`. Both pages live with new 
 
 **Competitor Watch agent.** Weekly cloud routine (Mondays 07:00 UTC) monitoring 20+ Peterborough driving schools, writing dated reports to the private repo `D4Driving/intelligence-report`. Needs a cloud environment with **Full** network access — the default "Trusted" level blocks outbound fetches. Baseline finding: market runs £35–44/hr, D4Driving's £37/hr block floor is the most competitive among quality schools, and no local competitor has EV positioning.
 
+**Daily Doc Catch-up agent** (added 3 Aug 2026). Nightly cloud routine (~9pm UK) that reads the day's commits and appends a plain-English summary to `CHANGELOG.md`. It is a **backstop only** — the docs are normally updated during the working session. It ignores the hourly `D4Driving-Bot` sync commits, writes nothing at all on quiet days, and is restricted to `CHANGELOG.md` alone: it must never edit this plan doc or any site file. Entries it marks with ⚠ are work not yet reflected here and should be folded in.
+
 ---
 
 ## Pending Tasks
