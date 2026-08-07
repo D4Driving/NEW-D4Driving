@@ -124,7 +124,11 @@ ul   { list-style: none; }
 .eyebrow.on-dark::before { background: var(--sage); }
 .eyebrow.centre { justify-content: center; }
 
-h1 { font-size: clamp(38px,6vw,72px); font-weight: 800; line-height: 1.02; letter-spacing: -2px; color: #fff; }
+h1 {
+  font-size: clamp(36px,5vw,62px); font-weight: 800; line-height: 1.05;
+  letter-spacing: -1.8px; color: #fff;
+  text-wrap: balance; /* keeps Polish headline from orphaning a word */
+}
 h2 { font-size: clamp(28px,4vw,48px); font-weight: 800; line-height: 1.06; letter-spacing: -1.5px; color: var(--slate); }
 h3 { font-size: clamp(17px,2vw,22px); font-weight: 700; color: var(--slate); }
 p  { line-height: 1.75; }
@@ -191,12 +195,15 @@ p  { line-height: 1.75; }
 .hero-bg { position: absolute; inset: 0; background: url('yaris-cross.webp') center 35% / cover no-repeat; filter: brightness(0.13) saturate(0.3); }
 .hero-grade { position: absolute; inset: 0; background: linear-gradient(115deg, rgba(44,62,80,0.97) 0%, rgba(44,62,80,0.78) 55%, rgba(44,62,80,0.32) 100%); }
 .hero-stripe { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); }
-.hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
+.hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1.4fr 0.6fr; gap: 48px; align-items: center; }
 .hero-sub { font-size: 17px; color: rgba(255,255,255,0.72); max-width: 540px; margin: 22px 0 32px; }
 .hero-sub strong { color: #fff; font-weight: 600; }
 .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-.hero-portrait { position: relative; }
-.hero-portrait img { width: 100%; border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.3); }
+.hero-portrait { position: relative; max-width: 400px; margin-left: auto; }
+.hero-portrait img {
+  width: 100%; height: 400px; object-fit: cover; object-position: 50% 15%;
+  border-radius: 20px; box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
 .hero-badge {
   position: absolute; bottom: -18px; left: -18px;
   background: var(--red); color: #fff; border-radius: 14px;
@@ -365,8 +372,9 @@ OWN-WORLD: Inherited "The Steady Hand" — Confident Crimson under 10%, Deep Sla
 authority surfaces, glass panels on cool paper, eyebrow rules, 100px rhythm.
 STORY: A Polish reader learns the process is knowable, that the instructor shares
 their language and country, and books an assessment lesson.
-FIRST VIEWPORT: Dark slate hero, Robert's portrait right with an 83% badge, first
-person Polish headline left, primary crimson action immediately beneath.
+FIRST VIEWPORT: Dark slate hero, Robert's portrait right at fixed height with an
+83% badge, Polish headline left naming the offer plainly, first-person copy
+beneath it, primary crimson action immediately below.
 FORM: Two Generations, candidate 4 of the grounded list, seed d12b3497,
 rebalanced parent-first on the owner's field knowledge.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
@@ -419,7 +427,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <div class="hero-inner">
       <div>
         <div class="eyebrow on-dark">Nauka jazdy w Peterborough</div>
-        <h1>Jestem Polakiem.<br>Uczę jazdy tutaj<br>od 2017 roku.</h1>
+        <h1>Polski instruktor jazdy w&nbsp;Peterborough od&nbsp;2017.</h1>
         <p class="hero-sub">
           Nazywam się Robert i jestem instruktorem nauki jazdy z uprawnieniami DVSA.
           Prowadzę lekcje <strong>po polsku lub po angielsku</strong> — jak wolisz.
@@ -431,7 +439,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         </div>
       </div>
       <div class="hero-portrait">
-        <img src="Robert.webp" alt="Robert — instruktor nauki jazdy z uprawnieniami DVSA, D4Driving Peterborough" width="640" height="800" decoding="async">
+        <img src="Robert.webp" alt="Robert — instruktor nauki jazdy z uprawnieniami DVSA, D4Driving Peterborough" width="448" height="600" decoding="async">
         <div class="hero-badge">
           <div class="n">83%</div>
           <div class="l">zdaje za 1. razem</div>
@@ -564,7 +572,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
         <h2>Dla rodziców</h2>
         <p class="lead">
           Zwykle to rodzic załatwia formalności i płaci — a niekoniecznie sam uczył się jeździć
-          w Wielkiej Brytanii. Oto rzeczy, o które pytają najczęściej.
+          w Wielkiej Brytanii. O co pytacie najczęściej?
         </p>
         <div class="pt-list">
           <div class="pt-item">
@@ -585,7 +593,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
             <h3><span class="tick">✓</span>Ile to naprawdę kosztuje</h3>
             <p>
               Ceny lekcji są jawne i podane niżej — nie ma ukrytych opłat. Do tego dochodzą opłaty
-              urzędowe (wniosek o prawo jazdy tymczasowe, egzamin teoretyczny i praktyczny), które
+              urzędowe (wniosek o tymczasowe prawo jazdy, egzamin teoretyczny i praktyczny), które
               pobiera urząd, nie szkoła. Pakiety godzin obniżają koszt godziny.
             </p>
           </div>
@@ -623,7 +631,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
             <p>Jak Ci wygodniej. Wielu uczniów miesza oba języki i to zupełnie w porządku.</p>
           </div>
           <div class="pt-item">
-            <h3><span class="tick">✓</span>Weź ze sobą prawo jazdy tymczasowe</h3>
+            <h3><span class="tick">✓</span>Weź ze sobą tymczasowe prawo jazdy</h3>
             <p>To jedyna rzecz, która jest potrzebna na start. Odbieram spod domu.</p>
           </div>
           <div class="pt-item">
