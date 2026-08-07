@@ -202,6 +202,7 @@ jobs:
           const PRIORITY = {
             'index.html': '1.0',
             'rakesh.d4driving.html': '0.9',
+            'nauka-jazdy-peterborough.html': '0.9',
             'blog.html': '0.8',
             'mock-test.html': '0.8',
             'starter-pack.html': '0.8',

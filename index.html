@@ -6,6 +6,9 @@
 <title>D4Driving Peterborough | Top-Rated Driving Lessons</title>
 <meta name="description" content="D4Driving School of Motoring — DVSA Approved driving lessons in Peterborough. Brand-new Toyota fleet. Covering Peterborough, Grantham & Kettering. Book online instantly.">
 <link rel="canonical" href="https://d4driving.co.uk/">
+<link rel="alternate" hreflang="en-GB" href="https://d4driving.co.uk/">
+<link rel="alternate" hreflang="pl" href="https://d4driving.co.uk/nauka-jazdy-peterborough.html">
+<link rel="alternate" hreflang="x-default" href="https://d4driving.co.uk/">
 <meta property="og:type"        content="website">
 <meta property="og:url"         content="https://d4driving.co.uk/">
 <meta property="og:title"       content="D4Driving Peterborough | Top-Rated Driving Lessons">
@@ -207,7 +210,7 @@ p  { line-height: 1.75; }
 .nav-links { display: flex; gap: 6px; }
 .nav-links a {
   font-size: 13px; font-weight: 600; color: var(--ink-mid);
-  padding: 8px 14px; border-radius: 8px; transition: all .2s;
+  padding: 8px 11px; border-radius: 8px; transition: all .2s;
   white-space: nowrap;
 }
 .nav-links a:hover { color: var(--slate); background: var(--slate-lo); }
@@ -218,7 +221,7 @@ p  { line-height: 1.75; }
 }
 .nav-dropdown-btn {
   font-size: 13px; font-weight: 600; color: var(--ink-mid);
-  padding: 8px 14px; border-radius: 8px; transition: all .2s;
+  padding: 8px 11px; border-radius: 8px; transition: all .2s;
   cursor: pointer; display: flex; align-items: center; gap: 5px;
   background: none; border: none; font-family: var(--font);
   white-space: nowrap;
@@ -298,6 +301,15 @@ p  { line-height: 1.75; }
 .nav-dd-soon:hover { background: none; color: var(--slate); }
 .nav-dd-soon:hover .nav-dd-title { color: var(--slate); }
 .nav-right { display: flex; align-items: center; gap: 12px; }
+.lang-switch {
+  font-size: 12px; font-weight: 700; color: var(--sage);
+  border: 1.5px solid var(--border); padding: 7px 12px; border-radius: 8px;
+  transition: all .2s; white-space: nowrap;
+}
+.lang-switch:hover { border-color: var(--red); color: var(--red); }
+/* The nav bar is at capacity below 1140px — hide the PL pill there. The Polish
+   page stays reachable from the mobile menu and the footer at every width. */
+@media (max-width: 1140px) { .lang-switch { display: none; } }
 .nav-phone {
   font-size: 14px; font-weight: 700; color: var(--ink-mid);
   display: flex; align-items: center; gap: 6px; transition: color .2s;
@@ -521,7 +533,10 @@ p  { line-height: 1.75; }
 }
 .block-section-label::before { content: ''; display: block; width: 20px; height: 2px; background: var(--sage); border-radius: 2px; }
 
-.block-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; }
+.block-grid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 14px; }
+/* Five block cards do not fit below ~1140px — step down before the 960px
+   breakpoint or the grid overflows the viewport. */
+@media(max-width:1140px){ .block-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
 .tp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 .block-card {
   padding: 24px; border-left: 3px solid transparent; transition: all .3s;
@@ -864,6 +879,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-right">
+        <a href="nauka-jazdy-peterborough.html" class="lang-switch" lang="pl" hreflang="pl" title="Nauka jazdy po polsku">PL</a>
         <a href="#booking" class="btn btn-red">Book Online</a>
         <button class="burger" id="burg" aria-label="Menu">
           <span></span><span></span><span></span>
@@ -887,6 +903,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   <a href="routes.html" onclick="cm()">🗺 Test Routes</a>
   <a href="#faq"      onclick="cm()">FAQ</a>
   <a href="#contact"  onclick="cm()">Contact</a>
+  <a href="nauka-jazdy-peterborough.html" lang="pl" hreflang="pl" onclick="cm()">🇵🇱 Nauka jazdy po polsku</a>
   <a href="tel:07872347686" style="color:var(--sage);border-bottom:none;margin-top:8px;">📞 07872 347686</a>
   <a href="mock-test.html" onclick="cm()" class="mobile-nav-mock-btn">
     🎯 FREE Mock Test
@@ -1879,6 +1896,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
           <a href="blog.html">Driving Tips</a>
           <a href="routes.html">Test Routes</a>
           <a href="#faq">FAQ</a>
+          <a href="nauka-jazdy-peterborough.html" lang="pl" hreflang="pl">Nauka jazdy po polsku</a>
           <a href="terms.html">Terms &amp; Conditions</a>
           <a href="privacy.html">Privacy Policy</a>
           <a href="#" id="pwa-install" style="display:none;color:var(--red);font-weight:700;">📲 Install Our Free App</a>
