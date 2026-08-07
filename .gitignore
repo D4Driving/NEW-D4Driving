@@ -1,0 +1,28 @@
+# ── Internal planning & strategy docs — keep OFF the public repo ──
+# This repository is public. Anything listed here contains business strategy,
+# pricing decisions or internal notes that competitors should not be able to read.
+PRODUCT.md
+DESIGN.md
+.impeccable/
+D4Driving_Pricing_Update_July2026.md
+D4Driving_Pricing_Update_July2026.pdf
+D4Driving_Launch_Kit.md
+D4Driving_Project_Instructions.md
+Design_Critique_2026-05-03.md
+
+# ── Build junk committed by the hourly Action ──
+node_modules/
+package.json
+package-lock.json
+
+# ── OS / editor noise ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# NOTE — deliberately NOT ignored, these must stay public:
+#   D4Driving_Terms_And_Conditions_v2.pdf   (downloaded from terms.html)
+#   D4Driving_Privacy_Policy_v1.pdf         (downloaded from privacy.html)
+#   D4Driving_Starter_Pack.pdf              (downloaded from starter-pack.html)
+#   D4Driving_Franchise_Integration_Plan.md (read by the daily changelog routine)
+#   CHANGELOG.md                            (written by the daily changelog routine)
