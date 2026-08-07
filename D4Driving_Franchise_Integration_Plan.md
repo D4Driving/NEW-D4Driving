@@ -178,6 +178,22 @@ Full detail in `D4Driving_Pricing_Update_July2026.md`. Both pages live with new 
 
 ---
 
+## 13. Polish Landing Page — ✅ Built 3 August 2026 (awaiting Robert's proofread)
+
+`nauka-jazdy-peterborough.html` — a Polish-language landing page. Robert speaks Polish and serves Peterborough's large Polish community, but the website never mentioned it. No local competitor advertises Polish (one advertises Romanian), and unlike pricing or pass-rate claims a rival cannot copy this without employing a Polish speaker.
+
+**Audience (confirmed by Robert):** primarily **parents** unfamiliar with the UK licensing system, and Polish adults who want to learn to drive here. Polish teenagers in Peterborough generally speak better English than Polish, so the student-facing content is a short practical block, not half the page.
+
+**Structure:** first-person Polish hero ("Jestem Polakiem. Uczę jazdy tutaj od 2017 roku.") → proof strip → **five-step explanation of how to get a UK licence** (provisional, theory, lessons, practical, full licence) which is the page's spine → split panel, "Dla rodziców" (weighted) and "Pierwsza lekcja" (short) → prices → real Google reviews left in English for verifiability → eight-question Polish FAQ → booking CTA.
+
+**Claims discipline:** DVLA/DVSA fees are *not* stated, only linked to gov.uk, so the page cannot go stale or mislead. D4Driving's own prices are stated because they are product truth.
+
+**SEO:** reciprocal `hreflang` (pl / en-GB / x-default) on both this page and `index.html`, self-canonical, Polish `FAQPage` JSON-LD, `og:locale pl_PL`, sitemap priority 0.9, and a language switch (nav pill above 1140px, mobile menu and footer at every width).
+
+**Outstanding:** Robert to proofread the Polish before promoting it. It routes to Robert only — Rakesh's languages are not established.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
