@@ -1,5 +1,5 @@
 # D4Driving — Franchise Integration Plan
-_Last updated: 2 August 2026_
+_Last updated: 3 August 2026_
 
 ## Context
 
@@ -178,7 +178,7 @@ Full detail in `D4Driving_Pricing_Update_July2026.md`. Both pages live with new 
 
 ---
 
-## 13. Polish Landing Page — ✅ Built 3 August 2026 (awaiting Robert's proofread)
+## 13. Polish Landing Page — ✅ Live 3 August 2026 (proofread and approved by Robert)
 
 `nauka-jazdy-peterborough.html` — a Polish-language landing page. Robert speaks Polish and serves Peterborough's large Polish community, but the website never mentioned it. No local competitor advertises Polish (one advertises Romanian), and unlike pricing or pass-rate claims a rival cannot copy this without employing a Polish speaker.
 
@@ -190,7 +190,15 @@ Full detail in `D4Driving_Pricing_Update_July2026.md`. Both pages live with new 
 
 **SEO:** reciprocal `hreflang` (pl / en-GB / x-default) on both this page and `index.html`, self-canonical, Polish `FAQPage` JSON-LD, `og:locale pl_PL`, sitemap priority 0.9, and a language switch (nav pill above 1140px, mobile menu and footer at every width).
 
-**Outstanding:** Robert to proofread the Polish before promoting it. It routes to Robert only — Rakesh's languages are not established.
+**Status:** Polish proofread and approved by Robert. Remaining is promotion only — Search Console submission, Peterborough Polish Facebook groups, and possible Polish-language blog content. It routes to Robert only; Rakesh's languages are not established.
+
+---
+
+## 14. Booking Notice & Nav Changes — ✅ 3 August 2026
+
+**48-hour minimum notice.** The advertised availability list no longer shows anything sooner than 48 hours out (`LEAD_HOURS` in `blog-sync.yml`, rolling and rounded up to the next whole hour). Tested across weekday, Friday-evening, Saturday and Sunday starts — the Friday case correctly rolls past the closed Sunday to Monday morning. **Cal.com's own "Minimum Notice" has been set to 48h by Robert**, so the website and the booking system now agree; these are two separate systems and must be kept in step if either changes.
+
+**Nav simplified.** The red "Book Online" CTA was removed from the navigation bar on all pages (it appeared under four labels: "Book Online", "Book Now", "Book with Rakesh", "Umów lekcję"). Booking remains available via the hero CTA, price cards, mobile sticky bar, mobile menu and footer. A 🇵🇱 language switch now sits in the bar at every width, sized to a 44px touch target; it falls back to the letters "PL" on platforms without flag glyphs.
 
 ---
 
