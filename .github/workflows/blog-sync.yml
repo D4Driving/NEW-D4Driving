@@ -92,6 +92,9 @@ jobs:
           const LESSON_MIN = 60;
           const DAYS_AHEAD = 45;
           const MAX_SLOTS  = 30;
+          /* Minimum notice: no slot is advertised less than this far ahead.
+             Cal.com has its own separate "Minimum Notice" setting — keep the two in step. */
+          const LEAD_HOURS = 48;
 
           function fetch(url) {
             return new Promise((res, rej) => {
@@ -133,6 +136,12 @@ jobs:
           function findSlots(events) {
             const slots = [];
             const now   = new Date();
+
+            /* Earliest bookable moment: LEAD_HOURS from now, rounded up to the next whole hour */
+            const earliest = new Date(now.getTime() + LEAD_HOURS * 3600000);
+            if (earliest.getMinutes() || earliest.getSeconds() || earliest.getMilliseconds()) {
+              earliest.setMinutes(60, 0, 0);
+            }
             for (let d = 0; d < DAYS_AHEAD; d++) {
               const date = new Date(now);
               date.setDate(date.getDate() + d);
@@ -148,7 +157,7 @@ jobs:
                 .map(e => ({ start: new Date(Math.max(e.start, dayStart)), end: new Date(Math.min(e.end, dayEnd)) }))
                 .sort((a, b) => a.start - b.start);
 
-              let cursor = new Date(Math.max(dayStart, now));
+              let cursor = new Date(Math.max(dayStart, earliest));
               const mins = cursor.getMinutes();
               if (mins > 0) cursor.setMinutes(mins < 30 ? 30 : 60, 0, 0);
 
