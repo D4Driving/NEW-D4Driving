@@ -97,6 +97,8 @@ ul   { list-style: none; }
 .nav-right { display: flex; align-items: center; gap: 12px; }
 .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
 .burger span { display: block; width: 22px; height: 2px; background: var(--slate); border-radius: 2px; transition: all .3s; }
+/* Burger is white over the dark hero, slate once the bar turns light on scroll */
+#nav:not(.stuck) .burger span { background: #fff; }
 .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .burger.open span:nth-child(2) { opacity: 0; }
 .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
