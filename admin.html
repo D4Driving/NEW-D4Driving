@@ -45,8 +45,8 @@ input, select, textarea, button { font-family: inherit; font-size: 14px; }
   padding: 24px; background: var(--slate);
 }
 .signin-card {
-  background: #fff; border-radius: 22px; padding: 40px; width: 100%; max-width: 400px;
-  box-shadow: 0 30px 60px rgba(0,0,0,.25);
+  background: #fff; border-radius: 20px; padding: 40px; width: 100%; max-width: 400px;
+  box-shadow: var(--glass-shadow);
 }
 .signin-card h1 { font-size: 24px; font-weight: 800; margin-bottom: 6px; }
 .signin-card .sub { font-size: 14px; color: var(--ink-mid); margin-bottom: 26px; }
@@ -56,7 +56,7 @@ input, select, textarea, button { font-family: inherit; font-size: 14px; }
   background: var(--slate); color: #fff; padding: 16px 28px;
   display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
 }
-.topbar .brand { font-size: 17px; font-weight: 800; }
+.topbar .brand { font-size: 16px; font-weight: 800; }
 .topbar .who { font-size: 13px; color: var(--sage); margin-left: auto; }
 .tabbar {
   display: flex; gap: 8px; padding: 18px 28px 0; flex-wrap: wrap;
@@ -77,7 +77,7 @@ input, select, textarea, button { font-family: inherit; font-size: 14px; }
 
 .card {
   background: var(--glass-bg); border: 1px solid var(--border);
-  border-radius: 18px; box-shadow: var(--glass-shadow); padding: 22px;
+  border-radius: 16px; box-shadow: var(--glass-shadow); padding: 22px;
 }
 .card + .card { margin-top: 18px; }
 .card h2 { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
@@ -91,7 +91,7 @@ label.f > span {
 }
 .inp {
   width: 100%; padding: 11px 14px; border: 1.5px solid var(--border);
-  border-radius: 11px; background: #fff; color: var(--ink); transition: border-color .15s;
+  border-radius: 12px; background: #fff; color: var(--ink); transition: border-color .15s;
 }
 .inp:focus { outline: none; border-color: var(--slate); }
 textarea.inp { min-height: 96px; resize: vertical; line-height: 1.55; }
@@ -102,7 +102,7 @@ textarea.inp { min-height: 96px; resize: vertical; line-height: 1.55; }
 .check input { width: 17px; height: 17px; accent-color: var(--red); cursor: pointer; }
 
 .btn {
-  padding: 11px 20px; border-radius: 11px; border: none; cursor: pointer;
+  padding: 11px 20px; border-radius: 12px; border: none; cursor: pointer;
   font-weight: 700; font-size: 14px; transition: filter .15s, opacity .15s;
 }
 .btn:hover { filter: brightness(1.08); }
@@ -110,7 +110,7 @@ textarea.inp { min-height: 96px; resize: vertical; line-height: 1.55; }
 .btn-red { background: var(--red); color: #fff; }
 .btn-slate { background: var(--slate); color: #fff; }
 .btn-ghost { background: transparent; color: var(--ink-mid); border: 1.5px solid var(--border); }
-.btn-sm { padding: 7px 13px; font-size: 13px; border-radius: 9px; }
+.btn-sm { padding: 7px 13px; font-size: 13px; border-radius: 8px; }
 .btn-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 6px; }
 
 /* ─── ROUTE LIST ─── */
@@ -120,7 +120,7 @@ textarea.inp { min-height: 96px; resize: vertical; line-height: 1.55; }
   color: var(--ink-low); margin-bottom: 8px;
 }
 .route-item {
-  width: 100%; text-align: left; padding: 11px 14px; border-radius: 11px;
+  width: 100%; text-align: left; padding: 11px 14px; border-radius: 12px;
   border: 1.5px solid transparent; background: transparent; cursor: pointer;
   font-size: 14px; font-weight: 600; color: var(--ink-mid); margin-bottom: 4px;
   display: flex; align-items: center; gap: 8px;
@@ -165,7 +165,7 @@ tr.revoked td:last-child { text-decoration: none; opacity: 1; }
 .pill.stripe { background: var(--red-lo); color: var(--red); }
 
 /* ─── FEEDBACK ─── */
-.msg { padding: 12px 15px; border-radius: 11px; font-size: 14px; margin-bottom: 16px; display: none; }
+.msg { padding: 12px 15px; border-radius: 12px; font-size: 14px; margin-bottom: 16px; display: none; }
 .msg.show { display: block; }
 .msg.err { background: var(--red-lo); color: var(--red); border: 1px solid var(--red-border); }
 .msg.ok  { background: rgba(22,163,74,.09); color: var(--ok); border: 1px solid rgba(22,163,74,.25); }
@@ -176,7 +176,7 @@ tr.revoked td:last-child { text-decoration: none; opacity: 1; }
 /* What the Published / Free tickboxes currently add up to */
 .vis-status {
   font-size: 13px; line-height: 1.55; padding: 11px 14px;
-  border-radius: 11px; margin: 4px 0 16px;
+  border-radius: 12px; margin: 4px 0 16px;
 }
 .vis-status.draft  { background: var(--slate-lo); color: var(--ink-mid); }
 .vis-status.live   { background: rgba(22,163,74,.09); color: var(--ok); font-weight: 600; }
