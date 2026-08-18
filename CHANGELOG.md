@@ -2,6 +2,12 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-08-09
+- The main plan doc was formally updated: the Polish landing page is now marked live and approved (it previously said "awaiting Robert's proofread"), and a new section records the 48-hour minimum booking notice and the nav simplification (red "Book Online" button removed, Polish flag language switch added) that had already gone live.
+- Nav polish: dropdown menu corners tightened from 9px to 8px to match the site's documented design scale, and the mobile burger menu icon now switches color correctly (white over the dark hero, slate once the nav bar turns light on scroll) across all six pages that have it.
+- _Commits: 372af52, ca19b00, 88a1445_
+- _Plan doc status: ⚠ NOT yet in D4Driving_Franchise_Integration_Plan.md — the dropdown border-radius fix and the burger-icon color-state fix aren't reflected there; everything else in this batch is (the plan doc update itself)_
+
 ## 2026-08-08
 - Polish-language landing page (`nauka-jazdy-peterborough.html`) got a round of fixes and polish: corrected a layout overflow in the pricing block grid on mid-size screens, applied Robert's copy corrections (new opening line "Mam na imię Robert", tighter headline, resized hero portrait), and rounded font sizes onto consistent steps.
 - Removed the red "Book Online" button from the site navigation on every page (English and Polish) and tidied up the resulting nav bar spacing and Polish flag switcher position.
