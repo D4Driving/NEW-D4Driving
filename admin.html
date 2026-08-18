@@ -172,6 +172,15 @@ tr.revoked td:last-child { text-decoration: none; opacity: 1; }
 .empty { font-size: 14px; color: var(--ink-low); padding: 26px 0; text-align: center; }
 .saved { font-size: 13px; font-weight: 700; color: var(--ok); opacity: 0; transition: opacity .2s; }
 .saved.show { opacity: 1; }
+
+/* What the Published / Free tickboxes currently add up to */
+.vis-status {
+  font-size: 13px; line-height: 1.55; padding: 11px 14px;
+  border-radius: 11px; margin: 4px 0 16px;
+}
+.vis-status.draft  { background: var(--slate-lo); color: var(--ink-mid); }
+.vis-status.live   { background: rgba(22,163,74,.09); color: var(--ok); font-weight: 600; }
+.vis-status.locked { background: var(--red-lo); color: var(--red); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -504,12 +513,13 @@ async function renderEditor(id) {
       '<label class="f"><span>YouTube link or video ID</span>' +
         '<input class="inp" id="e-yt" placeholder="Paste the YouTube link — or the 11-character ID" ' +
         'value="' + esc(r.youtube_id) + '"></label>' +
+      '<div class="check"><input type="checkbox" id="e-pub"' + (r.published ? ' checked' : '') + '>' +
+        '<label for="e-pub">Published — the route appears on the site</label></div>' +
       '<div class="check"><input type="checkbox" id="e-free"' + (r.is_free ? ' checked' : '') + '>' +
-        '<label for="e-free">Free — anyone can see this one (the shop window)</label></div>' +
+        '<label for="e-free">Free to view — the map, waypoints, notes and video are open to everyone</label></div>' +
       '<div class="check"><input type="checkbox" id="e-ess"' + (r.in_essentials ? ' checked' : '') + '>' +
         '<label for="e-ess">Part of the Essentials 3-pack</label></div>' +
-      '<div class="check"><input type="checkbox" id="e-pub"' + (r.published ? ' checked' : '') + '>' +
-        '<label for="e-pub">Published — visible on the site at all</label></div>' +
+      '<div class="vis-status" id="e-status"></div>' +
       '<div class="btn-row">' +
         '<button class="btn btn-red" id="e-save">Save route</button>' +
         '<span class="saved" id="e-saved">Saved</span>' +
@@ -531,9 +541,42 @@ async function renderEditor(id) {
         : '<p class="empty">This route has no waypoints.</p>') +
     '</div>';
 
+  // "Published" alone does not make a route viewable — it only lists it.
+  // That combination was easy to misread, so spell out what the tickboxes
+  // currently add up to, and update it as they change.
+  paintVisibility();
+  $('e-pub').addEventListener('change', paintVisibility);
+  $('e-free').addEventListener('change', paintVisibility);
+
   $('e-save').addEventListener('click', () => saveRoute(id));
   $('e-del').addEventListener('click', () => deleteRoute(id, r.name));
   if (wpts.length) $('w-save').addEventListener('click', saveWaypoints);
+}
+
+// Published and Free are two different switches and the combination is not
+// obvious: publishing a route only lists it. Without Free, RLS still withholds
+// the map, waypoints, notes and video from anyone without a pack — which looks
+// exactly like "it didn't save".
+function paintVisibility() {
+  const el = $('e-status');
+  if (!el) return;
+  const pub = $('e-pub').checked;
+  const free = $('e-free').checked;
+
+  if (!pub) {
+    el.className = 'vis-status draft';
+    el.textContent = 'Hidden — nobody can see this route. Leave it here while you fill it in.';
+  } else if (free) {
+    el.className = 'vis-status live';
+    el.textContent = 'Live and free — anyone can open the map, waypoints, notes and video.';
+  } else {
+    el.className = 'vis-status locked';
+    el.textContent =
+      'Listed but locked — visitors see only the name, distance and difficulty. ' +
+      'The map, waypoints, notes and video stay hidden behind a paid pack, and ' +
+      'packs are not on sale yet, so this is currently a dead end. ' +
+      'Tick “Free to view” as well to make it usable.';
+  }
 }
 
 // Writes whatever waypoint name boxes are currently on screen.
