@@ -346,8 +346,24 @@ $('signin-form').addEventListener('submit', async e => {
 
 $('signout').addEventListener('click', () => db.auth.signOut());
 
-db.auth.onAuthStateChange((_event, session) => gate(session));
-db.auth.getSession().then(({ data }) => gate(data.session));
+// React only when the signed-in user actually changes.
+//
+// onAuthStateChange also fires for TOKEN_REFRESHED (supabase-js refreshes the
+// session on a timer) and for SIGNED_IN re-emitted when the tab regains focus.
+// Those used to run gate() -> loadAll() -> renderEditor(), which rebuilt the
+// open editor from the database and silently wiped anything half-typed into
+// it. Saving then wrote those blanks back over the record.
+let currentUserId = null;
+
+function onSession(session) {
+  const uid = session?.user?.id ?? null;
+  if (uid === currentUserId) return;
+  currentUserId = uid;
+  gate(session);
+}
+
+db.auth.onAuthStateChange((_event, session) => onSession(session));
+db.auth.getSession().then(({ data }) => onSession(data.session));
 
 async function gate(session) {
   if (!session) {
@@ -397,7 +413,9 @@ async function loadAll() {
   renderCentreSelects();
   renderCentres();
   loadEntitlements();
-  if (selectedId) renderEditor(selectedId);
+  // Deliberately does NOT re-render the open editor. Rebuilding it from the
+  // database throws away whatever is currently typed in, so only an explicit
+  // action (picking a route, uploading one) may do that.
 }
 
 // ─── ROUTE LIST ────────────────────────────────────────────────────────────
@@ -498,13 +516,28 @@ async function renderEditor(id) {
 
   $('e-save').addEventListener('click', () => saveRoute(id));
   $('e-del').addEventListener('click', () => deleteRoute(id, r.name));
-  if (wpts.length) $('w-save').addEventListener('click', () => saveWaypoints(id));
+  if (wpts.length) $('w-save').addEventListener('click', saveWaypoints);
+}
+
+// Writes whatever waypoint name boxes are currently on screen.
+// Returns an error object, or null if everything went through.
+async function persistWaypoints() {
+  const rows = [...document.querySelectorAll('.wpt-name')];
+  if (!rows.length) return null;
+  const results = await Promise.all(rows.map(inp =>
+    db.from('waypoints').update({ name: inp.value.trim() || null }).eq('id', inp.dataset.id)
+  ));
+  return results.find(r => r.error)?.error ?? null;
 }
 
 async function saveRoute(id) {
   $('e-save').disabled = true;
   const notes = $('e-notes').value.split('\n').map(s => s.trim()).filter(Boolean);
-  const { error } = await db.from('routes').update({
+
+  // .select() so we can tell an update that changed nothing from one that
+  // worked. An update blocked by RLS returns no error and no rows, which is
+  // otherwise indistinguishable from success.
+  const { data, error } = await db.from('routes').update({
     name:        $('e-name').value.trim(),
     difficulty:  $('e-diff').value,
     sort_order:  parseInt($('e-sort').value, 10) || 0,
@@ -514,25 +547,30 @@ async function saveRoute(id) {
     is_free:     $('e-free').checked,
     in_essentials: $('e-ess').checked,
     published:   $('e-pub').checked,
-  }).eq('id', id);
+  }).eq('id', id).select('id');
+
+  // Save the waypoint names on the same click. A second button that silently
+  // discarded them was far too easy to trip over.
+  const wErr = error ? null : await persistWaypoints();
   $('e-save').disabled = false;
 
-  if (error) return msg('routes-msg', error.message, 'err');
+  if (error || wErr) return msg('routes-msg', (error || wErr).message, 'err');
+  if (!data?.length) {
+    return msg('routes-msg',
+      'Nothing was saved — the database refused the change. Sign out and back in, then try again.', 'err');
+  }
+
   msg('routes-msg', '', 'ok');
   flash('e-saved');
   await loadAll();
 }
 
-async function saveWaypoints(id) {
+async function saveWaypoints() {
   $('w-save').disabled = true;
-  const rows = [...document.querySelectorAll('.wpt-name')];
-  const results = await Promise.all(rows.map(inp =>
-    db.from('waypoints').update({ name: inp.value.trim() || null }).eq('id', inp.dataset.id)
-  ));
+  const err = await persistWaypoints();
   $('w-save').disabled = false;
 
-  const bad = results.find(r => r.error);
-  if (bad) return msg('routes-msg', bad.error.message, 'err');
+  if (err) return msg('routes-msg', err.message, 'err');
   msg('routes-msg', '', 'ok');
   flash('w-saved');
 }
@@ -617,6 +655,8 @@ $('up-btn').addEventListener('click', async () => {
     flash('up-saved');
     selectedId = created.id;
     await loadAll();
+    // loadAll no longer touches the editor, so open the new route explicitly.
+    renderEditor(created.id);
   } catch (e) {
     msg('routes-msg', e.message || String(e), 'err');
   }
