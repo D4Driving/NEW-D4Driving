@@ -1,6 +1,9 @@
 /* D4Driving Service Worker — v1.0 */
 
-const CACHE = 'd4driving-v3';
+/* Bumped to v4 to purge cached Supabase API responses — the old cache-first
+   rule was serving stale route data indefinitely. The activate handler deletes
+   every cache whose name is not this one, so the bump is what clears it. */
+const CACHE = 'd4driving-v4';
 
 /* Assets to cache on install */
 const PRECACHE = [
@@ -44,6 +47,18 @@ self.addEventListener('fetch', event => {
   /* Skip non-GET and browser-extension requests */
   if (event.request.method !== 'GET') return;
   if (!event.request.url.startsWith('http')) return;
+
+  /* Supabase API — never touched by this cache.
+     These URLs do not end in .json, so they used to fall through to the
+     cache-first rule at the bottom and were served from the very first cached
+     response for ever. That is why publishing a route in the admin page did
+     not show up on the site.
+     Not caching them is also the safer choice: the response depends on the
+     Authorization header, so a cached copy could keep serving paid route data
+     to someone who has since signed out.
+     Returning without respondWith lets the browser fetch normally, which
+     honours the `cache: 'no-store'` routes.html already sends. */
+  if (event.request.url.includes('.supabase.co/')) return;
 
   /* For navigation (HTML pages) — network first */
   if (event.request.mode === 'navigate') {
