@@ -320,6 +320,22 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g,
   c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
 
+// Accepts a YouTube link in any of its usual shapes, or a bare id, and returns
+// the 11-character video id. Returns null if there is nothing usable in there.
+//
+// Pasting the share link is the natural thing to do, and trimming it by hand
+// had already put a mangled 14-character value in the database once — the ?si=
+// tracking fragment gets caught up in the id.
+function youtubeId(input) {
+  const raw = (input || '').trim();
+  if (!raw) return null;
+  if (/^[\w-]{11}$/.test(raw)) return raw;          // already just the id
+  const m = raw.match(
+    /(?:youtu\.be\/|\/embed\/|\/shorts\/|\/live\/|[?&]v=)([\w-]{11})/
+  );
+  return m ? m[1] : null;
+}
+
 function msg(el, text, kind) {
   const m = $(el);
   m.textContent = text;
@@ -485,8 +501,9 @@ async function renderEditor(id) {
         '<textarea class="inp" id="e-desc">' + esc(r.description) + '</textarea></label>' +
       '<label class="f"><span>Instructor notes — one per line</span>' +
         '<textarea class="inp" id="e-notes">' + esc((r.notes || []).join('\n')) + '</textarea></label>' +
-      '<label class="f"><span>YouTube video ID</span>' +
-        '<input class="inp" id="e-yt" placeholder="e.g. knSsf0sarNA" value="' + esc(r.youtube_id) + '"></label>' +
+      '<label class="f"><span>YouTube link or video ID</span>' +
+        '<input class="inp" id="e-yt" placeholder="Paste the YouTube link — or the 11-character ID" ' +
+        'value="' + esc(r.youtube_id) + '"></label>' +
       '<div class="check"><input type="checkbox" id="e-free"' + (r.is_free ? ' checked' : '') + '>' +
         '<label for="e-free">Free — anyone can see this one (the shop window)</label></div>' +
       '<div class="check"><input type="checkbox" id="e-ess"' + (r.in_essentials ? ' checked' : '') + '>' +
@@ -531,6 +548,16 @@ async function persistWaypoints() {
 }
 
 async function saveRoute(id) {
+  // Reject unparseable video input rather than quietly storing null, which
+  // would look like the video had simply been removed.
+  const ytRaw = $('e-yt').value.trim();
+  const yt = youtubeId(ytRaw);
+  if (ytRaw && !yt) {
+    return msg('routes-msg',
+      "That doesn't look like a YouTube link or video ID. Paste the whole link " +
+      'from the address bar, or just the 11-character ID.', 'err');
+  }
+
   $('e-save').disabled = true;
   const notes = $('e-notes').value.split('\n').map(s => s.trim()).filter(Boolean);
 
@@ -543,7 +570,7 @@ async function saveRoute(id) {
     sort_order:  parseInt($('e-sort').value, 10) || 0,
     description: $('e-desc').value.trim(),
     notes,
-    youtube_id:  $('e-yt').value.trim() || null,
+    youtube_id:  yt,
     is_free:     $('e-free').checked,
     in_essentials: $('e-ess').checked,
     published:   $('e-pub').checked,
@@ -559,6 +586,9 @@ async function saveRoute(id) {
     return msg('routes-msg',
       'Nothing was saved — the database refused the change. Sign out and back in, then try again.', 'err');
   }
+
+  // Show what was actually stored, so a pasted link visibly becomes an id.
+  $('e-yt').value = yt || '';
 
   msg('routes-msg', '', 'ok');
   flash('e-saved');
