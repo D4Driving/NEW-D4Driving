@@ -28,7 +28,7 @@
   --ink-mid:    #536878;
   --ink-low:    #94a3b4;
   --border:     rgba(226,232,240,0.8);
-  --ok:         #16a34a;
+  --sage-lo:    rgba(143,163,160,0.15);
   --font: 'Plus Jakarta Sans', sans-serif;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -128,10 +128,14 @@ textarea.inp { min-height: 96px; resize: vertical; line-height: 1.55; }
 .route-item:hover { background: var(--slate-lo); }
 .route-item.active { background: var(--slate); color: #fff; }
 .route-item .dot {
-  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: var(--ok);
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; background: var(--sage);
 }
 .route-item .dot.paid   { background: var(--red); }
-.route-item .dot.hidden { background: var(--ink-low); }
+/* Sage and Ink Low are too close to tell apart at 7px, so an unpublished
+   route reads as a hollow dot rather than as a third muted grey. */
+.route-item .dot.hidden {
+  background: transparent; box-shadow: inset 0 0 0 1.5px var(--ink-low);
+}
 
 /* ─── WAYPOINTS ─── */
 .wpt-row {
@@ -168,9 +172,9 @@ tr.revoked td:last-child { text-decoration: none; opacity: 1; }
 .msg { padding: 12px 15px; border-radius: 12px; font-size: 14px; margin-bottom: 16px; display: none; }
 .msg.show { display: block; }
 .msg.err { background: var(--red-lo); color: var(--red); border: 1px solid var(--red-border); }
-.msg.ok  { background: rgba(22,163,74,.09); color: var(--ok); border: 1px solid rgba(22,163,74,.25); }
+.msg.ok  { background: var(--sage-lo); color: var(--slate); border: 1px solid var(--sage); }
 .empty { font-size: 14px; color: var(--ink-low); padding: 26px 0; text-align: center; }
-.saved { font-size: 13px; font-weight: 700; color: var(--ok); opacity: 0; transition: opacity .2s; }
+.saved { font-size: 13px; font-weight: 700; color: var(--slate); opacity: 0; transition: opacity .2s; }
 .saved.show { opacity: 1; }
 
 /* What the Published / Free tickboxes currently add up to */
@@ -179,7 +183,7 @@ tr.revoked td:last-child { text-decoration: none; opacity: 1; }
   border-radius: 12px; margin: 4px 0 16px;
 }
 .vis-status.draft  { background: var(--slate-lo); color: var(--ink-mid); }
-.vis-status.live   { background: rgba(22,163,74,.09); color: var(--ok); font-weight: 600; }
+.vis-status.live   { background: var(--sage-lo); color: var(--slate); font-weight: 600; }
 .vis-status.locked { background: var(--red-lo); color: var(--red); font-weight: 600; }
 </style>
 </head>
@@ -226,9 +230,9 @@ tr.revoked td:last-child { text-decoration: none; opacity: 1; }
         <div class="card">
           <h2>Routes</h2>
           <p class="hint">
-            <span style="color:var(--ok);">●</span> free &nbsp;
+            <span style="color:var(--sage);">●</span> free &nbsp;
             <span style="color:var(--red);">●</span> paid &nbsp;
-            <span style="color:var(--ink-low);">●</span> hidden
+            <span style="color:var(--ink-low);">○</span> hidden
           </p>
           <div id="route-list"></div>
         </div>
