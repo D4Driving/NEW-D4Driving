@@ -26,3 +26,6 @@ desktop.ini
 #   D4Driving_Starter_Pack.pdf              (downloaded from starter-pack.html)
 #   D4Driving_Franchise_Integration_Plan.md (read by the daily changelog routine)
 #   CHANGELOG.md                            (written by the daily changelog routine)
+
+# ── Local Claude Code config — machine-specific, keep out of the public repo ──
+.claude/settings.local.json
