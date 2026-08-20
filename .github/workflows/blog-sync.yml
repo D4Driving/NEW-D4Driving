@@ -1,4 +1,4 @@
-name: Soro Blog Sync
+name: Availability & Sitemap Sync
 on:
   workflow_dispatch:
   schedule:
@@ -16,61 +16,7 @@ jobs:
         with:
           node-version: '24'
 
-      # ── Step 1: Sync Soro blog articles ──────────────────────────────────
-      - name: Update Blog and Generate Articles
-        env:
-          RSS_URL: "https://app.trysoro.com/api/rss/a164f988-26e5-4b2c-908a-57e06e27c032"
-        run: |
-          npm init -y
-          npm install rss-parser
-          node << 'EOF'
-          const Parser = require('rss-parser');
-          const fs = require('fs');
-          const parser = new Parser();
-          (async () => {
-            const feed = await parser.parseURL(process.env.RSS_URL);
-            const blogTemplate = fs.readFileSync('blog-template.html', 'utf8');
-            const articleTemplate = fs.readFileSync('article-template.html', 'utf8');
-
-            let gridCards = '';
-            for (const item of feed.items) {
-              const slug = item.title.toLowerCase().replace(/[^\w ]+/g, '').replace(/ +/g, '-');
-              const imageUrl = item.enclosure ? item.enclosure.url : 'yaris-cross.webp';
-              const content = item['content:encoded'] || item.content || item.description || "";
-              gridCards += `
-              <a href="${slug}.html" class="blog-card glass-card">
-                <div class="blog-img">
-                  <img src="${imageUrl}" alt="${item.title}" loading="lazy">
-                </div>
-                <div class="blog-body">
-                  <div class="blog-cat">${(item.categories && item.categories[0]) || 'Driving Tips'}</div>
-                  <div class="blog-title">${item.title}</div>
-                  <div class="blog-excerpt">${(item.contentSnippet || "").slice(0,160)}…</div>
-                  <div class="blog-footer">
-                    <span class="blog-date">${item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}) : ''}</span>
-                    <span class="blog-arrow">→</span>
-                  </div>
-                </div>
-              </a>`;
-              let pageHtml = articleTemplate
-                .replace(/ARTICLE_TITLE/g, item.title)
-                .replace(/ARTICLE_IMAGE/g, imageUrl)
-                .replace(/ARTICLE_SLUG/g, slug)
-                .replace('ARTICLE_CONTENT', content)
-                .replace(/ARTICLE_DATE_ISO/g, item.pubDate ? new Date(item.pubDate).toISOString().slice(0,10) : '')
-                .replace(/ARTICLE_DATE/g, item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}) : '')
-                .replace(/ARTICLE_CATEGORY/g, (item.categories && item.categories[0]) || 'Driving Tips')
-                .replace(/ARTICLE_EXCERPT/g, (item.contentSnippet || "").slice(0,160));
-              fs.writeFileSync(`${slug}.html`, pageHtml);
-              console.log(`Generated: ${slug}.html`);
-            }
-            const finalBlogHtml = blogTemplate.replace('GRID_GOES_HERE', gridCards);
-            fs.writeFileSync('blog.html', finalBlogHtml);
-            console.log('Blog updated successfully');
-          })();
-          EOF
-
-      # ── Step 2: Parse Google Calendar and write availability.json ─────────
+      # ── Step 1: Parse Google Calendar and write availability.json ─────────
       - name: Generate Availability
         run: |
           node << 'EOF'
@@ -201,7 +147,7 @@ jobs:
           })();
           EOF
 
-      # ── Step 3: Regenerate sitemap.xml ────────────────────────────────────
+      # ── Step 2: Regenerate sitemap.xml ────────────────────────────────────
       - name: Generate Sitemap
         run: |
           node << 'EOF'
@@ -235,11 +181,11 @@ jobs:
           console.log(`sitemap.xml written with ${files.length} URLs`);
           EOF
 
-      # ── Step 4: Commit everything ─────────────────────────────────────────
+      # ── Step 3: Commit availability + sitemap ─────────────────────────────────────────
       - name: Save Changes
         run: |
           git config --global user.name "D4Driving-Bot"
           git config --global user.email "bot@d4driving.co.uk"
-          git add .
-          git commit -m "Sync blog + availability" || echo "No changes to commit"
+          git add availability.json sitemap.xml
+          git commit -m "Sync availability + sitemap" || echo "No changes to commit"
           git push
