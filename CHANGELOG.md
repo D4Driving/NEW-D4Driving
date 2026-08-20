@@ -2,6 +2,14 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-08-20
+- Cut the blog free from Soro (the cancelled article service): the site's articles are now generated in-house from a plain data file (`articles.json`) using a small new tool (`tools/gen-articles.js`), rather than pulled from Soro's feed. The hourly background job that used to fetch from Soro was rewired to just keep availability and the sitemap in sync.
+- Small usability fix across all six main pages: clicking an on-page "jump to" link now stops just below the sticky top menu instead of hiding the target heading behind it.
+- Big tidy-up of the behind-the-scenes documentation: added a short `CLAUDE.md` orientation file (read at the start of every working session) and moved all internal/business documents into one private repository, so nothing important is left without a backup. The main plan doc was updated to record all of this (new §16) and to correct a note about the site's domain setup.
+- _Commits: 8061494, 90428f6, 3bd2029, 89d6cf6, b17dde4, e0830ee, 6350957_
+- _Plan doc status: already documented (§16 records the consolidation, Soro decommissioning and Action rewiring; the plan-doc commits are part of today's batch)_
+- _CLAUDE.md status: accurate (created/updated today; its "Article pages are static… since Soro was cancelled" gotcha already reflects today's work)_
+
 ## 2026-08-18
 - Fixed a bug in the admin route editor where a form left open while typing could get silently overwritten with blanks (the page was rebuilding the open form from the database on background events like token refreshes, not just real sign-ins), which could wipe a route's description, notes and waypoint names on the next save. Saving a route now also properly saves waypoint names, and a save that's silently blocked by a permissions rule is now reported instead of looking like it worked.
 - Fixed the admin video field so pasting a full YouTube share link (not just the bare video id) works correctly — previously this could store a mangled id and produce a dead video embed with no warning.
