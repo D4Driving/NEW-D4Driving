@@ -30,8 +30,8 @@ Detail belongs in the private ops repo, not here.
 | | |
 |---|---|
 | **This repo (public)** | The website only. Plus `CHANGELOG.md` (written nightly by a routine) and `D4Driving_Franchise_Integration_Plan.md` (the build history, numbered sections). |
-| **`D4Driving/d4driving-ops` (private)** | Everything internal: PRODUCT.md, DESIGN.md, pricing plans, launch kit, design specs, competitor reports. **Business strategy goes here, never in this repo.** |
-| **Cloud routines** | Competitor watch (Mondays) and doc catch-up (nightly) — both write to the ops repo or `CHANGELOG.md`. |
+| **`D4Driving/d4driving-ops` (private)** | Everything internal — `product/` (PRODUCT.md, DESIGN.md, design critique), `business/` (pricing update, launch kit, project instructions), `plans/` + `specs/` (engineering), `competitors.md` + `reports/`. **Business strategy goes here, never in this repo.** Cloned locally at `Desktop\D4Driving Ops`. |
+| **Cloud routines** | Competitor watch (Mondays 07:00 → ops repo `reports/`) and doc catch-up (nightly 20:00 → `CHANGELOG.md`). The nightly one also flags this file when it goes stale. |
 
 ## Standing rules
 
@@ -40,11 +40,11 @@ Detail belongs in the private ops repo, not here.
   one h1, alt text, schema, sitemap, internal links. Same pass, not a follow-up.
 - **Update the docs in the same session** work ships — the Integration Plan and
   the ops repo. Move finished items out of "Pending", don't just append.
-- **Never `git add -A`** here. Stage explicit paths. This is a public repo with
-  a nested private repo (`docs/superpowers`) inside the working tree, and a
-  blanket add has already swept it into a commit once.
-- **Never commit** student data, `*.csv`, `PRODUCT.md`, `DESIGN.md`, pricing
-  docs, or anything under `docs/superpowers/`. See `.gitignore`.
+- **Never `git add -A`** here. Stage explicit paths and read the file list
+  before pushing. This repo is public and pushed history cannot be retracted;
+  a blanket add has already swept a private nested repo into a commit once.
+- **Never commit** student or customer data, or `*.csv`. Strategy, pricing and
+  design docs belong in the ops repo, not here. See `.gitignore`.
 
 ## Gotchas that have bitten before
 
