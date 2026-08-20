@@ -50,7 +50,9 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+/* scroll-padding-top offsets the 68px fixed nav so anchor links land on the
+   section heading instead of hiding it behind the bar. */
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 body { font-family: var(--font); background: var(--bg); color: var(--ink); overflow-x: hidden; line-height: 1.6; }
 img  { display: block; max-width: 100%; }
 a    { color: inherit; text-decoration: none; }
