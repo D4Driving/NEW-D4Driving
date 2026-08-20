@@ -1,32 +1,1002 @@
 [
   {
-    "title": "Mastering Peterborough's Toughest Roundabouts",
-    "excerpt": "Expert tips to help you tackle the Eye Roundabout, A1139 Fletton Parkway merges, and the junctions most likely to come up on your driving test.",
-    "url": "blog/mastering-peterborough-roundabouts.html",
-    "date": "2026-03-20",
-    "image": "https://d4driving.co.uk/blog1.webp",
-    "category": "Test Prep",
-    "read_time": 5,
-    "tags": ["roundabouts", "peterborough", "test prep", "driving tips"]
+    "title": "How to Handle Dual Carriageways with Confidence",
+    "excerpt": "Learn how to handle dual carriageways calmly, from joining and overtaking to choosing exits, with practical advice to build safe driving confidence today.",
+    "url": "how-to-handle-dual-carriageways-with-confidence.html",
+    "date": "2026-08-12",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/ccce0a23-1b6e-4a4a-b990-42c738b92672/af71c72f-bedf-4bd0-b712-251b8d4d9ce5.webp",
+    "category": "Driving Tips"
   },
   {
-    "title": "How to Pass Your Theory Test First Time",
-    "excerpt": "Everything you need to know about hazard perception, multiple choice questions, and the most common reasons learners fail their theory test.",
-    "url": "blog/pass-theory-test-first-time.html",
+    "title": "Manual Automatic Costs: What Learners Pay",
+    "excerpt": "Compare manual automatic costs, from lesson prices and test fees to long-term value, and choose tuition to suit your goals, budget, routine and confidence",
+    "url": "manual-automatic-costs-what-learners-pay.html",
+    "date": "2026-08-10",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/ccce0a23-1b6e-4a4a-b990-42c738b92672/f9108dc6-0f2e-43b2-8900-2fab6547603c.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How to Judge Junction Gaps With Confidence",
+    "excerpt": "Learn how to judge junction gaps using calm checks for speed, distance and safe choices in lessons, test practice and everyday driving, even on busy roads.",
+    "url": "how-to-judge-junction-gaps-with-confidence.html",
+    "date": "2026-08-08",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/ccce0a23-1b6e-4a4a-b990-42c738b92672/c323ef54-f016-4d26-83fe-b2415cf4f5b2.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How to Manage Driving Anxiety and Feel Safer",
+    "excerpt": "Learn how to manage driving anxiety with practical steps that build calm, confidence and control before lessons, on the road and before your driving test.",
+    "url": "how-to-manage-driving-anxiety-and-feel-safer.html",
+    "date": "2026-08-07",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/369ddc62-9a3c-47e0-be87-e6e2c2b1235d.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Automatic Lessons and Your First Driving Test",
+    "excerpt": "Automatic lessons can make learning feel calmer and more focused. See how they work, who they suit and how to build confidence for your upcoming driving test.",
+    "url": "automatic-lessons-and-your-first-driving-test.html",
+    "date": "2026-08-06",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/5c55e1b3-904a-4930-872a-05530e7ec951.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Automatic Licence Versus Manual Licence Explained",
+    "excerpt": "Choosing an automatic licence versus manual licence? Compare freedom, cost, confidence and lessons to find the right route for your driving test clearly.",
+    "url": "automatic-licence-versus-manual-licence-explained.html",
+    "date": "2026-08-06",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/ccce0a23-1b6e-4a4a-b990-42c738b92672/54db0ade-f668-4740-ac6b-73361009b1a9.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Driving Tuition That Builds Real Confidence",
+    "excerpt": "Personalised driving tuition for calm, safe progress. Learn at your pace, build confidence and prepare properly for your driving test with real clarity.",
+    "url": "driving-tuition-that-builds-real-confidence.html",
+    "date": "2026-08-04",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/460f99f0-9ff4-4b06-bf21-5a7d6cd3d061.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Five Essential Driving Test Documents You Need",
+    "excerpt": "Feel calm on test day with five essential driving test documents, vehicle checks and clear advice before your practical driving test appointment date.",
+    "url": "five-essential-driving-test-documents-you-need.html",
+    "date": "2026-08-02",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/78dc2656-da3b-4a83-8faa-a3b53fd17015.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "What Happens During a First Driving Lesson?",
+    "excerpt": "Wondering what happens during first lesson time? See how a calm, tailored driving lesson builds confidence before you take the wheel in Peterborough today.",
+    "url": "what-happens-during-a-first-driving-lesson.html",
+    "date": "2026-07-31",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/a2bdf881-6823-43bb-9fc0-013cdec00dae.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Automatic Driving Tuition Review: What Matters",
+    "excerpt": "Read an automatic driving tuition review with the right questions: instructor support, lesson structure, costs and test-ready confidence for learners.",
+    "url": "automatic-driving-tuition-review-what-matters.html",
+    "date": "2026-07-29",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/15af963f-3833-4d64-b470-95b5e0c39635.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Local Instructor vs National School Compared",
+    "excerpt": "Choosing between a local instructor vs national school? Compare lesson continuity, flexibility and support to find driving tuition that builds confidence.",
+    "url": "local-instructor-vs-national-school-compared.html",
+    "date": "2026-07-27",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/5f9606ee-582a-45e7-a3d8-e56bac758092.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Is an Automatic Licence Worth It for You?",
+    "excerpt": "Is an automatic licence worth it? Compare costs, confidence, flexibility and test plans before choosing manual or automatic lessons in Peterborough today.",
+    "url": "is-an-automatic-licence-worth-it-for-you.html",
+    "date": "2026-07-25",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/2b58927c-e647-469f-9f9d-e00a2b93da48.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "One Hour or Two Hour Lessons: Which Is Best?",
+    "excerpt": "Choosing one hour or two hour lessons? Find the driving lesson length that suits your confidence, schedule, budget and test goals in Peterborough today.",
+    "url": "one-hour-or-two-hour-lessons-which-is-best.html",
+    "date": "2026-07-23",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/6cfbd4f2-db45-4687-8cc5-eca014253bef.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Mock Test vs Driving Test Preparation Session",
+    "excerpt": "Mock test vs driving test preparation session: learn which suits your confidence, identify weak spots and arrive at your practical test feeling ready.",
+    "url": "mock-test-vs-driving-test-preparation-session.html",
+    "date": "2026-07-22",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/61eac8a7-4407-46ba-9c29-69ada36ac19a.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Guide to Automatic Car Controls for Learners",
+    "excerpt": "A guide to automatic car controls for learners, with simple explanations to help you start safely, build confidence and prepare for lessons well.",
+    "url": "guide-to-automatic-car-controls-for-learners.html",
+    "date": "2026-07-21",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/06fa8be8-d425-4d7d-8728-df9933ffb612.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How to Choose Manual Driving Lessons That Fit",
+    "excerpt": "Learn how to choose manual driving lessons with a patient instructor, clear prices and a plan that builds confidence, control and test readiness safely.",
+    "url": "how-to-choose-manual-driving-lessons-that-fit.html",
+    "date": "2026-07-20",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/5db4ffd3-7463-4117-b5b0-60fed915bbda.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Adult Beginner Driving Lesson Example Explained",
+    "excerpt": "See an adult beginner driving lesson example, from settling into the car to moving off safely, with calm, personalised guidance for first-time learners.",
+    "url": "adult-beginner-driving-lesson-example-explained.html",
+    "date": "2026-07-19",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/b3d633fd-e95f-428e-bcec-b457f9f3d741.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Can Adults Learn Driving Later? A Clear Answer",
+    "excerpt": "Can adults learn driving later? Yes. Patient, tailored lessons can build safe skills, calm nerves and real confidence at a pace that suits you well.",
+    "url": "can-adults-learn-driving-later-a-clear-answer.html",
+    "date": "2026-07-18",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/1f924de4-312b-4fe3-b795-e9f101bb9019.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How to Restart Driving Confidence After a Break",
+    "excerpt": "Learn how to restart driving confidence after time away with calm, practical steps, tailored lessons and safe practice for every journey on local roads.",
+    "url": "how-to-restart-driving-confidence-after-a-break.html",
+    "date": "2026-07-16",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/e04608ad-4bd2-4c33-85e6-ec44c5a23a7f.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Manual Practice vs Test Prep: What Comes First?",
+    "excerpt": "Manual practice vs test prep explained: learn when to build everyday driving skill, when to focus on the test and how to feel ready without rushing too.",
+    "url": "manual-practice-vs-test-prep-what-comes-first.html",
+    "date": "2026-07-15",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/e60262a8-fc03-4f45-8d12-a22918e00d85.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "When Should I Book My Driving Test?",
+    "excerpt": "Wondering when should I book test? Learn the best time to book your driving test based on skill, theory pass, waiting times and confidence.",
+    "url": "when-should-i-book-my-driving-test.html",
+    "date": "2026-07-13",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/83fe149a-a41f-4c33-a265-4af43afa5dac.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "8 Best Ways to Improve Observations While Driving",
+    "excerpt": "Learn the best ways to improve observations while driving, spot hazards earlier and build the calm, safe awareness needed for confident test-ready journeys.",
+    "url": "8-best-ways-to-improve-observations-while-driving.html",
+    "date": "2026-07-13",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/cdbbeed5-d995-4438-8470-bcb073e63fd9.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Structured Driving Lesson Progress That Builds Confidence",
+    "excerpt": "Learn why structured driving lesson progress turns nerves into safe habits, builds confidence and supports genuine test readiness at your own pace now.",
+    "url": "structured-driving-lesson-progress-that-builds-confidence.html",
+    "date": "2026-07-11",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/9df0a2a3-c15b-4c92-8309-57ff369db0e6.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Best Learner Driver Practice Routines",
+    "excerpt": "Best learner driver practice routines that build confidence, improve safety, and help you make steady progress between lessons and test prep.",
+    "url": "best-learner-driver-practice-routines.html",
+    "date": "2026-07-09",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4381d5ad-f1f1-4ff6-abb6-ca11d1ac6353.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Best Driving Lesson Structure for Beginners",
+    "excerpt": "Find the best driving lesson structure for beginners, with calm, practical steps that build confidence, safety and steady progress from lesson one.",
+    "url": "best-driving-lesson-structure-for-beginners.html",
+    "date": "2026-07-07",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/8d1ecc68-d497-470a-a3df-f4330851ad14.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How to Overcome Clutch Control Stress",
+    "excerpt": "Learn how to overcome clutch control with calm, practical tips that build confidence, improve timing, and make manual driving feel far easier.",
+    "url": "how-to-overcome-clutch-control-stress.html",
+    "date": "2026-07-05",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/2564d09b-ba19-4eed-a6fe-1a17c8bede45.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "A Guide to Manual Driving Basics",
+    "excerpt": "A practical guide to manual driving basics, from clutch control and gear changes to hill starts, stalling and building calm, safe confidence.",
+    "url": "a-guide-to-manual-driving-basics.html",
+    "date": "2026-07-03",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/ac3e562e-cbbd-4a60-aee0-11570c1468cf.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How to Choose Automatic Lessons",
+    "excerpt": "Learn how to choose automatic lessons with confidence. Find the right instructor, lesson length and teaching style for steady progress.",
+    "url": "how-to-choose-automatic-lessons.html",
+    "date": "2026-07-01",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/b31a7753-1552-451f-9840-cd5bc0050ab0.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Do Longer Lessons Help Learners Drive Better?",
+    "excerpt": "Do longer lessons help learners? Often, yes - but only when the lesson length matches confidence, focus and the skills being practised.",
+    "url": "do-longer-lessons-help-learners-drive-better.html",
+    "date": "2026-06-29",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c5aa581c-6289-4122-ab73-a9f473ea4dad.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Review Test Preparation Sessions Peterborough",
+    "excerpt": "Review test preparation sessions Peterborough learners can trust for calm coaching, sharper skills, and focused practice before test day.",
+    "url": "review-test-preparation-sessions-peterborough.html",
+    "date": "2026-06-27",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3a43a088-ba26-4617-9052-937271fd8835.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Approved Driving Instructor Benefits Explained",
+    "excerpt": "Approved Driving Instructor benefits include safer lessons, clearer progress and calmer test prep. See why expert tuition helps learners succeed.",
+    "url": "approved-driving-instructor-benefits-explained.html",
+    "date": "2026-06-25",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/760815c8-f95c-46df-8fe7-1ed7d6bc544a.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "10 Best Signs of Lesson Progress",
+    "excerpt": "Spot the best signs of lesson progress with practical examples that show growing confidence, safer habits and real readiness for driving test success.",
+    "url": "10-best-signs-of-lesson-progress.html",
+    "date": "2026-06-23",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/e0930c4e-0edd-4bd9-8bec-6a01508b3d4f.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Weekly Lessons or Intensive Course?",
+    "excerpt": "Weekly lessons or intensive course? Learn which suits your budget, confidence, schedule and test goals with clear, practical advice.",
+    "url": "weekly-lessons-or-intensive-course.html",
+    "date": "2026-06-21",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/9e2b34c1-dbcd-41df-a2b5-5152883fadf5-1781771691992.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "One Hour vs Two Hour Driving Lessons",
+    "excerpt": "One hour vs two hour driving lessons - compare focus, progress, cost and confidence to choose the right lesson length for your learning style.",
+    "url": "one-hour-vs-two-hour-driving-lessons.html",
+    "date": "2026-06-19",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/01843667-cb6e-40c3-84d4-3814221843ea.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Test Route Practice Grantham That Builds Confidence",
+    "excerpt": "Test route practice Grantham helps you learn local junctions, roundabouts and hazards with calm coaching, so you feel ready on the day.",
+    "url": "test-route-practice-grantham-that-builds-confidence.html",
+    "date": "2026-06-17",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/a2c8724e-39c0-45c7-843d-7c14d0f76669.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Example Nervous Learner Progress Timeline",
+    "excerpt": "An example nervous learner progress timeline showing how confidence, control and road skills usually build with patient, tailored driving lessons.",
+    "url": "example-nervous-learner-progress-timeline.html",
+    "date": "2026-06-15",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/31c6e95e-32bb-4af3-9419-af9452e49265.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How to Prepare for Independent Driving",
+    "excerpt": "Learn how to prepare for independent driving with calm, practical tips to build confidence, improve planning and make safer decisions alone.",
+    "url": "how-to-prepare-for-independent-driving.html",
+    "date": "2026-06-11",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/5cb9fc21-f738-4592-ab94-d32af7036dc7.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Example Confidence Building Driving Programme",
+    "excerpt": "See how an example confidence building driving programme helps nervous learners build skills, stay safe, and make steady progress on the road.",
+    "url": "example-confidence-building-driving-programme.html",
+    "date": "2026-06-09",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/41859013-605e-48de-b871-e5c9e1444f18.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Test Preparation Success Story Peterborough",
+    "excerpt": "A test preparation success story Peterborough learners will recognise - how calm coaching, smart practice and timing can turn nerves into a pass.",
+    "url": "test-preparation-success-story-peterborough.html",
+    "date": "2026-06-07",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/ef07c6b5-919a-4fc7-a0d0-046cd6ed743a.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "A Guide to Choosing Lesson Frequency",
+    "excerpt": "A practical guide to choosing lesson frequency for driving lessons, with smart advice on progress, confidence, budget, and test readiness.",
+    "url": "a-guide-to-choosing-lesson-frequency.html",
+    "date": "2026-06-05",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/789338e8-df1c-4b0c-8811-2f09653142e3.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Driving Lessons Hampton Vale That Build Confidence",
+    "excerpt": "Driving lessons Hampton Vale with patient, tailored tuition in manual or automatic. Build confidence, stay safe and progress at your pace.",
+    "url": "driving-lessons-hampton-vale-that-build-confidence.html",
+    "date": "2026-06-03",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/a093e741-c101-4922-abd0-e3e511518470.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "A Complete Guide to Driving Lessons",
+    "excerpt": "A complete guide to driving lessons, from first booking to test day - costs, manual vs automatic, lesson plans and how to build confidence.",
+    "url": "a-complete-guide-to-driving-lessons.html",
+    "date": "2026-06-01",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4334d859-0dff-4ea5-a829-4163839885df.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "A Guide to Learner Lesson Pricing",
+    "excerpt": "A guide to learner lesson pricing: what affects cost, how lesson length changes value, and how to choose tuition that builds confidence.",
+    "url": "a-guide-to-learner-lesson-pricing.html",
+    "date": "2026-05-30",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c16d81f7-af4a-48aa-8dc5-13b2d3239117.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "When Should I Start Test Preparation?",
+    "excerpt": "Wondering when should I start test preparation? Learn the right time to begin, what affects readiness, and how to build confidence safely.",
+    "url": "when-should-i-start-test-preparation.html",
+    "date": "2026-05-28",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/a239d746-6952-4d24-bf9a-d981139e15b8.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Weekly Lessons or Longer Sessions?",
+    "excerpt": "Should you choose weekly lessons or longer sessions? Find the best lesson length for confidence, progress, budget and test readiness.",
+    "url": "weekly-lessons-or-longer-sessions.html",
+    "date": "2026-05-26",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/b38ded56-b13f-47bc-bce9-932a137df9f9-1779997474231.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Best Pre Test Lesson Checklist for Learners",
+    "excerpt": "Use this best pre test lesson checklist to spot gaps, calm nerves and make every driving lesson count before your practical test day.",
+    "url": "best-pre-test-lesson-checklist-for-learners.html",
+    "date": "2026-05-24",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/64f93696-afb6-4eba-b2ce-231f422a6c92.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How to Choose a Driving School Peterborough",
+    "excerpt": "Looking for a driving school Peterborough learners can trust? Here's how to choose calm, expert lessons that build confidence and real progress.",
+    "url": "how-to-choose-a-driving-school-peterborough.html",
+    "date": "2026-05-22",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/d1bbea5d-754a-414b-bff1-0b5bf7f1f4e9-1779485948345.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How Adults Restart Driving Practice",
+    "excerpt": "How adults restart driving practice with calm, structured lessons, realistic goals and confidence-building steps that make getting back behind the wheel feel sa",
+    "url": "how-adults-restart-driving-practice.html",
+    "date": "2026-05-22",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/d6c7794c-4c4e-408b-a2da-d4fd1fd62018.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "8 Best First Skills for Learner Drivers",
+    "excerpt": "Learn the best first skills for learner drivers, from moving off to observation, so you build confidence, stay safe and progress faster.",
+    "url": "8-best-first-skills-for-learner-drivers.html",
+    "date": "2026-05-18",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/dd03f4be-a033-4bbf-a4f7-897d0515db0e.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Example Adult Learner Driving Progress",
+    "excerpt": "See an example adult learner driving progress journey, from first nerves to test-ready confidence, with realistic milestones and smart support.",
+    "url": "example-adult-learner-driving-progress.html",
+    "date": "2026-05-16",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/6c200736-3b47-4b21-b01a-d955519fc472.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "10 best first driving lesson tips",
+    "excerpt": "Use these best first driving lesson tips to calm nerves, know what to expect, and start learning safely with confidence from lesson one.",
+    "url": "10-best-first-driving-lesson-tips.html",
+    "date": "2026-05-14",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/83762698-f030-4224-9b71-d08afe9b168f.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Can Nervous Learners Pass Quickly?",
+    "excerpt": "Can nervous learners pass quickly? Yes - with calm teaching, smart practice and the right pace, anxiety can shrink faster than most expect.",
+    "url": "can-nervous-learners-pass-quickly.html",
+    "date": "2026-05-14",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/1dcf81b3-b1e1-469f-aa09-aed8cff6f548.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Manual Lessons Werrington Learners Can Trust",
+    "excerpt": "Looking for manual lessons Werrington learners can trust? Get calm, tailored tuition that builds confidence, safety and steady progress.",
+    "url": "manual-lessons-werrington-learners-can-trust.html",
+    "date": "2026-05-12",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/15cb3732-df51-45df-8ff1-8c93e062d9bc.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Driving Lessons Kettering That Build Confidence",
+    "excerpt": "Driving lessons Kettering should build skill and confidence. Find out what to expect, how to choose well and prepare for test success.",
+    "url": "driving-lessons-kettering-that-build-confidence.html",
+    "date": "2026-05-11",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/9ccc0d52-8a37-4a66-8352-c78c30ed9b8f.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Driving Lessons Grantham That Build Confidence",
+    "excerpt": "Driving lessons Grantham learners can trust - calm, tailored tuition in manual or automatic to build confidence, safety and test readiness fast.",
+    "url": "driving-lessons-grantham-that-build-confidence.html",
+    "date": "2026-05-09",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/84a1e735-c532-4b35-b967-f7d994b5ad0c.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "7 Patient Driving Instructor Qualities",
+    "excerpt": "Learn the key patient driving instructor qualities that build confidence, reduce nerves and help learners make steady, safe progress.",
+    "url": "7-patient-driving-instructor-qualities.html",
+    "date": "2026-05-08",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/633a8f69-776d-42c4-b707-5a0342c2ecde.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Intensive vs Weekly Driving Lessons: Which Works?",
+    "excerpt": "Intensive vs weekly driving lessons: which works best? Compare cost, confidence, progress and test readiness to choose the right route.",
+    "url": "intensive-vs-weekly-driving-lessons-which-works.html",
+    "date": "2026-05-07",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/d9539495-bd31-4cc7-9cf1-f144d613654e.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Are Automatic Lessons Easier for Beginners?",
+    "excerpt": "Are automatic lessons easier for beginners? Learn the real pros, trade-offs, and how to choose the right driving lessons for confidence.",
+    "url": "are-automatic-lessons-easier-for-beginners.html",
+    "date": "2026-05-06",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/49abc428-777c-49f8-a3f8-7e3a369bdd6c.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "A Guide to DVSA Driving Test Marking",
+    "excerpt": "A clear guide to DVSA driving test marking - learn how faults are scored, what causes a fail, and how to prepare with more confidence.",
+    "url": "a-guide-to-dvsa-driving-test-marking.html",
+    "date": "2026-05-05",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/1bf4aba1-715b-4290-a525-dd560bf001d6.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Automatic Lessons Whittlesey Learners Trust",
+    "excerpt": "Looking for automatic lessons Whittlesey learners can rely on? Learn what to expect, who they suit, and how to build safe driving confidence fast.",
+    "url": "automatic-lessons-whittlesey-learners-trust.html",
+    "date": "2026-05-04",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4998e5ec-ffe6-4a3a-8eb5-ca42a3c8aca2.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Can I Change Driving Instructors Mid Course?",
+    "excerpt": "Can I change driving instructors mid course? Yes - and sometimes it helps. Learn when to switch, what to ask, and how to keep progress on track.",
+    "url": "can-i-change-driving-instructors-mid-course.html",
+    "date": "2026-05-03",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/2c6fddac-b7ef-456e-9bd8-494fb045f517.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How to Prepare for Driving Lessons",
+    "excerpt": "Learn how to prepare for driving lessons with simple tips to feel calm, confident and ready to make steady progress from lesson one.",
+    "url": "how-to-prepare-for-driving-lessons.html",
+    "date": "2026-05-02",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/381b842b-47a5-4eaf-a940-efbbaded0698.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "A Guide to Returning Driving Lessons",
+    "excerpt": "A guide to returning driving lessons for nervous or rusty drivers. Learn what to expect, how to rebuild confidence and make steady progress.",
+    "url": "a-guide-to-returning-driving-lessons.html",
+    "date": "2026-05-02",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/a5b56ff3-b750-4709-817b-519def795785-1777743795974.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "7 Safe Driving Habits Lessons That Stick",
+    "excerpt": "Safe driving habits lessons help learners build calm, confident routines on the road, from mirrors and speed control to space, focus and judgement.",
+    "url": "7-safe-driving-habits-lessons-that-stick.html",
+    "date": "2026-04-30",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/e7811ec9-b046-4049-813a-211883aa36f4-1777743753069.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "8 Top Mistakes in Driving Lessons",
+    "excerpt": "Avoid the top mistakes in driving lessons with calm, practical advice to build confidence, make faster progress and feel test-ready sooner.",
+    "url": "8-top-mistakes-in-driving-lessons.html",
+    "date": "2026-04-28",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/211b7f72-dd88-4578-8a8f-d0876583cbea-1777276498868.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "10 Best Driving Habits for Beginners",
+    "excerpt": "Learn the best driving habits for beginners to build confidence, stay safe and make faster progress in lessons and on the road every day.",
+    "url": "10-best-driving-habits-for-beginners.html",
+    "date": "2026-04-26",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/b5086bca-6170-4dac-bba8-9b7dba84bbe9-1777743834310.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Bay Parking Reference Points for Learners",
+    "excerpt": "Learn bay parking reference points for learners with calm, practical tips to judge spacing, timing and steering with more confidence and control.",
+    "url": "bay-parking-reference-points-for-learners.html",
+    "date": "2026-04-25",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/d1aad934-1a09-4cd4-acb9-1bed109d8c7b.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Confidence Driving Lessons for Adults",
+    "excerpt": "Confidence driving lessons adults can trust - calm, tailored tuition that helps nervous or rusty drivers feel safer, steadier and more in control.",
+    "url": "confidence-driving-lessons-for-adults.html",
+    "date": "2026-04-24",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/7bcccdac-0234-41d4-b80f-380094130a3c.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "What Does a Driving Instructor Do During Lessons?",
+    "excerpt": "What does a driving instructor do during lessons? Learn how they coach, plan, keep you safe and build real confidence behind the wheel.",
+    "url": "what-does-a-driving-instructor-do-during-lessons.html",
+    "date": "2026-04-23",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c91f5f38-0a7b-4232-805a-1f9302dbf633.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Example Personalised Lesson Plan for Beginners",
+    "excerpt": "See an example personalised lesson plan beginner drivers can follow, with realistic goals, lesson structure, confidence tips and steady progress.",
+    "url": "example-personalised-lesson-plan-for-beginners.html",
+    "date": "2026-04-22",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3ff535b8-1e36-4b67-be5c-a96f27e8cf70.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Driving School or Private Practice?",
+    "excerpt": "Driving school or private practice? Learn the real pros, drawbacks and best mix for building safe, confident driving skills and test readiness.",
+    "url": "driving-school-or-private-practice.html",
+    "date": "2026-04-21",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/580d0182-e7da-4d1a-ac80-033f6c651c77.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Refresher Driving Lessons for Adults Peterborough",
+    "excerpt": "Refresher driving lessons for adults Peterborough can rebuild confidence, sharpen skills and make everyday driving feel calmer and safer.",
+    "url": "refresher-driving-lessons-for-adults-peterborough.html",
+    "date": "2026-04-20",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/8c6fa416-1c92-4716-8037-ad8f7edc0e61-1777744079466.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How Many Lessons Before Test?",
+    "excerpt": "Wondering how many lessons before test day? Learn what affects lesson numbers, typical ranges, and how to know when you're genuinely ready.",
+    "url": "how-many-lessons-before-test.html",
+    "date": "2026-04-19",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3d39a86b-82ab-4c1b-a32f-dd912971d7ae.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Driving Instructor Yaxley: What to Look For",
+    "excerpt": "Looking for a driving instructor Yaxley learners can trust? Here’s how to choose calm, expert lessons that build confidence and real progress.",
+    "url": "driving-instructor-yaxley-what-to-look-for.html",
+    "date": "2026-04-18",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/28a517b8-8f0e-45c8-8d61-3eb71d0293ee.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How Nervous Learners Build Confidence",
+    "excerpt": "Learn how nervous learners build confidence with calm practice, tailored driving lessons and simple routines that make each step feel manageable.",
+    "url": "how-nervous-learners-build-confidence.html",
+    "date": "2026-04-16",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/f32a9fbb-40e6-4c8d-aabf-fed10f77a51f.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How to Gain Roundabout Confidence",
+    "excerpt": "Learn how to gain roundabout confidence with calm, practical tips that help you judge speed, lanes and timing without feeling overwhelmed.",
+    "url": "how-to-gain-roundabout-confidence.html",
+    "date": "2026-04-14",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/23426f68-adef-4cfd-b76e-311d164ab745-1777744156917.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "7 Best Reasons to Choose One-to-One Tuition",
+    "excerpt": "Discover the best reasons to choose one-to-one tuition for driving lessons, from faster progress to calmer learning and better test prep.",
+    "url": "7-best-reasons-to-choose-onetoone-tuition.html",
+    "date": "2026-04-12",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/98af3846-0351-4112-85df-8fc2205e52bb.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Automatic Driving Lesson Structure Explained",
+    "excerpt": "Understand automatic driving lesson structure, what each stage covers, how progress builds, and how tailored lessons help you pass with confidence.",
+    "url": "automatic-driving-lesson-structure-explained.html",
+    "date": "2026-04-10",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/87fb4777-874a-4cae-8d37-2c32fadc59bc.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Is One to One Tuition Worth It for Driving?",
+    "excerpt": "Is one to one tuition worth it for driving lessons? See when personalised teaching saves time, builds confidence and helps you pass sooner.",
+    "url": "is-one-to-one-tuition-worth-it-for-driving.html",
+    "date": "2026-04-08",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/78a2a0ea-d328-40d2-ac30-2455139c4543.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Best Ways to Stay Calm Driving",
+    "excerpt": "Discover the best ways to stay calm driving, from breathing and planning to handling mistakes, traffic and test nerves with more confidence.",
+    "url": "best-ways-to-stay-calm-driving.html",
+    "date": "2026-04-06",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4b4f7c0b-7bf9-4cbb-a7c3-d0067d246df9.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How to Overcome Driving Nerves",
+    "excerpt": "Learn how to overcome driving nerves with calm, practical tips that build confidence, reduce anxiety and help you feel safer behind the wheel.",
+    "url": "how-to-overcome-driving-nerves.html",
+    "date": "2026-04-04",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/47335f37-0871-4d53-a301-41f56819481b-1774273262846.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Best Time of Day for Driving Lessons",
+    "excerpt": "Find the best time of day for driving lessons based on confidence, traffic, focus and progress, with practical advice for new and test-ready learners.",
+    "url": "best-time-of-day-for-driving-lessons.html",
+    "date": "2026-04-03",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/dec4f73d-1c1c-4e82-8bbb-e2f20569cb29.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Guide to Safe Driving Habits for New Drivers",
+    "excerpt": "A practical guide to safe driving habits for new drivers, with simple tips to build confidence, stay alert, and make better decisions on the road.",
+    "url": "guide-to-safe-driving-habits-for-new-drivers.html",
+    "date": "2026-04-02",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/398a1fe5-f6f4-48ab-9432-666dfdc9db0a.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Roundabout Lane Discipline Lesson Peterborough",
+    "excerpt": "Roundabout lane discipline lesson Peterborough drivers can trust - build confidence, choose the right lane, and handle exits calmly and safely.",
+    "url": "roundabout-lane-discipline-lesson-peterborough.html",
+    "date": "2026-04-01",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3a0ec0c2-503a-46d5-9aff-2c9e97aa23e8.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "DVSA Driving Test Changes 2026 Explained",
+    "excerpt": "DVSA driving test changes 2026 explained clearly - what may change, what stays the same, and how learners can prepare with confidence now.",
+    "url": "dvsa-driving-test-changes-2026-explained.html",
+    "date": "2026-03-31",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/5192fd4c-f206-4973-92be-5454b5971fff.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "A Guide to Learning Clutch Control Smoothly",
+    "excerpt": "A guide to learning clutch control smoothly, with calm, practical tips to stop stalling, find the bite, and build confidence in a manual car.",
+    "url": "a-guide-to-learning-clutch-control-smoothly.html",
+    "date": "2026-03-30",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4502e9ce-4054-4363-8b04-9c0d990b3bea.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Manual vs Automatic Driving Lessons for Beginners",
+    "excerpt": "Manual vs automatic driving lessons for beginners - compare cost, confidence, test prep and long-term flexibility to choose the right start.",
+    "url": "manual-vs-automatic-driving-lessons-for-beginners.html",
+    "date": "2026-03-29",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/84e007ab-77b0-4c1e-8a3e-8ee11cdba826.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Parallel Parking Lesson Step by Step",
+    "excerpt": "A parallel parking lesson step by step for nervous learners - simple reference points, calm steering tips and test-ready advice that works.",
+    "url": "parallel-parking-lesson-step-by-step.html",
+    "date": "2026-03-28",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/fd3c928e-2d71-4ebf-87a3-3f386e1ece71-1774272625720.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Mistakes on Driving Test and How to Avoid Them",
+    "excerpt": "Worried about mistakes on driving test day? Learn the most common faults, why they happen, and how to avoid them with calm, practical tips.",
+    "url": "mistakes-on-driving-test-and-how-to-avoid-them.html",
+    "date": "2026-03-27",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/74fe66ff-9f0f-42ca-9d7e-50d6f8ebfc2e.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Is Automatic Licence Valid for All Cars?",
+    "excerpt": "Is automatic licence valid for all cars? Find out what you can legally drive, the key exceptions, and when automatic is the right choice.",
+    "url": "is-automatic-licence-valid-for-all-cars.html",
+    "date": "2026-03-27",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/25148c3b-32db-47c3-abcc-49072da2ffc7.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Driving Test Preparation Session Kettering 4 Hours",
+    "excerpt": "Book a driving test preparation session Kettering 4 hours long to sharpen manoeuvres, route planning and confidence before test day.",
+    "url": "driving-test-preparation-session-kettering-4-hours.html",
+    "date": "2026-03-26",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/d68881d3-769e-4b07-a028-da2ef2b4855f.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Driving instructor vs driving school differences",
+    "excerpt": "Understand driving instructor vs driving school differences, from lesson style and pricing to flexibility, so you can choose with confidence.",
+    "url": "driving-instructor-vs-driving-school-differences.html",
+    "date": "2026-03-25",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/ea1a9350-cd91-4257-9a9d-8de7cc9c2e17.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Manual Driving Lesson Hill Start Practice Tips",
+    "excerpt": "Manual driving lesson hill start practice tips to help you control clutch, bite point and handbrake with calm, safe practice and more confidence.",
+    "url": "manual-driving-lesson-hill-start-practice-tips.html",
+    "date": "2026-03-23",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/ddafdd61-f8cf-498d-9831-27335fc3b0c0.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Best Ways to Reduce Driving Lesson Anxiety",
+    "excerpt": "Discover the best ways to reduce driving lesson anxiety with calm, practical tips that build confidence, improve focus, and help you progress.",
+    "url": "best-ways-to-reduce-driving-lesson-anxiety.html",
+    "date": "2026-03-22",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/5360d6d5-8a66-4f33-9295-f672a601adb7.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Theory Test Pass Tips That Actually Help",
+    "excerpt": "Want a theory test pass without last-minute panic? Learn what to study, how to practise hazard perception, and how to feel ready on test day.",
+    "url": "theory-test-pass-tips-that-actually-help.html",
+    "date": "2026-03-21",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/01eb4e98-9fab-4f2c-b8c4-7fc45f99a027-1774133615684.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "One to One Driving Tuition Benefits Explained",
+    "excerpt": "Learn the one to one driving tuition benefits that help learners build confidence, improve safety and make steady progress toward test success.",
+    "url": "one-to-one-driving-tuition-benefits-explained.html",
+    "date": "2026-03-21",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/de874b02-2e69-4c4d-8d09-0acf3b8abbf9.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How to Pass the Driving Test First Time",
+    "excerpt": "Learn how to pass the driving test first time with calm, practical tips on lessons, manoeuvres, test nerves and smart preparation.",
+    "url": "how-to-pass-the-driving-test-first-time.html",
+    "date": "2026-03-19",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c52a2089-8379-41a7-9437-fa8ab3cf5ceb.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Female Instructor or Male Instructor?",
+    "excerpt": "Choosing a female instructor or male instructor? Learn what really matters for confidence, progress and the right fit for driving lessons.",
+    "url": "female-instructor-or-male-instructor.html",
+    "date": "2026-03-19",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c7358890-3f02-4305-98d6-523664671da6.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Best Driving Practice Routes in Peterborough",
+    "excerpt": "Looking for the best routes to practise driving Peterborough? Try calm local roads, roundabouts and test-style routes that build confidence.",
+    "url": "best-driving-practice-routes-in-peterborough.html",
+    "date": "2026-03-18",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/e4428b5a-81e3-448f-8848-3c5b2d173549.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Most Common Driving Test Faults",
+    "excerpt": "What are the most common driving test faults? Learn where learners lose marks most often and how to fix them before test day.",
+    "url": "most-common-driving-test-faults.html",
+    "date": "2026-03-17",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/398660c4-25c4-4365-a56b-c31cc79058c9.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Starting Driving Lessons With Confidence",
+    "excerpt": "Learn how to start driving lessons as a beginner with calm, practical advice on choosing lessons, building confidence and making steady progress.",
+    "url": "starting-driving-lessons-with-confidence.html",
+    "date": "2026-03-14",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/88fa1a49-65a4-48c1-807c-57a3bd277e10.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Automatic or Manual Lessons in Peterborough?",
+    "excerpt": "Comparing automatic lessons vs manual lessons Peterborough learners choose, with clear advice on cost, confidence, test prep and goals.",
+    "url": "automatic-or-manual-lessons-in-peterborough.html",
+    "date": "2026-03-14",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3d1d0c30-e25b-42ec-9fe4-69b865c427e0.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Can You Pass With 4 Hours of Test Prep?",
+    "excerpt": "Can you prepare for driving test in four hours? Learn what to focus on, what to expect, and how to use a short session wisely before test day.",
+    "url": "can-you-pass-with-4-hours-of-test-prep.html",
     "date": "2026-03-10",
-    "image": "",
-    "category": "Theory Test",
-    "read_time": 6,
-    "tags": ["theory test", "hazard perception", "multiple choice"]
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/f76f4ada-52e9-4b76-9102-bd56a6e2e423.webp",
+    "category": "Driving Tips"
   },
   {
-    "title": "How to Stay Calm on Your Driving Test Day",
-    "excerpt": "Practical strategies to manage test nerves, from the night before right up to the moment the examiner says 'drive on.'",
-    "url": "blog/stay-calm-driving-test-day.html",
+    "title": "10 Driving Test Day Tips That Really Help",
+    "excerpt": "Top driving test day tips for learners to stay calm, avoid common mistakes and give yourself the best chance of passing first time.",
+    "url": "10-driving-test-day-tips-that-really-help.html",
+    "date": "2026-03-09",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/981f83f1-7710-4369-a0d6-17a2c90a221c.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "7 Smart Ways to Practise Hazard Perception",
+    "excerpt": "Learn the best ways to practise hazard perception driving with calm, proven methods that build awareness, timing and test-day confidence.",
+    "url": "7-smart-ways-to-practise-hazard-perception.html",
+    "date": "2026-03-09",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/20329cf6-cd92-4f01-8770-6a1df4bd6446.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How Many Driving Lessons Do You Need?",
+    "excerpt": "Wondering how often should i take driving lessons? Find the right lesson frequency for confidence, progress, budget, and test success.",
+    "url": "how-many-driving-lessons-do-you-need.html",
+    "date": "2026-03-08",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/243bab8f-ae65-42b6-87ba-03b8d86d4988.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "7 Ways to Feel Confident Behind the Wheel",
+    "excerpt": "Learn how to build confidence while learning to drive with calm, practical tips that help you feel safer, steadier and more in control.",
+    "url": "7-ways-to-feel-confident-behind-the-wheel.html",
+    "date": "2026-03-07",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c5b370ab-2d57-453d-8b54-c81be79a176b.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Book Driving Lessons Online in Peterborough",
+    "excerpt": "Book driving lessons online Peterborough with clear lesson blocks, honest pricing and a personalised plan that builds confidence fast from lesson one.",
+    "url": "book-driving-lessons-online-in-peterborough.html",
+    "date": "2026-03-06",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4c65d2e9-76f7-4925-90ac-6ed123acdbb2.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Warm-Up Lesson Before Your Peterborough Test",
+    "excerpt": "A driving test warm up lesson Peterborough helps you settle nerves, sharpen routines and arrive test-ready with calm, instructor-led preparation.",
+    "url": "warmup-lesson-before-your-peterborough-test.html",
+    "date": "2026-03-04",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4186cc1c-22df-4317-ad21-72cb5900e022.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Driving Lessons for Anxious Adults in Peterborough",
+    "excerpt": "Driving lessons for anxious adults Peterborough: learn calm, confidence-building steps, lesson pacing and test prep so you can drive safely and freely.",
+    "url": "driving-lessons-for-anxious-adults-in-peterborough.html",
+    "date": "2026-03-02",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/95b738e9-e8da-42ec-914c-b53f49d853a4.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How Long Should Your Driving Lessons Be?",
+    "excerpt": "Learn how to choose right lesson length for driving with 1, 1.5, or 2 hour sessions, based on confidence, progress, and test goals.",
+    "url": "how-long-should-your-driving-lessons-be.html",
     "date": "2026-02-28",
-    "image": "",
-    "category": "Nerves & Confidence",
-    "read_time": 4,
-    "tags": ["nerves", "driving test", "confidence", "tips"]
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/0d2dff51-fe10-4dda-ac53-9522550cc7db.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Automatic cars: what new drivers can expect",
+    "excerpt": "The future of automatic cars for new drivers: EVs, hybrid tech, test choices, and what to learn now for safer, calmer driving in the years ahead.",
+    "url": "automatic-cars-what-new-drivers-can-expect.html",
+    "date": "2026-02-27",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/61ee5947-3cdb-444e-81b9-caa9fcffc47f.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Choosing an Approved Driving Instructor in Peterborough",
+    "excerpt": "Need an approved driving instructor Peterborough learners trust? Learn what to look for, how lessons work, and how to choose confidently.",
+    "url": "choosing-an-approved-driving-instructor-in-peterborough.html",
+    "date": "2026-02-26",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/a23d2e10-0b09-4b10-9878-784d26e69b91.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Driving test manoeuvres practice that works",
+    "excerpt": "Driving test manoeuvres practice made simple: learn what examiners want, how to practise safely, and how to build calm, repeatable routines.",
+    "url": "driving-test-manoeuvres-practice-that-works.html",
+    "date": "2026-02-25",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/9b999ef2-f1a2-4e2c-b612-cfff25f0bfff.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Mock Test Lessons That Actually Boost Pass Rates",
+    "excerpt": "A driving test mock test lesson builds calm, test-ready habits. Learn what happens in one, when to book, and how to use feedback to pass.",
+    "url": "mock-test-lessons-that-actually-boost-pass-rates.html",
+    "date": "2026-02-24",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/3b9688f6-8e9f-4ee0-bec6-9c5bcdac4514.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Your First Driving Lesson: What to Expect",
+    "excerpt": "First driving lesson what to expect: how it starts, what you’ll do in the car, common nerves, and how to prepare so you feel calm and in control.",
+    "url": "your-first-driving-lesson-what-to-expect.html",
+    "date": "2026-02-23",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4df99afd-2cdd-43dd-8d4f-da60ecbf33e8.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Driving Lessons for Nervous Drivers: What Works",
+    "excerpt": "Driving lessons for nervous drivers that build calm confidence fast. Learn what to expect, how to choose an instructor, and progress safely.",
+    "url": "driving-lessons-for-nervous-drivers-what-works.html",
+    "date": "2026-02-22",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/6936aba2-c087-447d-a348-737de1236b7f.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Manual or Automatic Lessons: Which Is Better?",
+    "excerpt": "Manual or automatic lessons which is better? Compare cost, confidence, test outcomes and long-term flexibility so you choose the right option.",
+    "url": "manual-or-automatic-lessons-which-is-better.html",
+    "date": "2026-02-21",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/1b351dfa-492d-46e9-84c4-2a654cd5321c.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "How Many Driving Lessons Do You Really Need?",
+    "excerpt": "Wondering how many driving lessons do i need? Learn what affects lesson numbers, realistic UK averages, and how to reach test-ready confidence.",
+    "url": "how-many-driving-lessons-do-you-really-need.html",
+    "date": "2026-02-20",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/aae05aca-60c1-49fc-9a4a-b00729204f7d.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Intensive Driving Test Prep Session: What Works",
+    "excerpt": "An intensive driving test preparation session builds confidence fast with focused routes, fault fixing and test-day practice for Peterborough learners.",
+    "url": "intensive-driving-test-prep-session-what-works.html",
+    "date": "2026-02-19",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/c84bfb1d-6e58-4030-b9ba-372bd9b8e211.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Is a 1-Hour Automatic Lesson Enough?",
+    "excerpt": "Automatic car lesson 1 hour: what you’ll cover, who it suits, and how to get real progress fast with calm, structured instruction.",
+    "url": "is-a-1hour-automatic-lesson-enough.html",
+    "date": "2026-02-18",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/405a5964-0650-4348-94ae-7dbf50b7052a.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Grantham Driving Test Prep That Actually Works",
+    "excerpt": "Grantham driving test preparation made simpler: what to practise, common local pitfalls, and how to build confidence with focused test-ready lessons.",
+    "url": "grantham-driving-test-prep-that-actually-works.html",
+    "date": "2026-02-17",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/ff46bd7b-85f0-45f5-9d31-b92808440549.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Kettering Driving Test Prep That Actually Works",
+    "excerpt": "Kettering driving test preparation that builds confidence fast. Learn the local routes, avoid common faults, and feel calm and ready on test day.",
+    "url": "kettering-driving-test-prep-that-actually-works.html",
+    "date": "2026-02-16",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/4d9d2dcc-164c-45bb-8662-d7d52c03836d.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Peterborough Driving Test Prep That Works",
+    "excerpt": "Peterborough driving test preparation made simple: what to practise, common local pitfalls, mock tests and calm strategies to help you pass with confidence.",
+    "url": "peterborough-driving-test-prep-that-works.html",
+    "date": "2026-02-15",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/dd344118-ceaa-4f41-ad3d-15ed09629d8d-1774274206198.webp",
+    "category": "Driving Tips"
+  },
+  {
+    "title": "Driving lesson prices in Peterborough: what to pay",
+    "excerpt": "Driving lessons prices Peterborough explained: what affects cost, manual vs automatic, lesson lengths, blocks, and how to choose value with confidence.",
+    "url": "driving-lesson-prices-in-peterborough-what-to-pay.html",
+    "date": "2026-02-14",
+    "image": "https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/21c0d152-8908-428a-aae5-1b4a91ca580e/460c7e14-b0e3-400a-a3b7-a291bd01f071-1774274253501.webp",
+    "category": "Driving Tips"
   }
 ]

@@ -26,3 +26,28 @@ desktop.ini
 #   D4Driving_Starter_Pack.pdf              (downloaded from starter-pack.html)
 #   D4Driving_Franchise_Integration_Plan.md (read by the daily changelog routine)
 #   CHANGELOG.md                            (written by the daily changelog routine)
+
+# ── Local Claude Code config — machine-specific, keep out of the public repo ──
+.claude/settings.local.json
+
+# ── Internal docs repo nested in this working tree — NEVER commit ──
+docs/superpowers/
+
+# ── Student & customer data — MUST NEVER be committed (public repo, UK GDPR) ──
+*.csv
+seed.sql
+students.json
+*students*.json
+d4driving-seed/
+
+# ── Supabase local development scratch ──
+supabase/.branches/
+supabase/.temp/
+.env
+.env.local
+
+# ── Subagent-driven development scratch ──
+.superpowers/
+
+# ── Local Claude Code config ──
+.claude/settings.local.json
