@@ -1,0 +1,72 @@
+# D4Driving website — working notes
+
+Static site for D4Driving School of Motoring, Peterborough. Plain HTML/CSS/JS,
+single-file pages, **no build step**, served by GitHub Pages from `main`.
+
+**This file is read automatically at the start of every session. Keep it short.**
+Detail belongs in the private ops repo, not here.
+
+---
+
+## Before doing anything
+
+1. **`git branch` and `git log --oneline -5`.** Work may already exist on a
+   branch, and the checked-out branch may not be `main`. A fix was duplicated
+   in Aug 2026 because this step was skipped.
+2. **Check "In flight" below** for work in progress.
+3. `git fetch origin main && git merge origin/main` **before every push** — an
+   hourly Action commits to this repo and will otherwise reject the push.
+
+## In flight
+
+| Branch | What | Status |
+|---|---|---|
+| `lesson-credit-ledger` | Supabase lesson-credit ledger — migrations, instructors table | In progress, do not ship |
+
+`main` is live. Anything merged to `main` is on the public site within ~2 minutes.
+
+## Where things live
+
+| | |
+|---|---|
+| **This repo (public)** | The website only. Plus `CHANGELOG.md` (written nightly by a routine) and `D4Driving_Franchise_Integration_Plan.md` (the build history, numbered sections). |
+| **`D4Driving/d4driving-ops` (private)** | Everything internal: PRODUCT.md, DESIGN.md, pricing plans, launch kit, design specs, competitor reports. **Business strategy goes here, never in this repo.** |
+| **Cloud routines** | Competitor watch (Mondays) and doc catch-up (nightly) — both write to the ops repo or `CHANGELOG.md`. |
+
+## Standing rules
+
+- **Advise before building** anything structural. Present the plan, then build.
+- **SEO check on every change**: title/meta, canonical (non-www), OG/Twitter,
+  one h1, alt text, schema, sitemap, internal links. Same pass, not a follow-up.
+- **Update the docs in the same session** work ships — the Integration Plan and
+  the ops repo. Move finished items out of "Pending", don't just append.
+- **Never `git add -A`** here. Stage explicit paths. This is a public repo with
+  a nested private repo (`docs/superpowers`) inside the working tree, and a
+  blanket add has already swept it into a commit once.
+- **Never commit** student data, `*.csv`, `PRODUCT.md`, `DESIGN.md`, pricing
+  docs, or anything under `docs/superpowers/`. See `.gitignore`.
+
+## Gotchas that have bitten before
+
+- **Canonical domain is non-www** (`d4driving.co.uk`); www 301-redirects.
+  Machine-readable URLs — sitemap, schema, hreflang — must all use non-www.
+- **The mobile menu (`#mnav`) must live OUTSIDE `<nav>`.** The sticky nav's
+  `backdrop-filter` creates a containing block that traps `position: fixed`
+  descendants inside the 68px bar, making the menu invisible when scrolled.
+- **GitHub Pages is case-sensitive.** `Rakesh.webp` ≠ `rakesh.webp`.
+- **Article pages are static and hand-maintained.** Nothing regenerates them
+  since Soro was cancelled. Re-run `tools/gen-articles.js` if articles change.
+- **Bump the service worker cache version** (`sw.js`) on significant changes,
+  or returning visitors keep the old assets.
+- **48-hour booking notice lives in two systems** — `LEAD_HOURS` in
+  `.github/workflows/blog-sync.yml` and Cal.com's own "Minimum Notice". Change
+  one, change the other.
+- **Deleting a code block:** read the whole region first. The Soro loader shared
+  a `<script>` tag with the nav, burger and reveal JS; cutting to the closing
+  tag destroyed all of it.
+
+## Owner
+
+Robert — prefers plain summaries, decisions laid out with a recommendation, and
+being asked before structural changes. Claims must be true and checkable; he
+has corrected overclaiming before.
