@@ -1,6 +1,12 @@
 # D4Driving — Franchise Integration Plan
 _Last updated: 20 August 2026_
 
+> **This is the build history** — what was done, when, and why. For a quick
+> orientation at the start of a session, read `CLAUDE.md` instead: it is one
+> page and covers where everything lives, what is in flight, and the rules.
+> Business strategy, pricing and design docs are in the private
+> `D4Driving/d4driving-ops` repo. See §16.
+
 ## Context
 
 Robert (D4Driving founder) is expanding by taking on a franchisee named **Rakesh Kumar**.
@@ -216,6 +222,55 @@ Soro was cancelled (cost). Everything that depended on it has been removed.
 
 ---
 
+## 16. Documentation Consolidated — ✅ 20 August 2026
+
+Work on this site was spread across enough places that it had started costing
+real money: a fix was built from scratch in August that a forgotten branch had
+already solved, better. The cause was not missing documentation — it was that
+nothing was read *automatically* at the start of a session.
+
+**`CLAUDE.md` at the repo root** is the fix. It is loaded every session without
+being asked for, so it is deliberately kept to about a page: where each document
+lives, what work is in flight, the standing rules, and the handful of gotchas
+that have actually bitten (non-www canonical, the mobile menu's `backdrop-filter`
+trap, case-sensitive Pages hosting, the hourly Action's push races). Anything
+longer belongs elsewhere — length is what makes an auto-read file get skimmed.
+
+**One private repo for everything internal.** `D4Driving/intelligence-report`
+was renamed **`D4Driving/d4driving-ops`** and now holds:
+
+| Path | What moved in |
+|---|---|
+| `product/` | PRODUCT.md, DESIGN.md, Design_Critique_2026-05-03.md |
+| `business/` | Pricing update (+PDF), Launch Kit, Project Instructions |
+| `plans/`, `specs/`, `LESSON-LEDGER-STATE.md` | Absorbed from the separate `D4Driving-internal-docs` repo |
+| `competitors.md`, `reports/` | Unchanged, so the weekly routine kept working |
+
+Seven of those documents had been gitignored out of this public repo and were
+therefore **in no version control at all** — no history, and nothing if the
+machine were lost. They now have both.
+
+The nested `docs/superpowers/` checkout inside this repo's working tree is gone.
+It was the hazard behind the `git add -A` accident that staged a private repo
+into a public commit; its contents live in the ops repo instead.
+
+**Both cloud routines repointed.** The weekly competitor watch now targets the
+renamed repo and stages explicit paths instead of `git add -A`, since the repo
+holds unrelated documents now. The nightly doc catch-up additionally reconciles
+`CLAUDE.md` — it may retire an In-flight row when work demonstrably lands, and
+otherwise flags staleness rather than editing.
+
+**Branches tidied.** `blog-decouple-from-soro` deleted (fully merged); local-only
+`master` deleted (a May commit superseded by main — identical photo, and it still
+said 16,000 subscribers). `lesson-credit-ledger` left alone; it is live work.
+
+**One incidental fix.** A real, unverified UK mobile number was serving as the
+`e.g.` value in the ledger schema docs. Replaced with Ofcom's reserved fiction
+range (`+447700900123`). It remains in the old `D4Driving-internal-docs` history,
+which is private and can be left, or the repo deleted outright — Robert's call.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
@@ -249,9 +304,10 @@ Soro was cancelled (cost). Everything that depended on it has been removed.
 ## Architecture Notes
 
 - All pages: **single-file HTML with inline CSS/JS** — no build tools, no bundler
-- Hosting: **GitHub Pages** — CNAME → `www.d4driving.co.uk`, branch: `main`
+- Hosting: **GitHub Pages** — `CNAME` contains `d4driving.co.uk`, branch: `main`
+- **Canonical domain is non-www**; `www` 301-redirects to it. Every machine-readable URL — sitemap, schema, hreflang, canonical tags — must use the bare domain. Getting this wrong is what made Search Console report "couldn't fetch" for the sitemap in July 2026
 - GitHub Pages runs on Linux → **case-sensitive filenames** (e.g. `Rakesh.webp` ≠ `rakesh.webp`)
-- GitHub Action (`blog-sync.yml`) runs **hourly** — always `git fetch origin main && git merge origin/main` before pushing to avoid rejected pushes
+- GitHub Action (file `blog-sync.yml`, now named **"Availability & Sitemap Sync"**) runs **hourly** — always `git fetch origin main && git merge origin/main` before pushing to avoid rejected pushes
 - Formspree endpoint: `https://formspree.io/f/mwvzyrzz` (Robert's account, `info@d4driving.co.uk`)
 - Cal.com embed (Robert): `calLink: "d4driving"`, `month_view`, inline
 - Cal.com links (Rakesh): direct URL links, no embed
