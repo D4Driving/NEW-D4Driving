@@ -1,5 +1,5 @@
 # D4Driving — Franchise Integration Plan
-_Last updated: 20 August 2026_
+_Last updated: 28 August 2026_
 
 > **This is the build history** — what was done, when, and why. For a quick
 > orientation at the start of a session, read `CLAUDE.md` instead: it is one
@@ -268,6 +268,59 @@ said 16,000 subscribers). `lesson-credit-ledger` left alone; it is live work.
 `e.g.` value in the ledger schema docs. Replaced with Ofcom's reserved fiction
 range (`+447700900123`). It remains in the old `D4Driving-internal-docs` history,
 which is private and can be left, or the repo deleted outright — Robert's call.
+
+---
+
+## 17. Availability Feed Went Stale — ✅ 28 August 2026
+
+**Symptom:** Robert noticed the Next Available Slots section was not refreshing.
+
+**Root cause: GitHub stopped firing the hourly schedule.** The workflow itself
+was healthy the whole time — every run green, and a manual dispatch finished in
+10 seconds. The trigger was the problem. The cron sat on `0 * * * *`, and GitHub
+documents `schedule` as best-effort with **the start of every hour** as its
+highest-load window; runs there get delayed or dropped. The decay was sharp:
+
+| Date | Runs |
+|---|---|
+| 15–25 Aug | 23/day (hourly, correct) |
+| 26 Aug | 17 |
+| 27 Aug | 3 |
+| 28 Aug | 1 |
+
+Nothing in the repo changed to cause it — there were no non-bot commits between
+24 and 28 August. It was not the 20 August rewiring, which ran cleanly for five
+days afterwards.
+
+**What it actually cost.** Not a blank section — confident wrong answers. The
+manual re-run removed three slots (4, 11 and 15 September) that were already
+booked. The site had advertised them as free for 11½ hours, under a pulsing
+"Available" badge and the words "pulled live from Robert's diary".
+
+**Fixes:**
+
+- **`blog-sync.yml`** — cron moved to `23 * * * *`, off the contended slot.
+- **Staleness is now declared.** Past 3 hours the timestamp turns red and a
+  banner reads "These times were last checked N hours ago, so some may already
+  be taken." Under 3 hours nothing changes. GitHub can still drop runs; this
+  makes that visible rather than silent, which is the part that actually
+  protects students. Durations also read as "11 hours" now, not "688 min".
+- **Day-grouping bug.** Slots were grouped by *weekday name*, so a second
+  Friday was filed under the first Friday's heading — 19 slots were rendering
+  beneath 16 headings, with 11 Sep sitting under "Friday, 4 Sep". Now keyed on
+  the calendar date.
+- **Service worker.** The network-first rule for `.json` tested the whole URL,
+  but the page requests `availability.json?t=<timestamp>`, which does not end in
+  `.json`. The rule never matched, so those requests took the cache-first path
+  and wrote a **new, permanently-retained cache entry on every page view**. Now
+  tests the pathname; cache bumped to `v5` to purge what accumulated.
+- **Deleted `blank.yml`**, the stock "Hello, world!" starter workflow, which
+  fired a runner job on every push — including all ~23 daily bot commits.
+
+**Still unproven at time of writing:** the new cron had not yet fired. GitHub's
+scheduling is not observable from outside, so moving off `:00` is the documented
+lever, not a guarantee. The staleness banner exists precisely because it may
+not be enough.
 
 ---
 

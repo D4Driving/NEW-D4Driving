@@ -56,6 +56,10 @@ Detail belongs in the private ops repo, not here.
 - **GitHub Pages is case-sensitive.** `Rakesh.webp` ≠ `rakesh.webp`.
 - **Article pages are static and hand-maintained.** Nothing regenerates them
   since Soro was cancelled. Re-run `tools/gen-articles.js` if articles change.
+- **Never put a cron on `0 * * * *`.** GitHub treats `schedule` as best-effort
+  and the top of the hour is its highest-load window. The availability sync sat
+  there and silently decayed to one run a day, leaving booked slots advertised
+  as free. It is on `23 * * * *`; keep any new schedule off the hour too.
 - **Bump the service worker cache version** (`sw.js`) on significant changes,
   or returning visitors keep the old assets.
 - **48-hour booking notice lives in two systems** — `LEAD_HOURS` in
