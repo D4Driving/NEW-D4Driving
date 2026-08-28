@@ -317,6 +317,29 @@ booked. The site had advertised them as free for 11½ hours, under a pulsing
 - **Deleted `blank.yml`**, the stock "Hello, world!" starter workflow, which
   fired a runner job on every push — including all ~23 daily bot commits.
 
+### Working hours were being applied in the wrong timezone
+
+Found while confirming the feed was accurate. The hours are declared `9-19`, but
+GitHub runners are UTC and `setHours()`/`getDay()` resolve against the process
+timezone — so every summer the window silently became **10:00-20:00 BST**. The
+9am hour was invisible to the slot finder, and the calendar shows **24 lessons
+starting at 9am** over the next 45 days, so it is prime time. Saturdays shifted
+the same way, advertising 5-6pm past the 17:00 finish.
+
+Fixed by pinning `TZ: Europe/London` on the job, which also handles the GMT/BST
+switch instead of being right for half the year. Slot dates are no longer
+labelled from `toISOString()` either — that is UTC, so a run during the
+00:00-01:00 BST hour would have dated slots to the previous day.
+
+Separately, the declared hours did not match reality: `end: 19` means the last
+lesson *finishes* at 7pm, so a 7pm start could never be advertised — yet the
+calendar had 15 of them. Robert confirmed his actual hours on 28 Aug 2026:
+**weekdays 9am-8pm, Saturdays 10am-5pm**. Weekdays widened to `end: 20`;
+Saturday already matched.
+
+Verified live: earliest offered start moved from 10:00 to **09:00**, and the
+site now shows a 9 Oct slot at 9:00am-12:30pm that the old window could not see.
+
 **Still unproven at time of writing:** the new cron had not yet fired. GitHub's
 scheduling is not observable from outside, so moving off `:00` is the documented
 lever, not a guarantee. The staleness banner exists precisely because it may
