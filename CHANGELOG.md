@@ -2,6 +2,16 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-08-28
+- Fixed the availability feed silently going stale: the hourly sync job had decayed from ~23 runs a day to about 1 a day over 25–28 Aug because its schedule sat exactly on the hour, GitHub's busiest and least reliable slot for scheduled jobs — the job itself was healthy throughout, it just wasn't being triggered. Real cost: a manual run that morning removed three lesson slots (4, 11, 15 Sep) that were already booked but had been shown as free under a live-looking badge for 11.5 hours. Schedule moved off the hour (to `:23`).
+- The homepage availability list now visibly warns when the feed is more than 3 hours old (timestamp turns red, a banner says slots may already be taken) instead of always looking live, so a future missed sync is visible to visitors rather than silently wrong.
+- Fixed a display bug where a second occurrence of the same weekday (e.g. a later Friday) could get filed under an earlier date's heading, hiding it — slots are now grouped by actual calendar date.
+- Fixed the site's offline caching layer never actually catching the live availability data: a mismatch meant every homepage visit wrote a new, permanently-kept cache entry instead of reusing one, building up clutter in visitors' browsers over time. Cache version bumped to clear what had already piled up.
+- Removed a leftover default "Hello, world!" GitHub Actions starter workflow that had been quietly running on every single commit, including the ~23 daily automated ones.
+- _Commits: 5ce007a_
+- _Plan doc status: ⚠ NOT yet in D4Driving_Franchise_Integration_Plan.md — none of today's availability-feed fixes (stale badge, date-grouping bug, cache bug, cron timing, blank.yml removal) are reflected there_
+- _CLAUDE.md status: ⚠ stale by omission — the Gotchas section doesn't yet capture what was learned today: a GitHub Actions `schedule` cron set to the top of the hour (`0 * * * *`) is unreliable and can silently decay to a fraction of its intended runs, with no error anywhere. Worth a line alongside the existing "48-hour booking notice lives in two systems" gotcha, since it's the same file (`blog-sync.yml`) and the same failure mode (goes wrong silently)._
+
 ## 2026-08-20
 - Cut the blog free from Soro (the cancelled article service): the site's articles are now generated in-house from a plain data file (`articles.json`) using a small new tool (`tools/gen-articles.js`), rather than pulled from Soro's feed. The hourly background job that used to fetch from Soro was rewired to just keep availability and the sitemap in sync.
 - Small usability fix across all six main pages: clicking an on-page "jump to" link now stops just below the sticky top menu instead of hiding the target heading behind it.
