@@ -1307,6 +1307,8 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 .avail-footer a:hover { text-decoration: underline; }
 @keyframes avail-rotate { to { transform: rotate(360deg); } }
 .avail-spin { animation: avail-rotate .8s linear infinite; display: inline-block; }
+#avail-updated.is-stale { color: var(--red); }
+.avail-stale { grid-column: 1/-1; font-size: 13px; line-height: 1.5; color: var(--ink-mid); background: var(--red-lo); border: 1px solid var(--red-border); border-radius: 10px; padding: 12px 14px; }
 </style>
 
 <script>
@@ -1314,6 +1316,16 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   const WA_BASE = 'https://wa.me/447872347686?text=';
   const DAYS    = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const MONTHS  = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  /* The generator runs hourly; past this, treat the feed as behind and say so. */
+  const STALE_MINS = 180;
+
+  function fmtAgo(mins) {
+    if (mins < 60) return `${mins} min`;
+    const h = Math.round(mins / 60);
+    if (h < 24) return h === 1 ? '1 hour' : `${h} hours`;
+    const d = Math.round(h / 24);
+    return d === 1 ? '1 day' : `${d} days`;
+  }
 
   function fmt12(date) {
     let h = date.getHours(), m = date.getMinutes();
@@ -1334,24 +1346,34 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     }
   }
 
-  function renderSlots(slots) {
+  function renderSlots(slots, staleMins) {
     const grid = document.getElementById('avail-grid');
     if (!slots.length) {
       grid.innerHTML = '<div class="avail-empty">No availability found in the next 45 days — please <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert</a> directly.</div>';
       return;
     }
     let html = '';
+    /* Warn when the feed itself is behind. The generator runs hourly, so
+       anything over STALE_MINS means slots shown here may already be booked —
+       say so rather than showing a live-looking "Available" badge on stale data. */
+    if (staleMins > STALE_MINS) {
+      html += `<div class="avail-stale">These times were last checked ${fmtAgo(staleMins)} ago, so some may already be taken. Message to confirm before counting on one.</div>`;
+    }
+    /* Group by calendar DATE, not weekday name — two different Fridays are two
+       separate days, and keying on the name silently filed the later one under
+       the earlier one's heading. */
     let lastDay = '';
     slots.forEach(slot => {
       const dayName    = DAYS[slot.date.getDay()];
+      const dayKey     = slot.date.toDateString();
       const dateStr    = `${slot.date.getDate()} ${MONTHS[slot.date.getMonth()]}`;
       const timeStr    = `${fmt12(slot.start)} – ${fmt12(slot.end)}`;
-      const isToday    = slot.date.toDateString() === new Date().toDateString();
-      const isTomorrow = (() => { const t = new Date(); t.setDate(t.getDate()+1); return slot.date.toDateString()===t.toDateString(); })();
+      const isToday    = dayKey === new Date().toDateString();
+      const isTomorrow = (() => { const t = new Date(); t.setDate(t.getDate()+1); return dayKey===t.toDateString(); })();
       const label      = isToday ? 'Today' : isTomorrow ? 'Tomorrow' : dayName;
-      if (dayName !== lastDay) {
+      if (dayKey !== lastDay) {
         html += `<div class="avail-day-group">${label}, ${dateStr}</div>`;
-        lastDay = dayName;
+        lastDay = dayKey;
       }
       const waMsg = encodeURIComponent(`Hi Robert, I'd like to book a driving lesson on ${label} ${dateStr} around ${fmt12(slot.start)}. Is that available?`);
       html += `
@@ -1373,10 +1395,13 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       const r = await fetch(`availability.json?t=${Date.now()}`, { cache: 'no-store' });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const data = await r.json();
+      const ago = data.generated
+        ? Math.round((Date.now() - new Date(data.generated)) / 60000)
+        : 0;
       const updEl = document.getElementById('avail-updated');
       if (updEl && data.generated) {
-        const ago = Math.round((Date.now() - new Date(data.generated)) / 60000);
-        updEl.textContent = ago < 2 ? 'Updated just now' : `Updated ${ago} min ago`;
+        updEl.textContent = ago < 2 ? 'Updated just now' : `Updated ${fmtAgo(ago)} ago`;
+        updEl.classList.toggle('is-stale', ago > STALE_MINS);
       }
       if (!data.slots || !data.slots.length) {
         grid.innerHTML = `<div class="avail-empty">No availability found in the next 45 days — <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to arrange a time.</div>`;
@@ -1387,7 +1412,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         start: new Date(s.start),
         end:   new Date(s.end)
       }));
-      renderSlots(slots);
+      renderSlots(slots, ago);
     } catch(e) {
       console.warn('D4Driving availability:', e.message);
       grid.innerHTML = `<div class="avail-empty">Availability updating — please check back shortly, or <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to check availability.</div>`;

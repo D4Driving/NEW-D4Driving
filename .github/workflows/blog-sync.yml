@@ -2,7 +2,12 @@ name: Availability & Sitemap Sync
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'
+    # Deliberately NOT on the hour. GitHub documents the start of every hour as
+    # its highest-load window for scheduled workflows, and `schedule` is
+    # best-effort — runs there are delayed or dropped outright. On '0 * * * *'
+    # this workflow decayed from ~23 runs/day to 1/day between 25–28 Aug 2026,
+    # leaving the site advertising lesson slots that were already booked.
+    - cron: '23 * * * *'
 permissions:
   contents: write
 jobs:

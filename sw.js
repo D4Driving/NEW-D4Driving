@@ -1,9 +1,11 @@
 /* D4Driving Service Worker — v1.0 */
 
-/* Bumped to v4 to purge cached Supabase API responses — the old cache-first
-   rule was serving stale route data indefinitely. The activate handler deletes
-   every cache whose name is not this one, so the bump is what clears it. */
-const CACHE = 'd4driving-v4';
+/* Bumped to v5 to purge the accumulated `availability.json?t=<timestamp>`
+   entries: each page view had been writing a new, never-reused cache entry,
+   so long-standing visitors carry hundreds of them. The activate handler
+   deletes every cache whose name is not this one, so the bump is what clears it.
+   (v4 purged cached Supabase API responses for a similar cache-first fault.) */
+const CACHE = 'd4driving-v5';
 
 /* Assets to cache on install */
 const PRECACHE = [
@@ -74,8 +76,13 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  /* JSON data (availability.json, articles.json) — ALWAYS network first so live data never goes stale */
-  if (event.request.url.endsWith('.json')) {
+  /* JSON data (availability.json, articles.json) — ALWAYS network first so live data never goes stale.
+     Test the PATHNAME, not the whole URL: the page requests
+     `availability.json?t=<timestamp>`, which does not end in ".json", so a
+     full-URL check never matched here. Those requests fell through to the
+     cache-first rule below and — because every `?t=` value is a distinct cache
+     key — wrote a new, permanently-retained entry on every single page view. */
+  if (new URL(event.request.url).pathname.endsWith('.json')) {
     event.respondWith(
       fetch(event.request)
         .then(res => {
