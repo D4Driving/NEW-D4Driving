@@ -35,13 +35,15 @@ jobs:
 
           const CAL_URL = 'https://calendar.google.com/calendar/ical/info%40d4driving.co.uk/public/basic.ics';
 
-          /* Working hours, UK local time (TZ is pinned to Europe/London above) */
+          /* Working hours, UK local time (TZ is pinned to Europe/London above).
+             `end` is when the last lesson FINISHES, so end:20 offers a 7pm start.
+             Confirmed by Robert 28 Aug 2026: weekdays 9-8, Saturdays 10-5. */
           const HOURS = {
-            1: { start: 9,  end: 19 }, /* Mon */
-            2: { start: 9,  end: 19 }, /* Tue */
-            3: { start: 9,  end: 19 }, /* Wed */
-            4: { start: 9,  end: 19 }, /* Thu */
-            5: { start: 9,  end: 19 }, /* Fri */
+            1: { start: 9,  end: 20 }, /* Mon */
+            2: { start: 9,  end: 20 }, /* Tue */
+            3: { start: 9,  end: 20 }, /* Wed */
+            4: { start: 9,  end: 20 }, /* Thu */
+            5: { start: 9,  end: 20 }, /* Fri */
             6: { start: 10, end: 17 }, /* Sat */
             0: null                    /* Sun — off */
           };
