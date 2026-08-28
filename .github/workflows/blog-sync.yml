@@ -15,6 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+      # Runners are UTC. Robert's working hours below are UK local, and
+      # setHours()/getDay() resolve against the process timezone - so without
+      # this the window became 10:00-20:00 BST every summer, hiding the 9am
+      # hour (24 lessons start then) and offering an hour he may not work.
+      TZ: Europe/London
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,7 +35,7 @@ jobs:
 
           const CAL_URL = 'https://calendar.google.com/calendar/ical/info%40d4driving.co.uk/public/basic.ics';
 
-          /* Working hours */
+          /* Working hours, UK local time (TZ is pinned to Europe/London above) */
           const HOURS = {
             1: { start: 9,  end: 19 }, /* Mon */
             2: { start: 9,  end: 19 }, /* Tue */
@@ -84,6 +89,11 @@ jobs:
             return events;
           }
 
+          /* Local calendar date (YYYY-MM-DD). Not toISOString(), which is UTC:
+             during BST a slot's UTC date can be the previous day. */
+          const ymd = (d) =>
+            `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+
           function findSlots(events) {
             const slots = [];
             const now   = new Date();
@@ -115,7 +125,7 @@ jobs:
               const trySlot = (from, to) => {
                 if ((to - from) / 60000 >= LESSON_MIN) {
                   slots.push({
-                    date:  date.toISOString().slice(0, 10),
+                    date:  ymd(date),
                     start: from.toISOString(),
                     end:   to.toISOString()
                   });
