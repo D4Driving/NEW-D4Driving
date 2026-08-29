@@ -640,12 +640,12 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
       });
   }
 
-  if ('IntersectionObserver' in window) {
-    var sec = document.querySelector('.avail-note');
-    var obs = new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) { load(); obs.disconnect(); }
-    }, { rootMargin: '200px' });
-    if (sec) obs.observe(sec); else load();
+  /* Loaded straight away rather than on scroll. It is a single ~1KB request on
+     a page someone opened specifically to book, so deferring it saves nothing
+     worth having - and it keeps the panel off a lazy-load path that cannot be
+     exercised in testing. */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', load);
   } else {
     load();
   }
