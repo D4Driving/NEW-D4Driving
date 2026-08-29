@@ -22,11 +22,19 @@
  */
 
 const CAL_USER   = 'd4driving';
-const EVENT_SLUG = '1hr-driving';   /* the 1-hour lesson is the teaser's unit */
-const LESSON_MIN = 60;
 const DAYS_AHEAD = 45;
 const MAX_SLOTS  = 30;
 const TZ         = 'Europe/London';
+
+/* Durations offered on the site. Cal.com slots each one against its OWN
+   interval, so the times genuinely differ — on 16 Sep 2026 the 1-hour slot is
+   11:00 but the 1.5-hour is 10:30. They cannot share a card; the page shows a
+   duration toggle and swaps the whole list.
+   Add the 2-hour lesson here (slug '2-hrs-driving-lesson') to offer it too. */
+const DURATIONS = [
+  { minutes: 60, label: '1 hour',   slug: '1hr-driving' },
+  { minutes: 90, label: '1½ hours', slug: '1.5-hr-driving-lesson' },
+];
 
 const ALLOWED_ORIGINS = new Set([
   'https://d4driving.co.uk',
@@ -51,8 +59,21 @@ export default {
     if (request.method !== 'GET') return json({ error: 'method not allowed' }, 405, cors);
 
     try {
-      const slots = await getSlots();
-      return json({ generated: new Date().toISOString(), source: 'cal.com', slots }, 200, {
+      /* One request per duration, in parallel — Cal.com is the slow part. */
+      const results = await Promise.all(DURATIONS.map(async d => ({
+        minutes: d.minutes, label: d.label, slug: d.slug,
+        slots: await getSlots(d.slug, d.minutes),
+      })));
+      const options = results.filter(o => o.slots.length);
+      /* `slots` stays the 1-hour list so the older page code and the
+         availability.json fallback keep working unchanged. */
+      const primary = results.find(o => o.minutes === 60);
+      return json({
+        generated: new Date().toISOString(),
+        source: 'cal.com',
+        slots: primary ? primary.slots : [],
+        options,
+      }, 200, {
         ...cors,
         /* A minute of edge caching keeps us clear of Cal.com's rate limits
            without the page ever showing anything meaningfully stale. */
@@ -73,7 +94,7 @@ function json(body, status, headers) {
   });
 }
 
-export async function getSlots(fetchImpl = fetch) {
+export async function getSlots(eventSlug, lessonMin, fetchImpl = fetch) {
   const start = new Date();
   const end   = new Date(Date.now() + DAYS_AHEAD * 864e5);
 
@@ -83,7 +104,7 @@ export async function getSlots(fetchImpl = fetch) {
     json: {
       isTeamEvent: false,
       usernameList: [CAL_USER],
-      eventTypeSlug: EVENT_SLUG,
+      eventTypeSlug: eventSlug,
       startTime: start.toISOString(),
       endTime:   end.toISOString(),
       timeZone:  TZ,
@@ -111,19 +132,21 @@ export async function getSlots(fetchImpl = fetch) {
 
   const out = [];
   for (const day of Object.keys(byDay).sort()) {
-    /* Cal.com returns bookable START times. Consecutive ones describe a single
-       free window, so merge them: 08:00, 09:00, 10:00 becomes one 08:00-11:00
-       block — every hour of which is genuinely bookable. The date key is
-       already London-local, which is what the page's grouping expects. */
+    /* Cal.com returns bookable START times. Consecutive ones (one lesson-length
+       apart) describe a single free window, so merge them: for 60-min lessons
+       08:00, 09:00, 10:00 becomes one 08:00-11:00 block, every hour of which is
+       genuinely bookable. The date key is already London-local, which is what
+       the page's grouping expects. */
+    const step  = lessonMin * 60000;
     const times = byDay[day].map(s => new Date(s.time)).sort((a, b) => a - b);
     let i = 0;
     while (i < times.length) {
       let j = i;
-      while (j + 1 < times.length && (times[j + 1] - times[j]) === LESSON_MIN * 60000) j++;
+      while (j + 1 < times.length && (times[j + 1] - times[j]) === step) j++;
       out.push({
         date:  day,
         start: times[i].toISOString(),
-        end:   new Date(times[j].getTime() + LESSON_MIN * 60000).toISOString(),
+        end:   new Date(times[j].getTime() + step).toISOString(),
       });
       i = j + 1;
     }

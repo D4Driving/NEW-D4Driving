@@ -1277,6 +1277,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       </div>
     </div>
     <div class="avail-wrap reveal">
+      <div id="avail-durations" class="avail-durations" role="group" aria-label="Lesson length"></div>
       <div id="avail-grid" class="avail-grid">
         <div class="avail-loading"><div class="spinner"></div><span>Checking availability…</span></div>
       </div>
@@ -1300,6 +1301,12 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 .avail-time { font-size: 13px; font-weight: 600; color: var(--ink-mid); }
 .avail-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; color: var(--red); margin-top: 4px; padding: 3px 8px; border-radius: 99px; background: var(--red-lo); border: 1px solid var(--red-border); width: fit-content; }
 /* Primary action. 44px min-height keeps it a comfortable touch target. */
+.avail-durations { display: flex; justify-content: center; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+.avail-durations:empty { display: none; }
+.avail-dur { min-height: 44px; padding: 10px 20px; border-radius: 10px; border: 1.5px solid var(--glass-border); background: var(--glass-bg); color: var(--ink-mid); font-size: 13px; font-weight: 700; cursor: pointer; transition: all .18s; font-family: inherit; }
+.avail-dur:hover { border-color: var(--red); color: var(--red); }
+.avail-dur[aria-pressed="true"] { background: var(--slate); border-color: var(--slate); color: #fff; }
+.avail-dur:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
 .avail-book { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 8px; min-height: 44px; padding: 10px 14px; border-radius: 10px; background: var(--red); color: #fff; font-size: 13px; font-weight: 700; text-decoration: none; transition: background .18s, transform .18s; }
 .avail-book:hover { background: #a11b21; transform: translateY(-1px); }
 .avail-book:focus-visible { outline: 3px solid var(--slate); outline-offset: 2px; }
@@ -1339,10 +1346,13 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
      nothing. */
   const AVAIL_LIVE_URL = 'https://fancy-dream-5431.fancy-surf-7864.workers.dev/';
 
-  /* Slots are computed for the 1-hour lesson, so that is what they book. */
-  const CAL_LESSON_URL     = 'https://cal.com/d4driving/1hr-driving';
+  const CAL_USER_URL       = 'https://cal.com/d4driving';
   const CAL_ASSESSMENT_URL = 'https://cal.com/d4driving/driving-assessment';
-  const LESSON_MS          = 60 * 60 * 1000;
+
+  /* Raw feed plus the duration the visitor is looking at. Switching duration
+     re-renders from what we already have — no refetch. */
+  let availData   = null;
+  let availChoice = 60;
 
   function fmtAgo(mins) {
     if (mins < 60) return `${mins} min`;
@@ -1364,12 +1374,61 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
      time locked in. A card showing a RANGE covers several bookable hours, so it
      links to that day's time picker instead — sending someone to a fixed 9am
      form would contradict a card that says "9:00am - 1:00pm". */
-  function calUrl(slot) {
+  function calUrl(slot, opt) {
     const d   = slot.date;
     const ymd = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-    const base = `${CAL_LESSON_URL}?month=${ymd.slice(0,7)}&date=${ymd}`;
-    const isSingleHour = (slot.end - slot.start) === LESSON_MS;
-    return isSingleHour ? `${base}&slot=${encodeURIComponent(slot.start.toISOString())}` : base;
+    const base = `${CAL_USER_URL}/${opt.slug}?month=${ymd.slice(0,7)}&date=${ymd}`;
+    const isSingle = (slot.end - slot.start) === opt.minutes * 60000;
+    return isSingle ? `${base}&slot=${encodeURIComponent(slot.start.toISOString())}` : base;
+  }
+
+  /* The fallback availability.json predates durations and carries a bare
+     `slots` array, so synthesise the 1-hour option from it. */
+  function availOptions() {
+    if (availData && Array.isArray(availData.options) && availData.options.length) return availData.options;
+    return [{ minutes: 60, label: '1 hour', slug: '1hr-driving', slots: (availData && availData.slots) || [] }];
+  }
+
+  function renderDurations(opts, active) {
+    const box = document.getElementById('avail-durations');
+    if (!box) return;
+    /* One choice is not a choice — hide the control rather than show a single
+       button that does nothing. */
+    box.innerHTML = opts.length < 2 ? '' : opts.map(o => `
+      <button type="button" class="avail-dur" data-mins="${o.minutes}"
+              aria-pressed="${o.minutes === active.minutes}">${o.label}</button>`).join('');
+    box.querySelectorAll('.avail-dur').forEach(b => {
+      b.addEventListener('click', () => {
+        availChoice = Number(b.dataset.mins);
+        renderCurrent();
+      });
+    });
+  }
+
+  function renderCurrent() {
+    const opts = availOptions();
+    const opt  = opts.find(o => o.minutes === availChoice) || opts[0];
+    availChoice = opt.minutes;
+    renderDurations(opts, opt);
+
+    const ago = availData && availData.generated
+      ? Math.round((Date.now() - new Date(availData.generated)) / 60000) : 0;
+    const updEl = document.getElementById('avail-updated');
+    if (updEl && availData && availData.generated) {
+      updEl.textContent = ago < 2 ? 'Updated just now' : `Updated ${fmtAgo(ago)} ago`;
+      updEl.classList.toggle('is-stale', ago > STALE_MINS);
+    }
+
+    const grid = document.getElementById('avail-grid');
+    if (!opt.slots.length) {
+      grid.innerHTML = `<div class="avail-empty">No ${opt.label} slots free in the next 45 days — try another length above, or <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a>.</div>`;
+      return;
+    }
+    renderSlots(opt.slots.map(s => ({
+      date:  new Date(s.date + 'T00:00:00'),
+      start: new Date(s.start),
+      end:   new Date(s.end),
+    })), ago, opt);
   }
 
   function setRefreshState(loading) {
@@ -1384,7 +1443,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     }
   }
 
-  function renderSlots(slots, staleMins) {
+  function renderSlots(slots, staleMins, opt) {
     const grid = document.getElementById('avail-grid');
     if (!slots.length) {
       grid.innerHTML = '<div class="avail-empty">No availability found in the next 45 days — please <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert</a> directly.</div>';
@@ -1413,16 +1472,17 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         html += `<div class="avail-day-group">${label}, ${dateStr}</div>`;
         lastDay = dayKey;
       }
-      const waMsg = encodeURIComponent(`Hi Robert, I'd like to book a driving lesson on ${label} ${dateStr} around ${fmt12(slot.start)}. Is that available?`);
+      const waMsg = encodeURIComponent(`Hi Robert, I'd like to book a ${opt.label} driving lesson on ${label} ${dateStr} around ${fmt12(slot.start)}. Is that available?`);
       /* Link text repeats across every card, so spell the slot out for screen
-         readers rather than leaving 13 identical "Book this slot" links. */
-      const aria = `${label} ${dateStr}, ${timeStr}`;
+         readers rather than leaving 13 identical "Book this slot" links. The
+         duration only appears in the toggle visually, so name it here too. */
+      const aria = `${opt.label} on ${label} ${dateStr}, ${timeStr}`;
       html += `
         <div class="avail-slot">
           <div class="avail-day">${label}</div>
           <div class="avail-date">${dateStr}</div>
           <div class="avail-time">${timeStr}</div>
-          <a href="${calUrl(slot)}" target="_blank" rel="noopener" class="avail-book" aria-label="Book ${aria}">Book this slot</a>
+          <a href="${calUrl(slot, opt)}" target="_blank" rel="noopener" class="avail-book" aria-label="Book ${aria}">Book this slot</a>
           <a href="${WA_BASE}${waMsg}" target="_blank" rel="noopener" class="avail-ask" aria-label="Message Robert about ${aria}">or message Robert</a>
         </div>`;
     });
@@ -1456,24 +1516,14 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         data = await r.json();
       }
-      const ago = data.generated
-        ? Math.round((Date.now() - new Date(data.generated)) / 60000)
-        : 0;
-      const updEl = document.getElementById('avail-updated');
-      if (updEl && data.generated) {
-        updEl.textContent = ago < 2 ? 'Updated just now' : `Updated ${fmtAgo(ago)} ago`;
-        updEl.classList.toggle('is-stale', ago > STALE_MINS);
-      }
-      if (!data.slots || !data.slots.length) {
+      availData = data;
+      const anySlots = (Array.isArray(data.options) && data.options.some(o => o.slots && o.slots.length))
+                     || (data.slots && data.slots.length);
+      if (!anySlots) {
         grid.innerHTML = `<div class="avail-empty">No availability found in the next 45 days — <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to arrange a time.</div>`;
         return;
       }
-      const slots = data.slots.map(s => ({
-        date:  new Date(s.date + 'T00:00:00'),
-        start: new Date(s.start),
-        end:   new Date(s.end)
-      }));
-      renderSlots(slots, ago);
+      renderCurrent();
     } catch(e) {
       console.warn('D4Driving availability:', e.message);
       grid.innerHTML = `<div class="avail-empty">Availability updating — please check back shortly, or <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to check availability.</div>`;
