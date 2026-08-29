@@ -253,6 +253,8 @@ p  { line-height: 1.75; }
 .avail-note p { color: rgba(255,255,255,0.65); font-size: 15px; margin-bottom: 24px; }
 .avail-note .rak-live { color: #fff; font-size: 16px; font-weight: 600; margin-bottom: 14px; }
 .avail-note .rak-live strong { color: var(--red); }
+.avail-note .rak-live a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.avail-note .rak-live a:hover { color: var(--red); }
 .avail-note .rak-live[hidden] { display: none; }
 .avail-note .btn { margin: 0 auto; }
 
@@ -610,8 +612,6 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
    Served by the same Worker as Robert's page, with ?instructor=rakesh. */
 (function () {
   var URL_ = 'https://fancy-dream-5431.fancy-surf-7864.workers.dev/?instructor=rakesh';
-  var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
   function show(text) {
     var el = document.getElementById('rak-live');
@@ -628,11 +628,21 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
       .then(function (d) {
         var opt = (d.options || []).filter(function (o) { return o.minutes === 60; })[0];
         if (!opt || !opt.slots || !opt.slots.length) return;
+
+        /* Rakesh also takes bookings through the Total Drive app, and those do
+           not appear in Cal.com. So this feed is a reliable signal that he has
+           room, but NOT proof that a particular slot is free - naming a date,
+           or a count of open days, would be a promise it cannot keep.
+           The data therefore only chooses which soft phrasing to use, and the
+           line always sends people to confirm. */
         var first = new Date(opt.slots[0].date + 'T00:00:00');
-        var when  = DAYS[first.getDay()] + ' ' + first.getDate() + ' ' + MONTHS[first.getMonth()];
-        var days  = opt.daysAvailable;
-        var tail  = days ? ', with openings on <strong>' + days + '</strong> of the next 45 days' : '';
-        show('Rakesh can next take a lesson on <strong>' + when + '</strong>' + tail + '.');
+        var soon  = (first - new Date()) / 86400000 <= 7;
+        var lead  = soon
+          ? 'Rakesh usually has space within the next few days'
+          : 'Rakesh has availability over the coming weeks';
+        show(lead + '. He also takes bookings by phone and through the Total Drive app, so '
+             + '<a href="https://wa.me/447590719888" target="_blank" rel="noopener">message him to confirm</a> '
+             + 'the time you want.');
       })
       .catch(function (e) {
         /* Silent by design — the static copy below already stands on its own. */
