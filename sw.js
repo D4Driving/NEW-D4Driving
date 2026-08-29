@@ -5,7 +5,7 @@
    so long-standing visitors carry hundreds of them. The activate handler
    deletes every cache whose name is not this one, so the bump is what clears it.
    (v4 purged cached Supabase API responses for a similar cache-first fault.) */
-const CACHE = 'd4driving-v6';
+const CACHE = 'd4driving-v7';
 
 /* Assets to cache on install */
 const PRECACHE = [
