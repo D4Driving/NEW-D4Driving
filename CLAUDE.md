@@ -56,10 +56,16 @@ Detail belongs in the private ops repo, not here.
 - **GitHub Pages is case-sensitive.** `Rakesh.webp` ≠ `rakesh.webp`.
 - **Article pages are static and hand-maintained.** Nothing regenerates them
   since Soro was cancelled. Re-run `tools/gen-articles.js` if articles change.
-- **Never put a cron on `0 * * * *`.** GitHub treats `schedule` as best-effort
-  and the top of the hour is its highest-load window. The availability sync sat
-  there and silently decayed to one run a day, leaving booked slots advertised
-  as free. It is on `23 * * * *`; keep any new schedule off the hour too.
+- **GitHub's `schedule` trigger cannot be relied on here — do not try to fix it
+  with the cron expression.** The availability sync decayed from 23 runs/day to
+  ~3 from 26 Aug 2026. Moving it off the hour (`0` -> `23`) was tried on 28 Aug
+  and made no difference: gaps stayed at 5-18h, and GitHub ignores the requested
+  minute entirely (runs land at :06, :11, :49). `created_at` == `run_started_at`
+  on every run, so the runs are never created rather than queued and delayed.
+  Not a quota - the repo is public, so Actions minutes are unlimited. Every run
+  that does fire succeeds. If hourly freshness matters, trigger it externally via
+  the `workflow_dispatch` API; the staleness banner on the page is the safety net,
+  not the fix.
 - **Bump the service worker cache version** (`sw.js`) on significant changes,
   or returning visitors keep the old assets.
 - **48-hour booking notice lives in two systems** — `LEAD_HOURS` in
