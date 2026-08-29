@@ -1265,9 +1265,9 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 <section id="availability" class="sec" style="background:var(--bg2);">
   <div class="wrap">
     <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 40px;">
-      <div class="eyebrow" style="justify-content:center;">Or Book Via WhatsApp</div>
+      <div class="eyebrow" style="justify-content:center;">Book A Slot Instantly</div>
       <h2>Next Available Slots.</h2>
-      <p style="color:var(--ink-mid);margin-top:12px;">Prefer to message rather than use the calendar above? These are the next free slots, pulled live from Robert's diary — tap any one to book instantly via WhatsApp. Lessons are bookable from <strong>48 hours ahead</strong>; for anything sooner, just message and ask.</p>
+      <p style="color:var(--ink-mid);margin-top:12px;">These are Robert's next free slots, checked live every time this page loads. Tap one to book and pay online in a few taps — or message him instead if you'd rather talk it through first. Lessons are bookable from <strong>48 hours ahead</strong>; for anything sooner, just message and ask.</p>
       <div style="display:flex;align-items:center;justify-content:center;gap:14px;margin-top:20px;flex-wrap:wrap;">
         <span id="avail-updated" style="font-size:12px;font-weight:600;color:var(--ink-low);"></span>
         <button id="avail-refresh-btn" onclick="refreshAvailability()" class="btn btn-outline" style="font-size:12px;padding:8px 16px;gap:7px;border-radius:8px;">
@@ -1281,6 +1281,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <div class="avail-loading"><div class="spinner"></div><span>Checking availability…</span></div>
       </div>
       <div class="avail-footer">
+        <p style="margin-bottom:10px;">Brand new to driving? Start with a <a href="https://cal.com/d4driving/driving-assessment" target="_blank" rel="noopener">90-minute assessment lesson</a> rather than a standard hour — it lets Robert see where you're at and plan from there.</p>
         <p>Don't see a time that works? <a href="https://wa.me/447872347686?text=Hi%20Robert%2C%20I%27d%20like%20to%20book%20a%20driving%20lesson%20but%20can't%20find%20a%20suitable%20slot.%20Could%20you%20help%3F" target="_blank" rel="noopener">Message Robert on WhatsApp</a> to arrange a custom time.</p>
       </div>
     </div>
@@ -1298,6 +1299,13 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 .avail-date { font-size: 17px; font-weight: 800; color: var(--slate); letter-spacing: -0.3px; }
 .avail-time { font-size: 13px; font-weight: 600; color: var(--ink-mid); }
 .avail-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; color: var(--red); margin-top: 4px; padding: 3px 8px; border-radius: 99px; background: var(--red-lo); border: 1px solid var(--red-border); width: fit-content; }
+/* Primary action. 44px min-height keeps it a comfortable touch target. */
+.avail-book { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 8px; min-height: 44px; padding: 10px 14px; border-radius: 10px; background: var(--red); color: #fff; font-size: 13px; font-weight: 700; text-decoration: none; transition: background .18s, transform .18s; }
+.avail-book:hover { background: #a11b21; transform: translateY(-1px); }
+.avail-book:focus-visible { outline: 3px solid var(--slate); outline-offset: 2px; }
+.avail-ask { display: block; text-align: center; margin-top: 6px; padding: 6px 4px; font-size: 12px; font-weight: 600; color: var(--ink-low); text-decoration: none; }
+.avail-ask:hover { color: var(--red); text-decoration: underline; }
+.avail-ask:focus-visible { outline: 2px solid var(--slate); outline-offset: 2px; border-radius: 6px; }
 .avail-badge::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--red); flex-shrink: 0; animation: avail-pulse 1.5s ease-in-out infinite; }
 @keyframes avail-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
 .avail-day-group { grid-column: 1/-1; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-low); margin-top: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
@@ -1331,6 +1339,11 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
      nothing. */
   const AVAIL_LIVE_URL = 'https://fancy-dream-5431.fancy-surf-7864.workers.dev/';
 
+  /* Slots are computed for the 1-hour lesson, so that is what they book. */
+  const CAL_LESSON_URL     = 'https://cal.com/d4driving/1hr-driving';
+  const CAL_ASSESSMENT_URL = 'https://cal.com/d4driving/driving-assessment';
+  const LESSON_MS          = 60 * 60 * 1000;
+
   function fmtAgo(mins) {
     if (mins < 60) return `${mins} min`;
     const h = Math.round(mins / 60);
@@ -1344,6 +1357,19 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     const ampm = h >= 12 ? 'pm' : 'am';
     h = h % 12 || 12;
     return `${h}:${m.toString().padStart(2,'0')}${ampm}`;
+  }
+
+  /* Cal.com deep link for a slot.
+     A card showing a single hour can go straight to the booking form with that
+     time locked in. A card showing a RANGE covers several bookable hours, so it
+     links to that day's time picker instead — sending someone to a fixed 9am
+     form would contradict a card that says "9:00am - 1:00pm". */
+  function calUrl(slot) {
+    const d   = slot.date;
+    const ymd = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    const base = `${CAL_LESSON_URL}?month=${ymd.slice(0,7)}&date=${ymd}`;
+    const isSingleHour = (slot.end - slot.start) === LESSON_MS;
+    return isSingleHour ? `${base}&slot=${encodeURIComponent(slot.start.toISOString())}` : base;
   }
 
   function setRefreshState(loading) {
@@ -1388,13 +1414,17 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         lastDay = dayKey;
       }
       const waMsg = encodeURIComponent(`Hi Robert, I'd like to book a driving lesson on ${label} ${dateStr} around ${fmt12(slot.start)}. Is that available?`);
+      /* Link text repeats across every card, so spell the slot out for screen
+         readers rather than leaving 13 identical "Book this slot" links. */
+      const aria = `${label} ${dateStr}, ${timeStr}`;
       html += `
-        <a href="${WA_BASE}${waMsg}" target="_blank" rel="noopener" class="avail-slot">
+        <div class="avail-slot">
           <div class="avail-day">${label}</div>
           <div class="avail-date">${dateStr}</div>
           <div class="avail-time">${timeStr}</div>
-          <div class="avail-badge">Available</div>
-        </a>`;
+          <a href="${calUrl(slot)}" target="_blank" rel="noopener" class="avail-book" aria-label="Book ${aria}">Book this slot</a>
+          <a href="${WA_BASE}${waMsg}" target="_blank" rel="noopener" class="avail-ask" aria-label="Message Robert about ${aria}">or message Robert</a>
+        </div>`;
     });
     grid.innerHTML = html;
   }
