@@ -1316,8 +1316,20 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   const WA_BASE = 'https://wa.me/447872347686?text=';
   const DAYS    = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   const MONTHS  = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  /* The generator runs hourly; past this, treat the feed as behind and say so. */
+  /* Past this, treat the feed as behind and say so. Only ever reached on the
+     availability.json fallback — the live source is fetched per page load. */
   const STALE_MINS = 180;
+
+  /* Live availability, straight from Cal.com via the Cloudflare Worker in
+     tools/availability-worker.js. Cal.com is authoritative (it applies Robert's
+     buffers and minimum notice, so it will not offer a slot it would refuse to
+     book) but sends no CORS headers, hence the proxy.
+
+     Leave as '' to keep using the static availability.json. Set it to the
+     deployed Worker URL to go live — the file stays as the fallback, so a
+     Worker or Cal.com outage degrades to slightly-stale rather than to
+     nothing. */
+  const AVAIL_LIVE_URL = '';
 
   function fmtAgo(mins) {
     if (mins < 60) return `${mins} min`;
@@ -1392,9 +1404,28 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     grid.innerHTML = '<div class="avail-loading"><div class="spinner"></div><span>Checking availability…</span></div>';
     setRefreshState(true);
     try {
-      const r = await fetch(`availability.json?t=${Date.now()}`, { cache: 'no-store' });
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      const data = await r.json();
+      let data = null;
+      if (AVAIL_LIVE_URL) {
+        /* Live path. Never let a slow or broken proxy hold the section
+           hostage — fall through to the static file instead. */
+        try {
+          const ctl = new AbortController();
+          const timer = setTimeout(() => ctl.abort(), 6000);
+          const live = await fetch(`${AVAIL_LIVE_URL}?t=${Date.now()}`, { cache: 'no-store', signal: ctl.signal });
+          clearTimeout(timer);
+          if (live.ok) {
+            const j = await live.json();
+            if (j && Array.isArray(j.slots)) data = j;
+          }
+        } catch (liveErr) {
+          console.warn('D4Driving availability: live source unavailable, using cached file —', liveErr.message);
+        }
+      }
+      if (!data) {
+        const r = await fetch(`availability.json?t=${Date.now()}`, { cache: 'no-store' });
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        data = await r.json();
+      }
       const ago = data.generated
         ? Math.round((Date.now() - new Date(data.generated)) / 60000)
         : 0;
