@@ -347,6 +347,41 @@ not be enough.
 
 ---
 
+## 18. Availability Moved to Cal.com — 🟡 29 August 2026 (awaiting Worker deploy)
+
+**The cron fix from §17 did not work.** Three days of data: still ~3 runs/day
+against an hourly cron, gaps of 5–18h, and GitHub ignoring the requested minute
+entirely (runs landed at :06, :11, :28, :49). `created_at` == `run_started_at`
+on every run, so the runs are never *created*, not queued and delayed. Not a
+quota — the repo is public, so Actions minutes are unlimited. Every run that
+does fire succeeds. No cron expression will fix this.
+
+**Cal.com is also the better source.** Its public `slots/getSchedule` endpoint
+needs no auth and returns Robert's real bookable slots, already accounting for
+his buffers, minimum notice and Cal.com schedule. Deriving free gaps from the
+raw Google Calendar only approximates that — it was advertising 28 Sep and
+6 Oct, which Cal.com has no bookable slot for at all. Students would have
+clicked through to nothing.
+
+**Cal.com sends no CORS headers** (verified: 204, no `access-control-allow-origin`),
+so the page cannot call it directly. `tools/availability-worker.js` is a
+Cloudflare Worker that fetches it server-side and re-serves it with CORS, in the
+same shape `availability.json` already uses. It merges consecutive bookable
+start times into blocks (08:00, 09:00, 10:00 → one 08:00–11:00 block), so the
+existing card design is unchanged.
+
+Fetching per page load means the section is always live and GitHub's scheduler
+stops mattering.
+
+**State:** Worker written and tested against the live endpoint; `index.html`
+prefers it with a 6-second timeout and falls back to `availability.json`.
+`AVAIL_LIVE_URL` is empty, so the site still serves the static file — deploying
+the Worker and setting that one constant switches it over. The static file
+stays as the fallback, so a Worker or Cal.com outage degrades to
+slightly-stale rather than to nothing.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
