@@ -440,6 +440,38 @@ touch target with a visible focus ring.
 
 ---
 
+## 20. 2-Hour Lessons, and Rakesh's Availability — ✅ 29 August 2026
+
+**Robert now offers 1, 1.5 and 2 hours.** The 2-hour lesson fits on 6 of the
+next 45 days, so it earns its place in the toggle.
+
+**The Worker serves either instructor.** Durations are per-instructor because
+the two Cal.com accounts use different slugs — Rakesh renamed his, and his
+1.5-hour one contains a literal dot (`1.5-hrs.-driving-lesson-manual`). It takes
+an `?instructor=` param, defaults to Robert so the existing call keeps working,
+and echoes the account back so the page builds booking URLs against the right
+one. Both accounts also have a 90-minute assessment event, deliberately kept out
+of the duration list — different product, linked separately.
+
+**Rakesh got a different treatment, deliberately.** His Cal.com returns
+09:00–18:00 free on **38 of the next 45 days** — the only busy time in five
+weeks is a 12:00–13:00 gap on two Mondays. Rendering that the way Robert's page
+does would have been 30 near-identical all-day rows, which reads as an empty
+diary rather than as availability, and sits badly next to Robert's 13 fragmented
+blocks. Worth revisiting if his Cal.com is ever connected to a fuller diary.
+
+So his panel carries one honest line instead — *"Rakesh can next take a lesson
+on Monday 31 August, with openings on 38 of the next 45 days"* — above the
+booking-page link that was already there. His page already has four priced
+lesson cards linking into Cal.com, so a grid would have duplicated them.
+
+To make that claim accurate, the Worker returns `daysAvailable` counted BEFORE
+the 30-block cap, rather than a number that reflects how much we happen to
+render. The line is hidden unless the fetch succeeds, so a Worker outage costs
+nothing — the static copy stands on its own.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
