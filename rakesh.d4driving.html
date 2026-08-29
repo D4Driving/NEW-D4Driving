@@ -251,6 +251,9 @@ p  { line-height: 1.75; }
 }
 .avail-note h3 { color: #fff; margin-bottom: 12px; }
 .avail-note p { color: rgba(255,255,255,0.65); font-size: 15px; margin-bottom: 24px; }
+.avail-note .rak-live { color: #fff; font-size: 16px; font-weight: 600; margin-bottom: 14px; }
+.avail-note .rak-live strong { color: var(--red); }
+.avail-note .rak-live[hidden] { display: none; }
 .avail-note .btn { margin: 0 auto; }
 
 /* ─── REVEAL ─────────────────────────────── */
@@ -525,6 +528,9 @@ footer { background: var(--slate); padding: 60px 0 32px; }
     <!-- Availability note -->
     <div class="avail-note reveal" style="margin-top:56px;">
       <h3>Check Rakesh's Availability</h3>
+      <!-- Filled in from the live Cal.com feed; stays hidden if that is
+           unreachable, so the panel never shows a stale or broken claim. -->
+      <p id="rak-live" class="rak-live" hidden></p>
       <p>Rakesh's real-time calendar is shown when you click any session above. You can also view all available slots directly on his booking page.</p>
       <a href="https://cal.com/rakesh-d4driving" target="_blank" rel="noopener" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.25);">View All Available Slots →</a>
     </div>
@@ -595,5 +601,55 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 </script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));}</script>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5fde75a7a3e54255b4dd181e5d51e692"}'></script><!-- End Cloudflare Web Analytics -->
+<script>
+/* Rakesh's availability signal.
+   His diary is currently wide open — 9 to 6 on most days — so listing every
+   free block would be 30 near-identical rows that read as an empty diary
+   rather than as availability. One honest line does the job better: when he
+   can next take someone, and how much of the next 45 days is open.
+   Served by the same Worker as Robert's page, with ?instructor=rakesh. */
+(function () {
+  var URL_ = 'https://fancy-dream-5431.fancy-surf-7864.workers.dev/?instructor=rakesh';
+  var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  function show(text) {
+    var el = document.getElementById('rak-live');
+    if (!el) return;
+    el.innerHTML = text;
+    el.hidden = false;
+  }
+
+  function load() {
+    var ctl = new AbortController();
+    var timer = setTimeout(function () { ctl.abort(); }, 6000);
+    fetch(URL_ + '&t=' + Date.now(), { cache: 'no-store', signal: ctl.signal })
+      .then(function (r) { clearTimeout(timer); if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (d) {
+        var opt = (d.options || []).filter(function (o) { return o.minutes === 60; })[0];
+        if (!opt || !opt.slots || !opt.slots.length) return;
+        var first = new Date(opt.slots[0].date + 'T00:00:00');
+        var when  = DAYS[first.getDay()] + ' ' + first.getDate() + ' ' + MONTHS[first.getMonth()];
+        var days  = opt.daysAvailable;
+        var tail  = days ? ', with openings on <strong>' + days + '</strong> of the next 45 days' : '';
+        show('Rakesh can next take a lesson on <strong>' + when + '</strong>' + tail + '.');
+      })
+      .catch(function (e) {
+        /* Silent by design — the static copy below already stands on its own. */
+        console.warn('Rakesh availability unavailable:', e.message);
+      });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var sec = document.querySelector('.avail-note');
+    var obs = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { load(); obs.disconnect(); }
+    }, { rootMargin: '200px' });
+    if (sec) obs.observe(sec); else load();
+  } else {
+    load();
+  }
+})();
+</script>
 </body>
 </html>

@@ -82,10 +82,10 @@ export default {
       if (!who) return json({ error: `unknown instructor '${key}'` }, 400, cors);
 
       /* One request per duration, in parallel — Cal.com is the slow part. */
-      const results = await Promise.all(who.durations.map(async d => ({
-        minutes: d.minutes, label: d.label, slug: d.slug,
-        slots: await getSlots(who.user, d.slug, d.minutes),
-      })));
+      const results = await Promise.all(who.durations.map(async d => {
+        const { slots, daysAvailable } = await getSlots(who.user, d.slug, d.minutes);
+        return { minutes: d.minutes, label: d.label, slug: d.slug, slots, daysAvailable };
+      }));
       const options = results.filter(o => o.slots.length);
       /* `slots` stays the 1-hour list so the older page code and the
          availability.json fallback keep working unchanged. */
@@ -175,5 +175,8 @@ export async function getSlots(calUser, eventSlug, lessonMin, fetchImpl = fetch)
       i = j + 1;
     }
   }
-  return out.slice(0, MAX_SLOTS);
+  /* Counted BEFORE the cap, so a page can honestly say "openings on N of the
+     next 45 days" even when it only renders the first MAX_SLOTS blocks. */
+  const daysAvailable = new Set(out.map(b => b.date)).size;
+  return { slots: out.slice(0, MAX_SLOTS), daysAvailable };
 }
