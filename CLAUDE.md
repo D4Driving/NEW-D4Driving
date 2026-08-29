@@ -56,6 +56,13 @@ Detail belongs in the private ops repo, not here.
 - **GitHub Pages is case-sensitive.** `Rakesh.webp` ≠ `rakesh.webp`.
 - **Article pages are static and hand-maintained.** Nothing regenerates them
   since Soro was cancelled. Re-run `tools/gen-articles.js` if articles change.
+- **Availability comes from Cal.com via a Cloudflare Worker, not the GitHub
+  Action.** `tools/availability-worker.js` (deployed to a `*.workers.dev` URL,
+  set as `AVAIL_LIVE_URL` in `index.html`) proxies Cal.com's public
+  `slots/getSchedule`, which is authoritative — it applies Robert's buffers and
+  minimum notice, so it never offers a slot it would refuse to book. Cal.com
+  sends no CORS headers, hence the proxy. The page fetches it per load, so the
+  section is always live. `availability.json` is only the fallback now.
 - **GitHub's `schedule` trigger cannot be relied on here — do not try to fix it
   with the cron expression.** The availability sync decayed from 23 runs/day to
   ~3 from 26 Aug 2026. Moving it off the hour (`0` -> `23`) was tried on 28 Aug

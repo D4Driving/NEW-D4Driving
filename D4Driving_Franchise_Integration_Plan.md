@@ -347,7 +347,7 @@ not be enough.
 
 ---
 
-## 18. Availability Moved to Cal.com — 🟡 29 August 2026 (awaiting Worker deploy)
+## 18. Availability Moved to Cal.com — ✅ 29 August 2026
 
 **The cron fix from §17 did not work.** Three days of data: still ~3 runs/day
 against an hourly cron, gaps of 5–18h, and GitHub ignoring the requested minute
@@ -373,12 +373,19 @@ existing card design is unchanged.
 Fetching per page load means the section is always live and GitHub's scheduler
 stops mattering.
 
-**State:** Worker written and tested against the live endpoint; `index.html`
-prefers it with a 6-second timeout and falls back to `availability.json`.
-`AVAIL_LIVE_URL` is empty, so the site still serves the static file — deploying
-the Worker and setting that one constant switches it over. The static file
-stays as the fallback, so a Worker or Cal.com outage degrades to
-slightly-stale rather than to nothing.
+**Live.** Worker deployed by Robert at
+`https://fancy-dream-5431.fancy-surf-7864.workers.dev/`, wired up via
+`AVAIL_LIVE_URL` in `index.html`.
+
+Verified end to end: the page fetches only the Worker, reports "Updated just
+now", and the two phantom days (28 Sep, 6 Oct) that Cal.com will not book are
+gone. Forcing the Worker to fail falls back to `availability.json` and still
+renders every slot, so an outage degrades to slightly-stale rather than to
+nothing.
+
+`blog-sync.yml` still runs — it generates the sitemap, and `availability.json`
+is now the fallback source. Its unreliable schedule no longer matters, because
+nothing time-critical depends on it.
 
 ---
 
