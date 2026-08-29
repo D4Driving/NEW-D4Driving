@@ -54,6 +54,11 @@ Detail belongs in the private ops repo, not here.
   `backdrop-filter` creates a containing block that traps `position: fixed`
   descendants inside the 68px bar, making the menu invisible when scrolled.
 - **GitHub Pages is case-sensitive.** `Rakesh.webp` ≠ `rakesh.webp`.
+- **Cal.com is not Rakesh's only diary.** He also takes bookings through the
+  Total Drive app, and those never reach Cal.com — so his feed shows far more
+  free time than he really has. Never state a specific date or a count of open
+  days for him; his page deliberately says only that he "usually has space" and
+  sends people to WhatsApp to confirm. Robert's own Cal.com IS authoritative.
 - **The YouTube subscriber count lives in 128 files.** Currently **32,000+**
   (updated 29 Aug 2026, was 25,000+). It appears twice in every article page's
   author bio and newsletter box, plus `index.html` (hero stat, about copy, the

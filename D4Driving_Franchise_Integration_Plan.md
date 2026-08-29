@@ -470,6 +470,24 @@ the 30-block cap, rather than a number that reflects how much we happen to
 render. The line is hidden unless the fetch succeeds, so a Worker outage costs
 nothing — the static copy stands on its own.
 
+**Softened same day, once Robert confirmed why the diary looked empty:** Rakesh
+also takes bookings through the **Total Drive app**, and those never reach
+Cal.com. So the feed is a reliable signal that he has room, but not proof that
+any particular slot is free — naming a date, or counting open days, was a
+promise it could not keep, and a student could have booked a slot already
+filled elsewhere.
+
+The feed now only picks which soft phrasing to use — *"space within the next
+few days"* when the earliest slot is inside a week, *"availability over the
+coming weeks"* otherwise — and the line always sends people to WhatsApp to
+confirm. It still hides entirely when he has nothing free or the Worker is
+unreachable.
+
+This keeps the genuinely useful part (he has room, and Robert's next slot is
+weeks out) without asserting a slot is bookable. `daysAvailable` stays in the
+Worker — unused by the page now, but the honest number if a future page wants
+it.
+
 ---
 
 ## 21. Subscriber Count Raised to 32,000+ — ✅ 29 August 2026
