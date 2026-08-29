@@ -389,6 +389,33 @@ nothing time-critical depends on it.
 
 ---
 
+## 19. Slot Cards Book Directly on Cal.com — ✅ 29 August 2026
+
+Tapping a slot opened WhatsApp, so every booking needed Robert in the loop.
+The cards now lead with **Book this slot** into Cal.com, which takes the booking
+and the payment; **or message Robert** stays underneath for anyone who would
+rather talk first — Robert's call, so nobody hits a payment wall with no
+alternative.
+
+**Two link shapes, because the cards show ranges.** A card covering a single
+hour deep-links straight to the booking form with that time locked in
+(`?month=&date=&slot=`). A card covering several hours links to that day's time
+picker instead (`?month=&date=`) — a card reading "9:00am–1:00pm" covers four
+bookable hours, and sending someone to a fixed 9am form would contradict it.
+Verified live: the 25 Sep "1:00pm–3:00pm" card lands on a picker offering
+exactly 1:00pm and 2:00pm.
+
+**New students.** Slots are computed for the 1-hour lesson (£42), which is the
+wrong product for someone who has never driven — they need the 90-minute
+assessment (£45). The site cannot know which is which, so the footer now points
+them there rather than silently selling the wrong thing.
+
+**Accessibility.** "Book this slot" repeats on all 13 cards, so each link
+carries an `aria-label` naming its real date and time; the button is a 44px
+touch target with a visible focus ring.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
