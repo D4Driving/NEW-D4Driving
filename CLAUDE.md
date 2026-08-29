@@ -54,6 +54,13 @@ Detail belongs in the private ops repo, not here.
   `backdrop-filter` creates a containing block that traps `position: fixed`
   descendants inside the 68px bar, making the menu invisible when scrolled.
 - **GitHub Pages is case-sensitive.** `Rakesh.webp` ≠ `rakesh.webp`.
+- **The YouTube subscriber count lives in 128 files.** Currently **32,000+**
+  (updated 29 Aug 2026, was 25,000+). It appears twice in every article page's
+  author bio and newsletter box, plus `index.html` (hero stat, about copy, the
+  YouTube section, one FAQ answer) and `mock-test.html`'s og:description. The
+  hero writes it as `32<span>k+</span>`, so a search for "32,000" misses it.
+  Update with a global replace across `*.html`, and check `article-template.html`
+  is included so new articles inherit the right number.
 - **Article pages are static and hand-maintained.** Nothing regenerates them
   since Soro was cancelled. Re-run `tools/gen-articles.js` if articles change.
 - **Availability comes from Cal.com via a Cloudflare Worker, not the GitHub

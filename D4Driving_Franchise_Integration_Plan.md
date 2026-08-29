@@ -472,6 +472,23 @@ nothing — the static copy stands on its own.
 
 ---
 
+## 21. Subscriber Count Raised to 32,000+ — ✅ 29 August 2026
+
+The channel passed 32K, so the site's 25,000+ was understating it. Replaced
+across **128 files / 257 occurrences**: every article page carries it twice (the
+author bio and the newsletter box), plus `index.html` in four places and
+`mock-test.html`'s og:description.
+
+Two traps worth knowing. The hero stat is written `25<span>k+</span>`, so a
+search for "25,000" misses it entirely. And `article-template.html` had to be
+updated too, or the next generated article would have reintroduced the old
+number. Both are noted in `CLAUDE.md`.
+
+Done as a byte-level replace so the files kept their existing line endings —
+the diff is 257 insertions and 257 deletions with nothing else touched.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
