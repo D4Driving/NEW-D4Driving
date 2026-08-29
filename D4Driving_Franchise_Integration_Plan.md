@@ -410,6 +410,30 @@ wrong product for someone who has never driven — they need the 90-minute
 assessment (£45). The site cannot know which is which, so the footer now points
 them there rather than silently selling the wrong thing.
 
+### 1 hour and 1.5 hours, via a duration toggle
+
+Cal.com slots each duration against its **own** interval, so the times genuinely
+differ — on 16 Sep the 1-hour slot is 11:00 but the 1.5-hour is 10:30. They
+cannot share a card. Rather than put a second button on every card (they are
+already tall), the page shows a duration toggle above the grid and swaps the
+whole list; switching re-renders from data already fetched, with no second
+request.
+
+1.5 hours fits on **11 of the 12 days** that have any availability, so it was
+worth surfacing rather than leaving people to find it on Cal.com. The 2-hour
+lesson fits on 6 days — add `2-hrs-driving-lesson` to `DURATIONS` in the Worker
+to offer it too.
+
+The Worker fetches both durations in parallel and returns them as `options`,
+keeping the flat `slots` array as the 1-hour list so the fallback file and any
+cached older page keep working. The page synthesises a single 1-hour option
+when `options` is absent, and hides the toggle when there is only one choice —
+so the page change was safe to ship before the Worker was redeployed.
+
+Prices are deliberately **not** shown on the cards. Cal.com charges £42 and £60
+and displays that at the point of booking; repeating it on the site would be a
+second source of truth to drift.
+
 **Accessibility.** "Book this slot" repeats on all 13 cards, so each link
 carries an `aria-label` naming its real date and time; the button is a 44px
 touch target with a visible focus ring.
