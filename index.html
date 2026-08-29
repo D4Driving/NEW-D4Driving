@@ -1346,7 +1346,12 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
      nothing. */
   const AVAIL_LIVE_URL = 'https://fancy-dream-5431.fancy-surf-7864.workers.dev/';
 
-  const CAL_USER_URL       = 'https://cal.com/d4driving';
+  /* Which Cal.com account this page books into. The Worker echoes the account
+     back as `user`, so the same code serves Rakesh's page with a different
+     AVAIL_INSTRUCTOR; this is only the fallback for the static file, which
+     carries no instructor of its own. */
+  const AVAIL_INSTRUCTOR   = 'robert';
+  const CAL_USER_FALLBACK  = 'd4driving';
   const CAL_ASSESSMENT_URL = 'https://cal.com/d4driving/driving-assessment';
 
   /* Raw feed plus the duration the visitor is looking at. Switching duration
@@ -1377,7 +1382,8 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   function calUrl(slot, opt) {
     const d   = slot.date;
     const ymd = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-    const base = `${CAL_USER_URL}/${opt.slug}?month=${ymd.slice(0,7)}&date=${ymd}`;
+    const calUser = (availData && availData.user) || CAL_USER_FALLBACK;
+    const base = `https://cal.com/${calUser}/${opt.slug}?month=${ymd.slice(0,7)}&date=${ymd}`;
     const isSingle = (slot.end - slot.start) === opt.minutes * 60000;
     return isSingle ? `${base}&slot=${encodeURIComponent(slot.start.toISOString())}` : base;
   }
@@ -1501,7 +1507,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         try {
           const ctl = new AbortController();
           const timer = setTimeout(() => ctl.abort(), 6000);
-          const live = await fetch(`${AVAIL_LIVE_URL}?t=${Date.now()}`, { cache: 'no-store', signal: ctl.signal });
+          const live = await fetch(`${AVAIL_LIVE_URL}?instructor=${AVAIL_INSTRUCTOR}&t=${Date.now()}`, { cache: 'no-store', signal: ctl.signal });
           clearTimeout(timer);
           if (live.ok) {
             const j = await live.json();

@@ -21,20 +21,38 @@
  * Deploy:  Cloudflare dashboard -> Workers -> Create -> paste this -> Deploy.
  */
 
-const CAL_USER   = 'd4driving';
 const DAYS_AHEAD = 45;
 const MAX_SLOTS  = 30;
 const TZ         = 'Europe/London';
 
-/* Durations offered on the site. Cal.com slots each one against its OWN
-   interval, so the times genuinely differ — on 16 Sep 2026 the 1-hour slot is
-   11:00 but the 1.5-hour is 10:30. They cannot share a card; the page shows a
-   duration toggle and swaps the whole list.
-   Add the 2-hour lesson here (slug '2-hrs-driving-lesson') to offer it too. */
-const DURATIONS = [
-  { minutes: 60, label: '1 hour',   slug: '1hr-driving' },
-  { minutes: 90, label: '1½ hours', slug: '1.5-hr-driving-lesson' },
-];
+/* Durations are per-instructor because the two Cal.com accounts use different
+   slugs — Rakesh renamed his, and his 1.5-hour one contains a literal dot.
+   Cal.com slots each duration against its OWN interval, so the times genuinely
+   differ: on 16 Sep 2026 Robert's 1-hour slot is 11:00 but his 1.5-hour is
+   10:30. They cannot share a card; the page shows a duration toggle and swaps
+   the whole list.
+
+   Note both accounts also have a 90-minute ASSESSMENT event, deliberately not
+   listed here — it is a different product, linked separately under the grid. */
+const INSTRUCTORS = {
+  robert: {
+    user: 'd4driving',
+    durations: [
+      { minutes: 60,  label: '1 hour',   slug: '1hr-driving' },
+      { minutes: 90,  label: '1½ hours', slug: '1.5-hr-driving-lesson' },
+      { minutes: 120, label: '2 hours',  slug: '2-hrs-driving-lesson' },
+    ],
+  },
+  rakesh: {
+    user: 'rakesh-d4driving',
+    durations: [
+      { minutes: 60,  label: '1 hour',   slug: '1-hour-driving-tuition-manual-car' },
+      { minutes: 90,  label: '1½ hours', slug: '1.5-hrs.-driving-lesson-manual' },
+      { minutes: 120, label: '2 hours',  slug: '2-hours-driving-lesson' },
+    ],
+  },
+};
+const DEFAULT_INSTRUCTOR = 'robert';   /* the existing page calls with no param */
 
 const ALLOWED_ORIGINS = new Set([
   'https://d4driving.co.uk',
@@ -59,10 +77,14 @@ export default {
     if (request.method !== 'GET') return json({ error: 'method not allowed' }, 405, cors);
 
     try {
+      const key = new URL(request.url).searchParams.get('instructor') || DEFAULT_INSTRUCTOR;
+      const who = INSTRUCTORS[key];
+      if (!who) return json({ error: `unknown instructor '${key}'` }, 400, cors);
+
       /* One request per duration, in parallel — Cal.com is the slow part. */
-      const results = await Promise.all(DURATIONS.map(async d => ({
+      const results = await Promise.all(who.durations.map(async d => ({
         minutes: d.minutes, label: d.label, slug: d.slug,
-        slots: await getSlots(d.slug, d.minutes),
+        slots: await getSlots(who.user, d.slug, d.minutes),
       })));
       const options = results.filter(o => o.slots.length);
       /* `slots` stays the 1-hour list so the older page code and the
@@ -71,6 +93,8 @@ export default {
       return json({
         generated: new Date().toISOString(),
         source: 'cal.com',
+        instructor: key,
+        user: who.user,          /* the page builds cal.com/<user>/<slug> */
         slots: primary ? primary.slots : [],
         options,
       }, 200, {
@@ -94,7 +118,7 @@ function json(body, status, headers) {
   });
 }
 
-export async function getSlots(eventSlug, lessonMin, fetchImpl = fetch) {
+export async function getSlots(calUser, eventSlug, lessonMin, fetchImpl = fetch) {
   const start = new Date();
   const end   = new Date(Date.now() + DAYS_AHEAD * 864e5);
 
@@ -103,7 +127,7 @@ export async function getSlots(eventSlug, lessonMin, fetchImpl = fetch) {
   const input = {
     json: {
       isTeamEvent: false,
-      usernameList: [CAL_USER],
+      usernameList: [calUser],
       eventTypeSlug: eventSlug,
       startTime: start.toISOString(),
       endTime:   end.toISOString(),
