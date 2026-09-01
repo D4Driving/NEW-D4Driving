@@ -507,6 +507,49 @@ the diff is 257 insertions and 257 deletions with nothing else touched.
 
 ---
 
+## 22. Homepage Reordered — ✅ 29 August 2026
+
+Robert reordered the page around price and availability first, proof second,
+who-and-what third.
+
+| # | Section | | # | Section |
+|---|---|---|---|---|
+| 1 | Hero | | 8 | Meet Our Instructors |
+| 2 | Status bar | | 9 | Rakesh (separate block) |
+| 3 | Lesson Prices | | 10 | Peterborough & Beyond |
+| 4 | Next Available Slots | | 11 | Recent Passes |
+| 5 | Choose Your Instructor | | 12 | YouTube |
+| 6 | Google Reviews | | 13 | Driving Tips |
+| 7 | Tuition Vehicles | | 14 | Theory promo, FAQ, Contact |
+
+**Hero buttons:** Earliest Availability (primary red, → availability), See
+Prices, Book Online, Call. The **AI receptionist number is retired** — it
+appeared exactly once on the whole site, in the button this replaced. The hero
+now calls Robert's mobile, matching the `tel:07872347686` format used in the
+other 394 places.
+
+**Method.** The file was split on its `<!-- ═══ NAME ═══ -->` markers and
+verified to reassemble **byte-identically** before anything moved, so only the
+order changed. Two blocks are easy to miss: the status bar is a bare `div`, not
+a section, and Rakesh's instructor block is separate from "Meet Our
+Instructors" — they must move together.
+
+**Backgrounds had to be redone.** Sections alternate two shades, and reordering
+left same-shade sections butting together with no seam. Re-alternated the whole
+run; verified zero adjacent clashes. Note `#fleet` had no inline background at
+all (it relied on the `.sec` default), so it needed one adding.
+
+**Known cosmetic issues, left as-is:**
+
+- On desktop the four hero buttons need **two rows** — they total 657px plus
+  gaps in a 680px column, missing a single row by a hair. Shortening the call
+  button's label would fix it. On mobile they stack cleanly, four full-width
+  taps.
+- `#prices` is **6,604px tall** and now sits first, so there is a long scroll
+  before anything else. Worth watching if reviews start getting less attention.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
