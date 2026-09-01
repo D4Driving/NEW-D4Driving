@@ -2,6 +2,14 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-09-01
+- The homepage now leads with price and availability instead of introducing the school first: new order is hero, status bar, prices, next available slots, choose your instructor, reviews, vehicles, instructors, Rakesh, coverage, recent passes, YouTube, tips, theory promo, FAQ, contact. Both navigation menus were reordered to match.
+- The hero's four buttons changed to Earliest Availability (now the main button), See Prices, Book Online and Call. The AI receptionist number — which only ever appeared in that one button — has been retired; the hero now calls Robert's mobile directly, same as everywhere else on the site.
+- Fixed a layout snag from the reorder: on desktop the four hero buttons were just wide enough to force the Call button onto its own second row. Shortened its label from the full phone number to "Call Robert" (the number itself is unchanged, still one tap) so all four sit on one row again.
+- _Commits: 4380b02, 9b81d00, 6a1afbc_
+- _Plan doc status: ⚠ partially documented — the reorder itself is recorded in D4Driving_Franchise_Integration_Plan.md §22, but that section still lists the hero-button two-row layout as a "known cosmetic issue... left as-is" and suggests shortening the Call button as the fix. That fix shipped today (6a1afbc) after the plan doc entry was written, so §22 needs a line added noting it's resolved._
+- _CLAUDE.md status: accurate — no contradictions found; the `lesson-credit-ledger` in-flight row was left as-is since nothing in today's commits shows that branch landing on main._
+
 ## 2026-08-29
 - Fixed the availability generator computing "9am-5pm" style hours in UTC instead of UK time, and widened Robert's weekday hours to 9am-8pm to match his actual working day (the old hours were narrower than he really works).
 - The homepage availability list no longer relies on the flaky hourly GitHub Action at all: it now pulls live straight from Robert's (and Rakesh's) Cal.com diary through a new Cloudflare Worker proxy, which applies the same buffers and minimum notice Cal.com itself uses — so it can no longer show a slot that would actually get refused. The old GitHub Action feed remains only as a fallback if the Worker is ever unreachable. Confirmed the cron-timing gotcha from yesterday could not be fixed by moving it off the hour, so this replaces the fix rather than patching it further.
