@@ -806,6 +806,11 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 @media(max-width:960px){
   .nav-links,.nav-phone{ display:none; }
   .burger{ display:flex; }
+  /* The hero centres its content in 100vh with no top padding. On a phone the
+     content nearly fills the viewport, so centring pushed the tagline up to
+     y=35px - underneath the 92px fixed nav, where the logo sat on top of it.
+     Reserve the nav's height so centring can never put content behind it. */
+  #hero{ padding-top:100px; }
   .about-grid { grid-template-columns:1fr; gap:40px; }
   .about-img-wrap::after { display:none; }
   .fleet-grid { grid-template-columns:1fr 1fr; gap:20px; }
