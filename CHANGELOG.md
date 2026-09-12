@@ -2,6 +2,12 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-09-12
+- Fixed the site logo overlapping the homepage tagline on phones: the hero section centres its content vertically, and on small screens (four stacked buttons plus two guide links) that content nearly filled the screen, pushing the tagline up underneath the fixed top menu bar where the logo sat on top of it — measured at 32px vertical / 54px horizontal overlap on a 375px-wide phone. Fixed by reserving space at the top of the hero equal to the menu bar's height, on phone/tablet widths only; desktop was already unaffected and is untouched. Service worker cache version bumped so returning visitors pick up the fix.
+- _Commits: 859e167_
+- _Plan doc status: ⚠ NOT yet in D4Driving_Franchise_Integration_Plan.md — needs folding in_
+- _CLAUDE.md status: accurate — no contradictions found; the `lesson-credit-ledger` in-flight row was left as-is since nothing in today's commits shows that branch landing on main._
+
 ## 2026-09-01
 - The homepage now leads with price and availability instead of introducing the school first: new order is hero, status bar, prices, next available slots, choose your instructor, reviews, vehicles, instructors, Rakesh, coverage, recent passes, YouTube, tips, theory promo, FAQ, contact. Both navigation menus were reordered to match.
 - The hero's four buttons changed to Earliest Availability (now the main button), See Prices, Book Online and Call. The AI receptionist number — which only ever appeared in that one button — has been retired; the hero now calls Robert's mobile directly, same as everywhere else on the site.
