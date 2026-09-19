@@ -2,6 +2,12 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-09-19
+- Added a note to `CLAUDE.md`'s "In flight" section flagging the `chr-plus-launch` branch (Robert's Yaris Cross being replaced by an electric Toyota C-HR+, collected 20 Sep 2026), so future sessions know not to merge it yet. The branch already carries every text change needed (status bar, hero, fleet card, new EV FAQ and schema, vehicle selector, dropdown, meta tags); still outstanding is a wide hero/social photo and a fleet-card photo of the car, after which `yaris-cross.webp` needs swapping across 13 files before merging. Copy was approved by Robert on 18 Sep.
+- _Commits: ed50038_
+- _Plan doc status: ⚠ NOT yet in D4Driving_Franchise_Integration_Plan.md — the "Pending Tasks" table (§ Electric Toyota C-HR+ launch, around line 557) still says the car is "arriving early Sept 2026" and lists photos/fleet card/EV FAQ/schema/blog content as all still needed. In reality the car was collected 20 Sep and nearly all of that work (fleet card, EV FAQ, schema, selector, dropdown, meta) is already written on the `chr-plus-launch` branch — only the two photos and the file swap remain. The pending-tasks row needs rewriting to reflect that, and ideally cross-reference the branch._
+- _CLAUDE.md status: accurate — today's only real commit was itself the maintenance edit to CLAUDE.md's "In flight" section, so it's already up to date; no branch is shown as landed on main, so no row was removed from the in-flight table._
+
 ## 2026-09-12
 - Fixed the site logo overlapping the homepage tagline on phones: the hero section centres its content vertically, and on small screens (four stacked buttons plus two guide links) that content nearly filled the screen, pushing the tagline up underneath the fixed top menu bar where the logo sat on top of it — measured at 32px vertical / 54px horizontal overlap on a 375px-wide phone. Fixed by reserving space at the top of the hero equal to the menu bar's height, on phone/tablet widths only; desktop was already unaffected and is untouched. Service worker cache version bumped so returning visitors pick up the fix.
 - _Commits: 859e167_
