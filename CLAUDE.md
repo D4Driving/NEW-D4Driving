@@ -19,14 +19,6 @@ Detail belongs in the private ops repo, not here.
 
 ## In flight
 
-- **`chr-plus-launch` branch — DO NOT MERGE until photos arrive.** Robert's
-  Yaris Cross is replaced by an electric Toyota C-HR+ (collected 20 Sep 2026).
-  The branch carries every text change (status bar, hero, fleet card, new EV
-  FAQ + schema, selector, dropdown, meta). Still needed: a wide hero/social
-  photo and a fleet-card photo, then swap `yaris-cross.webp` in 13 files
-  (11 og:image tags, the sw.js precache, the preload) and merge. Copy was
-  approved by Robert 18 Sep; positioning deliberately avoids "first electric
-  car in Peterborough" (Elliott's has a Leaf) — see ops PRODUCT.md.
 
 | Branch | What | Status |
 |---|---|---|
@@ -63,6 +55,13 @@ Detail belongs in the private ops repo, not here.
   `backdrop-filter` creates a containing block that traps `position: fixed`
   descendants inside the 68px bar, making the menu invisible when scrolled.
 - **GitHub Pages is case-sensitive.** `Rakesh.webp` ≠ `rakesh.webp`.
+- **The electric car claim is deliberately narrow.** Robert's automatic car is
+  a Toyota C-HR+ (from 20 Sep 2026). Say "one of very few electric tuition cars
+  in Peterborough" or "the first C-HR+ teaching in Peterborough" — never "first
+  electric car in Peterborough": Elliott's runs a Nissan Leaf, and Robert
+  rejected that claim himself (ops PRODUCT.md). The 2030 phase-out date in the
+  EV FAQ was his call to keep. `yaris-cross.webp` is unreferenced but kept so
+  old social shares don't 404; delete once they've aged out.
 - **Cal.com is not Rakesh's only diary.** He also takes bookings through the
   Total Drive app, and those never reach Cal.com — so his feed shows far more
   free time than he really has. Never state a specific date or a count of open

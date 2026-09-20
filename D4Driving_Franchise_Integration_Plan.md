@@ -550,6 +550,49 @@ all (it relied on the `.sec` default), so it needed one adding.
 
 ---
 
+## 23. Electric Toyota C-HR+ Launch — ✅ 20 September 2026
+
+Robert's automatic car changed from the Toyota Yaris Cross to a **fully
+electric Toyota C-HR+**, 2026 (76) plate, collected 20 September. The website
+launched the same day.
+
+**Positioning — read this before touching the copy.** The ops notes record
+that Robert rejected *"first electric driving school car in Peterborough"* as
+overclaiming (Elliott's runs a Nissan Leaf) and narrowed it to the defensible
+claims. Nine weekly competitor checks through 7 Sep 2026 showed nobody in
+Peterborough promotes an EV on their homepage, so being first to *say* it is
+the position. The two claims used are **"one of very few electric tuition cars
+in the city"** and **"the first C-HR+ teaching in Peterborough"**. The angle is
+future-proofing: with new petrol and diesel cars phased out from 2030, the car
+you pass in is the car you'll drive. Robert chose to keep the 2030 date.
+
+**Where it went**, loudest first: the red status bar became the launch banner;
+the hero subheading names the car; the fleet card was rewritten with an
+*Electric* pill; a new FAQ carries the full argument in both the visible
+accordion and the FAQPage schema; the instructor selector, contact dropdown,
+alt text and meta description were updated. "electric driving lessons
+Peterborough" is a search no competitor is contesting.
+
+**Photo.** Robert's own shot on collection day, cropped to the Yaris file's
+1.45 ratio so the hero and fleet card crop it identically, resized to 1080
+wide. The phone's "AI-generated content" corner label — which the Yaris photo
+had carried on the live site all along — was cropped out. 22 references
+across 11 files, including the og:image on every page, so shared links
+preview the new car. `yaris-cross.webp` is left in place, unreferenced,
+because social platforms cache og:image by URL; delete once old shares age
+out. The Toyota press render Robert also sent is unused — it doesn't match
+the real-photo style of the other two fleet cards.
+
+**Done as a branch** (`chr-plus-launch`) so the text could be written and
+approved on 18 Sep without the site ever saying C-HR+ while still showing the
+Yaris. Merged the moment the photo was in.
+
+**Worth doing later:** the C-HR+ has no D4Driving roof sign in the photo (it
+was taken at the dealership). A photo with the sign fitted would match the
+Aygo X card better.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
