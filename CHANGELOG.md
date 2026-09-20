@@ -2,6 +2,14 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-09-20
+- Robert's automatic car changed from the Toyota Yaris Cross to a fully electric Toyota C-HR+, collected today; the website switched over the same day. The new car's photo now replaces the old one everywhere it appeared — the homepage hero background, the fleet card, and the link-preview image on every page — across 22 references in 11 files, cropped and sized to match the old photo exactly, with a corner watermark from the phone that took it cropped out of frame. The offline cache version was bumped so returning visitors see the new photo rather than a cached one of the Yaris.
+- Positioning is deliberately modest: the site says "one of very few electric tuition cars in Peterborough" and "the first C-HR+ teaching in Peterborough" — not "first electric car in Peterborough", since a competitor already runs one. The old Yaris photo file is kept in place (just no longer linked to) so existing social-media shares of old posts don't break.
+- The temporary branch that had been holding this work (`chr-plus-launch`) was merged into the live site; its "do not merge yet" note was removed from `CLAUDE.md` now that it's shipped, and a new numbered section was added to the main plan doc recording the launch — all done in the same working session, so no reconciliation was needed here.
+- _Commits: ac3f073, e714409, 71f3ed2, 5de821c_
+- _Plan doc status: already documented (§23 "Electric Toyota C-HR+ Launch" was added in the same session, commit 5de821c)_
+- _CLAUDE.md status: accurate — the `chr-plus-launch` in-flight row was removed in the same session since the branch landed on main, and a new gotcha about the electric-car claim's wording was added at the same time; nothing else in today's work contradicts the file_
+
 ## 2026-09-19
 - Added a note to `CLAUDE.md`'s "In flight" section flagging the `chr-plus-launch` branch (Robert's Yaris Cross being replaced by an electric Toyota C-HR+, collected 20 Sep 2026), so future sessions know not to merge it yet. The branch already carries every text change needed (status bar, hero, fleet card, new EV FAQ and schema, vehicle selector, dropdown, meta tags); still outstanding is a wide hero/social photo and a fleet-card photo of the car, after which `yaris-cross.webp` needs swapping across 13 files before merging. Copy was approved by Robert on 18 Sep.
 - _Commits: ed50038_
