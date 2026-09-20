@@ -19,6 +19,15 @@ Detail belongs in the private ops repo, not here.
 
 ## In flight
 
+- **`chr-plus-launch` branch — DO NOT MERGE until photos arrive.** Robert's
+  Yaris Cross is replaced by an electric Toyota C-HR+ (collected 20 Sep 2026).
+  The branch carries every text change (status bar, hero, fleet card, new EV
+  FAQ + schema, selector, dropdown, meta). Still needed: a wide hero/social
+  photo and a fleet-card photo, then swap `yaris-cross.webp` in 13 files
+  (11 og:image tags, the sw.js precache, the preload) and merge. Copy was
+  approved by Robert 18 Sep; positioning deliberately avoids "first electric
+  car in Peterborough" (Elliott's has a Leaf) — see ops PRODUCT.md.
+
 | Branch | What | Status |
 |---|---|---|
 | `lesson-credit-ledger` | Supabase lesson-credit ledger — migrations, instructors table | In progress, do not ship |
