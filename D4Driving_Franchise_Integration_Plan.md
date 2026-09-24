@@ -1,5 +1,5 @@
 # D4Driving — Franchise Integration Plan
-_Last updated: 28 August 2026_
+_Last updated: 24 September 2026_
 
 > **This is the build history** — what was done, when, and why. For a quick
 > orientation at the start of a session, read `CLAUDE.md` instead: it is one
@@ -593,17 +593,37 @@ Aygo X card better.
 
 ---
 
+## 24. Logo No Longer Overlaps the Tagline on Phones — ✅ 12 September 2026
+
+On a 375px phone the D4Driving logo sat on top of the "Peterborough's Most
+Trusted Driving School" tagline. The cause was the hero centring its content
+vertically in a full-height screen with no top padding. On desktop the content is
+short, so centring lands it well below the fixed nav. On a phone the four stacked
+buttons and two guide links nearly fill the screen, so centring pushed the
+tagline up to 35px — underneath the 92px nav. Measured overlap: 32px vertical,
+54px horizontal.
+
+Fixed by reserving the nav's height as top padding on burger-menu widths
+(`#hero { padding-top: 100px }` inside the existing 960px breakpoint), so
+centring can never place content behind the nav. Desktop is untouched by
+construction: its padding stays 0 and the tagline sits at exactly the same
+position (173px). Commit 859e167.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
 |---|---|---|
-| **Electric Toyota C-HR+ launch** | Robert + Claude | Arriving early Sept 2026. Needs photos → fleet card, EV FAQ, schema, blog content. Claim wording: "first instructor in Peterborough teaching in the all-new electric Toyota C-HR+" (NOT "first electric car" — competitors use Leaf/Zoe/BYD) |
-| **Rakesh's availability in `availability.json`** | Robert + Rakesh | Rakesh's iCal URL (from his public Google Calendar) needs adding to `blog-sync.yml`; add `instructor` field to each slot; update index.html display with instructor badge |
+| **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Awaiting Robert's OK on five plan changes and a go. Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
+| **54 broken Wix-era links** | Claude (separate session) | Old `/post/`, `/service-page/` and `/news/` links that 404, on pages and page areas *outside* the 23 location-page bodies. Started 24 Sep 2026 in its own session |
+| **Sitemap `lastmod` dates** | Robert | Optional: have the sync workflow add each page's last-changed date (local SEO plan, Task 17). His decision |
 | **Cal.com T&C checkboxes** | Robert + Rakesh | Add required booking question to every event type: "I agree to D4Driving's Terms & Conditions: d4driving.co.uk/terms.html" |
 | **Rakesh's Cal.com assessment price** | Rakesh | His 1.5hr assessment event displays no price — should show £45 |
 | **Google review count in schema** | Robert + Claude | `aggregateRating` in index.html is a fixed number (36 at Aug 2026) — refresh every couple of months |
 | **Rakesh's pricing on `index.html`** | Robert | Block packages for Rakesh not yet on main site pricing section — optional, his page covers it |
 | **Orphaned file `vw-golf.webp`** | Robert | Old hyphen-filename version still in repo; safe to delete once confirmed unused |
+| **Retired image `yaris-cross.webp`** | Claude | Unreferenced since the C-HR+ launch, but kept so old social-media shares still show a preview. Safe to delete from about late October 2026 |
 
 ---
 

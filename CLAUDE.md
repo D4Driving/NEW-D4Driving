@@ -23,6 +23,8 @@ Detail belongs in the private ops repo, not here.
 | Branch | What | Status |
 |---|---|---|
 | `lesson-credit-ledger` | Supabase lesson-credit ledger — migrations, instructors table | In progress, do not ship |
+| — (ops repo) | **Local SEO:** spec + plan written 24 Sep 2026, awaiting Robert's go. Will rewrite the article bodies of the 23 location pages with his sourced local detail — **don't edit those bodies in other work**. Resume from `LOCAL-SEO-STATE.md` in the ops repo | Planned |
+| (separate session) | Fixing 54 broken Wix-era links (`/post/`, `/service-page/`) outside the 23 location-page bodies | In progress, 24 Sep 2026 |
 
 `main` is live. Anything merged to `main` is on the public site within ~2 minutes.
 
