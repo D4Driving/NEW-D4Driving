@@ -507,7 +507,7 @@ the diff is 257 insertions and 257 deletions with nothing else touched.
 
 ---
 
-## 22. Homepage Reordered — ✅ 29 August 2026
+## 22. Homepage Reordered — ✅ 1 September 2026
 
 Robert reordered the page around price and availability first, proof second,
 who-and-what third.
@@ -539,12 +539,12 @@ left same-shade sections butting together with no seam. Re-alternated the whole
 run; verified zero adjacent clashes. Note `#fleet` had no inline background at
 all (it relied on the `.sec` default), so it needed one adding.
 
-**Known cosmetic issues, left as-is:**
+**Cosmetic issues found at launch:**
 
-- On desktop the four hero buttons need **two rows** — they total 657px plus
-  gaps in a 680px column, missing a single row by a hair. Shortening the call
-  button's label would fix it. On mobile they stack cleanly, four full-width
-  taps.
+- **Resolved the same day:** on desktop the four hero buttons needed two rows —
+  657px plus gaps in a 680px column. Shortening the call button's label to
+  "Call Robert" (commit 6a1afbc) fits them on one row with 34px to spare. On
+  mobile they stack as four full-width buttons.
 - `#prices` is **6,604px tall** and now sits first, so there is a long scroll
   before anything else. Worth watching if reviews start getting less attention.
 
