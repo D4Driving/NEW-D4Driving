@@ -2,6 +2,14 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-09-24
+- No website changes today — the only real (non-bot) commits were a documentation reconciliation pass on the project plan and the session-orientation file. The 12 September phone logo fix (previously shipped but never recorded) was added to the main plan doc as a new numbered section. The pending-tasks list was tidied: the electric car launch and the Rakesh iCal item were removed as done/superseded, and the local SEO project, the Wix-era broken-links clean-up, optional sitemap dates, and the retired old-car photo were added so nothing tracked is out of date.
+- A second correction fixed the homepage reorder's recorded date (it actually shipped 1 September, not 29 August as the doc said) and noted that the two-row hero button layout issue, which the doc still listed as an open cosmetic issue, was actually fixed the same day.
+- `CLAUDE.md`'s "In flight" table was updated in the same pass to warn other work away from editing the 23 location-page article bodies, which a planned local SEO rewrite will touch.
+- _Commits: c19c35b, 8465412_
+- _Plan doc status: already documented (these commits are themselves the plan-doc corrections)_
+- _CLAUDE.md status: accurate — updated in the same batch as the commits above; nothing in today's work contradicts anything else in the file_
+
 ## 2026-09-20
 - Robert's automatic car changed from the Toyota Yaris Cross to a fully electric Toyota C-HR+, collected today; the website switched over the same day. The new car's photo now replaces the old one everywhere it appeared — the homepage hero background, the fleet card, and the link-preview image on every page — across 22 references in 11 files, cropped and sized to match the old photo exactly, with a corner watermark from the phone that took it cropped out of frame. The offline cache version was bumped so returning visitors see the new photo rather than a cached one of the Yaris.
 - Positioning is deliberately modest: the site says "one of very few electric tuition cars in Peterborough" and "the first C-HR+ teaching in Peterborough" — not "first electric car in Peterborough", since a competitor already runs one. The old Yaris photo file is kept in place (just no longer linked to) so existing social-media shares of old posts don't break.
