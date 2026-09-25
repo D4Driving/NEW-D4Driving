@@ -611,12 +611,53 @@ position (173px). Commit 859e167.
 
 ---
 
+## 25. Broken Wix-era Links Fixed — ✅ 25 September 2026
+
+Article bodies still linked to Wix-era addresses — `/post/…`, `/service-page/…`,
+`/news/…` and five old extensionless slugs — which all 404 on GitHub Pages.
+**54 links on 19 pages** now point at live pages. The other **27** sit inside the
+23 location pages' article bodies and are left for the local SEO rewrite, which
+fixes them page by page (Robert's call, 25 Sep).
+
+**Robert approved the mapping before it shipped:**
+
+| Kind | Links | Now points to |
+|---|---|---|
+| Same article, new address | 21 | That article |
+| Old booking page (`/service-page/…`) | 10 | `index.html#prices`, which prices all three test-prep centres, the assessment and the 1- and 1.5-hour lessons |
+| Old article gone | 11 | The nearest current article |
+| Old target didn't fit the linked words | 12 | A page that fits the words. For example, a heading "How long should your first lesson be?" had linked to an article on how many lessons you need |
+
+No link had to be removed. New links use the canonical
+`https://d4driving.co.uk/<page>.html`, so they skip the www redirect.
+
+**Method.** Each exact `<a href="…">` was replaced byte for byte, and each had to
+occur exactly once in its page, so line endings and every other byte stayed put:
+53 lines changed, since two links share a line. A separate checker parsed every
+changed page against the committed version. It confirmed that only those 54
+hrefs changed, every target exists, `#prices` exists and no page links to
+itself. A full rescan then found no broken internal links outside the 27 held
+back.
+
+**Traps worth knowing:**
+
+- **The location pages hold 27 broken links on 10 pages, not 26 on 9.** One is
+  written `https://Www.d4driving.co.uk/tips.html`, with a capital W, and
+  `tips.html` never existed. Host names are case-insensitive, so a link checker
+  must lowercase the host before deciding whether a link is internal. The local
+  SEO plan's checker doesn't yet (noted in `LOCAL-SEO-STATE.md`).
+- **Two false positives for a naive grep:** the `ARTICLE_SLUG` link in
+  `article-template.html` is a placeholder by design, and the hrefs inside
+  `index.html`'s `<script>` blocks are code, not links.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
 |---|---|---|
 | **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Awaiting Robert's OK on five plan changes and a go. Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
-| **54 broken Wix-era links** | Claude (separate session) | Old `/post/`, `/service-page/` and `/news/` links that 404, on pages and page areas *outside* the 23 location-page bodies. Started 24 Sep 2026 in its own session |
+| **404 page and old-URL redirects** | Robert | There's no `404.html` yet, so a dead address shows GitHub's bare error page with no way back to the site. Recommended: a branded 404 page (add it to the sitemap workflow's `EXCLUDE` list). Add redirect stubs only for old `/post/` and `/service-page/` URLs that Search Console's *Not found (404)* report shows are still requested (see §25). His decision |
 | **Sitemap `lastmod` dates** | Robert | Optional: have the sync workflow add each page's last-changed date (local SEO plan, Task 17). His decision |
 | **Cal.com T&C checkboxes** | Robert + Rakesh | Add required booking question to every event type: "I agree to D4Driving's Terms & Conditions: d4driving.co.uk/terms.html" |
 | **Rakesh's Cal.com assessment price** | Rakesh | His 1.5hr assessment event displays no price — should show £45 |
