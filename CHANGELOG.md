@@ -2,6 +2,13 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-09-25
+- Fixed 54 broken links left over from the old Wix site, spread across 19 article pages — old booking-page and blog-post addresses that no longer exist and were sending visitors to a 404. Each was pointed at wherever that content now lives: some to the same article under its new name, some to the pricing section, some to the closest current article on the same topic. The site's offline cache version was bumped so returning visitors pick up the fix. A follow-up check found no other broken internal links left, aside from the 27 already flagged inside the 23 location pages, which the ongoing local-SEO rewrite is fixing page by page.
+- `CLAUDE.md`'s "In flight" table was updated the same evening: the now-finished broken-links item was folded into the local SEO row (since that project also covers the remaining 27 location-page links) rather than left as a separate line.
+- _Commits: 58cd6fa, 572e2a3_
+- _Plan doc status: already documented — the commit itself added Integration Plan section 25 and moved the item out of Pending_
+- _CLAUDE.md status: accurate — updated in the same session as the commit above; nothing in today's work contradicts anything else in the file_
+
 ## 2026-09-24
 - No website changes today — the only real (non-bot) commits were a documentation reconciliation pass on the project plan and the session-orientation file. The 12 September phone logo fix (previously shipped but never recorded) was added to the main plan doc as a new numbered section. The pending-tasks list was tidied: the electric car launch and the Rakesh iCal item were removed as done/superseded, and the local SEO project, the Wix-era broken-links clean-up, optional sitemap dates, and the retired old-car photo were added so nothing tracked is out of date.
 - A second correction fixed the homepage reorder's recorded date (it actually shipped 1 September, not 29 August as the doc said) and noted that the two-row hero button layout issue, which the doc still listed as an open cosmetic issue, was actually fixed the same day.
