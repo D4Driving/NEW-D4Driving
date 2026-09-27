@@ -652,12 +652,57 @@ back.
 
 ---
 
+## 26. Branded 404 Page — ✅ 27 September 2026
+
+A dead address used to show GitHub's bare error page, with no way back to the
+site. `404.html` now matches the site's header and footer. It has a "Wrong turn?"
+headline, four cards (Lesson prices, Check availability & book, Driving tips,
+Free mock test), a WhatsApp strip, the phone number and a link to the Polish
+page. Robert approved the design on 27 Sep.
+
+**Old Wix addresses forward themselves.** A script at the top of the page
+(`old-address-forwarder`) sends visitors on before the page draws:
+
+| Old address | Goes to |
+|---|---|
+| The 18 moves listed in the script (renamed articles, `/faq`, `/tips.html`, the old Kettering news post, the mock-test booking page, `/book-online`) | The page that replaced each one |
+| Any `/service-page/…` | `/#prices` |
+| `/blog/…` | `/blog.html` |
+| Any other `/post/<slug>` | `/<slug>.html`, only once a HEAD request confirms that page exists, so it can never bounce to another dead address |
+
+All 38 old addresses found in the §25 link fix forward to a live page.
+
+**Traps worth knowing:**
+
+- **GitHub Pages serves this page at the dead address itself** (e.g.
+  `/post/…`), so every link and asset in it is root-relative (`/…`). A relative
+  link would resolve inside the dead folder and break. This is noted in
+  `CLAUDE.md`.
+- **It is kept out of search.** It's `noindex`, and it's in the sitemap
+  workflow's `EXCLUDE` list (the workflow lists every top-level `.html`).
+- **Forwarding helps people, not Google.** The page still returns HTTP 404, so
+  no link value passes. It carries the Cloudflare beacon, so dead addresses
+  that *don't* forward show up in Web Analytics by path.
+
+**Accessibility.** The page has a skip link, a `main` landmark, `aria-expanded`
+on the menu button, Escape to close the menu, visible keyboard focus, and
+`lang="pl"` on the Polish link. Text contrast is checked to WCAG AA. That meant
+a white headline, and brighter footer and desktop-menu text than the template
+page it was built from.
+
+**Tested** with 20 edge cases plus all 38 known old addresses, running the page's
+own script. The tests were mutation-checked: three planted bugs, all caught. In a
+browser at 1280px and 375px, it was checked with a made-up address, an old
+article, an old booking page, `/faq/` and an unknown `/post/` address.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
 |---|---|---|
 | **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Awaiting Robert's OK on five plan changes and a go. Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
-| **404 page and old-URL redirects** | Robert | There's no `404.html` yet, so a dead address shows GitHub's bare error page with no way back to the site. Recommended: a branded 404 page (add it to the sitemap workflow's `EXCLUDE` list). Add redirect stubs only for old `/post/` and `/service-page/` URLs that Search Console's *Not found (404)* report shows are still requested (see §25). His decision |
+| **Redirect pages for old Wix URLs** | Robert, then Claude | Robert approved these on 27 Sep. They're for Google: the 404 page forwards visitors, but it returns a 404, so no link value passes. Waiting on Robert's export of Search Console → Indexing → Pages → *Not found (404)* → Export → Download CSV. Then add a meta-refresh page (with canonical and `noindex`) at each listed old `/post/` or `/service-page/` address that has a current page. See §25–26 |
 | **Sitemap `lastmod` dates** | Robert | Optional: have the sync workflow add each page's last-changed date (local SEO plan, Task 17). His decision |
 | **Cal.com T&C checkboxes** | Robert + Rakesh | Add required booking question to every event type: "I agree to D4Driving's Terms & Conditions: d4driving.co.uk/terms.html" |
 | **Rakesh's Cal.com assessment price** | Rakesh | His 1.5hr assessment event displays no price — should show £45 |

@@ -102,6 +102,11 @@ Detail belongs in the private ops repo, not here.
 - **Deleting a code block:** read the whole region first. The Soro loader shared
   a `<script>` tag with the nav, burger and reveal JS; cutting to the closing
   tag destroyed all of it.
+- **`404.html` is served at whatever dead address was requested** (e.g.
+  `/post/…`), so every link and asset in it must be root-relative (`/…`); a
+  relative link breaks there. Its `old-address-forwarder` script sends visitors
+  from old Wix addresses to the pages that replaced them; keep its list current
+  if one of those pages is ever renamed.
 
 ## Owner
 
