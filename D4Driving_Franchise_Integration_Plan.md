@@ -697,12 +697,43 @@ article, an old booking page, `/faq/` and an unknown `/post/` address.
 
 ---
 
+## 27. Redirect Pages for Old Wix URLs — ✅ 27 September 2026
+
+The 404 page forwards *people*, but it returns HTTP 404, so Google passes no
+link value through it. Search Console's *Not found (404)* list (Robert's export,
+27 Sep, last crawled 18 Apr – 22 Jul) had **22 old Wix addresses** that Google
+still knew about. **19 now have a redirect page** at the exact old address:
+`<old path>/index.html`, which GitHub Pages reaches with a 301 from `/about` to
+`/about/`. Each has an instant meta refresh plus `location.replace()`, a
+`rel=canonical` to the new page (fragment dropped) and `noindex`. These are the
+same four signals jekyll-redirect-from uses.
+
+| Old address | Now goes to |
+|---|---|
+| `/about`, `/contact`, `/faq`, `/testimonials`, `/book-online` | `/#about`, `/#contact`, `/#faq`, `/#reviews`, `/#booking` |
+| `/plans-pricing`, `/lessons`, 4 × `/service-page/…` | `/#prices` |
+| `/news` · `/news/check-my-you-tube-channel-!` | `/blog.html` · `/#youtube` |
+| `/one-to-one-driving-tuition-benefits` | `one-to-one-driving-tuition-benefits-explained.html` |
+| 5 × `/post/…` | 3 go to the same article under its new address. The other 2 go to the nearest article: `…designed-for-anxious-learners…` → `driving-lessons-for-anxious-adults-in-peterborough.html`, and `…hands-on-driving-lessons…-1` → `driving-tuition-that-builds-real-confidence.html` |
+
+**Left on the 404 page, on purpose:** `/refer-friends`, `/referral` and
+`/loyalty`. The site has no referral or loyalty scheme now, so there's nothing to
+point them at. If Robert restarts one, add a page and a redirect.
+
+**Kept in step with the 404 page.** Its forwarder lists the same addresses, so
+variants such as `/About` still get through. A test checks that every redirect
+page and the forwarder agree on the destination.
+
+**Stays out of the sitemap by construction:** the sync workflow lists only
+top-level `.html` files, and these all sit in subfolders.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
 |---|---|---|
 | **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Awaiting Robert's OK on five plan changes and a go. Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
-| **Redirect pages for old Wix URLs** | Robert, then Claude | Robert approved these on 27 Sep. They're for Google: the 404 page forwards visitors, but it returns a 404, so no link value passes. Waiting on Robert's export of Search Console → Indexing → Pages → *Not found (404)* → Export → Download CSV. Then add a meta-refresh page (with canonical and `noindex`) at each listed old `/post/` or `/service-page/` address that has a current page. See §25–26 |
 | **Sitemap `lastmod` dates** | Robert | Optional: have the sync workflow add each page's last-changed date (local SEO plan, Task 17). His decision |
 | **Cal.com T&C checkboxes** | Robert + Rakesh | Add required booking question to every event type: "I agree to D4Driving's Terms & Conditions: d4driving.co.uk/terms.html" |
 | **Rakesh's Cal.com assessment price** | Rakesh | His 1.5hr assessment event displays no price — should show £45 |

@@ -107,6 +107,10 @@ Detail belongs in the private ops repo, not here.
   relative link breaks there. Its `old-address-forwarder` script sends visitors
   from old Wix addresses to the pages that replaced them; keep its list current
   if one of those pages is ever renamed.
+- **Folders like `about/`, `post/`, `service-page/` and `news/` are redirect
+  pages, not clutter.** They send the old Wix addresses Google still knew about
+  to their new pages (Integration Plan §27). Don't delete them, and keep them in
+  step with the 404 forwarder.
 
 ## Owner
 
