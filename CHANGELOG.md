@@ -2,6 +2,17 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-09-27
+- Added a branded 404 page: dead links now get the site's own header, footer and a "Wrong turn?" message with quick links to prices, availability, driving tips and the mock test, instead of GitHub's bare error page. It also automatically forwards old Wix-site addresses to wherever that content lives now.
+- Added redirect pages for 19 more old Wix addresses that Google's Search Console still had on file (about, contact, faq, testimonials, booking, pricing, lessons, news and others), so those stale search results now land visitors on the right page instead of a dead end.
+- Removed two robots-blocked, no-index pages (the admin page and the mock-test consent page) from the sitemap, since listing them was inviting Google to crawl pages the site had told it to ignore.
+- Replaced the Toyota C-HR+ launch photo with a new shot that actually shows the car's D4Driving roof sign, across all 22 places the image is used site-wide, including every page's social-share image.
+- Fixed low-contrast text (menu links, red headline text, small labels and footer text) on the Privacy, Terms, Rakesh and mock-test pages so it meets accessibility contrast standards; the homepage and article pages still need the same pass and remain on the pending list.
+- Corrected the last three leftover "21,000+ / 21K+" YouTube subscriber mentions on the mock-test page to the current 32,000+ figure.
+- _Commits: 1778d19, 497e1df, 69e5d2e, 1ee3f16, 1968834, 381921a_
+- _Plan doc status: already documented — each commit added its own numbered section (26–30) to D4Driving_Franchise_Integration_Plan.md in the same commit_
+- _CLAUDE.md status: accurate — each commit updated CLAUDE.md's relevant gotcha in the same commit (404 page, redirect folders, roof-sign photo, subscriber count, contrast). The "In flight" table is unchanged: neither the lesson-credit-ledger branch nor the ops-repo local SEO rewrite shows any evidence of landing on main today._
+
 ## 2026-09-25
 - Fixed 54 broken links left over from the old Wix site, spread across 19 article pages — old booking-page and blog-post addresses that no longer exist and were sending visitors to a 404. Each was pointed at wherever that content now lives: some to the same article under its new name, some to the pricing section, some to the closest current article on the same topic. The site's offline cache version was bumped so returning visitors pick up the fix. A follow-up check found no other broken internal links left, aside from the 27 already flagged inside the 23 location pages, which the ongoing local-SEO rewrite is fixing page by page.
 - `CLAUDE.md`'s "In flight" table was updated the same evening: the now-finished broken-links item was folded into the local SEO row (since that project also covers the remaining 27 location-page links) rather than left as a separate line.
