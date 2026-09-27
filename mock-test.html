@@ -37,6 +37,7 @@
   --slate-lo:   rgba(44,62,80,0.06);
   --slate-mid:  rgba(44,62,80,0.12);
   --sage:       #8fa3a0;
+  --sage-hi:    #b4c4c1;
   --bg:         #fbfdff;
   --bg2:        #f3f7fb;
   --glass-bg:   rgba(255,255,255,0.9);
@@ -136,6 +137,11 @@ p  { line-height: 1.75; }
   padding: 8px 14px; border-radius: 8px; transition: all .2s;
 }
 .nav-links a:hover { color: var(--slate); background: var(--slate-lo); }
+.nav-links a[aria-current="page"] { color: var(--red); font-weight: 700; }
+/* Over the dark hero the links are light, so they can be read before scrolling */
+#nav:not(.stuck) .nav-links a { color: rgba(255,255,255,0.85); }
+#nav:not(.stuck) .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+#nav:not(.stuck) .nav-links a[aria-current="page"] { color: #fff; }
 .nav-right { display: flex; align-items: center; gap: 12px; }
 .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
 .burger span { display: block; width: 22px; height: 2px; background: var(--slate); border-radius: 2px; transition: all .3s; }
@@ -157,6 +163,7 @@ p  { line-height: 1.75; }
   transition: color .2s, padding-left .2s;
 }
 .mobile-nav a:hover { color: var(--red); padding-left: 8px; }
+.mobile-nav a[aria-current="page"] { color: var(--red); }
 
 /* ─── HERO ───────────────────────────────── */
 #hero {
@@ -181,7 +188,7 @@ p  { line-height: 1.75; }
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 11px; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--sage); margin-bottom: 20px;
+  text-transform: uppercase; color: var(--sage-hi); margin-bottom: 20px;
 }
 .hero-eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--sage); border-radius: 2px; }
 .hero-title { margin-bottom: 8px; }
@@ -226,7 +233,7 @@ p  { line-height: 1.75; }
   display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
   align-items: center;
 }
-.deal-left .eyebrow { color: var(--sage); }
+.deal-left .eyebrow { color: var(--sage-hi); }
 .deal-left .eyebrow::before { background: var(--sage); }
 .deal-left h2 { color: #fff; margin-bottom: 20px; }
 .deal-left p { color: rgba(255,255,255,0.72); font-size: 15.5px; margin-bottom: 14px; }
@@ -253,9 +260,10 @@ p  { line-height: 1.75; }
   width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
   background: rgba(189,32,38,0.2); border: 1px solid rgba(189,32,38,0.3);
   display: flex; align-items: center; justify-content: center; font-size: 24px;
+  color: #fff; /* a plain-text glyph such as ▶ draws in this colour; emoji keep their own */
 }
 .deal-stat-num { font-size: 28px; font-weight: 800; color: #fff; line-height: 1; }
-.deal-stat-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 3px; text-transform: uppercase; letter-spacing: 1px; }
+.deal-stat-label { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 3px; text-transform: uppercase; letter-spacing: 1px; }
 
 /* ─── VIDEOS ─────────────────────────────── */
 #videos { background: var(--bg); }
@@ -353,14 +361,14 @@ p  { line-height: 1.75; }
 /* ─── FOOTER ─────────────────────────────── */
 footer { background: var(--slate); padding: 60px 0 32px; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
-.footer-tag { font-size: 14px; color: rgba(255,255,255,0.45); margin-top: 16px; line-height: 1.7; }
-.footer-h { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.footer-tag { font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 16px; line-height: 1.7; }
+.footer-h { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
 .footer-links { display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { font-size: 14px; color: rgba(255,255,255,0.65); transition: color .2s; }
+.footer-links a { font-size: 14px; color: rgba(255,255,255,0.75); transition: color .2s; }
 .footer-links a:hover { color: #fff; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-.footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.35); }
-.footer-bottom a { color: rgba(255,255,255,0.5); transition: color .2s; }
+.footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.7); }
+.footer-bottom a { color: rgba(255,255,255,0.75); transition: color .2s; }
 .footer-bottom a:hover { color: #fff; }
 
 /* ─── WA FLOAT ───────────────────────────── */
@@ -422,7 +430,7 @@ footer { background: var(--slate); padding: 60px 0 32px; }
         <li><a href="index.html#booking">Book</a></li>
         <li><a href="index.html#availability">Availability</a></li>
         <li><a href="index.html#reviews">Reviews</a></li>
-        <li><a href="mock-test.html" style="color:var(--red);font-weight:700;">🎯 Free Mock Test</a></li>
+        <li><a href="mock-test.html" aria-current="page">🎯 Free Mock Test</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
       <div class="nav-right">
@@ -441,7 +449,7 @@ footer { background: var(--slate); padding: 60px 0 32px; }
   <a href="index.html#fleet">Cars</a>
   <a href="index.html#prices">Prices</a>
   <a href="index.html#booking">Book Online</a>
-  <a href="mock-test.html" style="color:var(--red);font-weight:700;">🎯 Free Mock Test</a>
+  <a href="mock-test.html" aria-current="page">🎯 Free Mock Test</a>
   <a href="index.html#contact">Contact</a>
 </div>
 
@@ -751,6 +759,8 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('stuck', window.scrollY > 10);
   document.getElementById('btt').style.display = window.scrollY > 400 ? 'flex' : 'none';
 }, { passive: true });
+// Also on load: a page opened part-way down (a #link) must not keep the light top-of-page menu
+nav.classList.toggle('stuck', window.scrollY > 10);
 
 // ── Burger ──
 const burg = document.getElementById('burg');

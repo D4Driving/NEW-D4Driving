@@ -28,6 +28,7 @@
   --slate-hi:   #374f65;
   --slate-lo:   rgba(44,62,80,0.06);
   --sage:       #8fa3a0;
+  --sage-hi:    #b4c4c1;
   --bg:         #fbfdff;
   --bg2:        #f3f7fb;
   --glass-bg:   rgba(255,255,255,0.9);
@@ -99,6 +100,9 @@ h2 { font-size: clamp(26px,3.5vw,40px); font-weight: 800; line-height: 1.1; lett
 .nav-links { display: flex; gap: 6px; }
 .nav-links a { font-size: 13px; font-weight: 600; color: var(--ink-mid); padding: 8px 14px; border-radius: 8px; transition: all .2s; }
 .nav-links a:hover { color: var(--slate); background: var(--slate-lo); }
+/* Over the dark header the links are light, so they can be read before scrolling */
+#nav:not(.stuck) .nav-links a { color: rgba(255,255,255,0.85); }
+#nav:not(.stuck) .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
 .nav-right { display: flex; align-items: center; gap: 12px; }
 .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
 .burger span { display: block; width: 22px; height: 2px; background: var(--slate); border-radius: 2px; transition: all .3s; }
@@ -129,11 +133,10 @@ h2 { font-size: clamp(26px,3.5vw,40px); font-weight: 800; line-height: 1.1; lett
 .page-header-eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 11px; font-weight: 700; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--sage); margin-bottom: 16px;
+  text-transform: uppercase; color: var(--sage-hi); margin-bottom: 16px;
 }
 .page-header-eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--sage); border-radius: 2px; }
 #page-header h1 { font-size: clamp(32px,4.5vw,56px); font-weight: 800; line-height: 1.05; letter-spacing: -1.5px; color: #fff; margin-bottom: 14px; }
-#page-header h1 span { color: var(--red); }
 #page-header p { font-size: 16px; color: rgba(255,255,255,0.65); max-width: 520px; margin-bottom: 28px; }
 .header-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
@@ -189,7 +192,7 @@ h2 { font-size: clamp(26px,3.5vw,40px); font-weight: 800; line-height: 1.1; lett
   transition: border-color .2s;
 }
 .form-group input:focus { outline: none; border-color: var(--red); }
-.form-group input[readonly] { background: var(--bg2); color: var(--ink-low); cursor: default; }
+.form-group input[readonly] { background: var(--bg2); color: var(--ink-mid); cursor: default; }
 
 .radio-group { display: flex; flex-direction: column; gap: 10px; }
 .radio-opt { display: flex; align-items: center; gap: 10px; font-size: 14.5px; color: var(--ink-mid); cursor: pointer; }
@@ -225,14 +228,14 @@ h2 { font-size: clamp(26px,3.5vw,40px); font-weight: 800; line-height: 1.1; lett
 /* ─── FOOTER ─────────────────────────────── */
 footer { background: var(--slate); padding: 60px 0 32px; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
-.footer-tag { font-size: 14px; color: rgba(255,255,255,0.45); margin-top: 16px; line-height: 1.7; }
-.footer-h { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.footer-tag { font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 16px; line-height: 1.7; }
+.footer-h { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
 .footer-links { display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { font-size: 14px; color: rgba(255,255,255,0.65); transition: color .2s; }
+.footer-links a { font-size: 14px; color: rgba(255,255,255,0.75); transition: color .2s; }
 .footer-links a:hover { color: #fff; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-.footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.35); }
-.footer-bottom a { color: rgba(255,255,255,0.5); transition: color .2s; }
+.footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.7); }
+.footer-bottom a { color: rgba(255,255,255,0.75); transition: color .2s; }
 .footer-bottom a:hover { color: #fff; }
 
 /* ─── WA FLOAT ───────────────────────────── */
@@ -317,7 +320,7 @@ footer { background: var(--slate); padding: 60px 0 32px; }
 <section id="page-header">
   <div class="wrap">
     <div class="page-header-eyebrow">D4Driving School of Motoring</div>
-    <h1>Terms &amp; <span>Conditions</span></h1>
+    <h1>Terms &amp; Conditions</h1>
     <p>Version 2.0 — June 2026. These terms govern all driving tuition provided by D4Driving School of Motoring.</p>
     <div class="header-actions">
       <a href="D4Driving_Terms_And_Conditions_v2.pdf" download class="btn btn-red">⬇ Download PDF</a>
@@ -395,7 +398,7 @@ footer { background: var(--slate); padding: 60px 0 32px; }
               <div class="tc-sub-item"><span>(c)</span><span>Between 24 and 48 hours' notice: 50% of the lesson fee.</span></div>
               <div class="tc-sub-item"><span>(d)</span><span>Less than 24 hours' notice: 100% of the lesson fee.</span></div>
             </div>
-            <div style="margin-top:10px;font-size:13.5px;font-style:italic;color:var(--ink-low);">These charges apply regardless of when the original booking was made.</div>
+            <div style="margin-top:10px;font-size:13.5px;font-style:italic;color:var(--ink-mid);">These charges apply regardless of when the original booking was made.</div>
           </div>
         </div>
         <div class="tc-clause"><div class="tc-num">3.8</div><div class="tc-text">If the Student cancels a lesson with less than 24 hours' notice due to exceptional circumstances — including but not limited to serious illness, accident, or bereavement — D4Driving will consider the circumstances and may, at its discretion, waive or reduce the cancellation charge.</div></div>
@@ -700,6 +703,8 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('stuck', window.scrollY > 10);
   document.getElementById('btt').style.display = window.scrollY > 400 ? 'flex' : 'none';
 }, { passive: true });
+// Also on load: a page opened part-way down (a #link) must not keep the light top-of-page menu
+nav.classList.toggle('stuck', window.scrollY > 10);
 const burg = document.getElementById('burg');
 const mnav = document.getElementById('mnav');
 burg.addEventListener('click', () => { burg.classList.toggle('open'); mnav.classList.toggle('open'); });

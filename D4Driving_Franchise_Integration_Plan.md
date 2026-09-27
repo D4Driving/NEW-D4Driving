@@ -771,6 +771,44 @@ local SEO Task 4).
 
 ---
 
+## 30. Readable Text on Four Pages — ✅ 27 September 2026
+
+Text on `privacy.html`, `terms.html`, `rakesh.d4driving.html` and
+`mock-test.html` now meets WCAG AA: 4.5:1, or 3:1 for text 24px and up. Robert
+approved the colours on 27 Sep. For the headline he chose all white over a
+lighter red.
+
+The ratios were measured in the browser, text by text, with see-through colours
+flattened onto what is actually painted behind them:
+
+| What | Before | After |
+|---|---|---|
+| Menu at the top of the page, over the dark header | Ink Mid, 1.9 | White at 85%, 8.5. The current page's link is solid white, and red again once the bar turns white |
+| Red word in the headline ("Policy", "Conditions", "Rakesh Kumar") | 1.8 | All-white headline, 11.0 |
+| Small label above the headline, plus the two on the mock test page's dark sections | Sage, 4.1 | New token `--sage-hi` `#b4c4c1`, 6.1 |
+| Footer tagline, headings and copyright; links and "Back to top" | White at 35–50%, 2.8–4.1 | White at 70%, 6.3; links at 75%, 7.0 (same as `404.html`) |
+| Pale grey small print: Rakesh's price cards and car pills, the Terms note and date box | Ink Low, 2.4–2.6 | Ink Mid, 5.4–5.7 |
+| Mock test offer box: labels, and the ▶ icon (a plain glyph drawn dark on a dark tile) | 3.6, and 1.2 | 5.3, and white at 9.1 |
+
+- **The mock test page's current-page link** moved from an inline style to
+  `aria-current="page"`. The inline style would have beaten the light-menu rule,
+  and screen readers now announce the current page.
+- **The bar's state (`.stuck`) is also set on load**, not only on scroll. With
+  light links, a page opened part-way down (for example a link to
+  `terms.html#acceptance`) must never show them over the white part of the page.
+- **Left alone:** the five tick marks in the mock test offer list measure 4.38.
+  They're icons beside the words, and icons need 3:1.
+
+**Checked** at 1280px and 375px, at the top of each page and scrolled: no failing
+text left on any of the four pages apart from those ticks, and no sideways
+scroll. SEO: one h1 per page with the same words; no title, meta, schema or
+link changes. Service worker cache v23.
+
+**Not done here:** the homepage and the article pages have the same problems.
+They are listed under Pending as their own job.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
@@ -783,6 +821,7 @@ local SEO Task 4).
 | **Rakesh's pricing on `index.html`** | Robert | Block packages for Rakesh not yet on main site pricing section — optional, his page covers it |
 | **Orphaned file `vw-golf.webp`** | Robert | Old hyphen-filename version still in repo; safe to delete once confirmed unused |
 | **Retired images `yaris-cross.webp` and `chr-plus.webp`** | Claude | Unreferenced since the C-HR+ launch (§23) and the roof-sign photo (§29), but kept so old social-media shares still show a preview. Safe to delete from about late October 2026 (`yaris-cross.webp`) and mid-November 2026 (`chr-plus.webp`) |
+| **Readable text on the homepage and article pages** | Claude, then Robert approves | Next job after §30, using the colours Robert approved there. Homepage: 77 items flagged at 375px, including the red "With Confidence", sage block prices, Ink Low captions and sage footer links; about 9 are emoji or text on photos and may be fine. Article pages: about 18 each (sage labels, footer text at 35–50%, a sage phone link on the white bar). Change `article-template.html` and the 125 article pages together. Keep out of the 23 location pages' article bodies (local SEO) |
 
 ---
 
@@ -793,7 +832,9 @@ local SEO Task 4).
 | Red | `#BD2026` |
 | Red hover | `#d4252c` |
 | Slate | `#2C3E50` |
-| Sage | `#8FA3A0` |
+| Sage | `#8FA3A0` (not for small text: 4.1 on slate, 2.6 on white) |
+| Sage light | `#b4c4c1` (`--sage-hi`): small text on slate, 6.1 |
+| Text on slate | White at 70% or more; menu 85% (§30) |
 | Background | `#fbfdff` |
 | Background 2 | `#f3f7fb` |
 | Font | Plus Jakarta Sans |

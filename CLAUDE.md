@@ -113,6 +113,11 @@ Detail belongs in the private ops repo, not here.
   pages, not clutter.** They send the old Wix addresses Google still knew about
   to their new pages (Integration Plan §27). Don't delete them, and keep them in
   step with the 404 forwarder.
+- **Some brand colours fail contrast as text.** Ink Low (`#94a3b4`) and Sage
+  (`#8fa3a0`) as text, white below 70% on slate, and red on slate all fail WCAG
+  AA. Use Ink Mid, `--sage-hi` (`#b4c4c1`) and white at 70–85% (Integration
+  Plan §30). Over a dark header the menu must be light until `.stuck`. The
+  homepage and article pages still have the old colours (Pending).
 
 ## Owner
 
