@@ -113,10 +113,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://d4driving.co.uk/admin.html</loc>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://d4driving.co.uk/adult-beginner-driving-lesson-example-explained.html</loc>
     <priority>0.6</priority>
   </url>
@@ -539,10 +535,6 @@
   <url>
     <loc>https://d4driving.co.uk/your-first-driving-lesson-what-to-expect.html</loc>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://d4driving.co.uk/mock-test-consent.html</loc>
-    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://d4driving.co.uk/privacy.html</loc>

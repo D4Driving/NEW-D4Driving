@@ -729,6 +729,29 @@ top-level `.html` files, and these all sit in subfolders.
 
 ---
 
+## 28. Google Hasn't Read 78 Pages; Sitemap Contradiction Removed — ✅ 27 September 2026
+
+Search Console lists **78 pages as "Discovered – currently not indexed"**, all
+never crawled ("Last crawled 1970-01-01"). The count has sat at 63–82 since
+1 July, and only 60 pages are indexed. They include **14 of the 23 location
+pages** and Rakesh's page. The homepage, blog, free mock test and Polish page
+are all indexed.
+
+Nothing on the pages keeps Google out. None has `noindex`, every canonical is
+correct, and all 73 articles are linked from `blog.html`. Only three pairs of
+articles closely overlap. So this is Google's crawl priority for the site. What
+raises it is outside links, and a request to index each rewritten page. The
+details and the list are in the ops repo's `LOCAL-SEO-STATE.md`, for the local
+SEO work.
+
+**Fixed:** `admin.html` and `mock-test-consent.html` were in the sitemap while
+`robots.txt` blocks them. Both are also `noindex`, so the sitemap sent Google a
+contradiction. They are now in the sync workflow's `EXCLUDE` list and out of
+today's sitemap (136 URLs). The workflow's own script, run locally, produces the
+same list.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
