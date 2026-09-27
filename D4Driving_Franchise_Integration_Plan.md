@@ -752,18 +752,37 @@ same list.
 
 ---
 
+## 29. C-HR+ Photo Now Shows the Roof Sign — ✅ 27 September 2026
+
+The C-HR+ photo is now Robert's new shot with the D4Driving roof sign fitted,
+taken in a car park. He confirmed it's straight from the camera, with nothing
+removed, added or changed. The launch photo (§23) had no roof sign and carried
+the phone's "AI-generated content" label, which had been cropped out. This
+closes §23's "worth doing later".
+
+It's resized to 1080 wide (1080 × 727, 123 KB) and saved as a new file,
+`chr-plus-roof-sign.webp`. The launch photo was cropped to a 1.45 ratio; this
+one keeps its own shape, since every use crops it with `cover`. 22 references
+across 11 files moved over, including the og:image on every page.
+`chr-plus.webp` stays in place, unreferenced, for the same reason as
+`yaris-cross.webp`: social platforms cache og:image by URL. Service worker cache
+v22. The same photo goes to the newspapers with the press release (ops repo,
+local SEO Task 4).
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
 |---|---|---|
-| **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Awaiting Robert's OK on five plan changes and a go. Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
+| **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Executing since 25 Sep 2026, at Robert's pace. Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
 | **Sitemap `lastmod` dates** | Robert | Optional: have the sync workflow add each page's last-changed date (local SEO plan, Task 17). His decision |
 | **Cal.com T&C checkboxes** | Robert + Rakesh | Add required booking question to every event type: "I agree to D4Driving's Terms & Conditions: d4driving.co.uk/terms.html" |
 | **Rakesh's Cal.com assessment price** | Rakesh | His 1.5hr assessment event displays no price — should show £45 |
 | **Google review count in schema** | Robert + Claude | `aggregateRating` in index.html is a fixed number (36 at Aug 2026) — refresh every couple of months |
 | **Rakesh's pricing on `index.html`** | Robert | Block packages for Rakesh not yet on main site pricing section — optional, his page covers it |
 | **Orphaned file `vw-golf.webp`** | Robert | Old hyphen-filename version still in repo; safe to delete once confirmed unused |
-| **Retired image `yaris-cross.webp`** | Claude | Unreferenced since the C-HR+ launch, but kept so old social-media shares still show a preview. Safe to delete from about late October 2026 |
+| **Retired images `yaris-cross.webp` and `chr-plus.webp`** | Claude | Unreferenced since the C-HR+ launch (§23) and the roof-sign photo (§29), but kept so old social-media shares still show a preview. Safe to delete from about late October 2026 (`yaris-cross.webp`) and mid-November 2026 (`chr-plus.webp`) |
 
 ---
 

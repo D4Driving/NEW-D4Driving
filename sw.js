@@ -5,7 +5,7 @@
    so long-standing visitors carry hundreds of them. The activate handler
    deletes every cache whose name is not this one, so the bump is what clears it.
    (v4 purged cached Supabase API responses for a similar cache-first fault.) */
-const CACHE = 'd4driving-v21';
+const CACHE = 'd4driving-v22';
 
 /* Assets to cache on install */
 const PRECACHE = [
@@ -17,7 +17,7 @@ const PRECACHE = [
   '/apple-touch-icon.png',
   '/robert.webp',
   '/aygo-x.webp',
-  '/chr-plus.webp',
+  '/chr-plus-roof-sign.webp',
   '/Sonia.webp',
   '/Buddhika.webp',
   '/Sienna.webp',

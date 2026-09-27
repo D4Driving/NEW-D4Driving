@@ -61,8 +61,10 @@ Detail belongs in the private ops repo, not here.
   in Peterborough" or "the first C-HR+ teaching in Peterborough" — never "first
   electric car in Peterborough": Elliott's runs a Nissan Leaf, and Robert
   rejected that claim himself (ops PRODUCT.md). The 2030 phase-out date in the
-  EV FAQ was his call to keep. `yaris-cross.webp` is unreferenced but kept so
-  old social shares don't 404; delete once they've aged out.
+  EV FAQ was his call to keep. The car's photo is `chr-plus-roof-sign.webp`
+  (27 Sep 2026). `yaris-cross.webp` and `chr-plus.webp` (the launch photo) are
+  unreferenced but kept so old social shares don't 404; delete once they've
+  aged out.
 - **Cal.com is not Rakesh's only diary.** He also takes bookings through the
   Total Drive app, and those never reach Cal.com — so his feed shows far more
   free time than he really has. Never state a specific date or a count of open
