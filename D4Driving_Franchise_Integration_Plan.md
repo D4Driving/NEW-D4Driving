@@ -809,11 +809,43 @@ They are listed under Pending as their own job.
 
 ---
 
+## 31. Local SEO Pilot: The Nervous-Adults Page — ✅ 3 October 2026
+
+This is the first of the 23 location pages rewritten under the local SEO plan
+(ops repo `plans/2026-09-24-local-seo.md`, Task 11). The page is
+`driving-lessons-for-anxious-adults-in-peterborough.html`. It was chosen because
+it had the most impressions of any location page beyond page one: 51, at
+position 18.0.
+
+- **New section:** "Where your first lessons happen in Peterborough", written
+  only from Robert's questionnaire answers. Lessons start from the learner's
+  address. Nervous learners' first drives are on quiet residential roads around
+  Stanground (south of town) or Gunthorpe (north). Lessons are planned around
+  the learner. Robert fact-checked both place names before it went live.
+- **One sentence on the C-HR+,** in the manual-or-automatic section, taken from
+  Robert's approved press quote.
+- **Fixed:** three old `/post/` links now point at the current articles, and a
+  capital-W homepage link now points at the homepage. A sentence making claims
+  about Peterborough's roads that hadn't come from Robert is now general advice.
+- **Other changes:** `dateModified` added to the Article schema; title, meta,
+  canonical, URL and H1 unchanged; service worker cache v24.
+
+**Format for the other 22 pages**, set by Robert on this pilot:
+- written about "Robert", not in the first person
+- his local knowledge in its own section
+- each page about the same length as before
+- no videos
+
+The rules live in the ops repo's `seo/page-format.md`.
+`seo/tools/check_page.py` checks every page before it's published.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
 |---|---|---|
-| **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Executing since 25 Sep 2026, at Robert's pace. Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
+| **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Executing since 25 Sep 2026, at Robert's pace. Pilot page live 3 Oct (§31). Next: the six Peterborough route and test pages, once Robert answers the test-centre questions. Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
 | **Sitemap `lastmod` dates** | Robert | Optional: have the sync workflow add each page's last-changed date (local SEO plan, Task 17). His decision |
 | **Cal.com T&C checkboxes** | Robert + Rakesh | Add required booking question to every event type: "I agree to D4Driving's Terms & Conditions: d4driving.co.uk/terms.html" |
 | **Rakesh's Cal.com assessment price** | Rakesh | His 1.5hr assessment event displays no price — should show £45 |

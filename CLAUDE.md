@@ -121,6 +121,11 @@ Detail belongs in the private ops repo, not here.
   AA. Use Ink Mid, `--sage-hi` (`#b4c4c1`) and white at 70–85% (Integration
   Plan §30). Over a dark header the menu must be light until `.stuck`. The
   homepage and article pages still have the old colours (Pending).
+- **Location pages carry Robert's own local knowledge.** Since the local SEO work
+  (Oct 2026), road, junction and place names on the 23 location pages come only
+  from his questionnaire answers in the private ops repo (`seo/questionnaires/`),
+  and each was fact-checked by him. Never add a local name that isn't in those
+  answers — run `seo/tools/check_page.py` from the ops repo before publishing.
 
 ## Owner
 
