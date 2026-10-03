@@ -64,7 +64,10 @@ Detail belongs in the private ops repo, not here.
   EV FAQ was his call to keep. The car's photo is `chr-plus-roof-sign.webp`
   (27 Sep 2026). `yaris-cross.webp` and `chr-plus.webp` (the launch photo) are
   unreferenced but kept so old social shares don't 404; delete once they've
-  aged out.
+  aged out. After any og:image change, Facebook keeps showing its saved preview
+  for weeks until someone presses **Scrape Again** at
+  developers.facebook.com/tools/debug. Robert did this for the homepage on 3 Oct
+  2026, when it was still showing the Yaris.
 - **Cal.com is not Rakesh's only diary.** He also takes bookings through the
   Total Drive app, and those never reach Cal.com — so his feed shows far more
   free time than he really has. Never state a specific date or a count of open
