@@ -2,6 +2,13 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-10-04
+- Rewrote the first of the 23 location pages under the local SEO plan — the "driving lessons for anxious adults in Peterborough" page — with Robert's own local knowledge: a new section explaining that lessons start from the learner's address and nervous learners' first drives happen on quiet residential roads around Stanground or Gunthorpe, plus one sentence on the electric C-HR+ from his approved press quote. Also fixed three old broken links on that page and a capital-W homepage link, and removed a claim about Peterborough's roads that hadn't come from Robert.
+- Recorded two lessons learned in the project's session-start notes: that Facebook keeps showing an old link preview for weeks after a photo changes until someone presses "Scrape Again" in its Sharing Debugger, and that local place names on the 23 location pages must come only from Robert's own questionnaire answers, checked with the ops repo's page checker before publishing.
+- _Commits: 60c87b1, 1298e35, e8c67bb_
+- _Plan doc status: already documented — the location-page commit added Integration Plan section 31 in the same batch of work, and the Pending Tasks row for local SEO already points to it_
+- _CLAUDE.md status: accurate — the same commits added both new gotchas (Facebook preview caching, location-page sourcing) directly to CLAUDE.md. The "In flight" table is unchanged and still correct: only 1 of 23 location pages has landed, and the lesson-credit-ledger branch shows no evidence of landing on main_
+
 ## 2026-09-27
 - Added a branded 404 page: dead links now get the site's own header, footer and a "Wrong turn?" message with quick links to prices, availability, driving tips and the mock test, instead of GitHub's bare error page. It also automatically forwards old Wix-site addresses to wherever that content lives now.
 - Added redirect pages for 19 more old Wix addresses that Google's Search Console still had on file (about, contact, faq, testimonials, booking, pricing, lessons, news and others), so those stale search results now land visitors on the right page instead of a dead end.
