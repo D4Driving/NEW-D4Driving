@@ -841,11 +841,35 @@ The rules live in the ops repo's `seo/page-format.md`.
 
 ---
 
+## 32. Local SEO Batch 2: Peterborough Route and Test Pages — in progress
+
+Six pages get Robert's own test-centre knowledge, one at a time as his answers
+come in. This is the ops repo's local SEO plan, Task 12, in the format set in
+§31.
+
+- ✅ **6 Oct 2026: `peterborough-driving-test-prep-that-works.html`.** A new
+  section, "What the Peterborough test routes include", covers four things:
+  - Arriving: the 10-minute car park rule, then reversing into a bay.
+  - The roads: the road types and seven roundabouts that test routes commonly
+    use.
+  - Where learners get caught out: Eye Services, the Junction 20 Spiral,
+    Rivergate, and Hampton from Fletton Parkway into Nene Parkway.
+  - Manoeuvres: including bay parking at the test centre or the nearby Lido
+    car park.
+
+  Robert fact-checked it before it went live. Three old links were fixed and
+  `dateModified` added; service worker cache v25. Google had never crawled
+  this page, so Robert requests indexing for it.
+- Still to come: the practice-routes, roundabout, warm-up, review-session and
+  success-story pages.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
 |---|---|---|
-| **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Executing since 25 Sep 2026, at Robert's pace. Pilot page live 3 Oct (§31). Next: the six Peterborough route and test pages, once Robert answers the test-centre questions. Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
+| **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Executing since 25 Sep 2026, at Robert's pace. Pilot page live 3 Oct (§31). Batch 2, the six Peterborough route and test pages, is under way: 1 of 6 live (§32). Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
 | **Sitemap `lastmod` dates** | Robert | Optional: have the sync workflow add each page's last-changed date (local SEO plan, Task 17). His decision |
 | **Cal.com T&C checkboxes** | Robert + Rakesh | Add required booking question to every event type: "I agree to D4Driving's Terms & Conditions: d4driving.co.uk/terms.html" |
 | **Rakesh's Cal.com assessment price** | Rakesh | His 1.5hr assessment event displays no price — should show £45 |
