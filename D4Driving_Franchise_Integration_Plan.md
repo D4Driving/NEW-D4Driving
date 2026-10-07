@@ -879,7 +879,13 @@ come in. This is the ops repo's local SEO plan, Task 12, in the format set in
   near the City Hospital, then the Junction 20 Spiral and Eye Services
   roundabouts. It adds lane-discipline points from his test-route answers.
   Fact-checked by Robert; service worker cache v27.
-- Still to come: the warm-up, review-session and success-story pages.
+- ✅ **7 Oct 2026: `warmup-lesson-before-your-peterborough-test.html`.** A new
+  section, "Robert's warm-up before a Peterborough test", covers the usual
+  hour-long relaxing drive, where it starts (Stanground in the south, Gunthorpe
+  or Dogsthorpe in the north), the test-time factor and the car park rule.
+  Three old links were fixed. Robert allowed this test-day page fewer place
+  names. Never crawled before, so Robert requests indexing.
+- Still to come: the review-session and success-story pages.
 
 ---
 
@@ -887,7 +893,7 @@ come in. This is the ops repo's local SEO plan, Task 12, in the format set in
 
 | Item | Owner | Notes |
 |---|---|---|
-| **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Executing since 25 Sep 2026, at Robert's pace. Pilot page live 3 Oct (§31). Batch 2, the six Peterborough route and test pages, is under way: 3 of 6 live (§32). Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
+| **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Executing since 25 Sep 2026, at Robert's pace. Pilot page live 3 Oct (§31). Batch 2, the six Peterborough route and test pages, is under way: 4 of 6 live (§32). Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
 | **Sitemap `lastmod` dates** | Robert | Optional: have the sync workflow add each page's last-changed date (local SEO plan, Task 17). His decision |
 | **Cal.com T&C checkboxes** | Robert + Rakesh | Add required booking question to every event type: "I agree to D4Driving's Terms & Conditions: d4driving.co.uk/terms.html" |
 | **Rakesh's Cal.com assessment price** | Rakesh | His 1.5hr assessment event displays no price — should show £45 |
