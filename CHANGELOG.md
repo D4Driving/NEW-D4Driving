@@ -2,6 +2,12 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-10-07
+- Two more of the 23 location pages got Robert's own local knowledge added, continuing the local SEO rewrite: the roundabout-lessons page now has a new section on how he builds up roundabout practice in Peterborough (starting at Bretton or Ravensthorpe, then the City Hospital roundabout, then the Junction 20 Spiral and Eye Services roundabouts), and the test-warm-up page now explains his usual hour-long warm-up drive before a test, including where it starts and the car-park-timing rule. That's 4 of the planned 6 Peterborough route/test pages now live with Robert's own detail (2 more went live yesterday, 6 Oct); two pages — review-session and success-story — are still to come.
+- _Commits: 47b5cab, be4036b, 6339136, ec2f8a9_
+- _Plan doc status: already documented — each page's commit added its own dated entry under Integration Plan section 32, and the Pending Tasks row for local SEO already reflects "4 of 6 live"_
+- _CLAUDE.md status: accurate — nothing in today's work contradicts "Where things live", "Standing rules" or "Gotchas". The "In flight" table is unchanged and still correct: the local SEO rewrite is still in progress (2 of 6 batch-2 pages remain), and the lesson-credit-ledger branch shows no evidence of landing on main_
+
 ## 2026-10-04
 - Rewrote the first of the 23 location pages under the local SEO plan — the "driving lessons for anxious adults in Peterborough" page — with Robert's own local knowledge: a new section explaining that lessons start from the learner's address and nervous learners' first drives happen on quiet residential roads around Stanground or Gunthorpe, plus one sentence on the electric C-HR+ from his approved press quote. Also fixed three old broken links on that page and a capital-W homepage link, and removed a claim about Peterborough's roads that hadn't come from Robert.
 - Recorded two lessons learned in the project's session-start notes: that Facebook keeps showing an old link preview for weeks after a photo changes until someone presses "Scrape Again" in its Sharing Debugger, and that local place names on the 23 location pages must come only from Robert's own questionnaire answers, checked with the ops repo's page checker before publishing.
