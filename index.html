@@ -558,6 +558,25 @@ p  { line-height: 1.75; }
 .block-hrs small { font-size: 16px; color: var(--ink-low); font-weight: 500; }
 .block-price { font-size: 22px; font-weight: 700; color: var(--sage); margin-top: 6px; }
 .block-sub { font-size: 12px; color: var(--ink-low); margin-top: 3px; font-weight: 500; min-height: 18px; }
+/* Lesson cost calculator (lesson-calc.js holds the prices) */
+.calc-card { margin-top: 22px; padding: 28px 32px; }
+.calc-head h3 { margin: 0; }
+.calc-head p { color: var(--ink-mid); font-size: 14px; margin-top: 4px; }
+.calc-label { display: block; margin-top: 22px; font-size: 17px; font-weight: 700; color: var(--slate); }
+.calc-label strong { color: var(--red); font-size: 26px; font-weight: 800; }
+.calc-range { width: 100%; margin: 14px 0 4px; accent-color: var(--red); height: 28px; cursor: pointer; }
+.calc-range:focus-visible { outline: 3px solid var(--red-border); outline-offset: 4px; border-radius: 6px; }
+.calc-ticks { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-mid); }
+.calc-stats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); margin-top: 20px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg2); }
+.calc-stat { padding: 16px 12px; text-align: center; }
+.calc-stat + .calc-stat { border-left: 1px solid var(--border); }
+.calc-stat span { display: block; font-size: 13px; color: var(--ink-mid); font-weight: 600; }
+.calc-stat b { display: block; margin-top: 4px; font-size: clamp(22px,3vw,32px); font-weight: 800; color: var(--slate); letter-spacing: -0.5px; }
+.calc-stat.save b { color: var(--red); }
+.calc-mix { text-align: center; margin-top: 12px; font-size: 14px; color: var(--ink-mid); font-weight: 600; }
+.calc-note { text-align: center; margin-top: 4px; font-size: 13px; color: var(--ink-mid); }
+.calc-actions { margin-top: 18px; }
+@media (max-width: 480px) { .calc-card { padding: 22px 18px; } .calc-stat { padding: 12px 6px; } }
 
 /* Assessment card stand-out */
 .assessment-card {
@@ -1053,6 +1072,24 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <div class="block-sub"><strong>21.5 hrs + full test prep</strong></div>
         <a href="https://buy.stripe.com/cNi4gA4DoenzceS84DbII07" target="_blank" class="btn btn-slate" style="margin-top:18px;width:100%;font-size:13px;">Buy Package</a>
       </div>
+    </div>
+
+    <div class="calc-card glass-card reveal" id="lesson-calculator">
+      <div class="calc-head">
+        <h3>Lesson cost calculator</h3>
+        <p>Slide to see the best price for the hours you need.</p>
+      </div>
+      <label class="calc-label" for="calc-hours">I'd like <strong id="calc-hours-out">20</strong> hours of lessons</label>
+      <input class="calc-range" type="range" id="calc-hours" min="1" max="40" step="1" value="20" aria-valuetext="20 hours">
+      <div class="calc-ticks" aria-hidden="true"><span>1</span><span>10</span><span>20</span><span>30</span><span>40</span></div>
+      <div class="calc-stats" aria-live="polite">
+        <div class="calc-stat"><span>Best price</span><b id="calc-total">£740</b></div>
+        <div class="calc-stat"><span>Per hour</span><b id="calc-per">£37.00</b></div>
+        <div class="calc-stat save"><span>You save</span><b id="calc-save">£100</b></div>
+      </div>
+      <p class="calc-mix" id="calc-mix">1 × 20-hour block</p>
+      <p class="calc-note">Savings compared with single lessons at £42 an hour. New students start with a 90-minute assessment (£45).</p>
+      <div class="calc-actions"><a class="btn btn-red" id="calc-book" href="#booking">Book these lessons</a></div>
     </div>
 
     <div class="block-section-label reveal">Test Preparation Sessions — 4 Hours</div>
@@ -2319,6 +2356,41 @@ function handleForm(e) {
   document.getElementById('form-ok').style.display = 'block';
   e.target.reset();
 }
+</script>
+<script src="lesson-calc.js"></script>
+<script>
+/* Lesson cost calculator: prices come from lesson-calc.js, block payment links from the block cards above */
+(function () {
+  var range = document.getElementById('calc-hours');
+  if (!range || !window.LessonCalc) return;
+  var links = {};
+  document.querySelectorAll('.block-grid .block-card').forEach(function (card) {
+    var hrs = parseFloat((card.querySelector('.block-hrs') || {}).textContent);
+    var a = card.querySelector('a[href*="buy.stripe.com"]');
+    if (hrs && a) links[hrs] = a.href;
+  });
+  var gbp = function (n, dp) { return '£' + n.toLocaleString('en-GB', { minimumFractionDigits: dp || 0, maximumFractionDigits: dp || 0 }); };
+  var el = function (id) { return document.getElementById(id); };
+  function update() {
+    var r = LessonCalc.bestPrice(range.value);
+    el('calc-hours-out').textContent = r.hours;
+    range.setAttribute('aria-valuetext', r.hours + (r.hours === 1 ? ' hour' : ' hours') + ', best price ' + gbp(r.total));
+    el('calc-total').textContent = gbp(r.total);
+    el('calc-per').textContent = gbp(r.perHour, 2);
+    el('calc-save').textContent = r.saving > 0 ? gbp(r.saving) : '—';
+    el('calc-mix').textContent = r.description;
+    var book = el('calc-book');
+    if (r.singleBlock && links[r.singleBlock]) {
+      book.href = links[r.singleBlock]; book.target = '_blank'; book.rel = 'noopener';
+      book.textContent = 'Buy this ' + r.singleBlock + '-hour block';
+    } else {
+      book.href = '#booking'; book.removeAttribute('target'); book.removeAttribute('rel');
+      book.textContent = 'Book these lessons';
+    }
+  }
+  range.addEventListener('input', update);
+  update();
+})();
 </script>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5fde75a7a3e54255b4dd181e5d51e692"}'></script><!-- End Cloudflare Web Analytics -->
 </body>

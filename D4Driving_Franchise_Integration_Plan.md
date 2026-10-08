@@ -889,6 +889,30 @@ come in. This is the ops repo's local SEO plan, Task 12, in the format set in
 
 ---
 
+## 33. Lesson Cost Calculator — ✅ 8 October 2026
+
+A slider under the block-booking cards on the homepage (`#lesson-calculator`).
+Learners pick 1–40 hours and see the best price, the price per hour, and the
+saving against single lessons at £42 an hour. Robert agreed every rule before
+it was built:
+- **Price:** the cheapest mix of 5, 10, 15 and 20-hour blocks and 1, 1.5 and
+  2-hour lessons. For example, 23 hours = a 20-hour block plus two 1.5-hour
+  lessons, £860.
+- **Left out:** the Semi-Intensive package, because it includes test prep.
+- **The assessment:** the £45 assessment is mentioned, not added.
+- **The button:** it buys the block when the hours are exactly one block, and
+  otherwise goes to `#booking`.
+
+How it's built:
+- The logic is in `lesson-calc.js`, tested by `tools/test-lesson-calc.js`
+  (node). The page reads the block payment links from the cards.
+- Accessibility: a labelled range input, `aria-valuetext` with the hours and
+  price, and results in an `aria-live` region.
+- Checked at 1280px and 375px with no overflow. The script is added to the
+  service worker's offline cache; cache v29.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |

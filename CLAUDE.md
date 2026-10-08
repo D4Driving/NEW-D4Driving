@@ -124,6 +124,10 @@ Detail belongs in the private ops repo, not here.
   AA. Use Ink Mid, `--sage-hi` (`#b4c4c1`) and white at 70–85% (Integration
   Plan §30). Over a dark header the menu must be light until `.stuck`. The
   homepage and article pages still have the old colours (Pending).
+- **Prices live in two places on the homepage:** the price cards in `index.html`
+  and `lesson-calc.js`, which drives the lesson cost calculator under the block
+  cards. Change one, change both, then run `node tools/test-lesson-calc.js`.
+  The calculator reads the block payment links from the cards themselves.
 - **Location pages carry Robert's own local knowledge.** Since the local SEO work
   (Oct 2026), road, junction and place names on the 23 location pages come only
   from his questionnaire answers in the private ops repo (`seo/questionnaires/`),
