@@ -2,6 +2,12 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-10-08
+- Added a lesson cost calculator under the block-booking price cards on the homepage: learners drag a slider from 1 to 40 hours and see the cheapest combination of block and single lessons, the price per hour, and the saving against paying £42 an hour for single lessons one at a time. The Semi-Intensive package (which bundles in test prep) is deliberately left out of the calculation, and the £45 assessment fee is mentioned rather than added to the total. The button either buys the matching block directly or jumps to the booking section, depending on the hours chosen.
+- _Commits: 1d55c3d_
+- _Plan doc status: already documented — the same commit added Integration Plan section 33 recording the calculator_
+- _CLAUDE.md status: accurate — the same commit added the gotcha that prices now live in two places (the homepage price cards and `lesson-calc.js`) and must be changed together, with `tools/test-lesson-calc.js` run afterwards. The "In flight" table is unchanged and still correct: nothing in today's commit shows the `lesson-credit-ledger` branch or the ops-repo local SEO rewrite landing on main._
+
 ## 2026-10-07
 - Two more of the 23 location pages got Robert's own local knowledge added, continuing the local SEO rewrite: the roundabout-lessons page now has a new section on how he builds up roundabout practice in Peterborough (starting at Bretton or Ravensthorpe, then the City Hospital roundabout, then the Junction 20 Spiral and Eye Services roundabouts), and the test-warm-up page now explains his usual hour-long warm-up drive before a test, including where it starts and the car-park-timing rule. That's 4 of the planned 6 Peterborough route/test pages now live with Robert's own detail (2 more went live yesterday, 6 Oct); two pages — review-session and success-story — are still to come.
 - _Commits: 47b5cab, be4036b, 6339136, ec2f8a9_
