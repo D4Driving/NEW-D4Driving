@@ -792,17 +792,34 @@ const SUPABASE_URL = 'https://zzgmwdbvboalehafyict.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_D_a8lr1sOPmoOYAXYI1JbA_zUT41DdY';
 let accessToken = null;    // set once magic-link sign-in lands
 
-async function sb(path) {
-  const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
-    // no-store, or the browser can serve a cached catalogue and the site keeps
-    // showing the old route list after something is published in the admin.
-    cache: 'no-store',
-    headers: {
-      apikey: SUPABASE_KEY,
-      Authorization: 'Bearer ' + (accessToken || SUPABASE_KEY),
-    },
-  });
-  if (!res.ok) throw new Error(res.status + ' ' + (await res.text()));
+// One retry on a transient failure. The first request after a quiet spell can
+// hit a cold gateway and come back 401 with perfectly good credentials — that
+// is what blanked this page on 9 Oct 2026, where /rest/v1/centres 401'd and the
+// identical request succeeded four minutes later. Riding it out costs 400ms; a
+// genuinely bad key simply fails twice.
+async function sb(path, allowRetry = true) {
+  const again = () => new Promise(r => setTimeout(r, 400)).then(() => sb(path, false));
+
+  let res;
+  try {
+    res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
+      // no-store, or the browser can serve a cached catalogue and the site keeps
+      // showing the old route list after something is published in the admin.
+      cache: 'no-store',
+      headers: {
+        apikey: SUPABASE_KEY,
+        Authorization: 'Bearer ' + (accessToken || SUPABASE_KEY),
+      },
+    });
+  } catch (networkErr) {
+    if (allowRetry) return again();
+    throw networkErr;
+  }
+
+  if (!res.ok) {
+    if (allowRetry && (res.status === 401 || res.status >= 500)) return again();
+    throw new Error(res.status + ' ' + (await res.text()));
+  }
   return res.json();
 }
 
@@ -941,18 +958,43 @@ const estMinutes = km => Math.round(km / AVG_SPEED_KMH * 60);
 // has not paid for it.
 const accessibleIds = new Set();
 
+// allSettled, not all. Only the catalogue itself is essential; letting either
+// of the other two take the page down is what blanked it on 9 Oct 2026, when a
+// cold-start 401 on `centres` threw away two successful responses and showed
+// "temporarily unavailable" instead of the routes that had already arrived.
 async function loadCatalogue() {
-  const [rows, centreRows, accessible] = await Promise.all([
+  const [cat, cen, acc] = await Promise.allSettled([
     sb('routes_public?select=*&order=centre_slug.asc,sort_order.asc'),
     sb('centres?select=*'),
     sb('routes?select=id'),   // RLS returns only the routes we may actually read
   ]);
+
+  // Without the catalogue there is genuinely nothing to render.
+  if (cat.status !== 'fulfilled') throw cat.reason;
+
   // Safe to call again after signing in or out — start from empty each time.
   Object.keys(catalogue).forEach(k => delete catalogue[k]);
-  for (const c of centreRows) centres[c.slug] = c;
-  for (const r of rows) (catalogue[r.centre_slug] ||= []).push(r);
+  for (const r of cat.value) (catalogue[r.centre_slug] ||= []).push(r);
+
+  // Centres only supply the pack price on a lock card and the hero count.
+  // Deliberately not cleared first, so a blip cannot strip pricing off a page
+  // that was showing it a moment ago.
+  if (cen.status === 'fulfilled') {
+    for (const c of cen.value) centres[c.slug] = c;
+  } else {
+    console.warn('centres unavailable — carrying on without pricing:', cen.reason);
+  }
+
+  // This only decides whether a tab shows a padlock. The real gate is RLS on
+  // every read, so the fallback is cosmetic: an entitled pupil might briefly
+  // see a padlock on a route that then opens perfectly well.
   accessibleIds.clear();
-  for (const r of accessible) accessibleIds.add(r.id);
+  if (acc.status === 'fulfilled') {
+    for (const r of acc.value) accessibleIds.add(r.id);
+  } else {
+    console.warn('entitlement check unavailable — falling back to is_free:', acc.reason);
+    for (const r of cat.value) if (r.is_free) accessibleIds.add(r.id);
+  }
 }
 
 const isLocked = meta => !accessibleIds.has(meta.id);
