@@ -1,5 +1,5 @@
 # D4Driving — Franchise Integration Plan
-_Last updated: 24 September 2026_
+_Last updated: 9 October 2026_
 
 > **This is the build history** — what was done, when, and why. For a quick
 > orientation at the start of a session, read `CLAUDE.md` instead: it is one
@@ -913,6 +913,97 @@ How it's built:
 
 ---
 
+## 34. Interactive Test Routes and the Route Admin — ✅ 26 July 2026, extended since
+
+Real DVSA-area practice routes at `routes.html`: a Leaflet map per test centre,
+numbered turn-by-turn waypoints, instructor notes, a walkthrough video and a
+GPX download for the learner's sat-nav. Built so routes can later be sold as
+per-centre packs — the commercial model lives in the private ops repo (§16).
+
+**Why it needed a database.** The first version kept GPX files in a public
+`gpx/` folder and the route list in a JavaScript object inside the page. That
+is fine until you want to charge for a route: `d4driving.co.uk/gpx/…` was a
+public URL anyone could guess, so there was nothing to gate. The folder was
+deleted on 26 July and the data moved to Supabase.
+
+**Project `d4driving-routes`** — ref `zzgmwdbvboalehafyict`, London, free tier.
+Tables: `centres`, `routes` (the GPS track stored as JSONB), `waypoints`,
+`profiles`, `entitlements`.
+
+- **Row Level Security is the entire security model.** The key in `routes.html`
+  is a publishable one and is meant to be public, so every access decision is
+  enforced in Postgres and never in the page. Verified by request rather than
+  by reading code: an anonymous visitor gets the full catalogue but only the
+  free routes' track, waypoints and notes, and writes return 401.
+- **`entitlements` is keyed by email, not by user id**, so access can be
+  granted before the buyer has ever signed in — which is what a payment webhook
+  needs. Scopes are `route`, `pack`, `centre` or `all`, so "includes every route
+  we add later" needs no backfill.
+- **`routes_public` is a teaser view**, deliberately `SECURITY DEFINER` so a
+  locked route can still be advertised — name, distance, whether it has a video
+  — to someone who has not paid. **Never add `track`, `notes`, `waypoints` or
+  `youtube_id` to that view.** Supabase's advisor flags it as a critical
+  finding; that is expected, and the reason is recorded as a comment on the view
+  itself. It should still be hardened before anything goes on sale — see
+  Pending Tasks.
+
+**Adding a route needs no code.** The tabs are built from the catalogue at
+runtime, so a new route at a centre that is already live is just a database row,
+uploaded through the admin page. Only a brand-new centre needs markup: convert
+its coming-soon panel to the map layout, add `#map-<slug>` to the two height
+rules, and add the slug to the fit/GPX button loop. Grantham was converted this
+way on 2 August.
+
+**`admin.html`** — `noindex` plus a `robots.txt` disallow, and kept out of the
+sitemap. It signs in with email and password, deliberately *not* a magic link,
+so the admin never depends on SMTP being configured. Three tabs: routes
+(metadata, waypoint names, GPX upload), members (grant and revoke access by
+email) and test centres (status and pack pricing). Gated by `profiles.is_admin`
+in RLS, not by a password in JavaScript. Uploaded routes land unpublished so
+nothing half-finished appears on the site.
+
+**Pupil sign-in is a magic link**, since a learner uses the site for a few
+months and a password is friction they would only ever reset. Email goes out
+through Brevo SMTP configured in Supabase. Two traps worth remembering: the
+Brevo SMTP **username is not the sending address** (it is a `…@smtp-brevo.com`
+login), and Brevo's IP allowlisting must stay **off**, because Supabase sends
+from rotating addresses.
+
+**Estimated time is assumed, not measured.** GPX files carry no timestamps, so
+the figure is distance ÷ 35 km/h, chosen so a route reads as no longer than the
+roughly 40 minutes a real DVSA test runs. Past about 22 km it drifts over again,
+and the fix then is a per-route speed column rather than raising the constant a
+third time.
+
+Four things that bit, all fixed:
+- **The service worker swallowed it.** `sw.js` serves navigations and `*.json`
+  network-first but everything else cache-first, and the Supabase REST URLs are
+  neither — so a route published in the admin never appeared on the site, no
+  matter how often you refreshed. Supabase requests now bypass the worker
+  entirely, which is also the safer choice: those responses vary by
+  `Authorization` header, so a cached copy could serve paid content to someone
+  who had since signed out.
+- **One failed call blanked the whole page** (9 Oct). `Promise.all` over three
+  requests threw away a perfectly good catalogue when a cold-start 401 hit a
+  secondary one. Now `Promise.allSettled`, with a single retry in the fetch
+  helper. Covered by `tools/test-routes-catalogue.js`, which extracts the
+  functions out of `routes.html` at run time rather than copying them, so it
+  keeps testing the shipped code.
+- **The admin editor wiped unsaved work.** A background token refresh re-ran the
+  loader, which rebuilt the open form from the database mid-typing; saving then
+  wrote the blanks back over the record. Auth events now only act when the
+  signed-in user actually changes, and the loader never re-renders an open
+  editor.
+- **"Published" did not mean visible.** Publishing only lists a route; without
+  "Free to view" the map, waypoints, notes and video stay gated, which looks
+  exactly like a save that failed. Both tickboxes now say what they do, with a
+  live line underneath spelling out what the current combination means.
+
+**Not built yet:** payment. The entitlement model and the admin are in place but
+nothing is on sale, so every published route is currently free.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
@@ -926,6 +1017,9 @@ How it's built:
 | **Orphaned file `vw-golf.webp`** | Robert | Old hyphen-filename version still in repo; safe to delete once confirmed unused |
 | **Retired images `yaris-cross.webp` and `chr-plus.webp`** | Claude | Unreferenced since the C-HR+ launch (§23) and the roof-sign photo (§29), but kept so old social-media shares still show a preview. Safe to delete from about late October 2026 (`yaris-cross.webp`) and mid-November 2026 (`chr-plus.webp`) |
 | **Readable text on the homepage and article pages** | Claude, then Robert approves | Next job after §30, using the colours Robert approved there. Homepage: 77 items flagged at 375px, including the red "With Confidence", sage block prices, Ink Low captions and sage footer links; about 9 are emoji or text on photos and may be fine. Article pages: about 18 each (sage labels, footer text at 35–50%, a sage phone link on the white bar). Change `article-template.html` and the 125 article pages together. Keep out of the 23 location pages' article bodies (local SEO) |
+| **Test route packs — payment** | Robert + Claude | The entitlement model and the admin page are built (§34), but nothing is on sale, so every published route is free. Needs a Stripe Payment Link per centre and a webhook writing an `entitlements` row keyed by the buyer's email. Robert creates the links and holds the signing secret. Commercial model in the private ops repo |
+| **Harden `routes_public` before the first pack sells** | Claude | Supabase's advisor flags the teaser view as a critical `SECURITY DEFINER` finding (§34). Harmless today — every published route is free — but one careless column added to that view would un-gate all paid content at once. Fix: grant `anon` only the teaser columns on `routes` and filter the definer view to `is_free = true`, then re-verify the anon / signed-in / entitled / admin access matrix by request |
+| **Test route content** | Robert | Six routes are still unpublished. Grantham's only route needs waypoint names and a description before that centre can go live at all; Kettering's Pytchley route needs waypoint names and a walkthrough video |
 
 ---
 
@@ -957,3 +1051,5 @@ How it's built:
 - Formspree endpoint: `https://formspree.io/f/mwvzyrzz` (Robert's account, `info@d4driving.co.uk`)
 - Cal.com embed (Robert): `calLink: "d4driving"`, `month_view`, inline
 - Cal.com links (Rakesh): direct URL links, no embed
+- **Supabase** is the only dynamic data source on the site — project `d4driving-routes`, ref `zzgmwdbvboalehafyict`, London, free tier. Only `routes.html` and `admin.html` talk to it; every other page is static. Access control is Row Level Security, because the key in the page is publishable by design (§34)
+- `sw.js` serves navigations and `*.json` network-first and **everything else cache-first**, so any new dynamic endpoint must be added to its bypass list or the first response will be served for ever. Supabase is already bypassed (§34). Bump `CACHE` on significant changes — currently `d4driving-v29`
