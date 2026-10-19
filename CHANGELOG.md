@@ -2,6 +2,14 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-10-19
+- Launched a new driving lesson gift cards page: seven Stripe-powered cards (1-hour, 2-hour, each lesson block, and a "choose the amount" option from £42 to £1,000), with terms, how-it-works and FAQ agreed with Robert. It's linked from the Extras menu, the mobile menu and under the homepage lesson calculator, and added to the sitemap. The private gift card maker and the real code list stay off this public site, in the ops repo.
+- Raised the YouTube subscriber count shown across the site from 32,000+ to 36,000+, in all 128 files that mention it (homepage, mock test page, and every article's author bio).
+- Fixed the mobile menu on the new gift cards page and on the mock test page: the hover effect was animating the menu item's padding on every frame, causing it to visibly shift; it now only changes colour on hover, matching the rest of the site.
+- _Commits: a3e423c, 5455d77, 84a2089_
+- _Plan doc status: gift cards and the subscriber count update are already documented — the a3e423c commit added Integration Plan sections 35 and 36 in the same commit. The two mobile-menu hover fixes (5455d77, 84a2089) are ⚠ NOT yet in D4Driving_Franchise_Integration_Plan.md — small enough that they may not need their own section, but worth a one-line mention under §35 since they touch the page it just added._
+- _CLAUDE.md status: accurate — the a3e423c commit already updated both the YouTube subscriber count gotcha and the "prices live in two places" gotcha (to mention gift-cards.html) in the same commit. The "In flight" table is unchanged and still correct: nothing in today's commits shows the `lesson-credit-ledger` branch or the ops-repo local SEO rewrite landing on main._
+
 ## 2026-10-09
 - Fixed a bug on the interactive routes page: on 9 Oct the page showed no routes at all after one background data call came back with a temporary error, even though the route data itself had loaded fine. The page now keeps showing routes when that happens — at worst a pack price is briefly missing from one card — and it quietly retries once before giving up, so a brief blip no longer blanks the page. A new automated test file covers this and 11 other scenarios for that page.
 - Wrote up the interactive routes page, its Supabase back end and the admin page into the main plan doc for the first time — this feature was built in July and extended through August and October without ever being recorded there. The write-up covers the data model, access control, the admin sign-in flow, and four bugs that have bitten in the past (including today's).
