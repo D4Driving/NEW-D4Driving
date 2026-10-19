@@ -1004,6 +1004,47 @@ nothing is on sale, so every published route is currently free.
 
 ---
 
+## 35. Driving Lesson Gift Cards — ✅ 19 October 2026
+
+A new page, `gift-cards.html`. It came out of the 19 Oct comparison with another
+Peterborough school's website (private ops repo, `reports/2026-10-19-mpl-website-comparison.md`).
+Robert agreed every rule before it was built:
+- **Seven cards, each a Stripe Payment Link:** 1-hour £42, 2-hour £80, and 5, 10,
+  15 and 20-hour blocks at the block prices, plus "choose the amount" from £42 to
+  £1,000. Every link asks for the recipient's name, the email to send it to and an
+  optional message. All seven were checked live: the right price, Live mode, and
+  £42 and £1,000 enforced on the any-amount link.
+- **Terms on the page:**
+  - valid 12 months
+  - lesson and block cards cover the hours named even if prices rise; amount
+    cards are spent at the prices on the day
+  - usable with Robert (automatic or manual) or Rakesh (manual), with no
+    assessment lesson needed
+  - transferable, including any unused balance, reissued with the same expiry
+  - refundable within 14 days if unused
+- **Delivered by hand, on purpose.** Robert makes the PDF with a private gift card
+  maker and emails it within 24 hours. There are no email-service accounts and
+  nothing extra to break. The maker, the process, the transfer rule and the code
+  list (a spreadsheet Git ignores, because it holds customer names) are in the
+  ops repo under `business/gift-cards/`. **Never put the maker on this public
+  site:** it would let anyone print a convincing fake gift card. A code is only
+  real if it's on Robert's list.
+- **Links to it:** the Extras dropdown, the mobile menu, and a line under the
+  lesson calculator. In the sitemap at 0.8 (also added to `PRIORITY` in
+  `blog-sync.yml` so the hourly rebuild keeps it). Product and FAQ schema.
+- Checked at 1280px and 375px with no overflow. Cache v30.
+
+---
+
+## 36. Subscriber Count Raised to 36,000+ — ✅ 19 October 2026
+
+Was 32,000+ (§21). Replaced in all 128 files: 258 × "36,000+" in the article
+bios and newsletter boxes, `index.html` and `mock-test.html`, plus the
+homepage hero's `36<span>k+</span>` and the mock test offer box's `36K+`.
+`article-template.html` is included, so new articles inherit it.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |

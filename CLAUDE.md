@@ -73,13 +73,13 @@ Detail belongs in the private ops repo, not here.
   free time than he really has. Never state a specific date or a count of open
   days for him; his page deliberately says only that he "usually has space" and
   sends people to WhatsApp to confirm. Robert's own Cal.com IS authoritative.
-- **The YouTube subscriber count lives in 128 files.** Currently **32,000+**
-  (updated 29 Aug 2026, was 25,000+). It appears twice in every article page's
+- **The YouTube subscriber count lives in 128 files.** Currently **36,000+**
+  (updated 19 Oct 2026, was 32,000+). It appears twice in every article page's
   author bio and newsletter box, plus `index.html` (hero stat, about copy, the
   YouTube section, one FAQ answer) and `mock-test.html` (og:description, intro
   line, offer list, offer box). The homepage hero writes it as
-  `32<span>k+</span>` and the mock test offer box as `32K+`, so a search for
-  "32,000" misses both. Those mock test lines said 21K+ until 27 Sep 2026: past
+  `36<span>k+</span>` and the mock test offer box as `36K+`, so a search for
+  "36,000" misses both. Those mock test lines said 21K+ until 27 Sep 2026: past
   replaces only searched for the previous number. Update with a global replace
   across `*.html`, and check `article-template.html` is included so new
   articles inherit the right number.
@@ -128,6 +128,10 @@ Detail belongs in the private ops repo, not here.
   and `lesson-calc.js`, which drives the lesson cost calculator under the block
   cards. Change one, change both, then run `node tools/test-lesson-calc.js`.
   The calculator reads the block payment links from the cards themselves.
+  `gift-cards.html` repeats the lesson and block prices too. Each gift card is
+  its own Stripe Payment Link, so a price change there also needs the Stripe link
+  changed. The private gift card maker and code list live in the ops repo
+  (`business/gift-cards/`); never put them on this public site.
 - **Location pages carry Robert's own local knowledge.** Since the local SEO work
   (Oct 2026), road, junction and place names on the 23 location pages come only
   from his questionnaire answers in the private ops repo (`seo/questionnaires/`),
