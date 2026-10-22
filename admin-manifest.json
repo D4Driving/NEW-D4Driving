@@ -1,0 +1,18 @@
+{
+  "id": "/admin.html",
+  "name": "D4Driving Admin",
+  "short_name": "D4 Admin",
+  "description": "Robert's admin page: waiting list, test routes and members.",
+  "start_url": "./admin.html",
+  "scope": "./admin.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#2C3E50",
+  "theme_color": "#2C3E50",
+  "lang": "en-GB",
+  "icons": [
+    { "src": "admin-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "admin-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "admin-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

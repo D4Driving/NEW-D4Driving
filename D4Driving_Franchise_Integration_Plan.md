@@ -1088,6 +1088,10 @@ in the ops repo (`plans/2026-10-22-waiting-list.md`).
   still saved and only the email is skipped.
 - **Privacy policy:** now v1.1. New clause 3.1(g) (consent), a retention row,
   and Supabase, Brevo and WhatsApp added under third parties.
+- **The admin page installs as its own phone app, "D4 Admin"** (22 Oct). It has its
+  own `admin-manifest.json` (id `/admin.html`, separate from the public site's
+  `manifest.json`) and `admin-icon-*.png` / `admin-apple-touch-icon.png`, with
+  the logo and a red ADMIN label.
 - The function and migration source are in the ops repo under
   `supabase/waitlist/`. Cache v31.
 
