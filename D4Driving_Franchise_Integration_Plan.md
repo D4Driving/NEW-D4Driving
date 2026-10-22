@@ -1045,11 +1045,59 @@ homepage hero's `36<span>k+</span>` and the mock test offer box's `36K+`.
 
 ---
 
+## 37. Lesson Waiting List — ✅ 22 October 2026
+
+People can join a waiting list for Robert's lessons. Robert sees the list in the
+admin page and taps WhatsApp to offer a slot himself. **Nothing is ever sent to
+a learner automatically.** The design was agreed with Robert first; the plan is
+in the ops repo (`plans/2026-10-22-waiting-list.md`).
+
+- **`waiting-list.html`:** the sign-up form. It asks for:
+  - name, UK mobile, area or postcode
+  - automatic, manual or either
+  - preferred times (weekday mornings, afternoons, evenings; Saturdays)
+  - experience, an optional test date and an optional message
+  - a required consent tick box
+
+  Linked from a box under the free slots on the homepage and from each "no
+  availability" message. In the sitemap at 0.7, which is also in `PRIORITY`.
+- **Where the data goes:** table `public.waitlist` in the `d4driving-routes`
+  Supabase project.
+  - **Anon has no grants at all.** The form posts to the Edge Function
+    `waitlist-join`, deployed with `verify_jwt` off. The function does its own
+    checks:
+    - only https://d4driving.co.uk and localhost:4173 may call it
+    - a honeypot field named `website`
+    - strict validation, and the mobile is normalised to +447…
+    - a cap of 40 joins an hour across the whole list
+  - It upserts on the phone number, so joining again updates the entry and
+    keeps its place in the queue.
+  - The admin reads, updates and deletes through RLS, using `is_admin()`.
+  - Verified by request: anon reads and inserts both return 401.
+- **Retention:** the pg_cron job `waitlist-purge` deletes entries 3 months
+  after they were last updated, every night at 03:15. "Booked" and "Remove" in
+  the admin page delete straight away.
+- **Admin tab:**
+  - type the slot, then filter by gearbox ("either" always matches) or time
+  - each person's WhatsApp button opens `wa.me` with the offer already written,
+    and marks them as offered
+  - a test date within 6 weeks shows in red
+- **Email alert to info@** on each join, through the Brevo API, but only once
+  Robert stores a `BREVO_API_KEY` secret in Supabase. Until then entries are
+  still saved; only the email is skipped.
+- **Privacy policy:** now v1.1. New clause 3.1(g) (consent), a retention row,
+  and Supabase, Brevo and WhatsApp added under third parties.
+- The function and migration source are in the ops repo under
+  `supabase/waitlist/`. Cache v31.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
 |---|---|---|
 | **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Executing since 25 Sep 2026, at Robert's pace. Pilot page live 3 Oct (§31). Batch 2, the six Peterborough route and test pages, is under way: 4 of 6 live (§32). Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
+| **Waiting list email alert** | Robert | Create a Brevo API key and store it as the Supabase secret `BREVO_API_KEY` (steps given 22 Oct 2026). Until then, sign-ups are saved but no email is sent (§37) |
 | **Sitemap `lastmod` dates** | Robert | Optional: have the sync workflow add each page's last-changed date (local SEO plan, Task 17). His decision |
 | **Cal.com T&C checkboxes** | Robert + Rakesh | Add required booking question to every event type: "I agree to D4Driving's Terms & Conditions: d4driving.co.uk/terms.html" |
 | **Rakesh's Cal.com assessment price** | Rakesh | His 1.5hr assessment event displays no price — should show £45 |

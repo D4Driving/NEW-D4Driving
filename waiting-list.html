@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Waiting List | D4Driving Peterborough</title>
+<meta name="description" content="Join D4Driving's waiting list for driving lessons in Peterborough. Robert will WhatsApp you when a slot that suits you comes up, including cancellations. Free, automatic or manual.">
+<link rel="canonical" href="https://d4driving.co.uk/waiting-list.html">
+<meta property="og:type"        content="website">
+<meta property="og:url"         content="https://d4driving.co.uk/waiting-list.html">
+<meta property="og:title"       content="Join the Waiting List | D4Driving Peterborough">
+<meta property="og:description" content="Robert's diary is busy, but slots come up. Join the waiting list and he'll WhatsApp you when one that suits you is free.">
+<meta property="og:image"       content="https://d4driving.co.uk/chr-plus-roof-sign.webp">
+<meta property="og:site_name"   content="D4Driving School of Motoring">
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="Join the Waiting List | D4Driving Peterborough">
+<meta name="twitter:description" content="Robert's diary is busy, but slots come up. Join the waiting list and he'll WhatsApp you when one is free.">
+<meta name="twitter:image"       content="https://d4driving.co.uk/chr-plus-roof-sign.webp">
+<meta name="theme-color" content="#BD2026">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ─── TOKENS ─────────────────────────────── */
+:root {
+  --red:        #BD2026;
+  --red-hi:     #d4252c;
+  --red-lo:     rgba(189,32,38,0.08);
+  --red-border: rgba(189,32,38,0.2);
+  --slate:      #2C3E50;
+  --slate-hi:   #374f65;
+  --slate-lo:   rgba(44,62,80,0.06);
+  --slate-mid:  rgba(44,62,80,0.12);
+  --sage:       #8fa3a0;
+  --sage-hi:    #b4c4c1;
+  --bg:         #fbfdff;
+  --bg2:        #f3f7fb;
+  --glass-bg:   rgba(255,255,255,0.9);
+  --glass-border: rgba(226,232,240,0.8);
+  --glass-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.03);
+  --ink:        #2C3E50;
+  --ink-mid:    #536878;
+  --border:     rgba(226,232,240,0.8);
+  --font: 'Plus Jakarta Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+body { font-family: var(--font); background: var(--bg); color: var(--ink); overflow-x: hidden; line-height: 1.6; }
+img  { display: block; max-width: 100%; }
+a    { color: inherit; text-decoration: none; }
+ul   { list-style: none; }
+
+/* ─── LAYOUT ─────────────────────────────── */
+.wrap { max-width: 1140px; margin: 0 auto; padding: 0 28px; }
+.sec  { padding: 96px 0; }
+.sec-intro { text-align: center; max-width: 620px; margin: 0 auto 52px; }
+.sec-intro p { color: var(--ink-mid); margin-top: 14px; font-size: 15.5px; }
+
+/* ─── GLASS CARD ─────────────────────────── */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+}
+
+/* ─── TYPE ───────────────────────────────── */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+}
+.eyebrow::before {
+  content: ''; display: block; width: 20px; height: 2px;
+  background: var(--red); flex-shrink: 0; border-radius: 2px;
+}
+h1 { font-size: clamp(40px,6vw,72px); font-weight: 800; line-height: 1.02; letter-spacing: -2px; color: #fff; }
+h2 { font-size: clamp(28px,4vw,48px); font-weight: 800; line-height: 1.08; letter-spacing: -1.5px; color: var(--slate); }
+h3 { font-size: clamp(17px,2vw,22px); font-weight: 700; color: var(--slate); }
+p  { line-height: 1.75; }
+
+/* ─── BUTTONS ────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--font); font-size: 14px; font-weight: 700;
+  padding: 14px 28px; border: none; cursor: pointer; border-radius: 12px;
+  transition: all .22s; white-space: nowrap;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+.btn-red { background: var(--red); color: #fff; box-shadow: 0 4px 14px rgba(189,32,38,0.25); }
+.btn-red:hover { box-shadow: 0 8px 24px rgba(189,32,38,0.38); background: var(--red-hi); }
+.btn-slate { background: var(--slate); color: #fff; box-shadow: 0 4px 14px rgba(44,62,80,0.2); }
+.btn-slate:hover { box-shadow: 0 8px 24px rgba(44,62,80,0.32); background: var(--slate-hi); }
+.btn-ghost {
+  background: rgba(255,255,255,0.12); color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(6px);
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.22); }
+.btn-outline { background: transparent; color: var(--slate); border: 1.5px solid var(--border); }
+.btn-outline:hover { border-color: var(--red); color: var(--red); background: var(--red-lo); }
+
+/* ─── NAV ────────────────────────────────── */
+#nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; padding: 12px 0; transition: all .3s; }
+#nav.stuck {
+  background: rgba(251,253,255,0.95);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(44,62,80,0.06);
+  padding: 0;
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo img { height: 42px; width: auto; }
+.nav-links { display: flex; gap: 6px; }
+.nav-links a { font-size: 13px; font-weight: 600; color: var(--ink-mid); padding: 8px 14px; border-radius: 8px; transition: all .2s; }
+.nav-links a:hover { color: var(--slate); background: var(--slate-lo); }
+.nav-links a[aria-current="page"] { color: var(--red); font-weight: 700; }
+#nav:not(.stuck) .nav-links a { color: rgba(255,255,255,0.85); }
+#nav:not(.stuck) .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+#nav:not(.stuck) .nav-links a[aria-current="page"] { color: #fff; }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
+.burger span { display: block; width: 22px; height: 2px; background: var(--slate); border-radius: 2px; transition: all .3s; }
+#nav:not(.stuck) .burger span { background: #fff; }
+.burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-nav {
+  display: none; position: fixed; inset: 68px 0 0;
+  background: rgba(251,253,255,0.99); z-index: 899;
+  padding: 24px 28px; flex-direction: column;
+  border-top: 1px solid var(--border); overflow-y: auto;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-size: 20px; font-weight: 700; color: var(--slate); padding: 16px 0; border-bottom: 1px solid var(--border); transition: color .2s; }
+.mobile-nav a:hover { color: var(--red); }
+.mobile-nav a[aria-current="page"] { color: var(--red); }
+
+/* ─── HERO ───────────────────────────────── */
+#hero {
+  min-height: 78vh; position: relative;
+  display: flex; align-items: center; overflow: hidden;
+  background: var(--slate); padding-top: 68px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('chr-plus-roof-sign.webp') center 35% / cover no-repeat;
+  filter: brightness(0.14) saturate(0.3);
+}
+.hero-grade {
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, rgba(44,62,80,0.97) 0%, rgba(44,62,80,0.75) 55%, rgba(44,62,80,0.3) 100%);
+}
+.hero-stripe { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--red); border-radius: 0 2px 2px 0; }
+.hero-content { position: relative; z-index: 2; max-width: 720px; padding: 72px 0; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--sage-hi); margin-bottom: 20px;
+}
+.hero-eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--sage); border-radius: 2px; }
+.hero-title .gift {
+  display: inline-block; background: var(--red); color: #fff;
+  padding: 0 16px; border-radius: 8px; line-height: 1.15;
+}
+.hero-sub { font-size: 18px; color: rgba(255,255,255,0.82); margin: 22px 0 32px; max-width: 580px; }
+.hero-sub strong { color: #fff; font-weight: 700; }
+.hero-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.5px;
+  padding: 7px 14px; border-radius: 99px;
+  background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ─── HERO (shorter) ─────────────────────── */
+#hero.hero-short { min-height: 56vh; }
+
+/* ─── JOIN ───────────────────────────────── */
+#join { background: var(--bg2); }
+.join-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: start; }
+.join-left h2 { margin-bottom: 22px; }
+.join-steps { list-style: none; counter-reset: s; display: flex; flex-direction: column; gap: 16px; }
+.join-steps li { counter-increment: s; position: relative; padding-left: 48px; font-size: 15.5px; color: var(--ink); line-height: 1.6; }
+.join-steps li::before {
+  content: counter(s); position: absolute; left: 0; top: -2px;
+  width: 32px; height: 32px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--red-lo); border: 1px solid var(--red-border);
+  font-size: 15px; font-weight: 800; color: var(--red);
+}
+.join-note { margin-top: 28px; padding: 18px 20px; border-radius: 14px; background: #fff; border: 1px solid var(--border); }
+.join-note p { font-size: 14px; color: var(--ink-mid); }
+.join-note a, .join-alt a { color: var(--red); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.join-alt { margin-top: 18px; font-size: 14px; color: var(--ink-mid); }
+
+.wl-form, .wl-done { padding: 34px 32px; }
+.f-field { margin: 0 0 20px; padding: 0; border: 0; min-width: 0; }
+.f-field > label, .f-field legend {
+  display: block; font-size: 14px; font-weight: 700; color: var(--slate); margin-bottom: 8px; padding: 0;
+}
+.opt { font-weight: 500; color: var(--ink-mid); }
+.f-field input[type="text"], .f-field input[type="tel"], .f-field input[type="date"], .f-field textarea {
+  width: 100%; padding: 12px 14px; border-radius: 10px;
+  border: 1.5px solid #c9d3de; background: #fff;
+  font-family: var(--font); font-size: 16px; color: var(--ink);
+  transition: border-color .2s, box-shadow .2s;
+}
+.f-field textarea { resize: vertical; min-height: 84px; }
+.f-field input:focus, .f-field textarea:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(189,32,38,0.15); }
+.f-field [aria-invalid="true"] { border-color: var(--red); }
+.f-hint { font-size: 13px; color: var(--ink-mid); margin-top: 6px; }
+.f-field legend + .f-hint { margin: -4px 0 10px; }
+.f-err { font-size: 13px; font-weight: 600; color: var(--red); margin-top: 6px; }
+.f-err:empty { display: none; }
+
+.choice-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.choice-col { display: grid; gap: 10px; }
+.choice { position: relative; display: block; cursor: pointer; }
+.choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.choice span {
+  display: flex; align-items: center; gap: 10px; min-height: 48px;
+  padding: 11px 14px; border-radius: 10px; border: 1.5px solid #c9d3de; background: #fff;
+  font-size: 14.5px; font-weight: 600; color: var(--ink); transition: border-color .15s, background-color .15s;
+}
+.choice span::before {
+  content: ''; flex-shrink: 0; width: 18px; height: 18px; border: 2px solid #6b7c8c; background: #fff;
+}
+.choice input[type="radio"] + span::before { border-radius: 50%; }
+.choice input[type="checkbox"] + span::before { border-radius: 5px; }
+.choice input:checked + span { border-color: var(--red); background: var(--red-lo); color: var(--slate); }
+.choice input:checked + span::before { border-color: var(--red); background: var(--red); box-shadow: inset 0 0 0 3px #fff; }
+.choice input:focus-visible + span { outline: 3px solid var(--red); outline-offset: 2px; }
+
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.consent-block { margin: 6px 0 22px; padding: 16px 18px; border-radius: 12px; background: var(--slate-lo); border: 1.5px solid var(--slate-mid); }
+.consent-row { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; font-size: 14px; color: var(--slate); line-height: 1.55; }
+.consent-row input { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; accent-color: var(--red); }
+.wl-submit { width: 100%; font-size: 15px; padding: 16px; }
+.wl-submit[disabled] { opacity: .7; cursor: wait; transform: none; }
+.wl-status { margin-top: 14px; font-size: 14px; font-weight: 600; color: var(--red); }
+.wl-status:empty { display: none; }
+.wl-status a { color: var(--red); text-decoration: underline; }
+
+.wl-done { text-align: center; }
+.wl-done:focus { outline: none; }
+.wl-done-icon {
+  width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--red); color: #fff; font-size: 30px; font-weight: 800;
+}
+.wl-done h2 { font-size: clamp(26px,3vw,36px); margin-bottom: 12px; }
+.wl-done p { color: var(--ink-mid); font-size: 15.5px; }
+.wl-done .btn { margin-top: 22px; }
+
+/* ─── FOOTER ─────────────────────────────── */
+footer { background: var(--slate); padding: 60px 0 32px; border-top: 1px solid rgba(255,255,255,0.08); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
+.footer-tag { font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 16px; line-height: 1.7; }
+.footer-h { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 14px; color: rgba(255,255,255,0.75); transition: color .2s; }
+.footer-links a:hover { color: #fff; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.footer-bottom p { font-size: 13px; color: rgba(255,255,255,0.7); }
+.footer-bottom a { color: rgba(255,255,255,0.75); transition: color .2s; }
+.footer-bottom a:hover { color: #fff; }
+
+/* ─── WA FLOAT ───────────────────────────── */
+.wa-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 800;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25d366; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+  transition: transform .25s, box-shadow .25s;
+}
+.wa-float:hover { transform: translateY(-3px) scale(1.06); box-shadow: 0 10px 28px rgba(37,211,102,0.5); }
+.wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ─── REVEAL ANIMATION ───────────────────── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .btn:hover { transform: none; }
+}
+
+/* ─── RESPONSIVE ─────────────────────────── */
+@media(max-width:960px){
+  .nav-links { display:none; }
+  .burger{ display:flex; }
+  .join-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+@media(max-width:640px){
+  .wrap { padding: 0 16px; }
+  .sec { padding: 72px 0; }
+  .wl-form, .wl-done { padding: 26px 20px; }
+  .choice-row { grid-template-columns: 1fr; }
+  .choice-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav id="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="SVGLogo.svg" alt="D4Driving School of Motoring" width="54" height="42" decoding="async">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#prices">Prices</a></li>
+        <li><a href="index.html#booking">Book</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+        <li><a href="index.html#fleet">Cars</a></li>
+        <li><a href="gift-cards.html">🎁 Gift Cards</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="burger" id="burg" aria-label="Menu" aria-expanded="false" aria-controls="mnav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu — must live OUTSIDE #nav: the .stuck backdrop-filter creates a
+     containing block that would trap this fixed overlay inside the nav bar -->
+<div class="mobile-nav" id="mnav">
+  <a href="index.html">Home</a>
+  <a href="index.html#prices">Prices</a>
+  <a href="index.html#booking">Book Online</a>
+  <a href="index.html#reviews">Reviews</a>
+  <a href="gift-cards.html">🎁 Gift Cards</a>
+  <a href="waiting-list.html" aria-current="page">Waiting List</a>
+  <a href="index.html#contact">Contact</a>
+</div>
+
+<main>
+<!-- ════ HERO ════ -->
+<section id="hero" class="hero-short">
+  <div class="hero-bg"></div>
+  <div class="hero-grade"></div>
+  <div class="hero-stripe"></div>
+  <div class="wrap">
+    <div class="hero-content">
+      <div class="hero-eyebrow">D4Driving · Peterborough</div>
+      <h1 class="hero-title">Join the <span class="gift">waiting list</span></h1>
+      <p class="hero-sub">
+        Robert's diary is busy, but slots come up, often from cancellations.
+        Join the list and <strong>Robert will WhatsApp you when a slot that suits you comes up.</strong>
+      </p>
+      <div class="hero-pills">
+        <span class="hero-pill">💬 WhatsApp when a slot comes up</span>
+        <span class="hero-pill">🆓 Free, no obligation</span>
+        <span class="hero-pill">🚗 Automatic or manual</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FORM ════ -->
+<section id="join" class="sec">
+  <div class="wrap">
+    <div class="join-grid">
+      <div class="join-left reveal">
+        <div class="eyebrow">How it works</div>
+        <h2>We'll message you when there's a slot</h2>
+        <ol class="join-steps">
+          <li><strong>Tell us what suits you:</strong> your area, automatic or manual, and the days and times you can do.</li>
+          <li><strong>When a slot comes up</strong> that fits, Robert sends you a WhatsApp message with the day and time.</li>
+          <li><strong>Reply to grab it.</strong> Slots go quickly, so the sooner you reply the better.</li>
+        </ol>
+        <div class="join-note">
+          <p><strong>Your details</strong> are only used to offer you lesson slots. They're kept for up to 3 months and then deleted, and you can ask to be removed at any time. See our <a href="privacy.html">privacy policy</a>.</p>
+        </div>
+        <p class="join-alt">Prefer to talk first? <a href="https://wa.me/447872347686" target="_blank" rel="noopener">Message Robert on WhatsApp</a> or call <a href="tel:07872347686">07872 347686</a>.</p>
+      </div>
+
+      <div class="join-right reveal" style="transition-delay:.1s">
+        <form id="wl-form" class="glass-card wl-form" novalidate>
+          <div class="f-field">
+            <label for="wl-name">Your name</label>
+            <input id="wl-name" name="name" type="text" autocomplete="name" maxlength="80" required aria-describedby="wl-name-err">
+            <p class="f-err" id="wl-name-err"></p>
+          </div>
+          <div class="f-field">
+            <label for="wl-phone">Mobile number</label>
+            <input id="wl-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="07…" maxlength="20" required aria-describedby="wl-phone-hint wl-phone-err">
+            <p class="f-hint" id="wl-phone-hint">The UK mobile you use for WhatsApp.</p>
+            <p class="f-err" id="wl-phone-err"></p>
+          </div>
+          <div class="f-field">
+            <label for="wl-area">Area or postcode</label>
+            <input id="wl-area" name="area" type="text" autocomplete="postal-code" placeholder="e.g. Stanground or PE2" maxlength="60" required aria-describedby="wl-area-err">
+            <p class="f-err" id="wl-area-err"></p>
+          </div>
+
+          <fieldset class="f-field" aria-describedby="wl-transmission-err">
+            <legend>Automatic or manual?</legend>
+            <div class="choice-row">
+              <label class="choice"><input type="radio" name="transmission" value="automatic"><span>Automatic</span></label>
+              <label class="choice"><input type="radio" name="transmission" value="manual"><span>Manual</span></label>
+              <label class="choice"><input type="radio" name="transmission" value="either"><span>Either</span></label>
+            </div>
+            <p class="f-err" id="wl-transmission-err"></p>
+          </fieldset>
+
+          <fieldset class="f-field" aria-describedby="wl-times-hint wl-times-err">
+            <legend>When can you do lessons?</legend>
+            <p class="f-hint" id="wl-times-hint">Tick all that suit you.</p>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="times" value="weekday_morning"><span>Weekday mornings</span></label>
+              <label class="choice"><input type="checkbox" name="times" value="weekday_afternoon"><span>Weekday afternoons</span></label>
+              <label class="choice"><input type="checkbox" name="times" value="weekday_evening"><span>Weekday evenings</span></label>
+              <label class="choice"><input type="checkbox" name="times" value="saturday"><span>Saturdays</span></label>
+            </div>
+            <p class="f-err" id="wl-times-err"></p>
+          </fieldset>
+
+          <fieldset class="f-field" aria-describedby="wl-experience-err">
+            <legend>Your driving so far</legend>
+            <div class="choice-col">
+              <label class="choice"><input type="radio" name="experience" value="beginner"><span>Complete beginner</span></label>
+              <label class="choice"><input type="radio" name="experience" value="some"><span>I've had some lessons</span></label>
+              <label class="choice"><input type="radio" name="experience" value="nearly"><span>Nearly test-ready</span></label>
+            </div>
+            <p class="f-err" id="wl-experience-err"></p>
+          </fieldset>
+
+          <div class="f-field">
+            <label for="wl-test">Test date, if you've booked one <span class="opt">(optional)</span></label>
+            <input id="wl-test" name="test_date" type="date" aria-describedby="wl-test-err">
+            <p class="f-err" id="wl-test-err"></p>
+          </div>
+          <div class="f-field">
+            <label for="wl-msg">Anything else? <span class="opt">(optional)</span></label>
+            <textarea id="wl-msg" name="message" maxlength="500" rows="3" placeholder="e.g. I can only do after 4pm on weekdays"></textarea>
+          </div>
+
+          <!-- Spam trap: hidden from people, filled in by bots -->
+          <div class="hp" aria-hidden="true">
+            <label for="wl-website">Leave this empty</label>
+            <input id="wl-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="consent-block">
+            <label class="consent-row">
+              <input type="checkbox" id="wl-consent" name="consent" aria-describedby="wl-consent-err">
+              <span>I'm happy for Robert to contact me on WhatsApp about lesson slots. My details are kept for up to 3 months.</span>
+            </label>
+            <p class="f-err" id="wl-consent-err"></p>
+          </div>
+
+          <button type="submit" class="btn btn-red wl-submit" id="wl-submit">Join the waiting list</button>
+          <p class="wl-status" id="wl-status" role="alert"></p>
+        </form>
+
+        <div class="glass-card wl-done" id="wl-done" hidden tabindex="-1">
+          <div class="wl-done-icon" aria-hidden="true">✓</div>
+          <h2>You're on the list</h2>
+          <p>Robert will WhatsApp you when a suitable slot comes up. Keep an eye on your messages: slots tend to go quickly.</p>
+          <p class="join-alt">Need to change something? Just fill in the form again with the same mobile number and your entry will be updated.</p>
+          <a href="index.html#availability" class="btn btn-outline">Back to free slots</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <img src="SVGLogo.svg" alt="D4Driving" width="59" height="46" loading="lazy" decoding="async">
+        <p class="footer-tag">Expert driving tuition with D4Driving School of Motoring. Helping learners pass with confidence across Peterborough and surrounding areas since 2017.</p>
+      </div>
+      <div>
+        <div class="footer-h">Quick Links</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#prices">Lesson Prices</a>
+          <a href="index.html#booking">Book Online</a>
+          <a href="gift-cards.html">Gift Cards</a>
+          <a href="waiting-list.html">Waiting List</a>
+          <a href="mock-test.html">Free Mock Test</a>
+          <a href="blog.html">Driving Tips</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-h">Contact</div>
+        <div class="footer-links">
+          <a href="tel:07872347686">📞 07872 347686</a>
+          <a href="https://wa.me/447872347686" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <a href="https://www.youtube.com/@d4drivingSOM" target="_blank" rel="noopener">▶ YouTube (@d4drivingSOM)</a>
+          <a href="https://g.page/r/Ca0Y46BYPxNMEAE/review" target="_blank" rel="noopener">⭐ Leave a Review</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 D4Driving School of Motoring. All rights reserved.</p>
+      <p><a href="#hero">Back to top ↑</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/447872347686" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+// ── Nav scroll ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('stuck', window.scrollY > 10), { passive: true });
+nav.classList.toggle('stuck', window.scrollY > 10);
+
+// ── Burger ──
+const burg = document.getElementById('burg');
+const mnav = document.getElementById('mnav');
+burg.addEventListener('click', () => {
+  const open = mnav.classList.toggle('open');
+  burg.classList.toggle('open', open);
+  burg.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+mnav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  burg.classList.remove('open'); mnav.classList.remove('open'); burg.setAttribute('aria-expanded', 'false');
+}));
+
+// ── Reveal on scroll ──
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+<script>
+// ── Waiting list form ── posts to the waitlist-join Supabase Edge Function.
+// Plan and rules: ops repo plans/2026-10-22-waiting-list.md
+(function () {
+  const ENDPOINT = 'https://zzgmwdbvboalehafyict.supabase.co/functions/v1/waitlist-join';
+  const form = document.getElementById('wl-form');
+  const status = document.getElementById('wl-status');
+  const submit = document.getElementById('wl-submit');
+  const MSG = {
+    name: 'Please enter your name.',
+    phone: 'Please enter a UK mobile number, starting 07.',
+    area: 'Please enter your area or postcode.',
+    transmission: 'Please choose automatic, manual or either.',
+    times: 'Please tick at least one time that suits you.',
+    experience: 'Please choose one.',
+    test_date: 'Please enter a test date from today onwards, or leave it empty.',
+    consent: 'Please tick this box so Robert can WhatsApp you.',
+  };
+  const FIELD_EL = {
+    name: 'wl-name', phone: 'wl-phone', area: 'wl-area', test_date: 'wl-test', consent: 'wl-consent',
+    transmission: 'input[name="transmission"]', times: 'input[name="times"]', experience: 'input[name="experience"]',
+  };
+  const ERR_ID = { test_date: 'wl-test-err' };
+
+  function clearErrors() {
+    form.querySelectorAll('.f-err').forEach(e => { e.textContent = ''; });
+    form.querySelectorAll('[aria-invalid]').forEach(e => e.removeAttribute('aria-invalid'));
+    status.textContent = '';
+  }
+  function showErrors(fields) {
+    let first = null;
+    fields.forEach(f => {
+      const err = document.getElementById(ERR_ID[f] || 'wl-' + f + '-err');
+      if (err) err.textContent = MSG[f] || 'Please check this.';
+      const sel = FIELD_EL[f];
+      const els = sel && sel.startsWith('input') ? form.querySelectorAll(sel) : [document.getElementById(sel)];
+      els.forEach(el => el && el.setAttribute('aria-invalid', 'true'));
+      if (!first && els[0]) first = els[0];
+    });
+    if (first) first.focus();
+  }
+  function checkLocally(d) {
+    const bad = [];
+    if (!d.name) bad.push('name');
+    if (!/^(\+?44|0)7\d{9}$/.test(d.phone.replace(/[\s\-().]/g, '').replace(/^00/, '+'))) bad.push('phone');
+    if (!d.area) bad.push('area');
+    if (!d.transmission) bad.push('transmission');
+    if (!d.times.length) bad.push('times');
+    if (!d.experience) bad.push('experience');
+    if (!d.consent) bad.push('consent');
+    return bad;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearErrors();
+    const fd = new FormData(form);
+    const data = {
+      name: (fd.get('name') || '').trim(),
+      phone: (fd.get('phone') || '').trim(),
+      area: (fd.get('area') || '').trim(),
+      transmission: fd.get('transmission') || '',
+      times: fd.getAll('times'),
+      experience: fd.get('experience') || '',
+      test_date: fd.get('test_date') || '',
+      message: (fd.get('message') || '').trim(),
+      website: fd.get('website') || '',
+      consent: document.getElementById('wl-consent').checked,
+    };
+    const bad = checkLocally(data);
+    if (bad.length) { showErrors(bad); return; }
+
+    submit.disabled = true;
+    submit.textContent = 'Sending…';
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data),
+      });
+      const out = await res.json().catch(() => ({}));
+      if (res.ok && out.ok) {
+        form.hidden = true;
+        const done = document.getElementById('wl-done');
+        done.hidden = false;
+        done.focus();
+        return;
+      }
+      if (res.status === 400 && out.fields) showErrors(out.fields);
+      else if (res.status === 429) status.innerHTML = 'Lots of people are joining right now. Please try again in an hour, or <a href="https://wa.me/447872347686" target="_blank" rel="noopener">message Robert on WhatsApp</a>.';
+      else throw new Error('save failed');
+    } catch (_) {
+      status.innerHTML = 'Sorry, that didn\'t go through. Please try again, or <a href="https://wa.me/447872347686" target="_blank" rel="noopener">message Robert on WhatsApp</a>.';
+    } finally {
+      submit.disabled = false;
+      submit.textContent = 'Join the waiting list';
+    }
+  });
+})();
+</script>
+<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));}</script>
+<!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5fde75a7a3e54255b4dd181e5d51e692"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

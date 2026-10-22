@@ -132,6 +132,11 @@ Detail belongs in the private ops repo, not here.
   its own Stripe Payment Link, so a price change there also needs the Stripe link
   changed. The private gift card maker and code list live in the ops repo
   (`business/gift-cards/`); never put them on this public site.
+- **The waiting list form only works from d4driving.co.uk and localhost:4173.**
+  The `waitlist-join` Edge Function refuses any other origin. If the site moves,
+  add the new origin to `ALLOWED_ORIGINS` in the function (source in the ops
+  repo, `supabase/waitlist/`) and redeploy. The public can't touch the
+  `waitlist` table directly; only the admin page reads it (Integration Plan §37).
 - **Location pages carry Robert's own local knowledge.** Since the local SEO work
   (Oct 2026), road, junction and place names on the 23 location pages come only
   from his questionnaire answers in the private ops repo (`seo/questionnaires/`),

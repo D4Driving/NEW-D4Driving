@@ -185,6 +185,37 @@ tr.revoked td:last-child { text-decoration: none; opacity: 1; }
 .vis-status.draft  { background: var(--slate-lo); color: var(--ink-mid); }
 .vis-status.live   { background: var(--sage-lo); color: var(--slate); font-weight: 600; }
 .vis-status.locked { background: var(--red-lo); color: var(--red); font-weight: 600; }
+
+/* ─── WAITING LIST ─── */
+.tab .count {
+  display: inline-block; min-width: 20px; padding: 1px 7px; margin-left: 6px; border-radius: 99px;
+  background: var(--red); color: #fff; font-size: 11px; font-weight: 800; text-align: center;
+}
+.tab .count:empty { display: none; }
+.wl-filters { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 14px; }
+@media (max-width: 760px) { .wl-filters { grid-template-columns: 1fr; } }
+.wl-meta { font-size: 13px; color: var(--ink-mid); margin: 4px 0 14px; }
+.wl-person {
+  border: 1.5px solid var(--border); border-radius: 14px; padding: 16px 18px; background: #fff;
+  display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: start;
+}
+.wl-person + .wl-person { margin-top: 10px; }
+.wl-person.offered { border-color: var(--red-border); background: #fffafa; }
+.wl-name { font-size: 16px; font-weight: 800; color: var(--slate); }
+.wl-line { font-size: 13.5px; color: var(--ink-mid); margin-top: 4px; line-height: 1.5; }
+.wl-line b { color: var(--slate); }
+.wl-msg { font-size: 13.5px; color: var(--slate); margin-top: 8px; padding: 8px 12px; border-radius: 10px; background: var(--slate-lo); white-space: pre-wrap; }
+.wl-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.pill.soon { background: var(--red); color: #fff; }
+.pill.offer { background: var(--red-lo); color: var(--red); }
+.wl-actions { display: flex; flex-direction: column; gap: 8px; min-width: 150px; }
+.btn-wa { background: #1a7f45; color: #fff; text-align: center; text-decoration: none; display: block; }
+.btn-wa[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+@media (max-width: 620px) {
+  .wl-person { grid-template-columns: 1fr; }
+  .wl-actions { flex-direction: row; flex-wrap: wrap; min-width: 0; }
+  .wl-actions > * { flex: 1 1 120px; }
+}
 </style>
 </head>
 <body>
@@ -210,7 +241,7 @@ tr.revoked td:last-child { text-decoration: none; opacity: 1; }
 <!-- ════════ APP ════════ -->
 <div id="app" style="display:none;">
   <div class="topbar">
-    <div class="brand">D4Driving · Route Admin</div>
+    <div class="brand">D4Driving · Admin</div>
     <div class="who" id="who"></div>
     <button class="btn btn-ghost btn-sm" id="signout" style="color:#fff;border-color:rgba(255,255,255,.3);">Sign out</button>
   </div>
@@ -219,6 +250,7 @@ tr.revoked td:last-child { text-decoration: none; opacity: 1; }
     <button class="tab active" data-panel="routes">Routes</button>
     <button class="tab" data-panel="members">Members</button>
     <button class="tab" data-panel="centres">Test centres</button>
+    <button class="tab" data-panel="waitlist">Waiting list<span class="count" id="wl-count"></span></button>
   </div>
 
   <!-- ─── ROUTES ─── -->
@@ -316,6 +348,52 @@ tr.revoked td:last-child { text-decoration: none; opacity: 1; }
         below that it just undercuts the Complete pack.
       </p>
       <div id="centre-list"></div>
+    </div>
+  </div>
+
+  <!-- ─── WAITING LIST ─── -->
+  <div class="page panel" id="panel-waitlist" style="display:none;">
+    <div class="msg" id="wl-msg"></div>
+    <div class="card">
+      <h2>Offer a slot</h2>
+      <p class="hint">
+        Type the slot, narrow the list down if you like, then press <b>WhatsApp</b> next to someone.
+        WhatsApp opens with the message written for you; you press send. Their entry is then marked as offered.
+      </p>
+      <div class="wl-filters">
+        <label class="f">
+          <span>Slot to offer</span>
+          <input class="inp" id="wl-slot" maxlength="80" placeholder="e.g. Tue 28 Oct, 3pm, 2 hours">
+        </label>
+        <label class="f">
+          <span>Gearbox</span>
+          <select class="inp" id="wl-f-gear">
+            <option value="">Anyone</option>
+            <option value="automatic">Automatic (and either)</option>
+            <option value="manual">Manual (and either)</option>
+          </select>
+        </label>
+        <label class="f">
+          <span>Free at</span>
+          <select class="inp" id="wl-f-time">
+            <option value="">Any time</option>
+            <option value="weekday_morning">Weekday mornings</option>
+            <option value="weekday_afternoon">Weekday afternoons</option>
+            <option value="weekday_evening">Weekday evenings</option>
+            <option value="saturday">Saturdays</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Who's waiting</h2>
+      <p class="wl-meta" id="wl-meta"></p>
+      <div id="wl-list"></div>
+      <p class="hint" style="margin:16px 0 0;">
+        <b>Booked</b> and <b>Remove</b> delete the entry straight away. Entries are also deleted
+        automatically 3 months after someone joins or last updates their details.
+      </p>
     </div>
   </div>
 </div>
@@ -442,6 +520,7 @@ async function loadAll() {
   renderCentreSelects();
   renderCentres();
   loadEntitlements();
+  loadWaitlist();
   // Deliberately does NOT re-render the open editor. Rebuilding it from the
   // database throws away whatever is currently typed in, so only an explicit
   // action (picking a route, uploading one) may do that.
@@ -855,6 +934,110 @@ async function saveCentres() {
   flash('c-saved');
   loadAll();
 }
+
+// ─── WAITING LIST ──────────────────────────────────────────────────────────
+// Sign-ups arrive through the waitlist-join Edge Function; this tab only reads,
+// marks and deletes. Nothing is sent from here: the WhatsApp button opens
+// WhatsApp with a written message and Robert presses send himself.
+// Plan: ops repo plans/2026-10-22-waiting-list.md
+const WL_TIMES = {
+  weekday_morning: 'Weekday mornings', weekday_afternoon: 'Weekday afternoons',
+  weekday_evening: 'Weekday evenings', saturday: 'Saturdays',
+};
+const WL_LEVEL = { beginner: 'Complete beginner', some: 'Had some lessons', nearly: 'Nearly test-ready' };
+const WL_GEAR = { automatic: 'Automatic', manual: 'Manual', either: 'Either' };
+let waitlist = [];
+
+async function loadWaitlist() {
+  const { data, error } = await db.from('waitlist')
+    .select('id,created_at,name,phone,area,transmission,times,experience,test_date,message,status,offered_at,offered_slot')
+    .order('created_at', { ascending: true });
+  if (error) return msg('wl-msg', error.message, 'err');
+  waitlist = data;
+  $('wl-count').textContent = data.length ? String(data.length) : '';
+  renderWaitlist();
+}
+
+function daysAgo(iso) {
+  const d = Math.floor((Date.now() - new Date(iso).getTime()) / 86400000);
+  return d === 0 ? 'today' : d === 1 ? 'yesterday' : d + ' days ago';
+}
+function shortDate(iso) {
+  return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+}
+function waLink(p, slot) {
+  const first = p.name.split(' ')[0];
+  const text = 'Hi ' + first + ", it's Robert from D4Driving. A lesson slot has come up: " + slot +
+    '. Would you like it? Reply here to grab it.';
+  return 'https://wa.me/' + p.phone.replace('+', '') + '?text=' + encodeURIComponent(text);
+}
+
+function renderWaitlist() {
+  const gear = $('wl-f-gear').value, time = $('wl-f-time').value;
+  const slot = $('wl-slot').value.trim();
+  const shown = waitlist.filter(p =>
+    (!gear || p.transmission === gear || p.transmission === 'either') &&
+    (!time || p.times.includes(time)));
+
+  $('wl-meta').textContent = waitlist.length
+    ? 'Showing ' + shown.length + ' of ' + waitlist.length + ', longest waiting first.' +
+      (slot ? '' : ' Type a slot above to switch on the WhatsApp buttons.')
+    : '';
+
+  if (!waitlist.length) { $('wl-list').innerHTML = '<p class="empty">Nobody is on the waiting list yet.</p>'; return; }
+  if (!shown.length) { $('wl-list').innerHTML = '<p class="empty">Nobody matches those filters.</p>'; return; }
+
+  const soon = new Date(); soon.setDate(soon.getDate() + 42);
+  $('wl-list').innerHTML = shown.map(p => {
+    const testSoon = p.test_date && new Date(p.test_date) <= soon;
+    return '<div class="wl-person' + (p.status === 'offered' ? ' offered' : '') + '">' +
+      '<div>' +
+        '<div class="wl-name">' + esc(p.name) + '</div>' +
+        '<div class="wl-line"><b>' + esc(p.area) + '</b> · ' + esc(WL_GEAR[p.transmission]) +
+          ' · ' + esc(WL_LEVEL[p.experience]) + '</div>' +
+        '<div class="wl-line">' + p.times.map(t => esc(WL_TIMES[t])).join(', ') + '</div>' +
+        '<div class="wl-line">' + esc(p.phone.replace(/^\+44/, '0').replace(/^(\d{5})(\d+)/, '$1 $2')) +
+          ' · joined ' + daysAgo(p.created_at) + '</div>' +
+        (p.message ? '<div class="wl-msg">' + esc(p.message) + '</div>' : '') +
+        '<div class="wl-tags">' +
+          (p.test_date ? '<span class="pill' + (testSoon ? ' soon' : '') + '">Test ' + shortDate(p.test_date) + '</span>' : '') +
+          (p.status === 'offered' ? '<span class="pill offer">Offered ' + shortDate(p.offered_at) +
+            (p.offered_slot ? ': ' + esc(p.offered_slot) : '') + '</span>' : '') +
+        '</div>' +
+      '</div>' +
+      '<div class="wl-actions">' +
+        '<a class="btn btn-wa btn-sm" target="_blank" rel="noopener" data-wa="' + p.id + '"' +
+          (slot ? ' href="' + esc(waLink(p, slot)) + '"' : ' aria-disabled="true"') + '>WhatsApp</a>' +
+        '<button class="btn btn-slate btn-sm" data-wl-booked="' + p.id + '">Booked</button>' +
+        '<button class="btn btn-ghost btn-sm" data-wl-remove="' + p.id + '">Remove</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  document.querySelectorAll('[data-wa]').forEach(a => a.addEventListener('click', async () => {
+    const s = $('wl-slot').value.trim();
+    if (!s) return;
+    const { error } = await db.from('waitlist')
+      .update({ status: 'offered', offered_at: new Date().toISOString(), offered_slot: s })
+      .eq('id', a.dataset.wa);
+    if (error) return msg('wl-msg', error.message, 'err');
+    loadWaitlist();
+  }));
+  const del = async (id, question) => {
+    const p = waitlist.find(x => String(x.id) === id);
+    if (!p || !confirm(question.replace('NAME', p.name))) return;
+    const { error } = await db.from('waitlist').delete().eq('id', id);
+    if (error) return msg('wl-msg', error.message, 'err');
+    msg('wl-msg', '', 'ok');
+    loadWaitlist();
+  };
+  document.querySelectorAll('[data-wl-booked]').forEach(b => b.addEventListener('click',
+    () => del(b.dataset.wlBooked, 'NAME is booked? This takes them off the waiting list.')));
+  document.querySelectorAll('[data-wl-remove]').forEach(b => b.addEventListener('click',
+    () => del(b.dataset.wlRemove, 'Remove NAME from the waiting list? This deletes their details.')));
+}
+
+['wl-slot', 'wl-f-gear', 'wl-f-time'].forEach(id => $(id).addEventListener('input', renderWaitlist));
 </script>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5fde75a7a3e54255b4dd181e5d51e692"}'></script><!-- End Cloudflare Web Analytics -->
 </body>

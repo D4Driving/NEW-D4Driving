@@ -1153,6 +1153,10 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       </div>
       <div class="avail-footer">
         <p style="margin-bottom:10px;">Brand new to driving? Start with a <a href="https://cal.com/d4driving/driving-assessment" target="_blank" rel="noopener">90-minute assessment lesson</a> rather than a standard hour — it lets Robert see where you're at and plan from there.</p>
+        <div class="avail-waitlist">
+          <p><strong>Nothing that fits?</strong> Join the waiting list and Robert will WhatsApp you when a suitable slot comes up, including cancellations.</p>
+          <a href="waiting-list.html" class="btn btn-red" style="font-size:13px;padding:11px 20px;">Join the waiting list</a>
+        </div>
         <p>Don't see a time that works? <a href="https://wa.me/447872347686?text=Hi%20Robert%2C%20I%27d%20like%20to%20book%20a%20driving%20lesson%20but%20can't%20find%20a%20suitable%20slot.%20Could%20you%20help%3F" target="_blank" rel="noopener">Message Robert on WhatsApp</a> to arrange a custom time.</p>
       </div>
     </div>
@@ -1190,6 +1194,9 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 .avail-footer { text-align: center; font-size: 13px; color: var(--ink-low); padding-top: 16px; border-top: 1px solid var(--border); }
 .avail-footer a { color: var(--red); font-weight: 700; text-decoration: none; }
 .avail-footer a:hover { text-decoration: underline; }
+.avail-waitlist { display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; margin:0 auto 16px; padding:16px 20px; max-width:720px; border-radius:12px; background:var(--red-lo); border:1px solid var(--red-border); }
+.avail-waitlist p { margin:0; font-size:14px; color:var(--slate); text-align:left; flex:1 1 300px; }
+.avail-footer .avail-waitlist a.btn { color:#fff; text-decoration:none; }
 @keyframes avail-rotate { to { transform: rotate(360deg); } }
 .avail-spin { animation: avail-rotate .8s linear infinite; display: inline-block; }
 #avail-updated.is-stale { color: var(--red); }
@@ -1297,7 +1304,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 
     const grid = document.getElementById('avail-grid');
     if (!opt.slots.length) {
-      grid.innerHTML = `<div class="avail-empty">No ${opt.label} slots free in the next 45 days — try another length above, or <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a>.</div>`;
+      grid.innerHTML = `<div class="avail-empty">No ${opt.label} slots free in the next 45 days — try another length above, or <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a>. Or <a href="waiting-list.html" style="color:var(--red);font-weight:700;">join the waiting list</a> and Robert will WhatsApp you when a slot comes up.</div>`;
       return;
     }
     renderSlots(opt.slots.map(s => ({
@@ -1322,7 +1329,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   function renderSlots(slots, staleMins, opt) {
     const grid = document.getElementById('avail-grid');
     if (!slots.length) {
-      grid.innerHTML = '<div class="avail-empty">No availability found in the next 45 days — please <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert</a> directly.</div>';
+      grid.innerHTML = '<div class="avail-empty">No availability found in the next 45 days — please <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert</a> directly. Or <a href="waiting-list.html" style="color:var(--red);font-weight:700;">join the waiting list</a> and Robert will WhatsApp you when a slot comes up.</div>';
       return;
     }
     let html = '';
@@ -1396,7 +1403,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       const anySlots = (Array.isArray(data.options) && data.options.some(o => o.slots && o.slots.length))
                      || (data.slots && data.slots.length);
       if (!anySlots) {
-        grid.innerHTML = `<div class="avail-empty">No availability found in the next 45 days — <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to arrange a time.</div>`;
+        grid.innerHTML = `<div class="avail-empty">No availability found in the next 45 days — <a href="https://wa.me/447872347686" style="color:var(--red);font-weight:700;">message Robert on WhatsApp</a> to arrange a time. Or <a href="waiting-list.html" style="color:var(--red);font-weight:700;">join the waiting list</a> and Robert will WhatsApp you when a slot comes up.</div>`;
         return;
       }
       renderCurrent();
