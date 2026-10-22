@@ -1073,7 +1073,7 @@ in the ops repo (`plans/2026-10-22-waiting-list.md`).
   - It upserts on the phone number, so joining again updates the entry and
     keeps its place in the queue.
   - The admin reads, updates and deletes through RLS, using `is_admin()`.
-  - Verified by request: anon reads and inserts both return 401.
+  - Verified by request: anon reads and inserts both return 401. Robert tested the admin tab live (Remove) on 22 Oct.
 - **Retention:** the pg_cron job `waitlist-purge` deletes entries 3 months
   after they were last updated, every night at 03:15. "Booked" and "Remove" in
   the admin page delete straight away.
@@ -1082,9 +1082,10 @@ in the ops repo (`plans/2026-10-22-waiting-list.md`).
   - each person's WhatsApp button opens `wa.me` with the offer already written,
     and marks them as offered
   - a test date within 6 weeks shows in red
-- **Email alert to info@** on each join, through the Brevo API, but only once
-  Robert stores a `BREVO_API_KEY` secret in Supabase. Until then entries are
-  still saved; only the email is skipped.
+- **Email alert to info@** on each join, through the Brevo API. The secret
+  `BREVO_API_KEY` was set by Robert on 22 Oct 2026, from a Brevo key limited to
+  transactional email, and the test alert arrived. Without the key, entries are
+  still saved and only the email is skipped.
 - **Privacy policy:** now v1.1. New clause 3.1(g) (consent), a retention row,
   and Supabase, Brevo and WhatsApp added under third parties.
 - The function and migration source are in the ops repo under
@@ -1097,7 +1098,6 @@ in the ops repo (`plans/2026-10-22-waiting-list.md`).
 | Item | Owner | Notes |
 |---|---|---|
 | **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Executing since 25 Sep 2026, at Robert's pace. Pilot page live 3 Oct (§31). Batch 2, the six Peterborough route and test pages, is under way: 4 of 6 live (§32). Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
-| **Waiting list email alert** | Robert | Create a Brevo API key and store it as the Supabase secret `BREVO_API_KEY` (steps given 22 Oct 2026). Until then, sign-ups are saved but no email is sent (§37) |
 | **Sitemap `lastmod` dates** | Robert | Optional: have the sync workflow add each page's last-changed date (local SEO plan, Task 17). His decision |
 | **Cal.com T&C checkboxes** | Robert + Rakesh | Add required booking question to every event type: "I agree to D4Driving's Terms & Conditions: d4driving.co.uk/terms.html" |
 | **Rakesh's Cal.com assessment price** | Rakesh | His 1.5hr assessment event displays no price — should show £45 |
