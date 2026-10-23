@@ -2,6 +2,12 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-10-23
+- Published a new article, "Peterborough Driving Test Centre: A Test-Day Guide" — a test-day walkthrough covering getting there, parking, the waiting area, the eyesight check, the drive, the result, using your own car, what to bring, bad weather, and common myths about the Fengate test centre. Local detail (parking, directions, timing) comes only from Robert's own answers to the site's local-knowledge questionnaire, fact-checked by him on 23 Oct; rules and the DVSA pass rate (52.8% at Peterborough vs 50.0% across Great Britain, April 2025–March 2026) link straight to GOV.UK/DVSA. The page is listed on the blog, in the sitemap, and the site's offline cache was bumped so returning visitors see it.
+- _Commits: d771f26_
+- _Plan doc status: already documented — the same commit added Integration Plan section 38, covering the page, Robert's choices, sourcing and the pass-rate figure in full._
+- _CLAUDE.md status: accurate — today's work doesn't contradict "Where things live", "Standing rules" or "Gotchas"; it follows the existing local-knowledge sourcing and fact-checking process (extended here to a new test-centre guide rather than one of the 23 location pages) and bumped the service worker cache version as the gotcha already instructs. The "In flight" table is unchanged and still correct: nothing in today's commit shows the `lesson-credit-ledger` branch or the ops-repo local SEO rewrite landing on main._
+
 ## 2026-10-19
 - Launched a new driving lesson gift cards page: seven Stripe-powered cards (1-hour, 2-hour, each lesson block, and a "choose the amount" option from £42 to £1,000), with terms, how-it-works and FAQ agreed with Robert. It's linked from the Extras menu, the mobile menu and under the homepage lesson calculator, and added to the sitemap. The private gift card maker and the real code list stay off this public site, in the ops repo.
 - Raised the YouTube subscriber count shown across the site from 32,000+ to 36,000+, in all 128 files that mention it (homepage, mock test page, and every article's author bio).
