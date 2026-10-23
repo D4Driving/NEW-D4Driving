@@ -1095,6 +1095,37 @@ in the ops repo (`plans/2026-10-22-waiting-list.md`).
 - The function and migration source are in the ops repo under
   `supabase/waitlist/`. Cache v31.
 
+
+---
+
+## 38. Peterborough Test Centre Guide — ✅ 23 October 2026
+
+A new page, `peterborough-driving-test-centre.html`, modelled on a competitor's
+Fengate guide (ops `reports/2026-10-19-mpl-website-comparison.md`, item 3). It
+uses the article layout, and is listed in `articles.json`, the sitemap (0.7, also
+in `PRIORITY`), and Article, Breadcrumb and FAQPage schema.
+
+- **Robert's choices:**
+  - Peterborough only
+  - a Google Maps link, not an embed
+  - one of his YouTube videos (`AZMB9sCyrI8`, nocookie, lazy-loaded)
+  - main button: Peterborough test prep
+  - written about Robert in the third person
+- **Sources:**
+  - Local detail comes only from his answers 1, 4, 7, 8 and 17–22 in ops
+    `seo/questionnaires/peterborough.md`.
+  - Rules and figures come from GOV.UK and DVSA, linked inline. They're listed
+    with dates in ops `seo/test-centre-guide/peterborough-official-facts.md`.
+- **Pass rate:** 52.8% (Apr 2025–Mar 2026) against 50.0% for GB, from DVSA
+  table DRT122A. **Refresh it each summer**, when DVSA publishes the next year.
+- **Myths checked:**
+  - Kept: the AA's 56% kerb figure (May 2025 survey), and stalling, crossing
+    hands, wrong turns and quotas (DVSA and GOV.UK).
+  - The mirrors and radio points appear as Robert's own advice, at his request.
+- **The checker flags "Fengate"** because it isn't word for word in an answer.
+  Robert confirmed the address in answer 22 ("address is right"), so that flag is
+  known and accepted.
+- Robert fact-checked the draft and said yes on 23 Oct. Cache v32.
 ---
 
 ## Pending Tasks

@@ -181,6 +181,7 @@ jobs:
             'blog.html': '0.8',
             'gift-cards.html': '0.8',
             'waiting-list.html': '0.7',
+            'peterborough-driving-test-centre.html': '0.7',
             'mock-test.html': '0.8',
             'starter-pack.html': '0.8',
             'routes.html': '0.7',
