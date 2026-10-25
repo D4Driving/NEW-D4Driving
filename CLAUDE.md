@@ -73,16 +73,19 @@ Detail belongs in the private ops repo, not here.
   free time than he really has. Never state a specific date or a count of open
   days for him; his page deliberately says only that he "usually has space" and
   sends people to WhatsApp to confirm. Robert's own Cal.com IS authoritative.
-- **The YouTube subscriber count lives in 128 files.** Currently **36,000+**
-  (updated 19 Oct 2026, was 32,000+). It appears twice in every article page's
-  author bio and newsletter box, plus `index.html` (hero stat, about copy, the
-  YouTube section, one FAQ answer) and `mock-test.html` (og:description, intro
-  line, offer list, offer box). The homepage hero writes it as
-  `36<span>k+</span>` and the mock test offer box as `36K+`, so a search for
-  "36,000" misses both. Those mock test lines said 21K+ until 27 Sep 2026: past
-  replaces only searched for the previous number. Update with a global replace
-  across `*.html`, and check `article-template.html` is included so new
-  articles inherit the right number.
+- **The headline stats live in several places; update them all together.**
+  - **YouTube subscribers:** currently **37,000+** (25 Oct 2026; was 36,000+). It
+    appears twice in each remaining article (the author bio and the YouTube box),
+    including `article-template.html`, plus `index.html` and `mock-test.html`. The
+    homepage hero writes it as `37<span>k+</span>` and the mock test offer box as
+    `37K+`, so search for all three forms.
+  - **Local passes:** **440+**. **First-time pass rate:** **84%**.
+  - Both of those appear in the `index.html` hero (`440<span>+</span>`,
+    `84<span>%</span>`), its meta and og descriptions, two FAQ answers and their
+    FAQ schema, and in `nauka-jazdy-peterborough.html` (the badge, the proof row
+    and the meta description).
+  - Never replace a bare "430": image file names contain it. Match "430+" and
+    "430<span>" only.
 - **Article pages are static and hand-maintained.** Nothing regenerates them
   since Soro was cancelled. Re-run `tools/gen-articles.js` if articles change.
 - **Availability comes from Cal.com via a Cloudflare Worker, not the GitHub
