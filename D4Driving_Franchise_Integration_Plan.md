@@ -1168,6 +1168,29 @@ page (local SEO plan Task 17, Robert's yes on 25 Oct).
   139 pages, matching the sitemap.
 ---
 
+## 40. 52 Near-Duplicate Articles Merged — ✅ 25 October 2026
+
+Search Console (data to 16 Oct) had 33 pages indexed and 111 that Google chose not
+to index, mostly groups of articles answering the same question. With Robert's yes,
+52 articles in 17 groups now forward to the strongest page in their group.
+- **Which page was kept:** a location page if the group has one, then a page already
+  indexed, then the most impressions, then the plainest title. Location page bodies
+  were not touched.
+- **How the forwards work:** each old file is a small forwarding page (`noindex`,
+  canonical, instant refresh), the same pattern as the Wix redirect folders (§27). The
+  old addresses keep working.
+- **Links:**
+  - links on 35 pages now point straight at the kept pages, including the 404
+    forwarder and four of the Wix folders, so there are no double hops
+  - `blog.html` lost 52 cards and gained the test centre guide card it was missing
+  - `articles.json` was regenerated with 74 articles
+- **Sitemap:** the job now skips any page containing `http-equiv="refresh"`, so the
+  sitemap lists 87 real pages. Cache v34.
+- **Don't edit the forwarding pages as articles.** The group list and reasons are in
+  ops `reports/2026-10-25-article-overlap-draft.md`. Check Search Console's indexed
+  count in 4–8 weeks.
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |

@@ -141,6 +141,11 @@ Detail belongs in the private ops repo, not here.
   add the new origin to `ALLOWED_ORIGINS` in the function (source in the ops
   repo, `supabase/waitlist/`) and redeploy. The public can't touch the
   `waitlist` table directly; only the admin page reads it (Integration Plan §37).
+- **52 article files are forwarding pages now** (merged 25 Oct 2026, Integration Plan §40).
+  Don't link to them, and don't recreate an article on the same topic: extend the kept
+  page instead. The sitemap skips any page with `http-equiv="refresh"`. `blog.html` is
+  the source for `articles.json` (`node tools/gen-articles.js .`), so a new article needs
+  a card there, not just an `articles.json` entry.
 - **Location pages carry Robert's own local knowledge.** Since the local SEO work
   (Oct 2026), road, junction and place names on the 23 location pages come only
   from his questionnaire answers in the private ops repo (`seo/questionnaires/`),
