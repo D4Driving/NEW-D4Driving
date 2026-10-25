@@ -841,7 +841,7 @@ The rules live in the ops repo's `seo/page-format.md`.
 
 ---
 
-## 32. Local SEO Batch 2: Peterborough Route and Test Pages — in progress
+## 32. Local SEO Batch 2: Peterborough Route and Test Pages — ✅ 25 October 2026
 
 Six pages get Robert's own test-centre knowledge, one at a time as his answers
 come in. This is the ops repo's local SEO plan, Task 12, in the format set in
@@ -885,7 +885,33 @@ come in. This is the ops repo's local SEO plan, Task 12, in the format set in
   or Dogsthorpe in the north), the test-time factor and the car park rule.
   Three old links were fixed. Robert allowed this test-day page fewer place
   names. Never crawled before, so Robert requests indexing.
-- Still to come: the review-session and success-story pages.
+- ✅ **25 Oct 2026: `review-test-preparation-sessions-peterborough.html`.** A
+  new section, "What Robert's 4-hour test preparation session in Peterborough
+  covers", lists:
+  - the DVSA curriculum and risk checks
+  - the manoeuvres
+  - the road types
+  - the roundabouts, from city-centre minis through Bretton and Ravensthorpe to
+    the multi-lane ones
+  - two live test routes picked at random (one by sat nav, one by signs)
+  - the closing mock test and debrief
+
+  A second section, "Independent driving on the Peterborough test", gives the
+  two main sign-following routes, through Boongate Roundabout and Fletton
+  Parkway. It doesn't reuse answer 8 (myths), which the test centre guide (§38)
+  already uses. Two links were fixed, one of which pointed to Rakesh's page.
+  9 sourced names.
+- ✅ **25 Oct 2026: `test-preparation-success-story-peterborough.html`.** The
+  invented story at the top was replaced with a real, anonymous one from
+  Robert's answer 16:
+  - found through YouTube, test within a month
+  - the 4-hour session and a mock test with a few faults
+  - 5 more hours, and a second mock before he used Robert's car
+  - a pass and a Google review
+
+  Links fixed. Robert allowed no place names on this page (min_local 0).
+- Both fact-checked by Robert ("all OK, yes publish both"). Cache v33. **Batch
+  2 is complete: 6 of 6 live.**
 
 ---
 
@@ -1132,7 +1158,7 @@ in `PRIORITY`), and Article, Breadcrumb and FAQPage schema.
 
 | Item | Owner | Notes |
 |---|---|---|
-| **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Executing since 25 Sep 2026, at Robert's pace. Pilot page live 3 Oct (§31). Batch 2, the six Peterborough route and test pages, is under way: 4 of 6 live (§32). Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
+| **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Executing since 25 Sep 2026, at Robert's pace. Pilot page live 3 Oct (§31). Batch 2, the six Peterborough route and test pages, is complete: all 6 live by 25 Oct (§32). Next is batch 3 (Peterborough general pages). Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
 | **Sitemap `lastmod` dates** | Robert | Optional: have the sync workflow add each page's last-changed date (local SEO plan, Task 17). His decision |
 | **Cal.com T&C checkboxes** | Robert + Rakesh | Add required booking question to every event type: "I agree to D4Driving's Terms & Conditions: d4driving.co.uk/terms.html" |
 | **Rakesh's Cal.com assessment price** | Rakesh | His 1.5hr assessment event displays no price — should show £45 |
