@@ -211,6 +211,9 @@ jobs:
           };
           const files = fs.readdirSync('.')
             .filter(f => f.endsWith('.html') && !EXCLUDE.has(f))
+            /* Forwarding pages (articles merged into another page, 25 Oct 2026) are not real
+               pages: listing them would invite Google to crawl a redirect. */
+            .filter(f => !fs.readFileSync(f, 'utf8').includes('http-equiv="refresh"'))
             .sort((a, b) => (PRIORITY[b] || '0.6').localeCompare(PRIORITY[a] || '0.6') || a.localeCompare(b));
           const urls = files.map(f => {
             const loc = f === 'index.html' ? `${SITE}/` : `${SITE}/${f}`;
