@@ -102,6 +102,10 @@ Detail belongs in the private ops repo, not here.
   that does fire succeeds. If hourly freshness matters, trigger it externally via
   the `workflow_dispatch` API; the staleness banner on the page is the safety net,
   not the fix.
+- **The sitemap's `lastmod` reads each page's JSON-LD `dateModified`.** When you
+  change an article's content, update its `dateModified`, or the sitemap keeps the old
+  date. Don't bump it for site-wide sweeps such as the subscriber count. Pages without
+  JSON-LD fall back to their last commit date (Integration Plan §39).
 - **Bump the service worker cache version** (`sw.js`) on significant changes,
   or returning visitors keep the old assets.
 - **48-hour booking notice lives in two systems** — `LEAD_HOURS` in

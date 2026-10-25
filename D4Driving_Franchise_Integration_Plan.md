@@ -1154,12 +1154,25 @@ in `PRIORITY`), and Article, Breadcrumb and FAQPage schema.
 - Robert fact-checked the draft and said yes on 23 Oct. Cache v32.
 ---
 
+## 39. Sitemap Last-Modified Dates — ✅ 25 October 2026
+
+The hourly **Availability & Sitemap Sync** job now writes a `<lastmod>` date for every
+page (local SEO plan Task 17, Robert's yes on 25 Oct).
+- **Where the date comes from:** each page's own JSON-LD date (`dateModified`, else
+  `datePublished`). Pages without one use the file's last commit date, which is why
+  the checkout now fetches full history (`fetch-depth: 0`).
+- **Why not git dates alone:** the 19 Oct subscriber-count sweep touched 128 pages.
+  Git dates would mark them all as changed that day, and Google discounts dates that
+  don't track real content changes.
+- **Checked:** 139 of 139 URLs dated, with 117 distinct dates. Google had discovered
+  139 pages, matching the sitemap.
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
 |---|---|---|
 | **Local SEO — real links + genuinely local pages** | Robert + Claude | Spec and 17-task plan in the private ops repo (`specs/` and `plans/2026-09-24-local-seo*`). Executing since 25 Sep 2026, at Robert's pace. Pilot page live 3 Oct (§31). Batch 2, the six Peterborough route and test pages, is complete: all 6 live by 25 Oct (§32). Next is batch 3 (Peterborough general pages). Resume from `LOCAL-SEO-STATE.md` in the ops repo. The 23 location pages' article bodies will be rewritten — don't edit them in other work |
-| **Sitemap `lastmod` dates** | Robert | Optional: have the sync workflow add each page's last-changed date (local SEO plan, Task 17). His decision |
 | **Cal.com T&C checkboxes** | Robert + Rakesh | Add required booking question to every event type: "I agree to D4Driving's Terms & Conditions: d4driving.co.uk/terms.html" |
 | **Rakesh's Cal.com assessment price** | Rakesh | His 1.5hr assessment event displays no price — should show £45 |
 | **Google review count in schema** | Robert + Claude | `aggregateRating` in index.html is a fixed number (36 at Aug 2026) — refresh every couple of months |
