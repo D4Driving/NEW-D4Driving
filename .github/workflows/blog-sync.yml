@@ -21,7 +21,11 @@ jobs:
       # hour (24 lessons start then) and offering an hour he may not work.
       TZ: Europe/London
     steps:
+      # Full history: the sitemap's lastmod falls back to each file's last commit
+      # date, and a shallow clone would give every file the same date.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
@@ -169,7 +173,21 @@ jobs:
         run: |
           node << 'EOF'
           const fs = require('fs');
+          const { execSync } = require('child_process');
           const SITE = 'https://d4driving.co.uk';
+          /* lastmod: the page's own JSON-LD date first (dateModified, else datePublished),
+             because those change only when the content does. Git dates alone would mark
+             all 128 article pages "changed" whenever a site-wide sweep touches them (the
+             subscriber count, 19 Oct 2026), and Google discounts lastmod values that don't
+             track real changes. Pages without a JSON-LD date use their last commit date. */
+          function lastmod(f) {
+            const html = fs.readFileSync(f, 'utf8');
+            const m = html.match(/"dateModified"\s*:\s*"(\d{4}-\d{2}-\d{2})/) ||
+                      html.match(/"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})/);
+            if (m) return m[1];
+            try { return execSync(`git log -1 --format=%cs -- "${f}"`, { encoding: 'utf8' }).trim(); }
+            catch { return ''; }
+          }
           /* Also left out: pages robots.txt blocks (admin, mock-test consent). Listing
              them sent Google a contradiction: invited by the sitemap, barred by robots. */
           const EXCLUDE = new Set(['article-template.html', 'blog-template.html', 'theory_quiz_promo.html', '404.html',
@@ -197,7 +215,8 @@ jobs:
           const urls = files.map(f => {
             const loc = f === 'index.html' ? `${SITE}/` : `${SITE}/${f}`;
             const pri = PRIORITY[f] || '0.6';
-            return `  <url>\n    <loc>${loc}</loc>\n    <priority>${pri}</priority>\n  </url>`;
+            const lm = lastmod(f);
+            return `  <url>\n    <loc>${loc}</loc>\n${lm ? `    <lastmod>${lm}</lastmod>\n` : ''}    <priority>${pri}</priority>\n  </url>`;
           }).join('\n');
           fs.writeFileSync('sitemap.xml',
             `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
