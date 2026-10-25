@@ -1191,6 +1191,14 @@ to index, mostly groups of articles answering the same question. With Robert's y
   count in 4–8 weeks.
 ---
 
+## 41. Stats Refreshed: 37,000+, 440+, 84% — ✅ 25 October 2026
+
+Robert's new figures are 37,000+ YouTube subscribers (was 36,000+), 440+ local passes
+(was 430+) and an 84% first-time pass rate (was 83%). They're updated in all 78 files
+where they appear, with none of the old values left. That includes the Polish page and
+the homepage FAQ schema. Cache v35. The full list of places is in `CLAUDE.md`.
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
