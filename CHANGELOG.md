@@ -2,6 +2,16 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-11-01
+- Launched a new page, `test-ready.html`, selling two printable PDF revision products through Payhip: the Test Ready Pack (£12) and a Complete Bundle (£24) that adds a supervisor's Practice at Home guide. It's linked from six related articles and an upsell on the starter pack page — a soft launch via Robert's YouTube poll, not yet on the homepage or in the menu.
+- Added the Test Ready Pack to the homepage's Extras dropdown and mobile menu after all, at Robert's request the same day.
+- Fixed the starter pack page, which said teaching started in 2009 — it now matches the footer, articles and Test Ready Pack at 2017.
+- Made the homepage menu and logo readable over the dark hero before the nav turns white on scroll: menu links are now light instead of barely-visible dark text, and the logo sits on a small white card on the ten pages with a dark-hero nav (home, 404, gift cards, mock test, Polish page, Rakesh, privacy, terms, waiting list, test-ready).
+- Fixed the Polish page's YouTube subscriber count, which still said "25 tys." — missed in the October stat sweeps because that page writes the number in a different form (the other two forms were already caught).
+- _Commits: c20698a, 6550e17, 91d70ef, 729603e, dd5f879, 1d9205c_
+- _Plan doc status: already documented — each commit added or updated its own section in D4Driving_Franchise_Integration_Plan.md (new §42 for the Test Ready Pack, with the menu addition, starter-pack date fix and nav/logo readability work folded into §42 and the existing readability-task Pending row as they landed)._
+- _CLAUDE.md status: accurate — the 1d9205c commit already added the Polish page's "tys." form to the YouTube-subscriber gotcha itself, so nothing further needed changing there. The "In flight" table is unchanged and still correct: nothing in today's commits shows the `lesson-credit-ledger` branch or the ops-repo local SEO rewrite landing on main._
+
 ## 2026-10-25
 - Finished local SEO batch 2: the test-preparation-session review page and the success-story page now carry Robert's own fact-checked detail (what his 4-hour test prep session covers, the two independent-driving routes, and a real anonymous pass story replacing the old invented one), with a couple of old broken links fixed along the way. That's 6 of 6 pages in this batch now live.
 - Added last-modified dates to the sitemap, taken from each page's own "last changed" date rather than its git history, so a site-wide wording tweak (like today's stats update) doesn't make every page look freshly changed to Google.
