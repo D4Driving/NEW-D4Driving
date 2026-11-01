@@ -1215,8 +1215,9 @@ Stripe with home-made delivery.
   renders of the PDF covers; `test-ready-og.jpg` (1200×630) is the social preview.
 - **Links to it:** a callout box above the author box on six articles (test-day tips,
   common faults, manoeuvres, parallel parking, independent driving, pre-test
-  checklist) and an upsell section on `starter-pack.html`. Not on the homepage or in
-  the menu, by Robert's choice; add them if sales justify it. The articles'
+  checklist) and an upsell section on `starter-pack.html`. Also in the homepage's
+  Extras dropdown (after Gift Cards) and the mobile menu, added the same day at
+  Robert's request (cache v38). There's no homepage section for it. The articles'
   `dateModified` was left alone, because a promo box isn't new article content. No
   location pages were touched.
 - **SEO:** one h1, non-www canonical, OG/Twitter, Product (×2) and FAQ schema. In the
