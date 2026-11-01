@@ -78,7 +78,9 @@ Detail belongs in the private ops repo, not here.
     appears twice in each remaining article (the author bio and the YouTube box),
     including `article-template.html`, plus `index.html` and `mock-test.html`. The
     homepage hero writes it as `37<span>k+</span>` and the mock test offer box as
-    `37K+`, so search for all three forms.
+    `37K+`, so search for all three forms. The Polish page's proof row writes it as
+    `37<span>tys.</span>`; it was missed in the Oct sweeps and still said 25 tys.
+    until 1 Nov 2026.
   - **Local passes:** **440+**. **First-time pass rate:** **84%**.
   - Both of those appear in the `index.html` hero (`440<span>+</span>`,
     `84<span>%</span>`), its meta and og descriptions, two FAQ answers and their
