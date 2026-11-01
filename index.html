@@ -235,6 +235,16 @@ p  { line-height: 1.75; }
 .nav-dropdown.open .nav-dropdown-btn svg { transform: rotate(180deg); }
 .nav-dropdown-btn.stuck-mode { color: var(--ink-mid); }
 
+/* Over the dark hero (before the nav turns white on scroll) the menu must be light:
+   Ink Mid and red on slate both fail contrast. Same treatment as gift-cards.html. */
+.nav-links a.nav-mock { color: var(--red); font-weight: 700; }
+#nav:not(.stuck) .nav-links a,
+#nav:not(.stuck) .nav-dropdown-btn { color: rgba(255,255,255,0.88); }
+#nav:not(.stuck) .nav-links a:hover,
+#nav:not(.stuck) .nav-dropdown-btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
+#nav:not(.stuck) .nav-links a.nav-mock { color: #ff8a8f; }
+#nav:not(.stuck) .lang-switch { color: #b4c4c1; border-color: rgba(255,255,255,0.3); }
+
 .nav-dropdown-menu {
   position: absolute;
   top: calc(100% + 8px);
@@ -922,7 +932,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
             </div>
           </div>
         </li>
-        <li><a href="mock-test.html" style="color:var(--red);font-weight:700;">🎯 Mock Test</a></li>
+        <li><a href="mock-test.html" class="nav-mock">🎯 Mock Test</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
