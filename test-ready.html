@@ -195,6 +195,12 @@ p  { line-height: 1.75; }
 .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
 .burger span { display: block; width: 22px; height: 2px; background: var(--slate); border-radius: 2px; transition: all .3s; }
 #nav:not(.stuck) .burger span { background: #fff; }
+/* Over the dark hero the logo sits on a white card so its red and slate stay visible.
+   content-box keeps the logo itself the same size; the card is the padding. */
+#nav:not(.stuck) .nav-logo img {
+  box-sizing: content-box; padding: 4px 9px; background: #fff; border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
 .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .burger.open span:nth-child(2) { opacity: 0; }
 .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
