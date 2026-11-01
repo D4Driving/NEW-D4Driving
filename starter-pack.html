@@ -244,6 +244,22 @@ img { display: block; max-width: 100%; }
 }
 .about-text p strong { color: var(--slate); font-weight: 600; }
 
+/* ── Test Ready Pack upsell ── */
+.upsell {
+  max-width: 1140px; margin: 0 auto; padding: 72px 28px;
+}
+.upsell-card {
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow); border-radius: 16px;
+  border-top: 4px solid var(--red);
+  padding: 36px 40px; display: flex; align-items: center; gap: 40px;
+}
+.upsell-card img { width: 150px; height: auto; border-radius: 8px; box-shadow: 0 16px 28px -8px rgba(44,62,80,0.35); flex-shrink: 0; }
+.upsell-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+.upsell-card h2 { font-size: clamp(22px, 2.6vw, 30px); font-weight: 800; letter-spacing: -0.5px; color: var(--slate); margin-bottom: 10px; }
+.upsell-card p { font-size: 15px; color: var(--ink-mid); line-height: 1.7; margin-bottom: 20px; max-width: 620px; }
+.upsell-card .dl-btn { font-size: 15px; padding: 14px 28px; }
+
 /* ── Bottom CTA ── */
 .bottom-cta {
   background: var(--slate); padding: 60px 0; text-align: center;
@@ -282,6 +298,8 @@ img { display: block; max-width: 100%; }
   .dl-note { justify-content: center; }
   .features-grid { grid-template-columns: 1fr 1fr; }
   .about-inner { flex-direction: column; text-align: center; }
+  .upsell-card { flex-direction: column; text-align: center; padding: 32px 24px; }
+  .upsell-card p { margin-left: auto; margin-right: auto; }
 }
 @media (max-width: 540px) {
   .hero { padding: 60px 0 48px; }
@@ -395,6 +413,19 @@ img { display: block; max-width: 100%; }
     </div>
   </div>
 </div>
+
+<!-- ── Test Ready Pack upsell ── -->
+<section class="upsell">
+  <div class="upsell-card">
+    <img src="test-ready-pack-cover.webp" alt="" width="640" height="905" loading="lazy" decoding="async">
+    <div>
+      <div class="upsell-eyebrow">Ready to go further?</div>
+      <h2>The Test Ready Pack</h2>
+      <p>This starter pack is the taster. The Test Ready Pack goes deeper: all 21 show me, tell me questions as cut-out cards, the 10 faults that fail most tests with a fix for each, every manoeuvre step by step, and a plan for test-day nerves. From £12.</p>
+      <a href="test-ready.html" class="dl-btn">See what's inside →</a>
+    </div>
+  </div>
+</section>
 
 <!-- ── Bottom CTA ── -->
 <section class="bottom-cta">

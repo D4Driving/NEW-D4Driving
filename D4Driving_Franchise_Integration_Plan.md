@@ -1197,6 +1197,35 @@ Robert's new figures are 37,000+ YouTube subscribers (was 36,000+), 440+ local p
 (was 430+) and an 84% first-time pass rate (was 83%). They're updated in all 78 files
 where they appear, with none of the old values left. That includes the Polish page and
 the homepage FAQ schema. Cache v35. The full list of places is in `CLAUDE.md`.
+
+---
+
+## 42. Test Ready Pack (printable revision PDFs) — ✅ 1 November 2026
+
+A new page, `test-ready.html`, sells two printable PDF products through **Payhip**:
+the **Test Ready Pack** (£12, `payhip.com/b/9mizR`: 13-page guide plus 24 show me,
+tell me cards) and the **Complete Bundle** (£24, `payhip.com/b/XVHru`: adds a 15-page
+Practice at Home guide for supervisors). Robert chose Payhip over Shopify and over
+Stripe with home-made delivery.
+- **The PDFs never go in this repo.** It's public, so anything here is free to
+  download. Payhip holds the files and delivers them after payment; it also handles
+  EU VAT. The page links to the Payhip product pages (plain links, no Payhip script),
+  plus Payhip's watermarked previews (`payhip.com/preview/…`).
+- **Images:** `test-ready-pack-cover.webp` and `test-ready-bundle-cover.webp` are
+  renders of the PDF covers; `test-ready-og.jpg` (1200×630) is the social preview.
+- **Links to it:** a callout box above the author box on six articles (test-day tips,
+  common faults, manoeuvres, parallel parking, independent driving, pre-test
+  checklist) and an upsell section on `starter-pack.html`. Not on the homepage or in
+  the menu, by Robert's choice; add them if sales justify it. The articles'
+  `dateModified` was left alone, because a promo box isn't new article content. No
+  location pages were touched.
+- **SEO:** one h1, non-www canonical, OG/Twitter, Product (×2) and FAQ schema. In the
+  sitemap at 0.8 and in `PRIORITY` in `blog-sync.yml`.
+- Checked at 1280px and 375px with no overflow. Cache v37.
+- **Launch plan:** a soft launch. Robert runs the YouTube poll and links from video
+  descriptions. If 20–30 people buy, promote it wider. The source drafts, the PDF
+  build scripts and the sales copy are in the private ops repo, not here.
+
 ---
 
 ## Pending Tasks
@@ -1213,6 +1242,8 @@ the homepage FAQ schema. Cache v35. The full list of places is in `CLAUDE.md`.
 | **Readable text on the homepage and article pages** | Claude, then Robert approves | Next job after §30, using the colours Robert approved there. Homepage: 77 items flagged at 375px, including the red "With Confidence", sage block prices, Ink Low captions and sage footer links; about 9 are emoji or text on photos and may be fine. Article pages: about 18 each (sage labels, footer text at 35–50%, a sage phone link on the white bar). Change `article-template.html` and the 125 article pages together. Keep out of the 23 location pages' article bodies (local SEO) |
 | **Test route packs — payment** | Robert + Claude | The entitlement model and the admin page are built (§34), but nothing is on sale, so every published route is free. Needs a Stripe Payment Link per centre and a webhook writing an `entitlements` row keyed by the buyer's email. Robert creates the links and holds the signing secret. Commercial model in the private ops repo |
 | **Harden `routes_public` before the first pack sells** | Claude | Supabase's advisor flags the teaser view as a critical `SECURITY DEFINER` finding (§34). Harmless today — every published route is free — but one careless column added to that view would un-gate all paid content at once. Fix: grant `anon` only the teaser columns on `routes` and filter the definer view to `is_free = true`, then re-verify the anon / signed-in / entitled / admin access matrix by request |
+| **Test Ready Pack — fact check before promoting** | Robert | Check the show me, tell me questions, the test format and the supervisor rules in the PDFs against gov.uk, then rebuild the PDFs and re-upload to Payhip (§42) |
+| **Starter pack says "teaching since 2009"** | Robert | `starter-pack.html` says 2009; the footer, the articles and the Test Ready Pack say 2017. Confirm which is right and make them match |
 | **Test route content** | Robert | Six routes are still unpublished. Grantham's only route needs waypoint names and a description before that centre can go live at all; Kettering's Pytchley route needs waypoint names and a walkthrough video |
 
 ---

@@ -202,6 +202,7 @@ jobs:
             'peterborough-driving-test-centre.html': '0.7',
             'mock-test.html': '0.8',
             'starter-pack.html': '0.8',
+            'test-ready.html': '0.8',
             'routes.html': '0.7',
             'theory-quiz.html': '0.7',
             'manoeuvres-quiz.html': '0.7',
