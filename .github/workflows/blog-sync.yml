@@ -191,7 +191,7 @@ jobs:
           /* Also left out: pages robots.txt blocks (admin, mock-test consent). Listing
              them sent Google a contradiction: invited by the sitemap, barred by robots. */
           const EXCLUDE = new Set(['article-template.html', 'blog-template.html', 'theory_quiz_promo.html', '404.html',
-                                   'admin.html', 'mock-test-consent.html']);
+                                   'admin.html', 'mock-test-consent.html', 'book-assessment.html']);
           const PRIORITY = {
             'index.html': '1.0',
             'rakesh.d4driving.html': '0.9',
