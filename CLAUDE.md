@@ -22,7 +22,8 @@ Detail belongs in the private ops repo, not here.
 
 | Branch | What | Status |
 |---|---|---|
-| `lesson-credit-ledger` | Supabase lesson-credit ledger — migrations, instructors table | In progress, do not ship |
+| `lesson-credit-ledger` | Supabase lesson-credit ledger — migrations, instructors table | Database is on the live project (7 Nov 2026); student pages and opening balances are not. Do not ship the rest without asking Robert |
+| `new-learner-booking` | Online assessment booking: **live since 7 Nov 2026** (Integration Plan §43). The Edge Functions and migrations are on this branch, not `main`. Keep Cal.com's assessment event until at least 21 Nov 2026 | Live; branch not merged |
 | — (ops repo) | **Local SEO:** executing since 25 Sep 2026, at Robert's pace. Will rewrite the article bodies of the 23 location pages with his sourced local detail, fixing the 27 broken links inside them — **don't edit those bodies in other work**. Resume from `LOCAL-SEO-STATE.md` in the ops repo | In progress |
 
 `main` is live. Anything merged to `main` is on the public site within ~2 minutes.

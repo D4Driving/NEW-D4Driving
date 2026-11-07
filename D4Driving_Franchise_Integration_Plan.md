@@ -1232,6 +1232,33 @@ Stripe with home-made delivery.
 
 ---
 
+## 43. Online Assessment Booking — ✅ 7 November 2026
+
+New learners can book and pay for the 90-minute assessment on the site, at
+`book-assessment.html`: postcode check, manual or automatic, a live time from
+Robert's Google Calendar, details and terms, a hold, then £45 through Stripe
+Checkout. A paid booking creates the calendar event and sends the confirmation by
+Brevo. Tested end to end with Stripe's sandbox, then with one real £45 booking,
+refunded.
+
+**Rules, set by Robert.** 48 hours' notice, 45 days ahead, starts on the hour or half
+hour, Mon–Fri 09:00–20:00, Sat 10:00–17:00, Sunday off, and 30 clear minutes either
+side of a diary entry. One assessment per learner. Stilton and Folksworth are not
+offered online. On 7 November he kept the gap and start times after seeing that
+looser rules would add almost nothing while the diary is this full.
+
+**Links.** The homepage top bar, the assessment price card and the "Brand new to
+driving?" line go to the new page. Everything else still books through Cal.com.
+**Cal.com's assessment event stays live until at least 21 November 2026.** To roll
+back, point those links at `https://cal.com/d4driving/driving-assessment` again.
+
+**Where the code is.** Only the page and its script are on `main`. The three Edge
+Functions (`assessment-availability`, `assessment-checkout`, `assessment-webhook`) and
+the migrations live on the `new-learner-booking` branch and are deployed from there.
+Function settings are held in Supabase, never in this repo.
+
+---
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
