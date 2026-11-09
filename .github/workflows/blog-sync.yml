@@ -194,7 +194,6 @@ jobs:
                                    'admin.html', 'mock-test-consent.html']);
           const PRIORITY = {
             'index.html': '1.0',
-            'rakesh.d4driving.html': '0.9',
             'nauka-jazdy-peterborough.html': '0.9',
             'blog.html': '0.8',
             'gift-cards.html': '0.8',

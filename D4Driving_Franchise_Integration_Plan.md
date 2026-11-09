@@ -1257,6 +1257,25 @@ Functions (`assessment-availability`, `assessment-checkout`, `assessment-webhook
 the migrations live on the `new-learner-booking` branch and are deployed from there.
 Function settings are held in Supabase, never in this repo.
 
+## 44. Rakesh Removed — ✅ 9 November 2026
+
+Rakesh ended his franchise agreement, so the site now shows Robert only.
+
+- **Homepage:** the instructor picker is gone ("Book Your Lesson."), the VW Golf
+  is out of the fleet (two cars, two columns), the "Hi, I'm Rakesh" section is
+  gone, "Meet Your Instructor." replaces "Meet Our Instructors.", and both FAQs
+  (and their schema) name Robert only. Section backgrounds re-alternated.
+- **`rakesh.d4driving.html`** is a noindex forwarding page to the homepage, out of
+  the sitemap and the sitemap job's PRIORITY map.
+- **Gift cards:** Robert only, automatic or manual. No cards were sold for Rakesh.
+- **Removed files:** `Rakesh.webp`, `VW_Golf.webp`, `vw-golf.webp`.
+- **Availability Worker source** no longer lists Rakesh. The deployed Cloudflare
+  copy still does until Robert pastes the new file in; harmless, as the site
+  never asks for him.
+- **Kept, by Robert's choice:** the Terms and Privacy franchisee clauses, and all
+  headline stats (all Robert's own passes).
+- The Supabase `instructors` table still has his row, already `active = false`.
+
 ---
 
 ## Pending Tasks

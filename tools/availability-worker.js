@@ -25,14 +25,14 @@ const DAYS_AHEAD = 45;
 const MAX_SLOTS  = 30;
 const TZ         = 'Europe/London';
 
-/* Durations are per-instructor because the two Cal.com accounts use different
-   slugs — Rakesh renamed his, and his 1.5-hour one contains a literal dot.
+/* Durations are per-instructor, so another Cal.com account (with its own
+   slugs) can be added here later.
    Cal.com slots each duration against its OWN interval, so the times genuinely
    differ: on 16 Sep 2026 Robert's 1-hour slot is 11:00 but his 1.5-hour is
    10:30. They cannot share a card; the page shows a duration toggle and swaps
    the whole list.
 
-   Note both accounts also have a 90-minute ASSESSMENT event, deliberately not
+   Note the account also has a 90-minute ASSESSMENT event, deliberately not
    listed here — it is a different product, linked separately under the grid. */
 const INSTRUCTORS = {
   robert: {
@@ -41,14 +41,6 @@ const INSTRUCTORS = {
       { minutes: 60,  label: '1 hour',   slug: '1hr-driving' },
       { minutes: 90,  label: '1½ hours', slug: '1.5-hr-driving-lesson' },
       { minutes: 120, label: '2 hours',  slug: '2-hrs-driving-lesson' },
-    ],
-  },
-  rakesh: {
-    user: 'rakesh-d4driving',
-    durations: [
-      { minutes: 60,  label: '1 hour',   slug: '1-hour-driving-tuition-manual-car' },
-      { minutes: 90,  label: '1½ hours', slug: '1.5-hrs.-driving-lesson-manual' },
-      { minutes: 120, label: '2 hours',  slug: '2-hours-driving-lesson' },
     ],
   },
 };

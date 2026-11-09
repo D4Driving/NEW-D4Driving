@@ -56,7 +56,7 @@ Detail belongs in the private ops repo, not here.
 - **The mobile menu (`#mnav`) must live OUTSIDE `<nav>`.** The sticky nav's
   `backdrop-filter` creates a containing block that traps `position: fixed`
   descendants inside the 68px bar, making the menu invisible when scrolled.
-- **GitHub Pages is case-sensitive.** `Rakesh.webp` ≠ `rakesh.webp`.
+- **GitHub Pages is case-sensitive.** `Robert.webp` ≠ `robert.webp`.
 - **The electric car claim is deliberately narrow.** Robert's automatic car is
   a Toyota C-HR+ (from 20 Sep 2026). Say "one of very few electric tuition cars
   in Peterborough" or "the first C-HR+ teaching in Peterborough" — never "first
@@ -69,11 +69,12 @@ Detail belongs in the private ops repo, not here.
   for weeks until someone presses **Scrape Again** at
   developers.facebook.com/tools/debug. Robert did this for the homepage on 3 Oct
   2026, when it was still showing the Yaris.
-- **Cal.com is not Rakesh's only diary.** He also takes bookings through the
-  Total Drive app, and those never reach Cal.com — so his feed shows far more
-  free time than he really has. Never state a specific date or a count of open
-  days for him; his page deliberately says only that he "usually has space" and
-  sends people to WhatsApp to confirm. Robert's own Cal.com IS authoritative.
+- **Robert is the only instructor (since 9 Nov 2026).** Rakesh, the franchisee,
+  left. Don't mention him, his VW Golf or "our instructors" anywhere public.
+  `rakesh.d4driving.html` is a forwarding page to the homepage. The Terms and
+  Privacy "Franchisee Instructor" clauses stay on purpose (Robert's call): they
+  cover former pupils' data and any future franchisee. Robert's Cal.com IS
+  authoritative for his availability.
 - **The headline stats live in several places; update them all together.**
   - **YouTube subscribers:** currently **37,000+** (25 Oct 2026; was 36,000+). It
     appears twice in each remaining article (the author bio and the YouTube box),
