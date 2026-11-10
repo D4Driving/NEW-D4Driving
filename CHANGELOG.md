@@ -2,6 +2,12 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-11-09
+- Removed Rakesh from the public website after he ended his franchise agreement — the site now shows Robert as the only instructor. The homepage lost the instructor picker, the VW Golf fleet card and Rakesh's "Hi, I'm Rakesh" section, and both FAQs (plus their schema) now name Robert only. His page (`rakesh.d4driving.html`) now just forwards visitors to the homepage and is out of the sitemap. Gift card wording was updated to Robert only — no cards were ever sold for Rakesh. His two photos and the VW Golf photo were deleted, and he was removed from the availability-checking tool's source code (the live copy still needs the file re-pasted in by Robert, but this is harmless since the site never asks for him). The Terms and Privacy "Franchisee Instructor" clauses and all headline stats were left as they were, both by Robert's choice.
+- _Commits: fdc0c0b_
+- _Plan doc status: already documented — the same commit added Integration Plan §44, covering the change in full._
+- _CLAUDE.md status: accurate — the same commit already updated the relevant gotcha (the case-sensitive filename example and the Cal.com note, both rewritten to describe Robert as sole instructor) and the file list it touched doesn't affect the "In flight" table. Nothing in today's work contradicts anything else in "Where things live" or "Standing rules"._
+
 ## 2026-11-07
 - Launched online assessment booking on the website itself: new learners can now check availability, pick a time and pay the £45 assessment fee by card at a new page, `book-assessment.html`, instead of being sent to Cal.com. It went up unlinked first for a test run, then on 7 November was linked from the homepage and switched on for real — tested with Stripe's sandbox and then one real £45 booking, which was refunded. Cal.com's old assessment booking link stays live as a fallback until at least 21 November.
 - _Commits: afebbf1, 237c818, 68b263f_
