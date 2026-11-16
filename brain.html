@@ -55,11 +55,18 @@
   .empty { color: var(--muted); padding: 14px 4px; }
   .err { color: var(--warn); margin: 8px 2px; }
   [hidden] { display: none !important; }
+  .hdr-right { display: flex; align-items: center; gap: 10px; }
+  .iconbtn { background: var(--chip); color: var(--ink); width: 44px; height: 44px; padding: 0; border-radius: 12px; font-size: 20px; line-height: 1; flex: 0 0 auto; }
+  #micBtn.listening { background: var(--warn); color: #fff; animation: pulse 1.2s ease-in-out infinite; }
+  #micBtn.busy { opacity: .6; }
+  @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+  @media (prefers-reduced-motion: reduce) { #micBtn.listening { animation: none; } }
+  .status { color: var(--muted); font-size: 14px; margin-top: 8px; min-height: 1em; }
 </style>
 </head>
 <body>
 <main>
-  <header><h1>Second Brain</h1><span id="date"></span></header>
+  <header><h1>Second Brain</h1><div class="hdr-right"><span id="date"></span><button class="iconbtn" id="speakerBtn" aria-label="Spoken replies on" title="Spoken replies on">🔊</button></div></header>
 
   <section id="login" class="card" hidden>
     <p style="margin-top:0">Open this page from the link your Telegram bot gives you (send it <b>/web</b>), or paste your access code here.</p>
@@ -69,9 +76,11 @@
   <div id="app" hidden>
     <section class="card">
       <div class="row">
+        <button class="iconbtn" id="micBtn" aria-label="Speak" title="Tap and speak">🎙</button>
         <input type="text" id="say" placeholder="Tell me anything… e.g. ring DVSA Thursday 3pm" autocomplete="off" enterkeyhint="send">
         <button id="sayBtn">Add</button>
       </div>
+      <div id="status" class="status" aria-live="polite"></div>
       <div id="reply" class="reply" hidden></div>
     </section>
     <div id="error" class="err" hidden></div>
@@ -264,6 +273,142 @@
       act(call("/task/" + id, f));
     }
   });
+
+  // ---- voice: tap the mic, speak, it sends when you go quiet; replies play automatically ----
+  var SPEAK_KEY = "brainSpeak";
+  var speakOn = (function () { try { return localStorage.getItem(SPEAK_KEY) !== "off"; } catch (e) { return true; } })();
+  var actx = null, rec = null, playing = null, busy = false;
+
+  function setStatus(t) { $("status").textContent = t || ""; }
+  function paintSpeaker() {
+    $("speakerBtn").textContent = speakOn ? "🔊" : "🔇";
+    var label = speakOn ? "Spoken replies on" : "Spoken replies off";
+    $("speakerBtn").setAttribute("aria-label", label);
+    $("speakerBtn").title = label;
+  }
+  $("speakerBtn").onclick = function () {
+    speakOn = !speakOn;
+    try { localStorage.setItem(SPEAK_KEY, speakOn ? "on" : "off"); } catch (e) {}
+    if (!speakOn) stopPlayback();
+    paintSpeaker();
+  };
+  paintSpeaker();
+
+  function audioCtx() {
+    if (!actx) { var C = window.AudioContext || window.webkitAudioContext; actx = new C(); }
+    if (actx.state === "suspended") actx.resume();
+    return actx;
+  }
+  function stopPlayback() { if (playing) { try { playing.stop(); } catch (e) {} playing = null; } }
+
+  function playBase64(b64) {
+    var bin = atob(b64), buf = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) buf[i] = bin.charCodeAt(i);
+    var ctx = audioCtx();
+    return new Promise(function (resolve) {
+      ctx.decodeAudioData(buf.buffer, function (audio) {
+        stopPlayback();
+        var src = ctx.createBufferSource();
+        src.buffer = audio; src.connect(ctx.destination);
+        src.onended = function () { if (playing === src) playing = null; resolve(); };
+        playing = src; src.start(0);
+      }, function () { resolve(); });
+    });
+  }
+
+  function toWav16k(chunks, rate) {
+    var len = 0; chunks.forEach(function (c) { len += c.length; });
+    var all = new Float32Array(len), o = 0;
+    chunks.forEach(function (c) { all.set(c, o); o += c.length; });
+    var ratio = rate / 16000, n = Math.floor(len / ratio), pcm = new Int16Array(n);
+    for (var i = 0; i < n; i++) {
+      var start = Math.floor(i * ratio), end = Math.min(len, Math.floor((i + 1) * ratio)), s = 0;
+      for (var j = start; j < end; j++) s += all[j];
+      var v = end > start ? s / (end - start) : 0;
+      v = Math.max(-1, Math.min(1, v));
+      pcm[i] = v < 0 ? v * 0x8000 : v * 0x7fff;
+    }
+    var out = new DataView(new ArrayBuffer(44 + pcm.length * 2));
+    function str(off, t) { for (var k = 0; k < t.length; k++) out.setUint8(off + k, t.charCodeAt(k)); }
+    str(0, "RIFF"); out.setUint32(4, 36 + pcm.length * 2, true); str(8, "WAVE");
+    str(12, "fmt "); out.setUint32(16, 16, true); out.setUint16(20, 1, true); out.setUint16(22, 1, true);
+    out.setUint32(24, 16000, true); out.setUint32(28, 32000, true); out.setUint16(32, 2, true); out.setUint16(34, 16, true);
+    str(36, "data"); out.setUint32(40, pcm.length * 2, true);
+    for (var m = 0; m < pcm.length; m++) out.setInt16(44 + m * 2, pcm[m], true);
+    return new Uint8Array(out.buffer);
+  }
+  function bytesToBase64(bytes) {
+    var bin = "";
+    for (var i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+
+  function micStart() {
+    var ctx = audioCtx();
+    stopPlayback();
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) { showError("This browser can't use the microphone."); return; }
+    setStatus("Waiting for the microphone…");
+    navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, channelCount: 1 } }).then(function (stream) {
+      var src = ctx.createMediaStreamSource(stream);
+      var node = ctx.createScriptProcessor(4096, 1, 1);
+      var r = { stream: stream, src: src, node: node, chunks: [], rate: ctx.sampleRate, t0: Date.now(), heard: false, quiet: 0, noise: 0, noiseN: 0 };
+      node.onaudioprocess = function (e) {
+        if (rec !== r) return;
+        var d = e.inputBuffer.getChannelData(0);
+        r.chunks.push(new Float32Array(d));
+        var sum = 0; for (var i = 0; i < d.length; i++) sum += d[i] * d[i];
+        var rms = Math.sqrt(sum / d.length), ms = d.length / r.rate * 1000, elapsed = Date.now() - r.t0;
+        if (elapsed < 350) { r.noise += rms; r.noiseN++; return; }
+        var threshold = Math.max(0.012, (r.noise / Math.max(1, r.noiseN)) * 2.5);
+        if (rms > threshold) { r.heard = true; r.quiet = 0; } else if (r.heard) { r.quiet += ms; }
+        if (r.heard && r.quiet > 1500) micStop(true);
+        else if (!r.heard && elapsed > 8000) { micStop(false); setStatus("I didn't hear anything. Tap the mic to try again."); }
+        else if (elapsed > 45000) micStop(true);
+      };
+      src.connect(node); node.connect(ctx.destination);
+      rec = r;
+      $("micBtn").classList.add("listening");
+      $("micBtn").setAttribute("aria-label", "Stop and send");
+      setStatus("Listening… I'll send when you pause.");
+    }).catch(function () {
+      setStatus("");
+      showError("Microphone access was blocked. Allow it for this site in your browser settings, then try again.");
+    });
+  }
+
+  function micStop(send) {
+    var r = rec; if (!r) return;
+    rec = null;
+    try { r.src.disconnect(); r.node.disconnect(); } catch (e) {}
+    r.stream.getTracks().forEach(function (t) { t.stop(); });
+    $("micBtn").classList.remove("listening");
+    $("micBtn").setAttribute("aria-label", "Speak");
+    if (!send || !r.heard) { if (send) setStatus(""); return; }
+    sendVoice(toWav16k(r.chunks, r.rate));
+  }
+
+  function sendVoice(wav) {
+    busy = true; $("micBtn").classList.add("busy"); showError("");
+    setStatus("Thinking…");
+    call("/voice", { audio: bytesToBase64(wav), mime: "audio/wav" }).then(function (res) {
+      $("reply").textContent = res.reply || "Done."; $("reply").hidden = false;
+      refresh();
+      if (!speakOn || !res.spoken) { setStatus(""); return; }
+      setStatus("Speaking…");
+      return call("/speak", { text: res.spoken }).then(function (a) {
+        setStatus("");
+        busy = false; $("micBtn").classList.remove("busy");
+        if (speakOn && a.audio) return playBase64(a.audio);
+      });
+    }).catch(function (e) { setStatus(""); showError(e.message); })
+      .then(function () { busy = false; $("micBtn").classList.remove("busy"); });
+  }
+
+  $("micBtn").onclick = function () {
+    if (busy) return;
+    if (playing) { stopPlayback(); return; }
+    if (rec) micStop(true); else micStart();
+  };
 
   // ---- start ----
   var hash = location.hash.replace(/^#/, "");

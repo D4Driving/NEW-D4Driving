@@ -1290,6 +1290,10 @@ Rakesh ended his franchise agreement, so the site now shows Robert only.
   access code arrives in the link the bot gives him and is stored in his browser only.
 - **Don't restyle it with the site brand or add it to any menu.** It is a personal tool
   that happens to be hosted here.
+- **Voice (16 Nov 2026):** a 🎙 button records from the microphone (it sends after a 1.5-second
+  pause) and the spoken reply plays automatically; 🔊/🔇 in the header switches speech off per
+  device. Recording is done in the page as 16 kHz WAV and sent to the Edge Function's `/api/voice`;
+  speech comes back from `/api/speak` as MP3. The microphone needs HTTPS, which the site has.
 
 ## Pending Tasks
 
