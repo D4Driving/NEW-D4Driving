@@ -1278,6 +1278,19 @@ Rakesh ended his franchise agreement, so the site now shows Robert only.
 
 ---
 
+## 45. Robert's Private Task Page (`brain.html`) — ✅ 16 November 2026
+
+- **Not part of the public site.** `brain.html` is the web page for Robert's personal
+  "second brain" (tasks, notes and repeating tasks; the rest of it is a Telegram bot).
+  Nothing links to it and it shows nothing without his access code.
+- **Kept out of search the same way as `admin.html`:** `noindex`, a `robots.txt`
+  disallow, and left out of the sitemap (`EXCLUDE` in `blog-sync.yml`).
+- **Where the data lives:** Supabase project `d4driving-routes`, in its own `brain`
+  schema, reached only through the `brain` Edge Function. The page holds no key; the
+  access code arrives in the link the bot gives him and is stored in his browser only.
+- **Don't restyle it with the site brand or add it to any menu.** It is a personal tool
+  that happens to be hosted here.
+
 ## Pending Tasks
 
 | Item | Owner | Notes |

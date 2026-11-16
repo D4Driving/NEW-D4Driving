@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Second Brain</title>
+<style>
+  :root {
+    --bg: #f4f5f7; --card: #ffffff; --ink: #1f2933; --muted: #6b7785; --line: #e3e7ec;
+    --accent: #2c3e50; --accent-ink: #ffffff; --warn: #b42318; --ok: #1a7f4b; --chip: #e9edf2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #14181d; --card: #1d232a; --ink: #e8ecf0; --muted: #94a1af; --line: #2c343d;
+      --accent: #8fb3d9; --accent-ink: #10151a; --warn: #ff8a7a; --ok: #6fd3a0; --chip: #28313a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 720px; margin: 0 auto; padding: 16px 14px 80px; }
+  header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 6px 2px 14px; }
+  h1 { font-size: 22px; margin: 0; }
+  header span { color: var(--muted); font-size: 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px; margin-bottom: 12px; }
+  input, select, textarea, button { font: inherit; color: inherit; }
+  input[type=text], input[type=date], input[type=time], select, textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
+  textarea { min-height: 72px; resize: vertical; }
+  button { cursor: pointer; border: 0; border-radius: 10px; padding: 10px 14px; background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+  button.ghost { background: var(--chip); color: var(--ink); font-weight: 500; }
+  button.link { background: none; color: var(--muted); padding: 4px 6px; font-weight: 500; }
+  button:disabled { opacity: .55; cursor: default; }
+  .row { display: flex; gap: 8px; }
+  .row > * { flex: 1; min-width: 0; }
+  .row > button { flex: 0 0 auto; }
+  .tabs, .chips { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+  .tabs button { background: var(--chip); color: var(--ink); }
+  .tabs button[aria-selected=true] { background: var(--accent); color: var(--accent-ink); }
+  .chips button { background: var(--chip); color: var(--ink); padding: 6px 11px; font-size: 14px; font-weight: 500; border-radius: 999px; }
+  .chips button[aria-pressed=true] { background: var(--accent); color: var(--accent-ink); }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 18px 4px 6px; }
+  h2.warn { color: var(--warn); }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li.item { display: flex; gap: 10px; align-items: flex-start; padding: 10px 4px; border-bottom: 1px solid var(--line); }
+  li.item:last-child { border-bottom: 0; }
+  li.item input[type=checkbox] { width: 22px; height: 22px; margin-top: 1px; flex: 0 0 auto; accent-color: var(--ok); }
+  .body { flex: 1; min-width: 0; }
+  .title { overflow-wrap: anywhere; cursor: pointer; }
+  .done .title { text-decoration: line-through; color: var(--muted); }
+  .meta { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .meta.late { color: var(--warn); }
+  .edit { margin-top: 8px; display: grid; gap: 8px; }
+  .reply { white-space: pre-wrap; background: var(--chip); border-radius: 10px; padding: 10px 12px; margin-top: 10px; font-size: 15px; }
+  .empty { color: var(--muted); padding: 14px 4px; }
+  .err { color: var(--warn); margin: 8px 2px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <header><h1>Second Brain</h1><span id="date"></span></header>
+
+  <section id="login" class="card" hidden>
+    <p style="margin-top:0">Open this page from the link your Telegram bot gives you (send it <b>/web</b>), or paste your access code here.</p>
+    <div class="row"><input type="text" id="tokenInput" placeholder="Access code" autocomplete="off"><button id="tokenSave">Open</button></div>
+  </section>
+
+  <div id="app" hidden>
+    <section class="card">
+      <div class="row">
+        <input type="text" id="say" placeholder="Tell me anything… e.g. ring DVSA Thursday 3pm" autocomplete="off" enterkeyhint="send">
+        <button id="sayBtn">Add</button>
+      </div>
+      <div id="reply" class="reply" hidden></div>
+    </section>
+    <div id="error" class="err" hidden></div>
+
+    <div class="tabs" role="tablist">
+      <button role="tab" data-tab="tasks" aria-selected="true">Tasks</button>
+      <button role="tab" data-tab="notes" aria-selected="false">Notes</button>
+      <button role="tab" data-tab="repeat" aria-selected="false">Repeating</button>
+      <button class="ghost" id="refresh" style="margin-left:auto">Refresh</button>
+    </div>
+    <div class="chips" id="chips"></div>
+
+    <section id="tab-tasks"></section>
+    <section id="tab-notes" hidden>
+      <div class="card">
+        <textarea id="noteText" placeholder="A thought, idea or fact to keep"></textarea>
+        <div class="row" style="margin-top:8px"><select id="noteArea"></select><button id="noteAdd">Save note</button></div>
+      </div>
+      <input type="text" id="noteSearch" placeholder="Search notes" style="margin-bottom:10px">
+      <div class="card"><ul id="noteList"></ul></div>
+    </section>
+    <section id="tab-repeat" hidden><div class="card"><ul id="repeatList"></ul></div></section>
+  </div>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var API = "https://zzgmwdbvboalehafyict.supabase.co/functions/v1/brain/api";
+  var KEY = "secondBrainToken";
+  var token = "", state = null, area = "all", tab = "tasks", openEdit = null;
+  var $ = function (id) { return document.getElementById(id); };
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function store(v) { try { if (v) localStorage.setItem(KEY, v); else localStorage.removeItem(KEY); } catch (e) {} }
+  function load() { try { return localStorage.getItem(KEY) || ""; } catch (e) { return ""; } }
+
+  function showError(msg) { var e = $("error"); e.textContent = msg || ""; e.hidden = !msg; }
+
+  function call(path, body) {
+    var opt = { method: body ? "POST" : "GET", headers: { "x-brain-token": token } };
+    if (body) { opt.headers["Content-Type"] = "application/json"; opt.body = JSON.stringify(body); }
+    return fetch(API + path, opt).then(function (r) {
+      if (r.status === 403) { store(""); token = ""; showLogin(); throw new Error("That access code was not accepted."); }
+      return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || "Request failed"); return j; });
+    });
+  }
+
+  function showLogin() { $("login").hidden = false; $("app").hidden = true; }
+
+  function prettyDate(d) {
+    return new Date(d + "T00:00:00Z").toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" });
+  }
+  function areaOf(slug) {
+    for (var i = 0; i < state.areas.length; i++) if (state.areas[i].slug === slug) return state.areas[i];
+    return { slug: slug, name: slug, emoji: "" };
+  }
+  function areaOptions(sel) {
+    return state.areas.map(function (a) {
+      return '<option value="' + esc(a.slug) + '"' + (a.slug === sel ? " selected" : "") + ">" + esc(a.emoji + " " + a.name) + "</option>";
+    }).join("");
+  }
+  function inArea(x) { return area === "all" || x.area === area; }
+
+  function taskHtml(t, done) {
+    var a = areaOf(t.area), late = !done && t.due_date && t.due_date < state.today;
+    var due = t.due_date ? (t.due_date === state.today ? "Today" : t.due_date === state.tomorrow ? "Tomorrow" : prettyDate(t.due_date)) : "No date";
+    if (t.due_time) due += " " + t.due_time;
+    var h = '<li class="item' + (done ? " done" : "") + '" data-id="' + t.id + '">' +
+      '<input type="checkbox" aria-label="Done" data-act="toggle"' + (done ? " checked" : "") + ">" +
+      '<div class="body"><div class="title" data-act="edit">' + esc(t.title) + (t.priority === 1 ? " ❗" : "") + "</div>" +
+      '<div class="meta' + (late ? " late" : "") + '">' + esc(a.emoji + " " + a.name) + " · " + esc(due) + (t.recurring_id ? " · repeats" : "") + "</div>";
+    if (!done && openEdit === t.id) {
+      h += '<div class="edit">' +
+        '<input type="text" data-f="title" value="' + esc(t.title) + '">' +
+        '<div class="row"><input type="date" data-f="due_date" value="' + esc(t.due_date || "") + '"><input type="time" data-f="due_time" value="' + esc(t.due_time || "") + '"></div>' +
+        '<div class="row"><select data-f="area">' + areaOptions(t.area) + "</select>" +
+        '<select data-f="priority"><option value="1"' + (t.priority === 1 ? " selected" : "") + '>High</option><option value="2"' + (t.priority === 2 ? " selected" : "") + '>Normal</option><option value="3"' + (t.priority === 3 ? " selected" : "") + ">Low</option></select></div>" +
+        '<div class="row"><button data-act="save">Save</button><button class="ghost" data-act="tomorrow">Tomorrow</button><button class="ghost" data-act="remove">Remove</button></div></div>';
+    }
+    return h + "</div></li>";
+  }
+
+  function group(title, list, cls, done) {
+    if (!list.length) return "";
+    return "<h2" + (cls ? ' class="' + cls + '"' : "") + ">" + esc(title) + " (" + list.length + ')</h2><div class="card"><ul>' +
+      list.map(function (t) { return taskHtml(t, done); }).join("") + "</ul></div>";
+  }
+
+  function render() {
+    if (!state) return;
+    $("date").textContent = prettyDate(state.today);
+    $("chips").innerHTML = '<button data-area="all" aria-pressed="' + (area === "all") + '">All</button>' +
+      state.areas.map(function (a) {
+        return '<button data-area="' + esc(a.slug) + '" aria-pressed="' + (area === a.slug) + '">' + esc(a.emoji + " " + a.name) + "</button>";
+      }).join("");
+    $("chips").hidden = tab === "repeat";
+
+    var open = state.open.filter(inArea);
+    var t = state.today, tm = state.tomorrow;
+    var html =
+      group("Overdue", open.filter(function (x) { return x.due_date && x.due_date < t; }), "warn") +
+      group("Today", open.filter(function (x) { return x.due_date === t; })) +
+      group("Tomorrow", open.filter(function (x) { return x.due_date === tm; })) +
+      group("Coming up", open.filter(function (x) { return x.due_date && x.due_date > tm; })) +
+      group("No date", open.filter(function (x) { return !x.due_date; })) +
+      group("Done in the last week", state.done.filter(inArea), "", true);
+    $("tab-tasks").innerHTML = html || '<div class="card empty">Nothing here. Add something above, or message your bot.</div>';
+
+    var q = $("noteSearch").value.trim().toLowerCase();
+    var notes = state.notes.filter(inArea).filter(function (n) {
+      return !q || n.body.toLowerCase().indexOf(q) >= 0 || (n.tags || []).join(" ").indexOf(q) >= 0;
+    });
+    $("noteList").innerHTML = notes.length ? notes.map(function (n) {
+      var a = areaOf(n.area);
+      return '<li class="item" data-note="' + n.id + '"><div class="body"><div style="white-space:pre-wrap;overflow-wrap:anywhere">' + esc(n.body) + "</div>" +
+        '<div class="meta">' + esc(a.emoji + " " + a.name) + " · " + esc(prettyDate(n.created)) +
+        ((n.tags || []).length ? " · " + esc(n.tags.join(", ")) : "") + '</div></div><button class="link" data-act="delnote" aria-label="Delete note">✕</button></li>';
+    }).join("") : '<li class="empty">No notes yet.</li>';
+    if (!$("noteArea").innerHTML) $("noteArea").innerHTML = areaOptions("personal");
+
+    var days = ["", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    $("repeatList").innerHTML = state.recurring.length ? state.recurring.map(function (r) {
+      var a = areaOf(r.area), every = r.interval_n > 1 ? "every " + r.interval_n + " × " + r.freq : r.freq;
+      if (r.freq === "weekly" && (r.weekdays || []).length) every += " (" + r.weekdays.map(function (d) { return days[d]; }).join(", ") + ")";
+      return '<li class="item" data-rec="' + r.id + '"><div class="body"><div>' + esc(r.title) + '</div><div class="meta">' + esc(a.emoji + " " + a.name) + " · " +
+        esc(every) + (r.due_time ? " at " + esc(r.due_time) : "") + " · next " + esc(prettyDate(r.next_date)) +
+        '</div></div><button class="link" data-act="stoprec">Stop</button></li>';
+    }).join("") : '<li class="empty">Nothing repeating. Try typing “every Friday 6pm send invoices” above.</li>';
+
+    ["tasks", "notes", "repeat"].forEach(function (n) { $("tab-" + n).hidden = tab !== n; });
+    var tabs = document.querySelectorAll("[role=tab]");
+    for (var i = 0; i < tabs.length; i++) tabs[i].setAttribute("aria-selected", String(tabs[i].getAttribute("data-tab") === tab));
+  }
+
+  function refresh() {
+    return call("/state").then(function (s) {
+      state = s; showError(""); $("login").hidden = true; $("app").hidden = false; render();
+    }).catch(function (e) { showError(e.message); });
+  }
+  function act(p) { return p.then(refresh).catch(function (e) { showError(e.message); }); }
+
+  // ---- events ----
+  $("tokenSave").onclick = function () { token = $("tokenInput").value.trim(); if (token) { store(token); refresh(); } };
+  $("refresh").onclick = refresh;
+  $("noteSearch").oninput = render;
+
+  function say() {
+    var text = $("say").value.trim();
+    if (!text) return;
+    $("sayBtn").disabled = true;
+    call("/say", { text: text }).then(function (r) {
+      $("say").value = ""; $("reply").textContent = r.reply || "Done."; $("reply").hidden = false; return refresh();
+    }).catch(function (e) { showError(e.message); }).then(function () { $("sayBtn").disabled = false; });
+  }
+  $("sayBtn").onclick = say;
+  $("say").onkeydown = function (e) { if (e.key === "Enter") say(); };
+
+  $("noteAdd").onclick = function () {
+    var body = $("noteText").value.trim();
+    if (!body) return;
+    act(call("/note", { body: body, area: $("noteArea").value }).then(function () { $("noteText").value = ""; }));
+  };
+
+  document.addEventListener("click", function (e) {
+    var el = e.target;
+    if (el.getAttribute("role") === "tab") { tab = el.getAttribute("data-tab"); render(); return; }
+    if (el.hasAttribute("data-area")) { area = el.getAttribute("data-area"); render(); return; }
+    var a = el.getAttribute("data-act");
+    if (!a) return;
+    var li = el.closest("li");
+    if (a === "delnote") { act(call("/note/" + li.getAttribute("data-note") + "/delete", {})); return; }
+    if (a === "stoprec") { act(call("/recurring/" + li.getAttribute("data-rec") + "/stop", {})); return; }
+    var id = Number(li.getAttribute("data-id"));
+    if (a === "toggle") { act(call("/task/" + id, { done: el.checked })); return; }
+    if (a === "edit") { if (!li.classList.contains("done")) { openEdit = openEdit === id ? null : id; render(); } return; }
+    if (a === "remove") { openEdit = null; act(call("/task/" + id, { cancel: true })); return; }
+    if (a === "tomorrow") { openEdit = null; act(call("/task/" + id, { due_date: state.tomorrow })); return; }
+    if (a === "save") {
+      var f = {}, fields = li.querySelectorAll("[data-f]");
+      for (var i = 0; i < fields.length; i++) f[fields[i].getAttribute("data-f")] = fields[i].value;
+      f.priority = Number(f.priority);
+      f.due_date = f.due_date || null;
+      f.due_time = f.due_time || null;
+      openEdit = null;
+      act(call("/task/" + id, f));
+    }
+  });
+
+  // ---- start ----
+  var hash = location.hash.replace(/^#/, "");
+  if (/^[a-f0-9]{32,}$/i.test(hash)) {
+    token = hash; store(token);
+    try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {}
+  } else { token = load(); }
+  if (token) refresh(); else showLogin();
+  document.addEventListener("visibilitychange", function () { if (!document.hidden && token) refresh(); });
+})();
+</script>
+</body>
+</html>
