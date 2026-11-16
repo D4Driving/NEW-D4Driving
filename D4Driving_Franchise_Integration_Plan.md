@@ -1294,6 +1294,10 @@ Rakesh ended his franchise agreement, so the site now shows Robert only.
   pause) and the spoken reply plays automatically; 🔊/🔇 in the header switches speech off per
   device. Recording is done in the page as 16 kHz WAV and sent to the Edge Function's `/api/voice`;
   speech comes back from `/api/speak` as MP3. The microphone needs HTTPS, which the site has.
+- **News (16 Nov 2026):** asking for the news (typed, voice note, the page, or `/news`) returns a
+  briefing in three parts: UK headlines (BBC), Peterborough & local (BBC Cambridgeshire,
+  Peterborough Telegraph, Google News) and Driving & DVSA (GOV.UK, Google News). Free RSS feeds,
+  summarised by the bot's AI; only on request, never scheduled. Nothing changed in this page.
 
 ## Pending Tasks
 
