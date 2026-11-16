@@ -2,6 +2,12 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-11-16
+- Added a new page, `brain.html`, for Robert's own personal task-and-notes tool ("second brain" — tasks, notes, repeating tasks, paired with a Telegram bot). It is not part of the public website: it's kept out of Google the same way as the existing `admin.html` (marked noindex, blocked in `robots.txt`, left out of the sitemap), it shows nothing without Robert's own access code, and nothing on the site links to it. Its data lives in its own Supabase project, reached only through a dedicated Edge Function; the page itself holds no key.
+- _Commits: 55240cb_
+- _Plan doc status: already documented — the same commit added Integration Plan §45, covering what it is, where its data lives, and the instruction not to restyle it or add it to any menu._
+- _CLAUDE.md status: accurate, with one gap worth folding in next session: CLAUDE.md's "Gotchas" section documents `admin.html` nowhere, so there was already no entry to update — but there are now two noindex/robots-disallowed utility pages (`admin.html` and `brain.html`) that a future session could easily miss, restyle or link to by accident. Worth adding a short gotcha naming both, and confirming with Robert that housing his personal task tool in the public site repo (rather than the private ops repo) was the intended home for it._
+
 ## 2026-11-09
 - Removed Rakesh from the public website after he ended his franchise agreement — the site now shows Robert as the only instructor. The homepage lost the instructor picker, the VW Golf fleet card and Rakesh's "Hi, I'm Rakesh" section, and both FAQs (plus their schema) now name Robert only. His page (`rakesh.d4driving.html`) now just forwards visitors to the homepage and is out of the sitemap. Gift card wording was updated to Robert only — no cards were ever sold for Rakesh. His two photos and the VW Golf photo were deleted, and he was removed from the availability-checking tool's source code (the live copy still needs the file re-pasted in by Robert, but this is harmless since the site never asks for him). The Terms and Privacy "Franchisee Instructor" clauses and all headline stats were left as they were, both by Robert's choice.
 - _Commits: fdc0c0b_
