@@ -1298,6 +1298,11 @@ Rakesh ended his franchise agreement, so the site now shows Robert only.
   briefing in three parts: UK headlines (BBC), Peterborough & local (BBC Cambridgeshire,
   Peterborough Telegraph, Google News) and Driving & DVSA (GOV.UK, Google News). Free RSS feeds,
   summarised by the bot's AI; only on request, never scheduled. Nothing changed in this page.
+- **Pupils, expenses and mileage (16 Nov 2026):** lesson notes per pupil (progress, plan for next
+  lesson, test date and centre), shown in the morning plan; business expenses (actual costs) and
+  daily business mileage per car, copied to a Google Sheet in Robert's Drive by his calendar
+  script. Stored only in the bot's private `brain` schema (RLS on, no public access) — pupil
+  data never goes in this repo or on the site. Nothing changed in this page.
 
 ## Pending Tasks
 
