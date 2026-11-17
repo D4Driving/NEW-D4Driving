@@ -2,6 +2,12 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-11-17
+- Robert's personal task tool (`brain.html`, the "second brain" paired with his Telegram bot) gained three features in one evening: a microphone button that records what he says and sends it automatically once he stops talking, with spoken replies played back out loud (a speaker button lets him turn that off per device); an on-request news briefing — UK headlines, Peterborough/local news, and driving & DVSA news — when he asks for it by voice, text, the page, or `/news`; and, behind the scenes, per-pupil lesson notes (progress, next lesson plan, test date/centre), business expense tracking and daily mileage logging per car. None of this reaches the public site, and the pupil/expense/mileage data lives only in the tool's own private database, never in this repo.
+- _Commits: 897733a, 653c197, c7ca0ac_
+- _Plan doc status: already documented — Integration Plan §45 was updated in the same commits with all three additions._
+- _CLAUDE.md status: accurate, but a gap flagged in last night's entry below is still open: CLAUDE.md's "Gotchas" section has no entry for the noindex/private utility pages (`admin.html`, `brain.html`). Tonight's commits only grew `brain.html`'s scope (voice, news, pupil/expense/mileage data) without touching CLAUDE.md, so that gap is now a day older — worth adding a short gotcha next session._
+
 ## 2026-11-16
 - Added a new page, `brain.html`, for Robert's own personal task-and-notes tool ("second brain" — tasks, notes, repeating tasks, paired with a Telegram bot). It is not part of the public website: it's kept out of Google the same way as the existing `admin.html` (marked noindex, blocked in `robots.txt`, left out of the sitemap), it shows nothing without Robert's own access code, and nothing on the site links to it. Its data lives in its own Supabase project, reached only through a dedicated Edge Function; the page itself holds no key.
 - _Commits: 55240cb_
