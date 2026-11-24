@@ -370,6 +370,9 @@ footer .logo { height: 42px; width: auto; margin-bottom: 16px; }
   .reveal { opacity: 1; transform: none; }
 }
 </style>
+<link rel="preload" as="image" href="assets/media/hero-chr-road.webp" media="(min-width: 761px)">
+<link rel="preload" as="image" href="assets/media/hero-chr-road-mobile.webp" media="(max-width: 760px)">
+<link rel="stylesheet" href="assets/css/redesign.css">
 </head>
 <body>
 <!--
@@ -429,7 +432,7 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 
 <!-- ════ HERO ════ -->
 <section id="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg"><video class="hero-video" data-src="assets/media/hero-chr-road.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div>
   <div class="hero-grade"></div>
   <div class="hero-stripe"></div>
   <div class="wrap">
@@ -469,6 +472,66 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     </div>
   </div>
 </div>
+
+<!-- ════ DROGA DO ZDANIA (journey) ════ -->
+<section id="journey" class="sec rd-dark" aria-labelledby="journey-h">
+  <div class="journey-bg" aria-hidden="true">
+    <video data-src="assets/media/journey-aerial.mp4" muted loop playsinline preload="none" poster="assets/media/journey-aerial.webp" tabindex="-1"></video>
+  </div>
+  <div class="wrap">
+    <div class="reveal">
+      <span class="rd-eyebrow">Twoja droga</span>
+      <h2 id="journey-h" class="rd-h2">Od pierwszych nerwów do <em>spokojnie zdanego egzaminu.</em></h2>
+      <p class="rd-lead">Każdy zaczyna z innego miejsca. Droga jest ta sama: spokojnie, krok po kroku, w Twoim tempie.</p>
+    </div>
+    <div class="journey-track">
+      <div class="journey-line" aria-hidden="true"><span></span></div>
+      <div class="j-stage"><div class="j-dot" aria-hidden="true">1</div><div class="j-card"><h3>Pierwsza lekcja</h3><p>Spokojne drogi, obsługa auta oraz pewne ruszanie i zatrzymywanie.</p></div></div>
+      <div class="j-stage"><div class="j-dot" aria-hidden="true">2</div><div class="j-card"><h3>Manewry</h3><p>Parkowanie i zatrzymanie po prawej stronie, rozłożone na kroki, aż staną się łatwe.</p></div></div>
+      <div class="j-stage"><div class="j-dot" aria-hidden="true">3</div><div class="j-card"><h3>Jazda samodzielna</h3><p>Jazda według nawigacji i znaków, na ruchliwszych drogach i rondach.</p></div></div>
+      <div class="j-stage"><div class="j-dot" aria-hidden="true">4</div><div class="j-card"><h3>Egzamin próbny</h3><p>Pełna próba egzaminu na lokalnych trasach, oceniana tak jak przez egzaminatora.</p></div></div>
+      <div class="j-stage"><div class="j-dot" aria-hidden="true">5</div><div class="j-card"><h3>Zdany egzamin</h3><p>Dzień egzaminu bez niespodzianek, bo wszystko już wcześniej przećwiczyłeś(-aś).</p></div></div>
+    </div>
+    <div class="j-result reveal">
+      <div><div class="n">440<span>+</span></div><div class="l">zdanych egzaminów</div></div>
+      <div><div class="n">84<span>%</span></div><div class="l">zdaje za 1. razem (średnia w UK ok. 48%)</div></div>
+      <a href="#cta" class="btn btn-red">Umów lekcję</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ AUTO (interactive car) ════ -->
+<section id="car" class="sec" style="background:var(--bg2);" aria-labelledby="car-h">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="rd-eyebrow">Egzamin od środka</span>
+      <h2 id="car-h" class="rd-h2">Jedno auto. <em>Sześć rzeczy,</em> na które patrzy egzaminator.</h2>
+      <p class="rd-lead">Kliknij punkt na Toyocie C-HR+ albo wybierz temat poniżej, żeby zobaczyć, czego szuka egzaminator.</p>
+    </div>
+    <div id="car-explorer" class="reveal">
+      <div class="car-stage">
+        <img src="assets/media/chr-studio.webp" width="1400" height="792" loading="lazy" decoding="async" alt="Szara elektryczna Toyota C-HR+ szkoły D4Driving z kogutem na dachu, widok z przodu pod kątem">
+        <button type="button" class="hotspot" data-car="mirrors" style="left:34%;top:39%" aria-label="Lusterka" aria-pressed="false"></button>
+        <button type="button" class="hotspot" data-car="blindspot" style="left:22%;top:35%" aria-label="Martwe pole" aria-pressed="false"></button>
+        <button type="button" class="hotspot" data-car="indicators" style="left:56%;top:56%" aria-label="Kierunkowskazy" aria-pressed="false"></button>
+        <button type="button" class="hotspot" data-car="dashboard" style="left:55%;top:35%" aria-label="Kontrolki" aria-pressed="false"></button>
+        <button type="button" class="hotspot" data-car="showme" style="left:72%;top:47%" aria-label="Pytania show me, tell me" aria-pressed="false"></button>
+        <button type="button" class="hotspot" data-car="dual" style="left:46%;top:30%" aria-label="Podwójne pedały" aria-pressed="false"></button>
+      </div>
+      <div class="car-panel">
+        <div class="car-tabs" role="tablist" aria-label="Tematy">
+          <button type="button" class="car-tab" role="tab" data-car="mirrors" aria-selected="false">Lusterka</button>
+          <button type="button" class="car-tab" role="tab" data-car="blindspot" aria-selected="false">Martwe pole</button>
+          <button type="button" class="car-tab" role="tab" data-car="indicators" aria-selected="false">Kierunkowskazy</button>
+          <button type="button" class="car-tab" role="tab" data-car="dashboard" aria-selected="false">Kontrolki</button>
+          <button type="button" class="car-tab" role="tab" data-car="showme" aria-selected="false">Show me, tell me</button>
+          <button type="button" class="car-tab" role="tab" data-car="dual" aria-selected="false">Podwójne pedały</button>
+        </div>
+        <div class="car-info" role="tabpanel" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ════ PROCES ════ -->
 <section id="jak" class="sec">
@@ -705,6 +768,18 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
   </div>
 </section>
 
+<!-- ════ CZY JESTEŚ GOTOWY (test-ready quiz) ════ -->
+<section id="ready" class="sec" style="background:var(--bg3);" aria-labelledby="ready-h">
+  <div class="wrap" style="max-width:760px;">
+    <div class="reveal">
+      <span class="rd-eyebrow">Dwuminutowy test</span>
+      <h2 id="ready-h" class="rd-h2">Czy jesteś <em>gotowy(-a) do egzaminu?</em></h2>
+      <p class="rd-lead">Sześć szczerych pytań. Nic nie jest zapisywane.</p>
+    </div>
+    <div class="rd-card reveal" style="margin-top:24px;"><div id="ready-quiz"></div></div>
+  </div>
+</section>
+
 <!-- ════ OPINIE ════ -->
 <section id="opinie" class="sec" style="background:var(--bg2);">
   <div class="wrap">
@@ -738,6 +813,30 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
     <p class="price-note reveal">
       <a href="https://share.google/4rRVXahUuwZrWQlZC" target="_blank" rel="noopener">Zobacz wszystkie opinie w Google →</a>
     </p>
+  </div>
+</section>
+
+<!-- ════ GRY (play) ════ -->
+<section id="play" class="sec" style="background:var(--bg3);" aria-labelledby="play-h">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="rd-eyebrow">Gry</span>
+      <h2 id="play-h" class="rd-h2">Ucz się <em>przez zabawę.</em></h2>
+      <p class="rd-lead">Dwie krótkie gry. Wyniki widzisz tylko Ty i nigdzie nie są zapisywane.</p>
+    </div>
+    <div class="play-grid">
+      <div class="rd-card reveal" id="memory-game">
+        <div class="play-head"><h3>Znaki drogowe – memory</h3><span class="play-stats">Ruchy: <span data-moves>0</span></span></div>
+        <p style="color:var(--ink-mid);font-size:14px;margin:0 0 12px;">Dopasuj każdy znak do jego znaczenia.</p>
+        <div class="mem-grid"></div>
+        <p class="play-msg" aria-live="polite"></p>
+        <button type="button" class="btn btn-outline" data-shuffle>Potasuj i zacznij od nowa</button>
+      </div>
+      <div class="rd-card reveal">
+        <div class="play-head"><h3>Pytania z teorii</h3></div>
+        <div id="theory-game"></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -870,6 +969,28 @@ function cm() { burg.classList.remove('open'); mnav.classList.remove('open'); }
 /* PWA */
 if ('serviceWorker' in navigator) { window.addEventListener('load', () => navigator.serviceWorker.register('sw.js')); }
 </script>
+
+<!-- ════ ODDECH (breathe intro before booking) ════ -->
+<div class="breathe" id="breathe" role="dialog" aria-modal="true" aria-labelledby="breathe-h" hidden>
+  <div>
+    <div class="breathe-ring" aria-hidden="true"></div>
+    <h2 id="breathe-h">Weź głęboki oddech. Dasz radę.</h2>
+    <p>Za chwilę przejdziesz do rezerwacji.</p>
+    <button type="button" class="btn btn-red breathe-skip">Pomiń</button>
+  </div>
+</div>
+
+<!-- ════ KOMFORT (comfort panel) ════ -->
+<button type="button" class="comfort-btn" id="comfort-btn" aria-expanded="false" aria-controls="comfort-panel" aria-label="Ustawienia wygody">Aa Komfort</button>
+<div class="comfort-panel" id="comfort-panel" role="region" aria-labelledby="comfort-h" hidden>
+  <h2 id="comfort-h">Ustawienia wygody</h2>
+  <p>Ułatw sobie czytanie strony. Zapamiętamy to na tym urządzeniu.</p>
+  <label class="comfort-row">Większy tekst <input type="checkbox" data-pref="c-large"></label>
+  <label class="comfort-row">Wysoki kontrast <input type="checkbox" data-pref="c-contrast"></label>
+  <label class="comfort-row">Spokojny ruch <input type="checkbox" data-pref="c-calm"></label>
+  <button type="button" class="comfort-reset">Przywróć domyślne</button>
+</div>
+<script src="assets/js/redesign.js" defer></script>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5fde75a7a3e54255b4dd181e5d51e692"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

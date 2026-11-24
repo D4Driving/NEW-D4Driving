@@ -1304,6 +1304,29 @@ Rakesh ended his franchise agreement, so the site now shows Robert only.
   script. Stored only in the bot's private `brain` schema (RLS on, no public access) — pupil
   data never goes in this repo or on the site. Nothing changed in this page.
 
+## 46. Homepage and Polish Page Redesign, Boston Added — ✅ 24 November 2026
+
+- **Calm, premium look with subtle scroll motion**, on `index.html` and `nauka-jazdy-peterborough.html`.
+  Brand colours and font unchanged. New code lives in `assets/css/redesign.css` and
+  `assets/js/redesign.js` (shared; the language comes from `<html lang>`, and booking links go to
+  `#booking` on the homepage and `#cta` on the Polish page).
+- **New sections:** hero video of the C-HR+ (PC only; phones, reduced motion and Save-Data get the
+  still image), "Your journey" (5 stages, over an aerial video), an interactive car with six tap
+  points, an "Are you test-ready?" quiz, and "Play" (road-signs memory game and 8 Highway Code
+  theory questions). Scores and answers are never stored.
+- **Breathe intro:** the first click on a booking link per visit shows a 3-second, skippable
+  screen, then scrolls to the booking section. Booking itself is unchanged.
+- **Comfort panel** (bottom left): larger text, high contrast, calm motion; saved in the
+  visitor's browser only.
+- **Media** in `assets/media/`, made with Higgsfield (GPT Image 2 with `chr-plus-roof-sign.webp`
+  as the reference, videos with Kling 3.0; Seedance 2.0 needs the Pro plan). Originals are in
+  Robert's `Desktop\D4Driving Higgsfield` folder.
+- **Boston test centre added:** fourth centre card, a £160 Boston Test Prep card
+  (`cal.com/d4driving/boston-test-preparation`), hero, meta description, schema `areaServed`, FAQ
+  and FAQ schema; the author bio on every article and `article-template.html`; `starter-pack.html`.
+  Article body text and `routes.html` (no Boston routes yet) were left alone on purpose.
+- Service worker cache v44.
+
 ## Pending Tasks
 
 | Item | Owner | Notes |
