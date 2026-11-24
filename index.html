@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>D4Driving Peterborough | Top-Rated Driving Lessons</title>
-<meta name="description" content="DVSA Approved driving lessons in Peterborough, manual or automatic, including the electric Toyota C-HR+. Grantham & Kettering test prep. Book online instantly.">
+<meta name="description" content="DVSA Approved driving lessons in Peterborough, manual or automatic, including the electric Toyota C-HR+. Grantham, Kettering & Boston test prep. Book online instantly.">
 <link rel="canonical" href="https://d4driving.co.uk/">
 <link rel="alternate" hreflang="en-GB" href="https://d4driving.co.uk/">
 <link rel="alternate" hreflang="pl" href="https://d4driving.co.uk/nauka-jazdy-peterborough.html">
@@ -48,7 +48,7 @@
   "@context": "https://schema.org",
   "@type": "DrivingSchool",
   "name": "D4Driving School of Motoring",
-  "description": "DVSA Approved driving school in Peterborough. Manual and automatic lessons in a brand-new Toyota fleet. Covering Peterborough, Grantham and Kettering test centres.",
+  "description": "DVSA Approved driving school in Peterborough. Manual and automatic lessons in a brand-new Toyota fleet. Covering Peterborough, Grantham, Kettering and Boston test centres.",
   "url": "https://d4driving.co.uk",
   "telephone": "+44-7872-347686",
   "image": "https://d4driving.co.uk/SVGLogo.svg",
@@ -61,7 +61,8 @@
   "areaServed": [
     { "@type": "City", "name": "Peterborough" },
     { "@type": "City", "name": "Grantham" },
-    { "@type": "City", "name": "Kettering" }
+    { "@type": "City", "name": "Kettering" },
+    { "@type": "City", "name": "Boston" }
   ],
   "founder": { "@type": "Person", "name": "Robert" },
   "foundingDate": "2017",
@@ -519,7 +520,7 @@ p  { line-height: 1.75; }
 .cov-place { font-size: 15px; font-weight: 700; color: var(--slate); margin: 8px 0 4px; }
 .cov-sub   { font-size: 12px; color: var(--ink-low); }
 
-.centres-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 16px; }
+.centres-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 16px; }
 .centre-card { padding: 28px 24px; background: var(--slate); border-radius: 16px; transition: background .3s; }
 .centre-card:hover { background: var(--slate-hi); }
 .centre-icon { font-size: 24px; margin-bottom: 12px; }
@@ -560,7 +561,7 @@ p  { line-height: 1.75; }
 /* Five block cards do not fit below ~1140px — step down before the 960px
    breakpoint or the grid overflows the viewport. */
 @media(max-width:1140px){ .block-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
-.tp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.tp-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
 .block-card {
   padding: 24px; border-left: 3px solid transparent; transition: all .3s;
   display: flex; flex-direction: column;
@@ -860,6 +861,9 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
   .hero-free-guide { justify-content:center; width:100%; text-align:center; font-size:12px; }
 }
 </style>
+<link rel="preload" as="image" href="assets/media/hero-chr-road.webp" media="(min-width: 761px)">
+<link rel="preload" as="image" href="assets/media/hero-chr-road-mobile.webp" media="(max-width: 760px)">
+<link rel="stylesheet" href="assets/css/redesign.css">
 </head>
 <body>
 
@@ -961,7 +965,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 
 <!-- ════ HERO ════ -->
 <section id="hero">
-  <div class="hero-photo"></div>
+  <div class="hero-photo"><video class="hero-video" data-src="assets/media/hero-chr-road.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video></div>
   <div class="hero-grade"></div>
   <div class="hero-stripe"></div>
   <div class="wrap">
@@ -972,7 +976,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <span class="accent">With Confidence</span>
       </h1>
       <p class="hero-sub">
-        DVSA Approved instruction in <strong>Peterborough,</strong> test prep in <strong>Grantham &amp; Kettering</strong>.
+        DVSA Approved instruction in <strong>Peterborough,</strong> test prep in <strong>Grantham, Kettering &amp; Boston</strong>.
             Automatic lessons in the all-new electric <strong>Toyota C-HR+</strong> — one of very few electric tuition cars in the city. Flexible times. Real results.
       </p>
       <div class="hero-btns">
@@ -1012,6 +1016,66 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     </span>
   </div>
 </div>
+
+<!-- ════ JOURNEY ════ -->
+<section id="journey" class="sec rd-dark" aria-labelledby="journey-h">
+  <div class="journey-bg" aria-hidden="true">
+    <video data-src="assets/media/journey-aerial.mp4" muted loop playsinline preload="none" poster="assets/media/journey-aerial.webp" tabindex="-1"></video>
+  </div>
+  <div class="wrap">
+    <div class="reveal">
+      <span class="rd-eyebrow">Your journey</span>
+      <h2 id="journey-h" class="rd-h2">From first nerves to <em>a calm pass.</em></h2>
+      <p class="rd-lead">Every learner starts somewhere different. The route is the same: one calm step at a time, at your pace.</p>
+    </div>
+    <div class="journey-track">
+      <div class="journey-line" aria-hidden="true"><span></span></div>
+      <div class="j-stage"><div class="j-dot" aria-hidden="true">1</div><div class="j-card"><h3>First lesson</h3><p>Quiet roads, the controls, and moving off and stopping with confidence.</p></div></div>
+      <div class="j-stage"><div class="j-dot" aria-hidden="true">2</div><div class="j-card"><h3>Manoeuvres</h3><p>Parking and pulling up on the right, broken down until they feel easy.</p></div></div>
+      <div class="j-stage"><div class="j-dot" aria-hidden="true">3</div><div class="j-card"><h3>Independent driving</h3><p>Following sat nav and signs on your own, with busier roads and roundabouts.</p></div></div>
+      <div class="j-stage"><div class="j-dot" aria-hidden="true">4</div><div class="j-card"><h3>Mock test</h3><p>A full test run on local test routes, marked the way an examiner would.</p></div></div>
+      <div class="j-stage"><div class="j-dot" aria-hidden="true">5</div><div class="j-card"><h3>Pass</h3><p>Test day with no surprises, because you have already done it all before.</p></div></div>
+    </div>
+    <div class="j-result reveal">
+      <div><div class="n">440<span>+</span></div><div class="l">Local passes</div></div>
+      <div><div class="n">84<span>%</span></div><div class="l">First-time pass rate (UK average ~48%)</div></div>
+      <a href="#booking" class="btn btn-red">Book a lesson</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════ INTERACTIVE CAR ════ -->
+<section id="car" class="sec" style="background:var(--bg2);" aria-labelledby="car-h">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="rd-eyebrow">Inside the test</span>
+      <h2 id="car-h" class="rd-h2">One car. <em>Six things</em> examiners watch.</h2>
+      <p class="rd-lead">Tap a point on the Toyota C-HR+, or pick a topic below, to see what the examiner is looking for.</p>
+    </div>
+    <div id="car-explorer" class="reveal">
+      <div class="car-stage">
+        <img src="assets/media/chr-studio.webp" width="1400" height="792" loading="lazy" decoding="async" alt="D4Driving's grey Toyota C-HR+ electric tuition car with its roof sign, shown from the front three-quarter angle">
+        <button type="button" class="hotspot" data-car="mirrors" style="left:34%;top:39%" aria-label="Mirrors" aria-pressed="false"></button>
+        <button type="button" class="hotspot" data-car="blindspot" style="left:22%;top:35%" aria-label="Blind spots" aria-pressed="false"></button>
+        <button type="button" class="hotspot" data-car="indicators" style="left:56%;top:56%" aria-label="Indicators" aria-pressed="false"></button>
+        <button type="button" class="hotspot" data-car="dashboard" style="left:55%;top:35%" aria-label="Warning lights" aria-pressed="false"></button>
+        <button type="button" class="hotspot" data-car="showme" style="left:72%;top:47%" aria-label="Show me, tell me" aria-pressed="false"></button>
+        <button type="button" class="hotspot" data-car="dual" style="left:46%;top:30%" aria-label="Dual controls" aria-pressed="false"></button>
+      </div>
+      <div class="car-panel">
+        <div class="car-tabs" role="tablist" aria-label="Topics">
+          <button type="button" class="car-tab" role="tab" data-car="mirrors" aria-selected="false">Mirrors</button>
+          <button type="button" class="car-tab" role="tab" data-car="blindspot" aria-selected="false">Blind spots</button>
+          <button type="button" class="car-tab" role="tab" data-car="indicators" aria-selected="false">Indicators</button>
+          <button type="button" class="car-tab" role="tab" data-car="dashboard" aria-selected="false">Warning lights</button>
+          <button type="button" class="car-tab" role="tab" data-car="showme" aria-selected="false">Show me, tell me</button>
+          <button type="button" class="car-tab" role="tab" data-car="dual" aria-selected="false">Dual controls</button>
+        </div>
+        <div class="car-info" role="tabpanel" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ════ PRICES ════ -->
 <section id="prices" class="sec" style="background:var(--bg);">
@@ -1135,7 +1199,26 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <div class="l-desc">4-hour session — includes travel to/from Kettering; approx. 2 hours' training on local test routes.</div>
         <a href="https://cal.com/d4driving/kettering-test-preparation" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;">Book Test Prep</a>
       </div>
+      <div class="lesson-card glass-card">
+        <div class="l-price"><sup>£</sup>160</div>
+        <div class="l-dur">4 Hours</div>
+        <div class="l-name">Boston Test Prep</div>
+        <div class="l-desc">4-hour session — includes travel to/from Boston and training on local test routes.</div>
+        <a href="https://cal.com/d4driving/boston-test-preparation" target="_blank" rel="noopener" class="btn btn-outline" style="width:100%;">Book Test Prep</a>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- ════ TEST-READY QUIZ ════ -->
+<section id="ready" class="sec" style="background:var(--bg2);" aria-labelledby="ready-h">
+  <div class="wrap" style="max-width:760px;">
+    <div class="reveal">
+      <span class="rd-eyebrow">A two-minute check</span>
+      <h2 id="ready-h" class="rd-h2">Are you <em>test-ready?</em></h2>
+      <p class="rd-lead">Six honest questions. Nothing is stored.</p>
+    </div>
+    <div class="rd-card reveal" style="margin-top:24px;"><div id="ready-quiz"></div></div>
   </div>
 </section>
 
@@ -1445,7 +1528,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         <div class="booking-header">
           <div>
             <h3>Robert's Calendar — Book a Lesson</h3>
-            <p>Peterborough · Grantham · Kettering</p>
+            <p>Peterborough · Grantham · Kettering · Boston</p>
           </div>
           <span class="price-badge">From £37/hr</span>
         </div>
@@ -1623,6 +1706,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       <div class="centre-card"><div class="centre-icon">🏁</div><h4>Peterborough</h4><p>Full route prep for Peterborough DTC — the Eye Roundabout, A15/A47 merges and beyond.</p></div>
       <div class="centre-card"><div class="centre-icon">🛣️</div><h4>Grantham</h4><p>Rural route expert. Tailored prep for Grantham's country roads and dual-carriageway (A1) sections.</p></div>
       <div class="centre-card"><div class="centre-icon">⚡</div><h4>Kettering</h4><p>High-capacity test centre with shorter wait times — fast-track your test date.</p></div>
+      <div class="centre-card"><div class="centre-icon">📍</div><h4>Boston</h4><p>Test preparation for Boston test centre, so you know what to expect on the day.</p></div>
     </div>
   </div>
 </section>
@@ -1903,6 +1987,30 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 #faq .faq-a a { color: var(--red); font-weight: 700; }
 #faq .faq-a a:hover { text-decoration: underline; }
 </style>
+<!-- ════ PLAY ════ -->
+<section id="play" class="sec" style="background:var(--bg2);" aria-labelledby="play-h">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="rd-eyebrow">Play</span>
+      <h2 id="play-h" class="rd-h2">Learn while you <em>play.</em></h2>
+      <p class="rd-lead">Two quick games. Your scores stay on your screen and are never saved.</p>
+    </div>
+    <div class="play-grid">
+      <div class="rd-card reveal" id="memory-game">
+        <div class="play-head"><h3>Road signs memory</h3><span class="play-stats">Moves: <span data-moves>0</span></span></div>
+        <p style="color:var(--ink-mid);font-size:14px;margin:0 0 12px;">Match each sign with its meaning.</p>
+        <div class="mem-grid"></div>
+        <p class="play-msg" aria-live="polite"></p>
+        <button type="button" class="btn btn-outline" data-shuffle>Shuffle and restart</button>
+      </div>
+      <div class="rd-card reveal">
+        <div class="play-head"><h3>Theory questions</h3></div>
+        <div id="theory-game"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="faq" class="sec" style="background:var(--bg);">
   <div class="wrap">
     <div class="reveal" style="text-align:center;">
@@ -1916,7 +2024,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
       </details>
       <details class="glass-card">
         <summary>How much do driving lessons cost in Peterborough?</summary>
-        <div class="faq-a">Single lessons are £42 per hour, with a 1.5-hour lesson at £60 and a 2-hour lesson at £80. New students start with a 90-minute assessment lesson for £45 (one per student). Block bookings bring the rate down: 5 hours for £200, 10 hours for £390, 15 hours for £560, or 20 hours for £740 — that's just £37 per hour. A semi-intensive course (21.5 hours plus full test prep) is £840, and 4-hour test preparation sessions in Peterborough, Grantham or Kettering are £160. See the full breakdown in our <a href="#prices">prices section</a>.</div>
+        <div class="faq-a">Single lessons are £42 per hour, with a 1.5-hour lesson at £60 and a 2-hour lesson at £80. New students start with a 90-minute assessment lesson for £45 (one per student). Block bookings bring the rate down: 5 hours for £200, 10 hours for £390, 15 hours for £560, or 20 hours for £740 — that's just £37 per hour. A semi-intensive course (21.5 hours plus full test prep) is £840, and 4-hour test preparation sessions in Peterborough, Grantham, Kettering or Boston are £160. See the full breakdown in our <a href="#prices">prices section</a>.</div>
       </details>
       <details class="glass-card">
         <summary>Do you offer manual and automatic lessons?</summary>
@@ -1928,7 +2036,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
         </details>
       <details class="glass-card">
         <summary>What areas do you cover?</summary>
-        <div class="faq-a">We teach across Peterborough and surrounding areas including Hampton, Werrington, the Ortons, Stanground, Yaxley and Whittlesey. We also offer driving test preparation for the Grantham and Kettering test centres.</div>
+        <div class="faq-a">We teach across Peterborough and surrounding areas including Hampton, Werrington, the Ortons, Stanground, Yaxley and Whittlesey. We also offer driving test preparation for the Grantham, Kettering and Boston test centres.</div>
       </details>
       <details class="glass-card">
         <summary>Is Robert DVSA approved?</summary>
@@ -1962,7 +2070,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     {
       "@type": "Question",
       "name": "How much do driving lessons cost in Peterborough?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Single lessons are £42 per hour, with a 1.5-hour lesson at £60 and a 2-hour lesson at £80. New students start with a 90-minute assessment lesson for £45 (one per student). Block bookings reduce the rate: 5 hours for £200, 10 hours for £390, 15 hours for £560, or 20 hours for £740 (£37 per hour). A semi-intensive course (21.5 hours plus full test prep) is £840. Test preparation sessions (4 hours) in Peterborough, Grantham or Kettering are £160." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Single lessons are £42 per hour, with a 1.5-hour lesson at £60 and a 2-hour lesson at £80. New students start with a 90-minute assessment lesson for £45 (one per student). Block bookings reduce the rate: 5 hours for £200, 10 hours for £390, 15 hours for £560, or 20 hours for £740 (£37 per hour). A semi-intensive course (21.5 hours plus full test prep) is £840. Test preparation sessions (4 hours) in Peterborough, Grantham, Kettering or Boston are £160." }
     },
     {
       "@type": "Question",
@@ -1972,7 +2080,7 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
     {
       "@type": "Question",
       "name": "What areas does D4Driving cover?",
-      "acceptedAnswer": { "@type": "Answer", "text": "D4Driving teaches across Peterborough and surrounding areas including Hampton, Werrington, the Ortons, Stanground, Yaxley and Whittlesey, and offers driving test preparation for the Grantham and Kettering test centres." }
+      "acceptedAnswer": { "@type": "Answer", "text": "D4Driving teaches across Peterborough and surrounding areas including Hampton, Werrington, the Ortons, Stanground, Yaxley and Whittlesey, and offers driving test preparation for the Grantham, Kettering and Boston test centres." }
     },
     {
       "@type": "Question",
@@ -2355,6 +2463,27 @@ function handleForm(e) {
   update();
 })();
 </script>
+<!-- ════ BREATHE INTRO (before booking) ════ -->
+<div class="breathe" id="breathe" role="dialog" aria-modal="true" aria-labelledby="breathe-h" hidden>
+  <div>
+    <div class="breathe-ring" aria-hidden="true"></div>
+    <h2 id="breathe-h">Breathe in. You've got this.</h2>
+    <p>Taking you to booking now.</p>
+    <button type="button" class="btn btn-red breathe-skip">Skip</button>
+  </div>
+</div>
+
+<!-- ════ COMFORT PANEL ════ -->
+<button type="button" class="comfort-btn" id="comfort-btn" aria-expanded="false" aria-controls="comfort-panel" aria-label="Comfort settings">Aa Comfort</button>
+<div class="comfort-panel" id="comfort-panel" role="region" aria-labelledby="comfort-h" hidden>
+  <h2 id="comfort-h">Comfort settings</h2>
+  <p>Make the page easier to read. Remembered on this device.</p>
+  <label class="comfort-row">Larger text <input type="checkbox" data-pref="c-large"></label>
+  <label class="comfort-row">High contrast <input type="checkbox" data-pref="c-contrast"></label>
+  <label class="comfort-row">Calm motion <input type="checkbox" data-pref="c-calm"></label>
+  <button type="button" class="comfort-reset">Reset all</button>
+</div>
+<script src="assets/js/redesign.js" defer></script>
 <!-- Cloudflare Web Analytics --><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5fde75a7a3e54255b4dd181e5d51e692"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
