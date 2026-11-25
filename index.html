@@ -1008,6 +1008,24 @@ footer .logo { height: 46px; width: auto; margin-bottom: 18px; }
 </section>
 
 <!-- ════ STATUS ════ -->
+<style>html:not(.bf-on) .bf-bar{display:none!important} html.bf-on .status-bar:not(.bf-bar){display:none!important}</style>
+<div class="status-bar bf-bar" id="bf-bar">
+  <div class="status-inner">
+    <div class="pulse"></div>
+    <span>🖤 <strong>Black Friday</strong>: save up to £90 on a block of lessons. New learners, 10 places, ends Monday 30 Nov. &nbsp;
+      <a href="black-friday.html">See the deals →</a>
+    </span>
+  </div>
+</div>
+<script>
+/* Shows 27 to 30 Nov 2026 only, in place of the normal status bar. */
+(function () {
+  var n = Date.now();
+  if (n >= Date.parse('2026-11-27T00:00:00Z') && n < Date.parse('2026-12-01T00:00:00Z')) {
+    document.documentElement.classList.add('bf-on');
+  }
+})();
+</script>
 <div class="status-bar">
   <div class="status-inner">
     <div class="pulse"></div>
