@@ -2,6 +2,14 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-11-25
+- Redesigned the homepage and the Polish page (`nauka-jazdy-peterborough.html`) with a calmer, more premium look: a hero video of the C-HR+, a five-stage "your journey" section, an interactive car, a "test-ready?" quiz, two learning games (a road-signs memory game and Highway Code questions), a skippable 3-second intro shown once before booking, and a comfort panel (bigger text, higher contrast, calmer motion) that remembers the visitor's choice in their own browser. Brand colours and fonts are unchanged; nothing is stored about quiz or game answers.
+- Added Boston as a fourth driving test centre: its own centre card, a £160 Boston Test Prep booking option, and matching updates to the homepage hero, page description, structured data, FAQ, every article's author bio, `article-template.html` and the starter pack. Article body text and the routes page were deliberately left alone — no Boston routes written yet.
+- Bumped the site's offline cache version (service worker v44) so returning visitors get the new design instead of a cached copy of the old one.
+- _Commits: 1f30d39, 88f96ec_
+- _Plan doc status: already documented — Integration Plan §46, added in the same commit, covers all of the above in full._
+- _CLAUDE.md status: accurate — no entry needed updating. This work isn't one of the branches tracked in the "In flight" table, and a spot-check of the headline stats (37,000+ subscribers, 440+ passes, 84% pass rate) shows they survived the redesign in the exact formats CLAUDE.md names._
+
 ## 2026-11-17
 - Robert's personal task tool (`brain.html`, the "second brain" paired with his Telegram bot) gained three features in one evening: a microphone button that records what he says and sends it automatically once he stops talking, with spoken replies played back out loud (a speaker button lets him turn that off per device); an on-request news briefing — UK headlines, Peterborough/local news, and driving & DVSA news — when he asks for it by voice, text, the page, or `/news`; and, behind the scenes, per-pupil lesson notes (progress, next lesson plan, test date/centre), business expense tracking and daily mileage logging per car. None of this reaches the public site, and the pupil/expense/mileage data lives only in the tool's own private database, never in this repo.
 - _Commits: 897733a, 653c197, c7ca0ac_
