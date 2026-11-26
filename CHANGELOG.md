@@ -2,6 +2,13 @@
 
 This file is auto-maintained by a daily routine as a backstop to the main plan doc (`D4Driving_Franchise_Integration_Plan.md`). It exists so no day's real work goes undocumented if it's ever missed during a working session — not a replacement for the plan doc.
 
+## 2026-11-26
+- Launched a Black Friday offer for new learners: a new page (`black-friday.html`) with three block-lesson deals — 10 hours for £350, 15 hours for £500, 20 hours for £650, each with its own Stripe "buy now" link — limited to 10 places and running 27–30 November 2026. A banner on the homepage promotes the offer and both the banner and the page's buy buttons switch themselves on and off automatically by date, so no one needs to remember to remove them afterwards.
+- Bumped the site's offline cache version (service worker v45) so returning visitors see the new banner instead of a cached copy of the old homepage.
+- _Commits: 5725054_
+- _Plan doc status: ⚠ NOT yet in D4Driving_Franchise_Integration_Plan.md — the plan doc's last entry is §46 (24 Nov 2026, homepage/Polish redesign); this Black Friday launch needs its own numbered section added._
+- _CLAUDE.md status: accurate — nothing in today's commit lands or contradicts anything in the "In flight" table, "Where things live", "Standing rules" or "Gotchas"._
+
 ## 2026-11-25
 - Redesigned the homepage and the Polish page (`nauka-jazdy-peterborough.html`) with a calmer, more premium look: a hero video of the C-HR+, a five-stage "your journey" section, an interactive car, a "test-ready?" quiz, two learning games (a road-signs memory game and Highway Code questions), a skippable 3-second intro shown once before booking, and a comfort panel (bigger text, higher contrast, calmer motion) that remembers the visitor's choice in their own browser. Brand colours and fonts are unchanged; nothing is stored about quiz or game answers.
 - Added Boston as a fourth driving test centre: its own centre card, a £160 Boston Test Prep booking option, and matching updates to the homepage hero, page description, structured data, FAQ, every article's author bio, `article-template.html` and the starter pack. Article body text and the routes page were deliberately left alone — no Boston routes written yet.
